@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npx turbo build --filter=@career-os/web",
+  "framework": "nextjs",
+  "installCommand": "pnpm install"
+}

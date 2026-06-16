@@ -1,0 +1,226 @@
+id,term_type,slug,name,description,provider,url,metadata,created_at,updated_at
+619f1260-389b-4b3e-8f7f-24521b2c6e85,category,business-f5d7e253,Business,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6038fd52-52e4-405a-8237-660f77e2ffff,category,design-31c13f47,Design,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f3751b7e-23dd-4d8a-87d0-92b4fb51817b,category,education-d0bb80aa,Education,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2012428d-e5bd-4467-ba37-aa78739abd96,category,emerging-f87adcaf,Emerging,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+630f7cfc-d49b-4237-a19f-68e654512e1d,category,engineering-5d554bc5,Engineering,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+17927e9e-0e60-4170-b388-3501ad278111,category,finance-57336afd,Finance,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+470ad5ed-ab29-4cac-b2ce-58139f68c3ca,category,healthcare-9ff28bfa,Healthcare,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f9ff4d02-430b-4f04-a3c1-4f75c4fa77c0,category,hospitality-6b1ac989,Hospitality,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+aa0cb3f2-7d93-4b14-bdd8-eac323219f75,category,law-829a56cc,Law,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+674d1770-52ae-410d-9e28-a829aa475a6e,category,media-62933a29,Media,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1cc3931c-bfde-4db9-bde5-80558f2fb22c,category,public-4c9184f3,Public,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+dd5b6f84-21f8-4350-a2f1-a1a013509dea,category,science-fb5c7f9b,Science,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+fa9fadf6-791b-4779-8de1-5dcfd552d18f,category,sports-088495f3,Sports,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8010a3a6-4965-4842-9401-0d6b86772e4e,category,tech-d9f9133f,Tech,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2a6a2a9d-20cd-4791-ae72-ac9f22128ac0,category,trades-25156f6c,Trades,Occupational category used by the Career GPS global catalog.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9e565bec-7eaf-4848-9e18-701a715a05f3,technical_skill,project-mgmt-243139e3,Project Mgmt,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8e9a5444-2138-4883-afae-61b831b3c462,technical_skill,user-research-ac4ece69,User Research,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9d55b688-5351-4330-afec-6478bf5eef06,technical_skill,stamina-a712984d,Stamina,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+03305223-b920-4810-aa83-7a0bee50b3a0,soft_skill,teamwork-16c129bc,Teamwork,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d3033be2-484c-4401-a8ec-4f18a0a07e52,technical_skill,accounting-9bbd45ba,Accounting,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2e7c0ed7-38ae-457e-a4c1-80d5763d8690,technical_skill,clinical-knowledge-b1ac66e2,Clinical Knowledge,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f0e1e498-d459-486b-b49e-1aed13d5a12d,technical_skill,research-f027f27d,Research,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+461b32f4-bd3f-4439-9d27-f126cb8762cb,technical_skill,safety-6472ce41,Safety,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+7a0fcbd2-eca7-4c0d-b657-ef37b12ac4c8,soft_skill,empathy-34d8802f,Empathy,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+dff90b55-c520-4025-ba59-ee77d7120707,technical_skill,statistics-c33e404a,Statistics,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a30ffcc2-6a48-44f7-a3cd-c67d0f084a84,technical_skill,cad-eccb0954,CAD,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+69215769-23dd-41bb-8491-6f171b53a9bc,soft_skill,negotiation-016e5686,Negotiation,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d3042bdb-cf0f-4e4a-837e-8be804724038,technical_skill,diagnostics-36b64aad,Diagnostics,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e9375637-ff9e-43cb-a916-728dd6a9cc40,technical_skill,stakeholder-mgmt-e6b5e0f3,Stakeholder Mgmt,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+72ff1d5f-051c-49a6-82d8-570976cae39d,technical_skill,operations-456d0deb,Operations,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e50f628b-74af-4773-94ab-f5ccac016f03,technical_skill,programming-e6f43c40,Programming,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+299f3420-0266-494c-afe6-c6b292fca026,soft_skill,creativity-cd2319e2,Creativity,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+804b0088-af0a-45e1-ac97-8dbe350eea5e,technical_skill,domain-knowledge-40443d52,Domain Knowledge,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c1d5e176-28bd-43b5-b573-273f436ad578,technical_skill,analytics-a768caa9,Analytics,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+56b1baa9-ed8d-473f-8a24-f0e70485f48e,soft_skill,leadership-1f0aef4f,Leadership,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+fd10249f-f44f-4a97-a1eb-847c3c6b0c1c,technical_skill,public-service-a95fd7c7,Public Service,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f4db57a7-8d16-42a1-be0e-4ee4dba49e4b,technical_skill,git-0bcc7010,Git,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+90019caf-2c84-42e8-8c7f-ca001b5ec595,technical_skill,project-management-9c1330f0,Project Management,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0007c5c8-b3c1-4e9c-ac30-8b42c6c0c45d,technical_skill,mathematics-540b21ec,Mathematics,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6a0a6d84-b070-4cdc-906c-711c10073504,technical_skill,storytelling-d4ccb502,Storytelling,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cf7dae76-f5d5-466d-a7fd-4e4b330dad4e,technical_skill,strategy-83de191c,Strategy,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6d2a214a-f3ae-4e28-9f2f-cce4132e696e,technical_skill,mental-toughness-0f06553b,Mental Toughness,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4dfdf723-33da-4563-8e5a-ae3b70f6dcb9,soft_skill,patience-ae1d1ea3,Patience,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e0bc1fba-3a80-433b-acba-7849b2537f38,soft_skill,critical-thinking-4fb174b9,Critical Thinking,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a903f064-1656-4c4a-aff1-7ab4fe1cc51e,technical_skill,teaching-386533b1,Teaching,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1efa6612-22f0-459c-a756-15c314f7d066,technical_skill,curriculum-design-3477d6ee,Curriculum Design,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+58455d4f-54c0-4341-a14f-e4f89c9093f5,soft_skill,communication-07a3dd24,Communication,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8a92913c-a61f-459b-895f-0b4773550a1c,technical_skill,physical-fitness-5404042d,Physical Fitness,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d27754e2-5488-4993-ac89-01d7dd542acb,technical_skill,prototyping-91f8ef7f,Prototyping,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0ea125eb-f46d-4cc4-939e-134d42b7f86e,technical_skill,visual-design-4c2f949a,Visual Design,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4e8fd91c-4800-4efe-a7dd-f5ed272301da,technical_skill,cloud-c8e2277e,Cloud,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8b558575-25de-4f1e-800b-ae3a9d59402a,technical_skill,hygiene-38a12a38,Hygiene,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+ea3d1498-82fc-4439-bdbd-ded434ff4714,technical_skill,public-speaking-88aed6f1,Public Speaking,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+764a8c86-4db5-4ad6-8297-12482aabe76b,technical_skill,figma-a86fc343,Figma,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b5526f7f-08c2-412c-a831-7fba3888e0d2,technical_skill,system-design-98bf5c1a,System Design,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9cf9322b-0be6-4b31-9e45-9e5295c68598,soft_skill,adaptability-9b9c820d,Adaptability,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+dec81134-504b-47ee-89cb-0f0209140523,technical_skill,patient-care-1962abe9,Patient Care,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1cf773a1-0ae7-46c7-b74f-c38c39a68b42,technical_skill,tech-literacy-28e936aa,Tech Literacy,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2528f5e0-5e1b-4f5f-9268-2c874eebe32f,technical_skill,ethics-0f68057d,Ethics,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+3e3b529f-e849-4119-a29f-4c0e1d528ebc,soft_skill,continuous-learning-6b44eddd,Continuous Learning,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4309145d-2abb-47ec-a0f9-56276e587f33,technical_skill,coaching-02836aef,Coaching,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+3063590e-baec-4e56-8445-c53e0d6e4b33,technical_skill,multitasking-465122fe,Multitasking,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0699a3b4-64c7-4b43-a78c-3edb140fbe07,technical_skill,writing-af96ab41,Writing,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d8a5b6f5-9e7f-484b-91ef-616d69d5f318,technical_skill,financial-modeling-a631d9de,Financial Modeling,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+ed7dac39-372b-4e47-814a-233b3ae63b4b,technical_skill,excel-c1d81af5,Excel,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+bd6a91a7-484c-4e1b-ac5f-9d8e95010974,technical_skill,tools-knowledge-a75d16b2,Tools Knowledge,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+be1d0a62-ea09-49f6-af05-ceffc24fbd1a,technical_skill,customer-service-d5552e05,Customer Service,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+3e77c3db-b404-4fbf-8af0-3b257a96d077,soft_skill,problem-solving-6a03a970,Problem Solving,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9675f774-a197-45d3-a7bf-814f103c5cf2,technical_skill,manual-skills-7dbaab24,Manual Skills,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+3f305970-bd12-479f-9089-e69794e08c38,technical_skill,assessment-29a99298,Assessment,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+558ae709-5524-4714-9daa-bde311a67267,technical_skill,typography-603850e0,Typography,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e456c88a-7707-4f25-92f9-6254234da0ff,technical_skill,discipline-1f12849b,Discipline,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+50bc3429-2c59-4051-bd03-2d6df796d10e,technical_skill,editing-b1caf7f2,Editing,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+df94ca98-a316-44eb-adc1-e3e96fde7429,technical_skill,legal-research-500de819,Legal Research,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9e012891-3924-496d-9b98-0e7afc0d9523,technical_skill,lab-work-55f8ed88,Lab Work,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b074f04e-ee7d-434a-a831-f11feefe3c47,technical_skill,production-756d97bb,Production,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2a210189-a7cf-4257-b839-3e5199478eeb,certification,bls-7219d59a,BLS,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+ea4e5866-20e2-4ccb-b62c-b31a2075da99,certification,apprenticeship-a007eca2,Apprenticeship,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f224f6d3-2912-4a04-a1e0-ad8776863425,certification,adobe-cert-c22703a0,Adobe Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+725d9d87-9ab2-4c31-ac25-7e3bde7e4c94,certification,figma-cert-740d92e9,Figma Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+876a295d-baec-4157-9795-afa8239b2054,certification,cloud-cert-283a3481,Cloud Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e45123f3-47b0-42f3-9aed-299d60725122,certification,hospitality-cert-1400dcf4,Hospitality Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8cd68b74-232a-4704-8b50-fd1cbe4a42f3,certification,bar-exam-562b5685,Bar Exam,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c735e03d-c4b8-4db5-be1d-30cf4eefc5bc,certification,statistics-cert-74082caf,Statistics Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+96a2de53-ac4e-4314-bcc4-657878956cc3,certification,cpa-787df3c9,CPA,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f321d997-0e5a-4cff-8f45-d410b6b65985,certification,meta-cert-58a496b6,Meta Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9e1bc1e5-0cba-41d5-8737-54fb18248399,certification,ssc-15bb1b57,SSC,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+10cf25a6-a589-4b41-9b22-03fe62bbf7d1,certification,nism-7961fc04,NISM,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+15266075-8e39-41f0-859e-0b3ea2b09370,certification,defense-service-exam-3d9f7e33,Defense Service Exam,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9562661e-6fe8-4e22-b9f3-a85f5583e769,certification,domain-cert-c229ffc4,Domain Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8d9df37d-00c4-4438-9bea-e6e59b4eaf75,certification,adobe-premiere-cert-e3e0774f,Adobe Premiere Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+836e501c-c99d-4d5c-854c-0f453fe2dbde,certification,nid-workshop-2a5b3147,NID Workshop,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d53de3d1-ed6f-4174-b9d3-f4f4feefbeee,certification,six-sigma-f07975a0,Six Sigma,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+235032f5-3bef-43ae-b062-7e6a4001d4fd,certification,cfa-7d3e3deb,CFA,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+7e900e8d-c976-46c4-9858-f482d71d575e,certification,avid-cert-77d1ab84,Avid Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4fc4caa8-bd5e-4a95-a128-1e5c5b669462,certification,tet-268c4b76,TET,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+187a579a-dca3-4f3a-a6e0-cf954d6ef9fc,certification,sustainability-cert-54e0733b,Sustainability Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c74dbe86-326c-4813-8520-be7643704f3d,certification,ctet-61eb1eb7,CTET,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a1d24eb1-b212-4ffa-b056-59b61a934676,certification,coursera-cert-cd7693a8,Coursera Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a8196029-f0da-4e48-bc9a-ebe01bd95d2e,certification,trade-license-c2e7f9ff,Trade License,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f9c1bb07-bf6e-4b73-a245-6430a9f34c27,certification,tefl-35feeee5,TEFL,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+64b5ed5d-c448-4e27-b2d3-4e86bb35c00b,certification,camera-cert-9d2d36ba,Camera Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+73812eca-b69d-4d17-ac52-99e5d2e6240b,certification,iti-cert-c19001fa,ITI Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+567b521e-5d34-43f0-b047-321031597345,certification,specialty-cert-49c04e8e,Specialty Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1b6ea0c0-9293-4d01-ba46-fa075127cad1,certification,specialty-boards-24bb78da,Specialty Boards,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1e608312-6918-4908-a844-587ff8f5b8f5,certification,usmle-5b280bd1,USMLE,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4fd2d814-1bbf-4caf-b237-ddbffb5cc4f4,certification,bar-license-bb0532a1,Bar License,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+572e7144-bcfb-416c-bdb2-4c0383b81307,certification,ace-cert-a92a6930,ACE Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+21445267-4766-4edc-8f57-ab7e7f6fa1b7,certification,ai-cert-55b33658,AI Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+70607086-fdc1-4fc9-8359-44dec9db1e7c,certification,cs-8d7e99c7,CS,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+58548087-078b-4ddf-b429-d37812da8b70,certification,nis-coaching-e55f46b1,NIS Coaching,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a4eef3fc-33ab-4be7-8d66-87e7be3d7ba1,certification,hubspot-cert-7c038740,HubSpot Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6f439f76-cedc-4a1c-a0d1-b9f34ad68dbc,certification,neet-pg-4867d3c6,NEET PG,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+093b208f-1244-4fbe-b531-2131c8da16ec,certification,upsc-9a754047,UPSC,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e8c6441b-c66e-4beb-a697-80917abca167,certification,google-pm-cert-3d5beeaf,Google PM Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a7ee7fa5-972b-4288-82e9-015687ce6cf9,certification,online-teaching-cert-808c9c44,Online Teaching Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9c3fbb1c-3ee6-4994-8b3b-1332e3edaf7b,certification,food-safety-cert-a918bba3,Food Safety Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b4909cec-dee3-4115-b93d-96a3f3cb375c,certification,autocad-cert-d6f41bfa,AutoCAD Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+ff5cf86f-eca3-438f-9b84-4c55a8ef9c00,certification,acls-6650331a,ACLS,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4fa9afe3-2e14-4e86-bc30-c9fe214953db,certification,lab-safety-cert-cd57cc04,Lab Safety Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+eecae4e8-3ff0-493e-9f4c-20f75a27b4fe,certification,google-cloud-cert-ed506eb9,Google Cloud Cert,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+450e29ff-afc2-483c-91c6-71aac53dc426,certification,first-aid-ac8e90f5,First Aid,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0af7d5cb-41f5-4d9e-bdc3-a4e6939c9563,certification,aws-certified-5324f353,AWS Certified,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+17ab3f5b-b73d-405e-91a3-ddebfcf837e6,certification,pmp-aa9ca8e8,PMP,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0ea5bc0e-a912-4b2c-9b34-a4b221b4ab4f,certification,pe-license-6d6e516b,PE License,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d05ff532-23f8-470e-ab6a-9922def349f3,certification,frm-83445ea5,FRM,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2ec3f586-1784-4765-954d-ee3397aa4359,certification,gate-1818cedf,GATE,,Varies by market,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+340fbbde-6366-41b9-a070-ac8a5d917fe2,recruiter,manipal-7c4bd244,Manipal,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+355cd000-b946-486f-a480-92fa273f45e2,recruiter,s-r-0c99183f,S&R,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+3e0350fa-7b33-43ba-850f-1ac1699521c4,recruiter,schools-b5fe5259,Schools,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9ea7bf0a-b27e-4ddd-a29a-1ac3fa5db0a1,recruiter,reliance-207f795a,Reliance,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+bf2482dc-c0c2-473d-8dd2-14d91bd777a4,recruiter,state-govt-bf062d72,State Govt,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b60bd11a-5d07-4658-8f92-f5877c1deca2,recruiter,local-firms-56e9a193,Local Firms,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+50fec61c-8f89-487e-bfda-5d9f28cb2722,recruiter,itc-hotels-26d2c1cd,ITC Hotels,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1e5160ed-ab48-46a8-8c76-481656f79799,recruiter,ndtv-7e64b41e,NDTV,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+81233172-5c1e-4efa-89de-83e96b071372,recruiter,tcs-b0b6fc80,TCS,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+87d61e0b-6757-457e-b255-cdcdbd2ef62e,recruiter,federations-fc99eedd,Federations,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b54bb416-ea4c-46b2-833f-fb755a944c33,recruiter,flipkart-0e28a146,Flipkart,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+712c1722-863d-40af-9ac7-2ea8d48080e6,recruiter,iisc-d785f68b,IISc,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2609e2e5-33c0-4152-84b1-caec1801321a,recruiter,contractor-2affaab5,Contractor,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+77c6f635-40a2-4e7a-a635-ce05b3f32fe6,recruiter,max-6a061313,Max,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1214a761-d7e5-410e-86b8-8258cf6ca494,recruiter,oberoi-896c8bf2,Oberoi,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cd01c7ed-3644-463f-82cf-c7ab79f3a3c8,recruiter,unacademy-9d7d3909,Unacademy,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+85b88b3a-f0d2-4b3e-bfa5-804e31515686,recruiter,openai-0523b132,OpenAI,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+485d3c34-438d-4f33-8180-3b2e0a16816c,recruiter,hyatt-99c8ba4a,Hyatt,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+aef41a6e-487a-4b4f-bbcd-91e4eff3332e,recruiter,self-employed-ca92bc5e,Self Employed,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+fd9b04da-f3b0-4efa-a9c7-a14870be629f,recruiter,siemens-74993f42,Siemens,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e4f4befa-c57b-47cb-b6b3-8cdce101fbdf,recruiter,indian-army-f0c00400,Indian Army,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+600cb29f-2462-4c97-80df-1f0a8a4eb0b7,recruiter,trilegal-a99f3784,Trilegal,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+aa689494-993e-4146-960a-a22e6d61bd8e,recruiter,swiggy-c8324275,Swiggy,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b08dd8be-acb2-457d-bc43-fc34aca736aa,recruiter,ngos-f0a80829,NGOs,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+92c64ee5-fc86-4643-9944-e6b86ae1324b,recruiter,times-group-c2e8e24c,Times Group,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+701d4400-f415-4059-872f-ef6b0f659824,recruiter,infosys-c8b921ba,Infosys,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+41b44507-570b-4803-8643-4b9d788e6abf,recruiter,sbi-b4ff3eff,SBI,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cc9963b3-4789-425d-a998-9df8b979e5c2,recruiter,marriott-d8c11584,Marriott,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c163fb16-79c8-4c90-aec3-3e155979cc6b,recruiter,ideo-47febdd2,IDEO,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6c9205fb-3c83-4d11-b2c4-efe7491edbc1,recruiter,fortis-dc555c4b,Fortis,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0e56ec69-9aac-4e49-8a3f-b20fd7f7be4d,recruiter,clubs-bc56e1ae,Clubs,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2650e69d-c3a9-42a0-9a89-69b76f07e268,recruiter,apollo-a6c3e0ef,Apollo,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+bbb7e770-4cc1-4c71-a50d-b194c1f42d6d,recruiter,jp-morgan-bef44100,JP Morgan,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c54ad6a0-e4a5-432b-b83b-b7e26bce29c0,recruiter,microsoft-14086407,Microsoft,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cb22c683-fdb8-4324-a11b-a1604251e636,recruiter,reliance-jio-26cd39a4,Reliance Jio,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+06e7df38-185a-4907-9f81-2be8327c44f1,recruiter,frog-239243b6,Frog,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+411ed839-e8ec-420d-a877-cc80e533104a,recruiter,bain-6eeb157d,Bain,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+202e66c2-cce9-4c24-8e50-c105c5587634,recruiter,csir-26f00477,CSIR,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+63381afb-4b3f-46a7-aa09-fe3e15dbaf53,recruiter,razorpay-c825402a,Razorpay,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+aabd563a-9c7a-492a-981a-a42f845983db,recruiter,bcci-cbb3696a,BCCI,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+06b6525c-686f-497e-8a11-63e594c488f2,recruiter,disney-a77450f8,Disney,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+90c43c5b-f736-4957-b06b-5f7e71be3ad6,recruiter,police-5dac73aa,Police,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0c18f3b5-280c-4c28-8689-9784fcd07351,recruiter,goldman-sachs-d81a3a02,Goldman Sachs,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+59cfe04e-1f64-413c-8c7f-00801c8fc171,recruiter,aiims-e6c90d24,AIIMS,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b153d106-7209-4631-91ff-eef118eaa4ea,recruiter,netflix-170b1d36,Netflix,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+94de967f-8c3c-4aa6-856c-8265485218fe,recruiter,industry-4fd0a37b,Industry,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+af0c8ab2-dcc1-44db-9ab3-798ecd6bfd54,recruiter,l-t-68791530,L&T,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+53e0a472-3d94-470f-b853-15f25832b9fa,recruiter,taj-04a23803,Taj,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+5eada733-61ee-479c-8a1f-6f25899deb1f,recruiter,icici-dd1d959f,ICICI,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+f6773590-859c-41cb-89bf-5667acb1593e,recruiter,amazon-b3b3a6ac,Amazon,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+7da2c5c8-bef2-4a8b-ac69-7dabb5ccda86,recruiter,bhel-d1c4e177,BHEL,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4327bfd0-7845-4e62-8c6e-0ffca22e6c1a,recruiter,deepmind-0831beb3,DeepMind,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+54f54892-4542-4aaa-8f99-2ac99d91d3af,recruiter,byju-s-9ef00284,BYJU's,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+458dafa1-c752-4392-851e-20f346dc8220,recruiter,hdfc-41c37b6d,HDFC,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b6d2004a-5c7d-4af0-b261-63a71651c95a,recruiter,tata-d7676563,Tata,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+820d4beb-ca57-4e20-82eb-bda7335db571,recruiter,lollypop-03c80160,Lollypop,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b3b5cec0-6378-4768-9643-82d07522b839,recruiter,tifr-953012d5,TIFR,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+0bbf6948-b794-4c88-addf-6ebb22ee52e5,recruiter,cyril-amarchand-146a2e3e,Cyril Amarchand,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+9414c953-0834-48b6-abd7-eed05dfaa8d8,recruiter,sony-2da860f7,Sony,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6334d25f-544c-46c8-bea8-1e58a15778f1,recruiter,drdo-73e91e7a,DRDO,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+790098d3-d075-4e6e-ba6f-e32eeefbab09,recruiter,universities-bcd80cbd,Universities,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d4d1a2d8-4055-464b-8173-a97ae2960613,recruiter,bcg-50e4648f,BCG,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+25cd3c93-01c1-413c-aa52-1045c8a05ab8,recruiter,vedantu-e4254923,Vedantu,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4e95911f-8810-4d61-84c9-5b8dad24962b,recruiter,mckinsey-87c6845c,McKinsey,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+926c973f-4465-4cc9-a5dc-afe0e4e826d9,recruiter,google-8b36e920,Google,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+6b403e0e-4dbb-46c7-9e02-0e0054939495,recruiter,khaitan-cd081f28,Khaitan,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+31b0cfc1-aada-426d-be1f-479a8a147566,recruiter,goi-7f1bf05e,GoI,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8644910c-4d3a-43a2-8cad-996cb7a8699a,recruiter,azb-684f63e1,AZB,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8886702e-219d-45d2-8cbc-640405738ad9,recruiter,sports-brands-1cae573e,Sports Brands,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a383cd70-7c99-4b8e-b390-5cde426d9506,recruiter,isro-9075c7b5,ISRO,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+a5d7ad82-1de2-4778-831b-52b3ea465990,recruiter,deloitte-370c2482,Deloitte,,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+63d0b092-be85-45ae-aba9-6a3e8efa4f1e,industry,business-f5d7e253,Business,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+2d73e86c-e784-4165-9809-016313afa8da,industry,design-31c13f47,Design,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+48f35772-811f-415f-a20b-dfbf0ad12da6,industry,education-d0bb80aa,Education,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+53a6e40b-2494-4f5b-a8aa-29309b83d597,industry,emerging-f87adcaf,Emerging,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+41edfea8-0df4-43c4-a522-2ececc287218,industry,engineering-5d554bc5,Engineering,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e2dfb8c2-f468-477b-b752-6de90882550b,industry,finance-57336afd,Finance,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1ffc29b6-9f45-48ba-b81a-fe77bb015edc,industry,healthcare-9ff28bfa,Healthcare,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+78196c9b-68d1-48b6-a130-3428ee03c5ee,industry,hospitality-6b1ac989,Hospitality,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d915f1aa-cbcf-4266-8a37-514c78368423,industry,law-829a56cc,Law,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d10b8b00-7af6-4605-9122-cdabe9477195,industry,media-62933a29,Media,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+e760157c-e0ee-425c-b4c9-9390c49beb67,industry,public-4c9184f3,Public,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+5431e40f-c286-40f0-b187-8101e5ffcfaf,industry,science-fb5c7f9b,Science,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+46834577-af43-441c-ad48-60c57e4854dc,industry,sports-088495f3,Sports,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+8de8aa5d-c109-4f16-a842-0bf94d344098,industry,tech-d9f9133f,Tech,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+4a19c0f7-40cd-4231-845f-46a334c9963d,industry,trades-25156f6c,Trades,Primary industry family inferred from the occupation category.,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cfda7ded-ca39-459f-b08c-66f23089318f,school_stream,science-pcm,Science (PCM),"Physics, Chemistry and Mathematics",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+fdef41db-a9c7-429c-b1fe-8ba7c12c5fbd,school_stream,science-pcb,Science (PCB),"Physics, Chemistry and Biology",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+d8da2f51-a1f2-45b3-a58a-9c0c1f89c871,school_stream,commerce,Commerce,"Accountancy, Business Studies and Economics",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+da334c27-e424-4e58-a93e-b189483ae006,school_stream,humanities,Humanities / Arts,"Social sciences, languages and arts",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+cf329e11-0de0-40b7-a33a-9e536a1179fd,school_stream,vocational,Vocational,Applied and skills-based secondary education,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+858814cb-be35-4380-9b17-57d0e027d164,interest,technology-and-systems,Technology & Systems,"Building, understanding and improving technical systems",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+b7c690af-aa2f-41de-b38f-fb2178e16c68,interest,health-and-wellbeing,Health & Wellbeing,Improving human health and quality of life,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+55e63663-3cec-44bb-ac22-ad42e327f5b4,interest,business-and-enterprise,Business & Enterprise,Creating value through organizations and markets,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+c7b29e80-997d-420b-b94a-572155ae6939,interest,creative-expression,Creative Expression,Designing and communicating original ideas,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+46cb4bfb-79ae-485f-b8f4-04e78415324b,interest,people-and-society,People & Society,"Helping, teaching and understanding communities",,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+1309687d-0b20-4ca2-8016-572e27fafc0d,interest,nature-and-environment,Nature & Environment,Working with natural systems and sustainability,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00
+980c6174-f2b7-4551-8c48-60226ea0f6b4,interest,research-and-discovery,Research & Discovery,Investigating questions and generating knowledge,,,{},2026-06-13 04:25:25.412242+00,2026-06-13 04:25:25.412242+00

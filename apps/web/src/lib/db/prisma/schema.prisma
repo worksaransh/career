@@ -1,0 +1,1006 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── User & Auth ─────────────────────────────────────────────────
+
+model Account {
+  id                String  @id @default(uuid()) @db.Uuid
+  userId            String  @db.Uuid
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(uuid()) @db.Uuid
+  sessionToken String   @unique
+  userId       String   @db.Uuid
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model User {
+  id                 String    @id @default(uuid()) @db.Uuid
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  phone              String?   @unique
+  phoneVerified      Boolean   @default(false)
+  hashedPassword     String?
+  image              String?
+  role               String    @default("USER")
+  language           String    @default("en")
+  onboardingStep     String    @default("WELCOME")
+  profileCompleteness Int      @default(10)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  profile          UserProfile?
+  assessments      AssessmentResult[]
+  savedItems       SavedItem[]
+  roadmaps         CareerRoadmap[]
+  subscriptions    Subscription[]
+  payments         Payment[]
+  notifications    Notification[]
+  auditLogs        AuditLog[]
+  consentRecords   ConsentRecord[]
+  analyticsEvents  AnalyticsEvent[]
+  userSessions     UserSession[]
+  dailyAnswers     DailyAnswer[]
+  engagement       UserEngagement?
+  dailyTasks       DailyTask[]
+  badges           AchievementBadge[]
+  memory           UserMemory?
+  questionAnswers  UserQuestionAnswer[]
+  skillProficiencies SkillProficiency[]
+
+  @@index([email])
+  @@index([role])
+  @@index([onboardingStep])
+}
+
+model UserProfile {
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @unique @db.Uuid
+  bio             String?
+  location        String?
+  educationLevel  String?
+  currentGrade    String?
+  dateOfBirth     DateTime?
+  interests       String[] @default([])
+  preferences     Json     @default("{}")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserSession {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  device    String?
+  location  String?
+  ip        String?
+  lastActive DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([lastActive])
+}
+
+// ─── Assessments ─────────────────────────────────────────────────
+
+model Assessment {
+  id          String   @id @default(uuid()) @db.Uuid
+  type        String
+  title       String
+  description String   @db.Text
+  timeEstimate Int
+  language    String   @default("en")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  questions AssessmentQuestion[]
+  results   AssessmentResult[]
+
+  @@index([type, language])
+  @@index([isActive])
+}
+
+model AssessmentQuestion {
+  id           String  @id @default(uuid()) @db.Uuid
+  assessmentId String  @db.Uuid
+  text         String  @db.Text
+  options      Json    @default("[]")
+  order        Int
+  category     String?
+
+  assessment Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  answers    AssessmentAnswer[]
+
+  @@index([assessmentId])
+  @@index([order])
+}
+
+model AssessmentAnswer {
+  id         String   @id @default(uuid()) @db.Uuid
+  resultId   String   @db.Uuid
+  questionId String   @db.Uuid
+  optionId   String
+  value      Int
+
+  result   AssessmentResult   @relation(fields: [resultId], references: [id], onDelete: Cascade)
+  question AssessmentQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([resultId])
+}
+
+model AssessmentResult {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  assessmentId String   @db.Uuid
+  type         String
+  scores       Json     @default("{}")
+  summary      String?  @db.Text
+  completedAt  DateTime @default(now())
+
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assessment Assessment         @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  answers    AssessmentAnswer[]
+
+  @@index([userId])
+  @@index([assessmentId])
+  @@index([type])
+}
+
+// ─── Careers ─────────────────────────────────────────────────────
+
+model Career {
+  id               String   @id @default(uuid()) @db.Uuid
+  title            String
+  slug             String   @unique
+  description      String   @db.Text
+  summary          String   @db.Text
+  salaryEntry      Int
+  salaryMid        Int
+  salarySenior     Int
+  salaryCurrency   String   @default("INR")
+  tenYearGrowthPercent Float  @default(0)
+  demandLevel      String   @default("MEDIUM")
+  aiRiskLevel      String   @default("MEDIUM")
+  futureGrowthRate Float    @default(0)
+  requiredSkills   String[] @default([])
+  recommendedDegrees String[] @default([])
+  certifications   String[] @default([])
+  alternativeCareers String[] @default([])
+  isActive         Boolean  @default(true)
+  seoMetadata      Json?    @default("{}")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  roadmaps   CareerRoadmap[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([demandLevel])
+  @@index([aiRiskLevel])
+}
+
+// ─── Degrees ─────────────────────────────────────────────────────
+
+model Degree {
+  id                 String   @id @default(uuid()) @db.Uuid
+  name               String
+  slug               String   @unique
+  description        String   @db.Text
+  duration           String
+  costTotal          Int
+  costTuition        Int
+  costFees           Int
+  costLiving         Int
+  costCurrency       String   @default("INR")
+  fiveYearReturn     Int      @default(0)
+  tenYearReturn      Int      @default(0)
+  lifetimeReturn     Int      @default(0)
+  breakEvenPeriod    Int      @default(0)
+  riskAdjustedScore  Float    @default(0)
+  aiResilience       Float    @default(0)
+  careerOutcomes     Json     @default("[]")
+  futureOpportunities String[] @default([])
+  requiredSubjects   String[] @default([])
+  isActive           Boolean  @default(true)
+  seoMetadata        Json?    @default("{}")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  collegeDegrees CollegeDegree[]
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+// ─── Colleges ────────────────────────────────────────────────────
+
+model College {
+  id               String   @id @default(uuid()) @db.Uuid
+  name             String
+  slug             String   @unique
+  description      String   @db.Text
+  location         String
+  ranking          Int
+  feesTotal        Int
+  feesTuition      Int
+  feesLiving       Int
+  feesCurrency     String   @default("INR")
+  avgPackage       Int
+  highestPackage   Int
+  placementPercent Float
+  topRecruiters    String[] @default([])
+  fiveYearReturn   Int      @default(0)
+  tenYearReturn    Int      @default(0)
+  lifetimeReturn   Int      @default(0)
+  breakEvenPeriod  Int      @default(0)
+  riskAdjustedScore Float   @default(0)
+  rating           Float    @default(0)
+  reviewCount      Int      @default(0)
+  studentCount     Int      @default(0)
+  studentFitScore  Float    @default(0)
+  similarColleges  String[] @default([])
+  isActive         Boolean  @default(true)
+  seoMetadata      Json?    @default("{}")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  scholarships Scholarship[]
+  reviews      CollegeReview[]
+  images       CollegeImage[]
+  locations    CollegeLocation[]
+  collegeCourses CollegeCourse[]
+  collegeDegrees CollegeDegree[]
+  rankings     CollegeRanking[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([ranking])
+  @@index([location])
+}
+
+model CollegeImage {
+  id         String   @id @default(uuid()) @db.Uuid
+  collegeId  String   @db.Uuid
+  url        String   @db.Text
+  alt        String   @default("")
+  type       String   @default("CAMPUS")
+  isPrimary  Boolean  @default(false)
+  source     String   @default("UPLOADED")
+  width      Int      @default(800)
+  height     Int      @default(600)
+  uploadedById String? @db.Uuid
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId, isPrimary])
+  @@index([type])
+}
+
+model CollegeLocation {
+  id         String   @id @default(uuid()) @db.Uuid
+  collegeId  String   @db.Uuid
+  address    String   @db.Text
+  city       String
+  state      String
+  country    String   @default("India")
+  pincode    String?
+  latitude   Float?
+  longitude  Float?
+  type       String   @default("MAIN")
+  isPrimary  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId, isPrimary])
+  @@index([city, state])
+}
+
+model CollegeRanking {
+  id         String   @id @default(uuid()) @db.Uuid
+  collegeId  String   @db.Uuid
+  source     String
+  rank       Int
+  score      Float?
+  year       Int
+  category   String   @default("OVERALL")
+  createdAt  DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@unique([collegeId, source, year, category])
+  @@index([source, year])
+  @@index([rank])
+}
+
+model Course {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  slug        String   @unique
+  description String   @db.Text
+  category    String
+  level       String   @default("UG")
+  duration    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  collegeCourses CollegeCourse[]
+
+  @@index([slug])
+  @@index([category, level])
+  @@index([isActive])
+}
+
+model CollegeCourse {
+  id         String   @id @default(uuid()) @db.Uuid
+  collegeId  String   @db.Uuid
+  courseId   String   @db.Uuid
+  duration   String?
+  fees       Int?
+  seats      Int?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([collegeId, courseId])
+  @@index([courseId])
+}
+
+model CollegeDegree {
+  id         String   @id @default(uuid()) @db.Uuid
+  collegeId  String   @db.Uuid
+  degreeId   String   @db.Uuid
+  duration   String?
+  fees       Int?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  degree  Degree  @relation(fields: [degreeId], references: [id], onDelete: Cascade)
+
+  @@unique([collegeId, degreeId])
+  @@index([degreeId])
+}
+
+model ImportBatch {
+  id              String    @id @default(uuid()) @db.Uuid
+  fileName        String
+  type            String    @default("COLLEGE")
+  totalRecords    Int       @default(0)
+  importedRecords Int       @default(0)
+  skippedRecords  Int       @default(0)
+  errorRecords    Int       @default(0)
+  status          String    @default("PENDING")
+  errors          Json?     @default("[]")
+  metadata        Json?     @default("{}")
+  userId          String?   @db.Uuid
+  completedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([type, status])
+  @@index([createdAt])
+}
+
+model Scholarship {
+  id          String   @id @default(uuid()) @db.Uuid
+  collegeId   String   @db.Uuid
+  name        String
+  amount      Int
+  eligibility String   @db.Text
+  deadline    DateTime?
+  isMeritBased Boolean @default(false)
+  isActive    Boolean  @default(true)
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+}
+
+model CollegeReview {
+  id        String   @id @default(uuid()) @db.Uuid
+  collegeId String   @db.Uuid
+  userId    String?  @db.Uuid
+  rating    Int
+  title     String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+}
+
+// ─── Roadmap ─────────────────────────────────────────────────────
+
+model CareerRoadmap {
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @db.Uuid
+  careerId        String?  @db.Uuid
+  currentPosition String
+  goalPosition    String
+  yearsToGoal     Int
+  milestones      Json     @default("[]")
+  generatedAt     DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  career Career? @relation(fields: [careerId], references: [id])
+
+  @@index([userId])
+}
+
+// ─── Saved Items ─────────────────────────────────────────────────
+
+model SavedItem {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  itemId    String
+  itemType  String
+  notes     String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId, itemType])
+  @@index([userId])
+  @@index([itemType])
+}
+
+// ─── CMS & Content ───────────────────────────────────────────────
+
+model CMSContent {
+  id        String   @id @default(uuid()) @db.Uuid
+  key       String
+  section   String
+  type      String
+  value     String   @db.Text
+  metadata  Json?    @default("{}")
+  language  String   @default("en")
+  isActive  Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([key, language])
+  @@index([section])
+  @@index([language])
+  @@index([isActive])
+}
+
+model ContactInquiry {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+
+  @@index([createdAt])
+}
+
+model MediaAsset {
+  id       String   @id @default(uuid()) @db.Uuid
+  url      String   @db.Text
+  alt      String
+  width    Int
+  height   Int
+  type     String
+  section  String
+  tags     String[] @default([])
+  createdAt DateTime @default(now())
+
+  @@index([section])
+  @@index([type])
+}
+
+model BlogPost {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  slug        String   @unique
+  excerpt     String   @db.Text
+  content     String   @db.Text
+  category    String?
+  tags        String[] @default([])
+  authorId    String?  @db.Uuid
+  coverImage  String?
+  isPublished Boolean  @default(false)
+  publishedAt DateTime?
+  seoMetadata Json?    @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished, publishedAt])
+  @@index([category])
+}
+
+// ─── Payments & Subscriptions ────────────────────────────────────
+
+model Subscription {
+  id                 String   @id @default(uuid()) @db.Uuid
+  userId             String   @db.Uuid
+  tier               String   @default("FREE")
+  status             String   @default("TRIAL")
+  currentPeriodStart DateTime @default(now())
+  currentPeriodEnd   DateTime
+  cancelAtPeriodEnd  Boolean  @default(false)
+  stripeSubscriptionId String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([tier])
+}
+
+model Payment {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  amount        Int
+  currency      String   @default("INR")
+  status        String   @default("PENDING")
+  tier          String
+  couponCode    String?
+  referralId    String?
+  stripePaymentId String?
+  paidAt        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([paidAt])
+}
+
+model Coupon {
+  id                 String   @id @default(uuid()) @db.Uuid
+  code               String   @unique
+  discountPercentage Int
+  maxUses            Int?
+  currentUses        Int      @default(0)
+  expiresAt          DateTime?
+  isActive           Boolean  @default(true)
+  createdAt          DateTime @default(now())
+}
+
+// ─── Notifications ───────────────────────────────────────────────
+
+model Notification {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  type      String
+  channel   String   @default("IN_APP")
+  title     String
+  body      String   @db.Text
+  data      Json?    @default("{}")
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+  @@index([createdAt])
+}
+
+// ─── Analytics ───────────────────────────────────────────────────
+
+model AnalyticsEvent {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String?  @db.Uuid
+  sessionId  String
+  event      String
+  properties Json     @default("{}")
+  timestamp  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([event])
+  @@index([userId])
+  @@index([timestamp])
+  @@index([sessionId])
+}
+
+// ─── Audit ───────────────────────────────────────────────────────
+
+model AuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  action     String
+  resource   String
+  resourceId String
+  details    Json?    @default("{}")
+  ip         String?
+  userAgent  String?
+  timestamp  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([resource, resourceId])
+  @@index([timestamp])
+}
+
+// ─── Consent & Privacy ───────────────────────────────────────────
+
+model ConsentRecord {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  type      String
+  granted   Boolean  @default(false)
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+}
+
+model Skill {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique
+  category    String
+  description String   @db.Text
+  difficulty  String   @default("MEDIUM")
+  demand      String   @default("MEDIUM")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certification {
+  id            String   @id @default(uuid()) @db.Uuid
+  name          String   @unique
+  provider      String
+  cost          Int
+  duration      String
+  skillsCovered String[] @default([])
+  affiliateLink String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AIPrompt {
+  id          String   @id @default(uuid()) @db.Uuid
+  key         String
+  template    String   @db.Text
+  version     Int      @default(1)
+  description String?  @db.Text
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+
+  @@unique([key, version])
+}
+
+model SystemSetting {
+  id          String   @id @default(uuid()) @db.Uuid
+  key         String   @unique
+  value       String   @db.Text
+  description String?  @db.Text
+  category    String?  @default("GENERAL")
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+
+  @@index([category])
+}
+
+// ─── Referrals ────────────────────────────────────────────────────
+
+model Referral {
+  id             String    @id @default(uuid()) @db.Uuid
+  referrerId     String    @db.Uuid
+  refereeEmail   String
+  status         String    @default("PENDING")
+  rewardType     String    @default("PREMIUM_ACCESS")
+  rewardClaimed  Boolean   @default(false)
+  joinedAt       DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([referrerId])
+  @@index([refereeEmail])
+  @@index([status])
+}
+
+// ─── Editorial ────────────────────────────────────────────────────
+
+model EditorialPost {
+  id             String    @id @default(uuid()) @db.Uuid
+  title          String
+  slug           String    @unique
+  excerpt        String    @db.Text
+  body           String    @db.Text
+  category       String
+  status         String    @default("DRAFT")
+  authorId       String    @db.Uuid
+  tags           String[]  @default([])
+  seoTitle       String?
+  seoDescription String?   @db.Text
+  canonicalUrl   String?
+  featuredImage  String?
+  publishedAt    DateTime?
+  scheduledAt    DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status])
+  @@index([category, status])
+  @@index([publishedAt])
+}
+
+// ─── Career Twin Snapshots ────────────────────────────────────────
+
+model CareerTwinSnapshot {
+  id              String   @id @default(uuid()) @db.Uuid
+  userId          String   @db.Uuid
+  version         Int      @default(1)
+  profileSnapshot Json     @default("{}")
+  predictedPath   Json     @default("[]")
+  skillGaps       Json     @default("[]")
+  riskProfile     Json     @default("{}")
+  syncedAt        DateTime @default(now())
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+  @@index([userId, version])
+}
+
+// ─── Experiments ──────────────────────────────────────────────────
+
+model Experiment {
+  id             String    @id @default(uuid()) @db.Uuid
+  name           String
+  description    String    @db.Text
+  type           String    @default("A/B")
+  status         String    @default("DRAFT")
+  variants       Json      @default("[]")
+  targetMetric   Json      @default("{}")
+  minSampleSize  Int       @default(1000)
+  startDate      DateTime?
+  endDate        DateTime?
+  createdBy      String    @db.Uuid
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status])
+}
+
+// ─── Experiment Events ────────────────────────────────────────────
+
+model ExperimentEvent {
+  id           String   @id @default(uuid()) @db.Uuid
+  experimentId String   @db.Uuid
+  userId       String   @db.Uuid
+  variantId    String
+  event        String
+  metricValue  Float    @default(0)
+  timestamp    DateTime @default(now())
+
+  @@index([experimentId])
+  @@index([experimentId, variantId])
+}
+
+// ─── Daily Engagement & Intelligence Additions ──────────────────────
+
+model DailyQuestion {
+  id        String   @id @default(uuid()) @db.Uuid
+  text      String   @db.Text
+  options   Json     @default("[]") // Array of string options
+  category  String
+  createdAt DateTime @default(now())
+  answers   DailyAnswer[]
+}
+
+model DailyAnswer {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  questionId String   @db.Uuid
+  answer     String
+  createdAt  DateTime @default(now())
+
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question DailyQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+  @@index([userId])
+}
+
+model UserEngagement {
+  id                String   @id @default(uuid()) @db.Uuid
+  userId            String   @unique @db.Uuid
+  currentStreak     Int      @default(0)
+  longestStreak     Int      @default(0)
+  totalXP           Int      @default(0)
+  totalPoints       Int      @default(0)
+  lastActiveAt      DateTime @default(now())
+  missedDays        Int      @default(0)
+  milestonesClaimed String[] @default([]) // ["7_DAYS", "30_DAYS"]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model DailyTask {
+  id          String    @id @default(uuid()) @db.Uuid
+  userId      String    @db.Uuid
+  title       String
+  description String?   @db.Text
+  xpReward    Int       @default(10)
+  isCompleted Boolean   @default(false)
+  completedAt DateTime?
+  date        String    // "YYYY-MM-DD"
+  createdAt   DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+}
+
+model AchievementBadge {
+  id          String   @id @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  badgeType   String   // "EXPLORER", "FUTURE_PLANNER", etc.
+  title       String
+  description String   @db.Text
+  unlockedAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeType])
+  @@index([userId])
+}
+
+model HiringCompany {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique
+  logoUrl   String   @db.Text
+  careers   String[] @default([]) // Career slugs
+  createdAt DateTime @default(now())
+}
+
+// ─── Adaptive Intelligence Engine ─────────────────────────────────
+
+model AdaptiveQuestion {
+  id             String   @id @default(uuid()) @db.Uuid
+  text           String   @db.Text
+  textHi         String?  @db.Text // Hindi translation
+  textHinglish   String?  @db.Text // Hinglish translation
+  type           String   @default("MCQ") // MCQ, MULTI_SELECT, SLIDER, RATING, AGREE_DISAGREE, YES_NO, FREE_TEXT, EMOJI, RANKING
+  options        Json     @default("[]") // Array of option objects
+  category       String   // Analytical, Creative, Technical, Social, Leadership, Lifestyle, Financial, Career, Education
+  subcategory    String?  // More specific grouping
+  difficulty     String   @default("EASY") // EASY, MEDIUM, HARD
+  weight         Float    @default(0.5) // 0-1 importance for scoring
+  dependencies   String[] @default([]) // IDs of prerequisite questions
+  contextTrigger String?  // e.g. "page:skills", "page:careers", "time:day3"
+  memoryKey      String?  // Which UserMemory field this answer maps to
+  language       String   @default("en")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  answers UserQuestionAnswer[]
+
+  @@index([category])
+  @@index([contextTrigger])
+  @@index([isActive])
+  @@index([difficulty])
+}
+
+model UserMemory {
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String   @unique @db.Uuid
+  demographics        Json     @default("{}") // age, gender, location
+  education           Json     @default("{}") // level, institution, grade, stream
+  marks               Json     @default("{}") // percentage, rank, board
+  interests           Json     @default("[]") // weighted interest categories
+  goals               Json     @default("{}") // short-term, long-term career goals
+  personality         Json     @default("{}") // RIASEC, Big Five traits
+  skills              Json     @default("{}") // skill name → proficiency mapping
+  budget              Json     @default("{}") // education budget, family income
+  preferredLanguage   String   @default("en")
+  browsingHistory     Json     @default("[]") // recent page views with timestamps
+  savedCareers        String[] @default([])
+  savedColleges       String[] @default([])
+  savedSkills         String[] @default([])
+  chatHistory         Json     @default("[]") // mentor chat topics
+  answeredQuestionIds String[] @default([])
+  behaviorSignals     Json     @default("{}") // aggregated behavior scores
+  lifestyleSignals    Json     @default("{}") // hobbies, gaming, sports, etc.
+  totalQuestionsAnswered Int   @default(0)
+  profileCompleteness Float    @default(0) // 0-100 computed completeness
+  lastRefreshedAt     DateTime @default(now())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model UserQuestionAnswer {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  questionId   String   @db.Uuid
+  answer       String   // Primary answer text
+  answerData   Json?    @default("{}") // For complex types (slider value, multi-select array, etc.)
+  context      String?  // Where the question was shown (page, popup, daily, onboarding)
+  timeToAnswer Int?     // Milliseconds taken to answer
+  createdAt    DateTime @default(now())
+
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question AdaptiveQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+  @@index([userId])
+  @@index([questionId])
+  @@index([context])
+}
+
+model SkillProficiency {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  skillName     String
+  selfRated     Float    @default(0) // 0-100
+  inferred      Float    @default(0) // 0-100 computed from behavior
+  evidence      Json     @default("[]") // Array of evidence objects
+  confidence    Float    @default(0) // 0-100 how certain we are
+  lastUpdatedAt DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillName])
+  @@index([userId])
+  @@index([skillName])
+}

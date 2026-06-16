@@ -1,0 +1,5 @@
+id,name,tier,price_inr,tagline,features,is_active,created_at
+free,Free,0,0,Try Disha with no commitment,"[""15-min AI assessment"", ""Top 5 career matches"", ""Basic overview""]",t,2026-06-12 05:21:22.01618+00
+snapshot,Career Report,1,99,Full report of your best-fit career,"[""PDF report"", ""Salary & demand"", ""AI risk score"", ""Top companies""]",t,2026-06-12 05:21:22.01618+00
+roadmap,Career Roadmap,2,299,5-year step-by-step plan,"[""Personalised 5-year roadmap"", ""College shortlist"", ""Milestones"", ""Progress tracker"", ""Share with parents""]",t,2026-06-12 05:21:22.01618+00
+premium,Premium Guidance,3,999,Full intelligence for families,"[""Parent ROI dashboard"", ""Scenario modeling"", ""College comparison"", ""1-on-1 counsellor chat"", ""Lifetime updates""]",t,2026-06-12 05:21:22.01618+00

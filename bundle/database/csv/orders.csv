@@ -1,0 +1,1 @@
+id,user_id,plan_id,amount_inr,discount_inr,status,trigger_source,idempotency_key,referral_code,mock_payment_method,paid_at,created_at,updated_at
