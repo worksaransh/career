@@ -221,7 +221,7 @@ export function ParentsContent({ user, preferences, careers = [], colleges = [],
               <div className="space-y-2 max-w-lg">
                 <h3 className="text-xl font-bold">Unlock Parent ROI & Intelligence Dashboard</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Make data-backed decisions about your child's education investment. Compare multi-year college costs, entry-to-senior salary trajectories, estimated payback period, automation risks, and hiring rates.
+                  Make data-backed decisions about your child&apos;s education investment. Compare multi-year college costs, entry-to-senior salary trajectories, estimated payback period, automation risks, and hiring rates.
                 </p>
               </div>
               <Link href="/pricing">

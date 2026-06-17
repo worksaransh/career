@@ -172,6 +172,113 @@ export function SimulatorClient({ userId, isPremium = false }: { userId: string;
         </div>
       )}
 
+      {/* ─── NEW: LIFETIME EARNINGS COMPARISON CALCULATOR ─── */}
+      {results.length >= 2 && !loading && (() => {
+        const optA = results[0];
+        const optB = results[1];
+        if (!optA || !optB) return null;
+
+        const calculateCumulative = (median: number, growth: number, years: number) => {
+          let total = 0;
+          let current = median;
+          for (let i = 0; i < years; i++) {
+            total += current;
+            current = current * (1 + growth / 100);
+          }
+          return total;
+        };
+
+        const formatCrore = (val: number) => {
+          if (val >= 10000000) {
+            return `₹${(val / 10000000).toFixed(2)} Crore`;
+          }
+          return `₹${(val / 100000).toFixed(1)} Lakh`;
+        };
+
+        const c5A = calculateCumulative(optA.medianIncome, optA.growthRate, 5);
+        const c5B = calculateCumulative(optB.medianIncome, optB.growthRate, 5);
+
+        const c10A = calculateCumulative(optA.medianIncome, optA.growthRate, 10);
+        const c10B = calculateCumulative(optB.medianIncome, optB.growthRate, 10);
+
+        const c20A = calculateCumulative(optA.medianIncome, optA.growthRate, 20);
+        const c20B = calculateCumulative(optB.medianIncome, optB.growthRate, 20);
+
+        const cLifeA = calculateCumulative(optA.medianIncome, optA.growthRate, 35);
+        const cLifeB = calculateCumulative(optB.medianIncome, optB.growthRate, 35);
+
+        const diffLife = Math.abs(cLifeA - cLifeB);
+        const preferredCareer = cLifeA > cLifeB ? optA.career : optB.career;
+        const diffText = formatCrore(diffLife);
+
+        return (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+            <GlassCard className="p-6 border border-amber-500/25 bg-amber-500/[0.01]">
+              <div className="flex items-center gap-2 mb-4">
+                <Badge variant="glass" className="bg-amber-500/20 text-amber-400 border-amber-500/30 font-bold uppercase tracking-wider text-[10px]">
+                  Lifetime Earnings Simulator
+                </Badge>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-bold">Side-by-Side Financial Projections</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Accumulative earnings calculations over 35 active working years, assuming a baseline {optA.growthRate}% growth for Option A and {optB.growthRate}% growth for Option B.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 pt-2">
+                  <div className="p-3.5 rounded-2xl bg-card border border-border">
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">5-Year Cumulative</span>
+                    <div className="text-xs font-semibold text-foreground mt-2">
+                      <p>Option A: {formatCrore(c5A)}</p>
+                      <p className="mt-0.5">Option B: {formatCrore(c5B)}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-card border border-border">
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">10-Year Cumulative</span>
+                    <div className="text-xs font-semibold text-foreground mt-2">
+                      <p>Option A: {formatCrore(c10A)}</p>
+                      <p className="mt-0.5">Option B: {formatCrore(c10B)}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-card border border-border">
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">20-Year Cumulative</span>
+                    <div className="text-xs font-semibold text-foreground mt-2">
+                      <p>Option A: {formatCrore(c20A)}</p>
+                      <p className="mt-0.5">Option B: {formatCrore(c20B)}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-card border border-border">
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">Lifetime Earning Potential</span>
+                    <div className="text-xs font-semibold text-foreground mt-2">
+                      <p>Option A: {formatCrore(cLifeA)}</p>
+                      <p className="mt-0.5">Option B: {formatCrore(cLifeB)}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-amber-500/[0.03] border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4 mt-3">
+                  <div>
+                    <h4 className="text-xs font-bold text-amber-500 uppercase tracking-widest">Projection Difference Insights</h4>
+                    <p className="text-sm font-bold text-foreground mt-1">
+                      {preferredCareer} offers a lifetime projection gain of <span className="text-amber-400">+{diffText}</span> over the alternative.
+                    </p>
+                  </div>
+                  <Badge variant="glass" className="bg-amber-500/10 text-amber-400 border-amber-500/20 font-bold font-mono py-1 px-3">
+                    Confidence Interval: {Math.round((optA.confidence + optB.confidence) / 2)}%
+                  </Badge>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        );
+      })()}
+
       {!loading && results.length === 0 && !error && (
         <div className="text-center py-16 text-muted-foreground">
           <Rocket className="h-12 w-12 mx-auto mb-4 opacity-50" />

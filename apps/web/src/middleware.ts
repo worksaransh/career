@@ -6,6 +6,7 @@ export default withAuth(
     const token = req.nextauth.token;
     const path = req.nextUrl.pathname;
 
+    // Paths that are always public (no auth required)
     const publicPaths = [
       "/login",
       "/register",
@@ -16,23 +17,55 @@ export default withAuth(
     ];
 
     const isPublic = publicPaths.some((p) => path.startsWith(p));
-    const isMarketing =
-      !path.startsWith("/app") &&
-      !path.startsWith("/admin") &&
-      !path.startsWith("/dashboard") &&
-      !path.startsWith("/api") &&
-      !isPublic;
 
+    // Authenticated app routes — these require login
+    const protectedPrefixes = [
+      "/dashboard",
+      "/assessments",
+      "/careers",
+      "/roadmap",
+      "/mentor",
+      "/colleges",
+      "/degrees",
+      "/simulator",
+      "/skills",
+      "/certifications",
+      "/reports",
+      "/parents",
+      "/saved",
+      "/settings",
+      "/help",
+      "/profile",
+      "/onboarding",
+      "/comparisons",
+      "/privacy-center",
+      "/weekly-intel",
+      "/admin",
+      "/explorer",
+    ];
+
+    const isProtected = protectedPrefixes.some((p) => path === p || path.startsWith(p + "/"));
+
+    // API routes (except /api/auth) need auth
+    const isApiRoute = path.startsWith("/api") && !path.startsWith("/api/auth");
+
+    // Marketing pages: everything that is NOT protected, NOT api, NOT public auth pages
+    const isMarketing = !isProtected && !isApiRoute && !isPublic;
+
+    // Let marketing pages through freely
     if (isMarketing) return NextResponse.next();
 
-    if (!token && !isPublic) {
+    // If no token and trying to access protected route, redirect to login
+    if (!token && (isProtected || isApiRoute)) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
 
+    // If authenticated user visits login/register, redirect to dashboard
     if (token && isPublic) {
-      return NextResponse.redirect(new URL("/onboarding", req.url));
+      return NextResponse.redirect(new URL("/dashboard", req.url));
     }
 
+    // Admin role check
     if (path.startsWith("/admin")) {
       const allowedRoles = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "ANALYST"];
       if (!allowedRoles.includes(token?.role as string)) {

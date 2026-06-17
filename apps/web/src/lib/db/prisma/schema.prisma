@@ -84,6 +84,11 @@ model User {
   memory           UserMemory?
   questionAnswers  UserQuestionAnswer[]
   skillProficiencies SkillProficiency[]
+  weeklyChallenges       WeeklyChallenge[]
+  weeklyReflections      WeeklyReflection[]
+  accountabilityPartners AccountabilityPartner[]
+  vaultDocuments         VaultDocument[]
+  decisionTimelineEvents DecisionTimelineEvent[]
 
   @@index([email])
   @@index([role])
@@ -959,6 +964,9 @@ model UserMemory {
   lifestyleSignals    Json     @default("{}") // hobbies, gaming, sports, etc.
   totalQuestionsAnswered Int   @default(0)
   profileCompleteness Float    @default(0) // 0-100 computed completeness
+  careerUpgradeScore  Int      @default(65)
+  jobReadinessScore   Int      @default(45)
+  portfolioScore      Int      @default(50)
   lastRefreshedAt     DateTime @default(now())
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
@@ -1003,4 +1011,81 @@ model SkillProficiency {
   @@unique([userId, skillName])
   @@index([userId])
   @@index([skillName])
+}
+
+// ─── Weekly Gamification & Long-Term Retention ─────────────────────
+
+model WeeklyChallenge {
+  id            String    @id @default(uuid()) @db.Uuid
+  userId        String    @db.Uuid
+  title         String
+  description   String?   @db.Text
+  xpReward      Int       @default(50)
+  scoreImpact   Int       @default(5)
+  isCompleted   Boolean   @default(false)
+  completedAt   DateTime?
+  weekStartDate DateTime
+  createdAt     DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, weekStartDate])
+}
+
+model WeeklyReflection {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  learned       String   @db.Text
+  challenges    String   @db.Text
+  achievement   String   @db.Text
+  goalsNextWeek String   @db.Text
+  projectsBuilt String   @db.Text
+  jobsApplied   String   @db.Text
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model AccountabilityPartner {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  partnerEmail  String
+  partnerName   String
+  relation      String   // FRIEND, PARENT, SIBLING, STUDY_PARTNER
+  status        String   @default("PENDING") // PENDING, ACCEPTED
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VaultDocument {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  title         String
+  type          String   // RESUME, CV, CERTIFICATE, INTERNSHIP_PROOF, PROJECT, PORTFOLIO, GITHUB, LINKEDIN, WEBSITE, FREELANCE_PROFILE
+  fileUrl       String?  @db.Text
+  linkUrl       String?  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model DecisionTimelineEvent {
+  id          String   @id @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  month       String   // e.g. "January"
+  activity    String   // e.g. "You explored Product Management."
+  impact      String   // e.g. "recommends Growth PM"
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

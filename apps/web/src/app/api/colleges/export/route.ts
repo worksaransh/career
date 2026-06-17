@@ -3,6 +3,8 @@ import { prisma } from "@/lib/db/prisma/prisma";
 import { getSession } from "@/lib/session/session";
 import { exportCollegesToCSV } from "@/lib/college-import";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const session = await getSession();

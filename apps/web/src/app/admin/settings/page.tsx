@@ -34,6 +34,8 @@ export default function AdminSettingsPage() {
   // Branding fields
   const [appName, setAppName] = useState("Career GPS AI");
   const [supportEmail, setSupportEmail] = useState("support@careergps.ai");
+  const [whatsappLink, setWhatsappLink] = useState("https://chat.whatsapp.com/mock-invite-gps");
+  const [telegramLink, setTelegramLink] = useState("https://t.me/mock-invite-gps");
   const [featureAi, setFeatureAi] = useState(true);
   const [featureMarket, setFeatureMarket] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -65,6 +67,12 @@ export default function AdminSettingsPage() {
       const featureMarketSetting = sysSettings.find((s) => s.key === "feature_marketplace");
       if (featureMarketSetting) setFeatureMarket(featureMarketSetting.value === "true");
 
+      const whatsappSetting = sysSettings.find((s) => s.key === "whatsapp_invite_link");
+      if (whatsappSetting) setWhatsappLink(whatsappSetting.value);
+
+      const telegramSetting = sysSettings.find((s) => s.key === "telegram_invite_link");
+      if (telegramSetting) setTelegramLink(telegramSetting.value);
+
     } catch (e: any) {
       toast.error(e.message || "Failed to load settings data");
     } finally {
@@ -85,6 +93,8 @@ export default function AdminSettingsPage() {
       await upsertSystemSetting("support_email", supportEmail, "Primary customer support mail.");
       await upsertSystemSetting("feature_ai_mentor", String(featureAi), "Toggle for AI Mentor.");
       await upsertSystemSetting("feature_marketplace", String(featureMarket), "Toggle for Marketplace.");
+      await upsertSystemSetting("whatsapp_invite_link", whatsappLink, "WhatsApp community invite link.");
+      await upsertSystemSetting("telegram_invite_link", telegramLink, "Telegram community invite link.");
       
       toast.success("Settings saved successfully!", { id: toastId });
       loadData();
@@ -177,6 +187,28 @@ export default function AdminSettingsPage() {
                 type="email"
                 value={supportEmail}
                 onChange={(e) => setSupportEmail(e.target.value)}
+                className="w-full h-10 rounded-xl border border-border bg-background px-3 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 pt-2">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider block">WhatsApp Invite Link</label>
+              <input
+                type="text"
+                value={whatsappLink}
+                onChange={(e) => setWhatsappLink(e.target.value)}
+                className="w-full h-10 rounded-xl border border-border bg-background px-3 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
+              />
+            </div>
+            
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider block">Telegram Invite Link</label>
+              <input
+                type="text"
+                value={telegramLink}
+                onChange={(e) => setTelegramLink(e.target.value)}
                 className="w-full h-10 rounded-xl border border-border bg-background px-3 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
               />
             </div>

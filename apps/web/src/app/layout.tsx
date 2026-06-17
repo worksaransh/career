@@ -134,7 +134,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-background font-sans antialiased" suppressHydrationWarning>
         <Providers>
           <AnalyticsWrapper>{children}</AnalyticsWrapper>
         </Providers>

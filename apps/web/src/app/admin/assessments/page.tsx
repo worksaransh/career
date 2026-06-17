@@ -181,7 +181,7 @@ export default function AdminAssessmentsBuilderPage() {
           </div>
         ) : questions.length === 0 ? (
           <div className="p-16 text-center text-sm text-muted-foreground border border-dashed border-border rounded-3xl bg-card/20">
-            No evaluation questions exist. Click "Add Question" to build your assessment.
+            No evaluation questions exist. Click &quot;Add Question&quot; to build your assessment.
           </div>
         ) : (
           questions.map((q, idx) => {

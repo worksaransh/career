@@ -1,0 +1,225 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { prisma } from "@/lib/db/prisma/prisma";
+import { requireAuth } from "@/lib/session/session";
+import { buildCareerTwin } from "@/lib/career-twin";
+
+// Recalculate Portfolio, Job Readiness, and Career Upgrade Scores
+export async function recalculateScores(userId: string) {
+  const docs = await prisma.vaultDocument.findMany({
+    where: { userId },
+  });
+
+  const memory = await prisma.userMemory.findUnique({
+    where: { userId },
+  });
+
+  const engagement = await prisma.userEngagement.findUnique({
+    where: { userId },
+  });
+
+  const assessments = await prisma.assessmentResult.findMany({
+    where: { userId },
+  });
+
+  const skills = await prisma.skillProficiency.findMany({
+    where: { userId },
+  });
+
+  const profile = await prisma.userProfile.findUnique({
+    where: { userId },
+  });
+
+  // 1. Calculate Portfolio Score (0-100)
+  let portScore = 40; // baseline
+  const docTypes = docs.map((d) => d.type);
+
+  if (docTypes.includes("RESUME")) portScore += 20;
+  if (docTypes.includes("CV")) portScore += 10;
+  if (docTypes.includes("LINKEDIN")) portScore += 15;
+  if (docTypes.includes("GITHUB")) portScore += 15;
+  if (docTypes.includes("PORTFOLIO")) portScore += 15;
+  if (docTypes.includes("WEBSITE")) portScore += 5;
+  if (docTypes.includes("CERTIFICATE")) portScore += 10;
+  if (docTypes.includes("PROJECT")) portScore += 10;
+  
+  portScore = Math.min(100, portScore);
+
+  // 2. Calculate Job Readiness Score (0-100)
+  let readScore = 30; // baseline
+  readScore += Math.round(portScore * 0.3); // up to +30 from portfolio strength
+
+  if (assessments.length > 0) readScore += 20; // completed assessments
+  if (engagement && engagement.totalXP > 150) readScore += 10;
+  if (engagement && engagement.currentStreak >= 3) readScore += 10;
+  readScore += Math.min(10, skills.length * 2); // validated skills impact
+
+  readScore = Math.min(100, readScore);
+
+  // 3. Calculate Career Upgrade Score (0-100)
+  let upgradeScore = 50; // baseline
+  upgradeScore += Math.round(readScore * 0.2); // up to +20 from readiness
+  upgradeScore += Math.round(portScore * 0.1); // up to +10 from portfolio
+
+  const completedChallenges = await prisma.weeklyChallenge.count({
+    where: { userId, isCompleted: true },
+  });
+  upgradeScore += Math.min(15, completedChallenges * 5); // +5 per challenge
+
+  if (profile?.educationLevel) upgradeScore += 5;
+  if (profile?.interests && profile.interests.length > 0) upgradeScore += 5;
+
+  upgradeScore = Math.min(100, upgradeScore);
+
+  // 4. Update memory scores
+  const currentMemory = await prisma.userMemory.upsert({
+    where: { userId },
+    create: {
+      userId,
+      portfolioScore: portScore,
+      jobReadinessScore: readScore,
+      careerUpgradeScore: upgradeScore,
+    },
+    update: {
+      portfolioScore: portScore,
+      jobReadinessScore: readScore,
+      careerUpgradeScore: upgradeScore,
+    },
+  });
+
+  // Sync to Career Twin in background
+  try {
+    const previousSnapshot = await prisma.careerTwinSnapshot.findFirst({
+      where: { userId },
+      orderBy: { version: "desc" },
+    });
+
+    const previousTwin = previousSnapshot
+      ? {
+          version: previousSnapshot.version,
+          profileSnapshot: previousSnapshot.profileSnapshot as any,
+          predictedPath: previousSnapshot.predictedPath as any,
+          skillGaps: previousSnapshot.skillGaps as any,
+          riskProfile: previousSnapshot.riskProfile as any,
+          userId,
+          lastSyncedAt: previousSnapshot.syncedAt.toISOString(),
+        }
+      : undefined;
+
+    const topSkillsList = skills.map((s) => s.skillName);
+    const interestsList = profile?.interests ?? [];
+
+    const twinSnapshot = buildCareerTwin(
+      userId,
+      {
+        education: profile?.educationLevel ?? "Not Provided",
+        currentRole: docTypes.includes("RESUME") ? "Resume Uploaded" : "Explorer",
+        yearsOfExperience: docTypes.includes("INTERNSHIP_PROOF") ? 1 : 0,
+        topSkills: topSkillsList.length > 0 ? topSkillsList : ["Learning"],
+        interests: interestsList,
+        careerGoals: (memory?.goals as any)?.longTerm ?? "Exploring Options",
+        location: profile?.location ?? "Remote",
+        salaryExpectation: 600000,
+      },
+      previousTwin as any
+    );
+
+    await prisma.careerTwinSnapshot.create({
+      data: {
+        userId,
+        version: twinSnapshot.version,
+        profileSnapshot: twinSnapshot.profileSnapshot as any,
+        predictedPath: twinSnapshot.predictedPath as any,
+        skillGaps: twinSnapshot.skillGaps as any,
+        riskProfile: twinSnapshot.riskProfile as any,
+      },
+    });
+  } catch (err) {
+    console.error("Twin sync error in score recalculation:", err);
+  }
+
+  return { portfolioScore: portScore, jobReadinessScore: readScore, careerUpgradeScore: upgradeScore };
+}
+
+// Get all documents in the user's vault
+export async function listVaultDocuments() {
+  const user = await requireAuth();
+  return prisma.vaultDocument.findMany({
+    where: { userId: user.id },
+    orderBy: { createdAt: "desc" },
+  });
+}
+
+// Save document or link to vault
+export async function saveVaultDocument(data: {
+  id?: string;
+  title: string;
+  type: string;
+  fileUrl?: string;
+  linkUrl?: string;
+}) {
+  const user = await requireAuth();
+
+  const docData = {
+    userId: user.id,
+    title: data.title,
+    type: data.type,
+    fileUrl: data.fileUrl || null,
+    linkUrl: data.linkUrl || null,
+  };
+
+  let saved;
+  if (data.id) {
+    saved = await prisma.vaultDocument.update({
+      where: { id: data.id, userId: user.id },
+      data: docData,
+    });
+  } else {
+    saved = await prisma.vaultDocument.create({
+      data: docData,
+    });
+  }
+
+  // Award XP for uploading document if first time for this type
+  const typeCount = await prisma.vaultDocument.count({
+    where: { userId: user.id, type: data.type },
+  });
+  if (typeCount === 1) {
+    const engagement = await prisma.userEngagement.findUnique({
+      where: { userId: user.id },
+    });
+    if (engagement) {
+      await prisma.userEngagement.update({
+        where: { id: engagement.id },
+        data: {
+          totalXP: engagement.totalXP + 40, // +40 XP
+          totalPoints: engagement.totalPoints + 40,
+        },
+      });
+    }
+  }
+
+  // Recalculate portfolio & readiness scores
+  await recalculateScores(user.id);
+
+  revalidatePath("/dashboard");
+  revalidatePath("/vault");
+  return { success: true, document: saved };
+}
+
+// Delete document from vault
+export async function deleteVaultDocument(id: string) {
+  const user = await requireAuth();
+
+  await prisma.vaultDocument.delete({
+    where: { id, userId: user.id },
+  });
+
+  // Recalculate scores
+  await recalculateScores(user.id);
+
+  revalidatePath("/dashboard");
+  revalidatePath("/vault");
+  return { success: true };
+}

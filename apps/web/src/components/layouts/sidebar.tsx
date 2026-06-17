@@ -22,6 +22,7 @@ import {
   BarChart3,
   BookOpen,
   Rocket,
+  FolderOpen,
 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,6 +36,7 @@ const sidebarLinks = [
   { href: "/assessments", label: "Assessments", icon: Brain },
   { href: "/careers", label: "Career Matches", icon: LineChart },
   { href: "/roadmap", label: "Career GPS", icon: Route },
+  { href: "/vault", label: "Career Vault", icon: FolderOpen },
   { href: "/mentor", label: "AI Mentor", icon: Sparkles },
   { href: "/colleges", label: "Colleges", icon: Building2 },
   { href: "/degrees", label: "Degrees", icon: GraduationCap },
