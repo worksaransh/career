@@ -152,7 +152,7 @@ export function ExplorerPageClient({ type }: { type: "CAREER" | "COLLEGE" | "DEG
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay }}
                 >
-                  <Link href={`/roadmap?careerId=${item.id}`}>
+                  <Link href={`/careers/${item.id}`}>
                     <GlassCard className="p-5 flex flex-col justify-between h-full hover:shadow-lg transition-all border border-border/60 hover:border-primary/40 relative group cursor-pointer">
                       <div className="space-y-4">
                         <div className="flex items-start justify-between gap-3">

@@ -90,6 +90,7 @@ model User {
   accountabilityPartners AccountabilityPartner[]
   vaultDocuments         VaultDocument[]
   decisionTimelineEvents DecisionTimelineEvent[]
+  careerPaths            UserCareerPath[]
 
   @@index([email])
   @@index([role])
@@ -213,17 +214,135 @@ model Career {
   recommendedDegrees String[] @default([])
   certifications   String[] @default([])
   alternativeCareers String[] @default([])
+  remotePossibility Int     @default(0)
+  growthTrend      Json?    @default("{}")
   isActive         Boolean  @default(true)
   seoMetadata      Json?    @default("{}")
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  roadmaps   CareerRoadmap[]
+  roadmaps          CareerRoadmap[]
+  responsibilities CareerResponsibility[]
+  salaryBenchmarks  CareerSalaryBenchmark[]
+  careerCompanies   CareerCompany[]
+  careerIndustries  CareerIndustry[]
+  interviewQuestions InterviewQuestion[]
+  learningResources  LearningResource[]
+  skillDemands      CareerSkillDemand[]
+  userCareerPaths   UserCareerPath[]
 
   @@index([slug])
   @@index([isActive])
   @@index([demandLevel])
   @@index([aiRiskLevel])
+}
+
+model CareerResponsibility {
+  id           String @id @default(uuid()) @db.Uuid
+  careerId     String @db.Uuid
+  responsibility String @db.Text
+  order        Int    @default(0)
+
+  career Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@index([careerId])
+}
+
+model CareerSalaryBenchmark {
+  id              String @id @default(uuid()) @db.Uuid
+  careerId        String @db.Uuid
+  city            String?
+  state           String?
+  country         String @default("India")
+  experienceLevel String // ENTRY, MID, SENIOR, LEAD
+  salary          Int
+  currency        String @default("INR")
+  source          String?
+  year            Int
+  remote          Boolean @default(false)
+
+  career Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@index([careerId])
+  @@index([city, country])
+  @@index([experienceLevel])
+}
+
+model CareerCompany {
+  id            String @id @default(uuid()) @db.Uuid
+  careerId      String @db.Uuid
+  companyId     String @db.Uuid
+  hiringRole    String?
+  salaryBenchmark Int?
+
+  career  Career  @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([careerId, companyId])
+  @@index([companyId])
+}
+
+model Industry {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  careerIndustries CareerIndustry[]
+  companies        Company[]
+
+  @@index([slug])
+}
+
+model CareerIndustry {
+  id         String @id @default(uuid()) @db.Uuid
+  careerId   String @db.Uuid
+  industryId String @db.Uuid
+
+  career   Career   @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  industry Industry @relation(fields: [industryId], references: [id], onDelete: Cascade)
+
+  @@unique([careerId, industryId])
+  @@index([industryId])
+}
+
+model Company {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  logo        String?  @db.Text
+  website     String?
+  industryId  String?  @db.Uuid
+  size        String?  // STARTUP, SMALL, MEDIUM, LARGE, ENTERPRISE
+  headquarters String?
+  foundedYear Int?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  industry      Industry?       @relation(fields: [industryId], references: [id])
+  careerCompanies CareerCompany[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([industryId])
+}
+
+model CareerSkillDemand {
+  id          String @id @default(uuid()) @db.Uuid
+  careerId    String @db.Uuid
+  skillId     String @db.Uuid
+  demandScore Float  @default(0)
+  growthRate  Float  @default(0)
+
+  career Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  skill  Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([careerId, skillId])
+  @@index([skillId])
+  @@index([demandScore])
 }
 
 // ─── Degrees ─────────────────────────────────────────────────────
@@ -276,6 +395,12 @@ model College {
   highestPackage   Int
   placementPercent Float
   topRecruiters    String[] @default([])
+  ownership        String?  // GOVERNMENT, PRIVATE, AUTONOMOUS, DEEMED, IIT, NIT, IIIT, IIM, MEDICAL, LAW, DESIGN, ARTS, COMMERCE, POLYTECHNIC, INTERNATIONAL
+  accreditations   Json?    @default("[]")
+  programCount     Int      @default(0)
+  facultyCount     Int      @default(0)
+  researchOutput   String?  @db.Text
+  alumniCount      Int      @default(0)
   fiveYearReturn   Int      @default(0)
   tenYearReturn    Int      @default(0)
   lifetimeReturn   Int      @default(0)
@@ -291,18 +416,20 @@ model College {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  scholarships Scholarship[]
-  reviews      CollegeReview[]
-  images       CollegeImage[]
-  locations    CollegeLocation[]
+  scholarships   Scholarship[]
+  reviews        CollegeReview[]
+  images         CollegeImage[]
+  locations      CollegeLocation[]
   collegeCourses CollegeCourse[]
   collegeDegrees CollegeDegree[]
-  rankings     CollegeRanking[]
+  rankings       CollegeRanking[]
+  programs       CollegeProgram[]
 
   @@index([slug])
   @@index([isActive])
   @@index([ranking])
   @@index([location])
+  @@index([ownership])
 }
 
 model CollegeImage {
@@ -435,18 +562,42 @@ model ImportBatch {
 }
 
 model Scholarship {
-  id          String   @id @default(uuid()) @db.Uuid
-  collegeId   String   @db.Uuid
-  name        String
-  amount      Int
-  eligibility String   @db.Text
-  deadline    DateTime?
-  isMeritBased Boolean @default(false)
-  isActive    Boolean  @default(true)
+  id             String    @id @default(uuid()) @db.Uuid
+  collegeId      String?   @db.Uuid
+  name           String
+  provider       String?   // Government, Private, Trust, etc.
+  amount         Int
+  eligibility    String    @db.Text
+  applicationLink String?  @db.Text
+  deadline       DateTime?
+  isMeritBased   Boolean   @default(false)
+  isNeedBased    Boolean   @default(false)
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
 
-  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  college College? @relation(fields: [collegeId], references: [id], onDelete: Cascade)
 
   @@index([collegeId])
+  @@index([provider])
+  @@index([isMeritBased, isNeedBased])
+}
+
+model UserCareerPath {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  careerId   String   @db.Uuid
+  stage      String   @default("EXPLORING") // EXPLORING, PREPARING, APPLYING, PURSUING, TRANSITIONING
+  startedAt  DateTime @default(now())
+  completedAt DateTime?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  career Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, careerId])
+  @@index([userId])
+  @@index([careerId])
 }
 
 model CollegeReview {
@@ -692,27 +843,151 @@ model ConsentRecord {
   @@index([userId, type])
 }
 
+model GovernmentExam {
+  id              String   @id @default(uuid()) @db.Uuid
+  name            String
+  slug            String   @unique
+  conductingBody  String
+  description     String?  @db.Text
+  eligibility     String   @db.Text
+  examPattern     String?  @db.Text
+  salary          String?
+  growthProspect  String?  @db.Text
+  competition     String?
+  timeline        String?
+  applicationFee  Int?
+  isActive        Boolean  @default(true)
+  seoMetadata     Json?    @default("{}")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+model InterviewQuestion {
+  id            String   @id @default(uuid()) @db.Uuid
+  careerId      String   @db.Uuid
+  type          String   // TECHNICAL, HR, BEHAVIORAL, CASE_STUDY, ROLE_SPECIFIC
+  question      String   @db.Text
+  sampleAnswer  String?  @db.Text
+  difficulty    String   @default("MEDIUM") // EASY, MEDIUM, HARD
+  category      String?  // sub-category within type
+  order         Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  career Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@index([careerId])
+  @@index([type])
+  @@index([difficulty])
+}
+
+model LearningResource {
+  id          String   @id @default(uuid()) @db.Uuid
+  careerId    String?  @db.Uuid
+  skillId     String?  @db.Uuid
+  title       String
+  url         String   @db.Text
+  platform    String   // YOUTUBE, UDEMY, COURSERA, BOOK, BLOG, DOCS, PRACTICE, MOOC
+  type        String   @default("VIDEO") // VIDEO, ARTICLE, BOOK, COURSE, DOCUMENTATION, PRACTICE
+  description String?  @db.Text
+  duration    String?  // e.g. "45 min", "10 hours"
+  isFree      Boolean  @default(true)
+  language    String   @default("en")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  career Career? @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  skill  Skill?  @relation("SkillLearningResources", fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@index([careerId])
+  @@index([skillId])
+  @@index([platform])
+  @@index([type])
+}
+
+model SkillCategory {
+  id          String          @id @default(uuid()) @db.Uuid
+  name        String
+  slug        String          @unique
+  description String?         @db.Text
+  parentId    String?         @db.Uuid
+  parent      SkillCategory?  @relation("SkillCategoryTree", fields: [parentId], references: [id])
+  children    SkillCategory[] @relation("SkillCategoryTree")
+  createdAt   DateTime        @default(now())
+
+  skills Skill[]
+
+  @@index([slug])
+  @@index([parentId])
+}
+
 model Skill {
   id          String   @id @default(uuid()) @db.Uuid
   name        String   @unique
   category    String
+  categoryId  String?  @db.Uuid
   description String   @db.Text
   difficulty  String   @default("MEDIUM")
   demand      String   @default("MEDIUM")
+  growthRate  Float    @default(0)
+  automationRisk Float @default(0)
+  averageSalary Int?
+  jobOpenings Int?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  categoryRel   SkillCategory?     @relation(fields: [categoryId], references: [id])
+  skillDemands  CareerSkillDemand[]
+  learningResources LearningResource[] @relation("SkillLearningResources")
+
+  @@index([category])
+  @@index([categoryId])
+  @@index([demand])
+}
+
+model CollegeProgram {
+  id          String   @id @default(uuid()) @db.Uuid
+  collegeId   String   @db.Uuid
+  name        String
+  duration    String
+  fees        Int?
+  seats       Int?
+  eligibility String?  @db.Text
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+  @@index([name])
 }
 
 model Certification {
   id            String   @id @default(uuid()) @db.Uuid
   name          String   @unique
+  slug          String?  @unique
   provider      String
+  description   String?  @db.Text
   cost          Int
+  currency      String   @default("INR")
   duration      String
+  durationMonths Int?
+  difficulty    String   @default("MEDIUM") // BEGINNER, INTERMEDIATE, ADVANCED
+  format        String   @default("ONLINE") // ONLINE, OFFLINE, HYBRID
   skillsCovered String[] @default([])
   affiliateLink String?
+  isActive      Boolean  @default(true)
+  seoMetadata   Json?    @default("{}")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@index([slug])
+  @@index([provider])
+  @@index([difficulty])
+  @@index([isActive])
 }
 
 model AIPrompt {
