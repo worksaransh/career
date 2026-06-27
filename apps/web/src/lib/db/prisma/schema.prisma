@@ -214,6 +214,7 @@ model Career {
   recommendedDegrees String[] @default([])
   certifications   String[] @default([])
   alternativeCareers String[] @default([])
+  companiesHiring  String[] @default([])
   remotePossibility Int     @default(0)
   growthTrend      Json?    @default("{}")
   isActive         Boolean  @default(true)
