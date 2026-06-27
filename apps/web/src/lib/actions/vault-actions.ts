@@ -110,7 +110,7 @@ export async function recalculateScores(userId: string) {
     const topSkillsList = skills.map((s) => s.skillName);
     const interestsList = profile?.interests ?? [];
 
-    const twinSnapshot = buildCareerTwin(
+    const twinSnapshot = await buildCareerTwin(
       userId,
       {
         education: profile?.educationLevel ?? "Not Provided",

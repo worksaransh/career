@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       userId: session.user.id,
       lastSyncedAt: previousSnapshot.syncedAt.toISOString(),
     } : undefined;
-    const twin = buildCareerTwin(session.user.id, validated.profileSnapshot, previousTwin as any);
+    const twin = await buildCareerTwin(session.user.id, validated.profileSnapshot, previousTwin as any);
     await prisma.careerTwinSnapshot.create({
       data: {
         userId: session.user.id,

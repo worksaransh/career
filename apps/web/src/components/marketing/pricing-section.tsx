@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { GlassCard } from "@/components/ui/glass-card";
 import { AnimatedContainer } from "@/components/ui/animated-container";
 import { cn } from "@/lib/utils/cn";
-import { subscribeToPremium, validateCoupon } from "@/lib/actions/subscription-actions";
+import { subscribeToPremium, validateCoupon, createCashfreeOrder } from "@/lib/actions/subscription-actions";
 import toast from "react-hot-toast";
 
 const subscriptionPlans = [
@@ -156,15 +156,39 @@ export function PricingSection() {
   const handleCheckoutSubmit = async () => {
     setIsSubmittingCheckout(true);
     try {
-      // Complete premium/D2C checkout sync
-      const result = await subscribeToPremium(appliedCoupon || undefined);
+      // 1. Create order on server and get session ID
+      const result = await createCashfreeOrder(checkoutItem, appliedCoupon || undefined);
+      
       if (result.success) {
-        setCheckoutSuccess(true);
-        toast.success(`Purchase of ${checkoutItem.name} complete!`);
+        // 2. Load Cashfree SDK dynamically
+        const loadScript = () => {
+          return new Promise((resolve) => {
+            if ((window as any).Cashfree) {
+              resolve(true);
+              return;
+            }
+            const script = document.createElement("script");
+            script.src = "https://sdk.cashfree.com/js/v3/cashfree.js";
+            script.onload = () => resolve(true);
+            document.body.appendChild(script);
+          });
+        };
+
+        await loadScript();
+
+        // 3. Initialize Cashfree
+        const cashfree = (window as any).Cashfree({
+          mode: result.env === "production" ? "production" : "sandbox",
+        });
+
+        // 4. Trigger checkout
+        cashfree.checkout({
+          paymentSessionId: result.paymentSessionId,
+          redirectTarget: "_self", // Redirect back to payment-status
+        });
       }
     } catch (err: any) {
       toast.error(err.message || "Failed to process payment upgrade.");
-    } finally {
       setIsSubmittingCheckout(false);
     }
   };

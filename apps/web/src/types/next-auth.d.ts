@@ -4,6 +4,7 @@ import "next-auth/jwt";
 declare module "next-auth" {
   interface User {
     role?: string;
+    language?: string;
   }
 
   interface Session {
@@ -14,6 +15,7 @@ declare module "next-auth" {
       image: string | null;
       role: string;
       primaryPersona?: string;
+      language?: string;
     };
   }
 }
@@ -23,5 +25,6 @@ declare module "next-auth/jwt" {
     id: string;
     role: string;
     primaryPersona?: string;
+    language?: string;
   }
 }

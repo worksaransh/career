@@ -145,3 +145,112 @@ export async function validateCoupon(code: string) {
     discountPercentage: coupon.discountPercentage,
   };
 }
+
+export async function createCashfreeOrder(item: { name: string; price: number }, couponCode?: string) {
+  const user = await requireAuth();
+  const { env } = await import("@/env");
+
+  let discountPercentage = 0;
+  let couponId: string | null = null;
+
+  if (couponCode) {
+    const codeClean = couponCode.toUpperCase().trim();
+    const coupon = await prisma.coupon.findUnique({
+      where: { code: codeClean },
+    });
+
+    if (!coupon) {
+      throw new Error("Invalid coupon code");
+    }
+
+    if (!coupon.isActive) {
+      throw new Error("Coupon code is inactive");
+    }
+
+    if (coupon.expiresAt && new Date(coupon.expiresAt) < new Date()) {
+      throw new Error("Coupon code has expired");
+    }
+
+    if (coupon.maxUses !== null && coupon.currentUses >= coupon.maxUses) {
+      throw new Error("Coupon usage limit exceeded");
+    }
+
+    discountPercentage = coupon.discountPercentage;
+    couponId = coupon.id;
+  }
+
+  // item.price is in Rupees (e.g. 499, 2999) from the UI client
+  const basePricePaise = item.price * 100;
+  const discountAmount = Math.round((basePricePaise * discountPercentage) / 100);
+  const finalPricePaise = Math.max(0, basePricePaise - discountAmount);
+  const finalPriceRupees = (finalPricePaise / 100).toFixed(2);
+
+  // 1. Create a PENDING payment record
+  const payment = await prisma.payment.create({
+    data: {
+      userId: user.id,
+      amount: finalPricePaise,
+      currency: "INR",
+      status: "PENDING",
+      tier: item.name.toUpperCase().includes("ANNUAL")
+        ? "PREMIUM_ANNUAL"
+        : item.name.toUpperCase().includes("MONTHLY")
+        ? "PREMIUM"
+        : "SINGLE_UNLOCK",
+      couponCode: couponCode ? couponCode.toUpperCase().trim() : null,
+    },
+  });
+
+  const isProduction = env.CASHFREE_ENV === "production";
+  const baseUrl = isProduction 
+    ? "https://api.cashfree.com/pg/orders" 
+    : "https://sandbox.cashfree.com/pg/orders";
+
+  const appId = env.CASHFREE_APP_ID || "TEST_APP_ID";
+  const secretKey = env.CASHFREE_SECRET_KEY || "TEST_SECRET_KEY";
+
+  try {
+    console.log(`[Cashfree] Requesting order creation from Cashfree API...`);
+    const cfResponse = await fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "x-client-id": appId,
+        "x-client-secret": secretKey,
+        "x-api-version": "2023-08-01",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        order_id: payment.id,
+        order_amount: parseFloat(finalPriceRupees),
+        order_currency: "INR",
+        customer_details: {
+          customer_id: user.id,
+          customer_name: user.name || "Customer",
+          customer_email: user.email || "customer@careergps.ai",
+          customer_phone: user.phone || "9999999999",
+        },
+        order_meta: {
+          return_url: `${env.NEXT_PUBLIC_APP_URL}/payment-status?order_id={order_id}`,
+        },
+      }),
+    });
+
+    if (!cfResponse.ok) {
+      const errorText = await cfResponse.text();
+      throw new Error(`Cashfree PG API responded with status ${cfResponse.status}: ${errorText}`);
+    }
+
+    const cfData = await cfResponse.json();
+
+    return {
+      success: true,
+      paymentSessionId: cfData.payment_session_id,
+      orderId: cfData.order_id,
+      paymentId: payment.id,
+      env: env.CASHFREE_ENV || "sandbox",
+    };
+  } catch (err: any) {
+    console.error("[Cashfree] Order creation error:", err);
+    throw new Error(`Cashfree PG order initiation failed: ${err.message}`);
+  }
+}

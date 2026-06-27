@@ -85,12 +85,16 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.role = (user as { role?: string }).role ?? "USER";
         token.primaryPersona = (user as { primaryPersona?: string }).primaryPersona ?? "STUDENT";
+        token.language = (user as { language?: string }).language ?? "en";
       } else if (token.id) {
         const dbUser = await prisma.user.findUnique({
           where: { id: token.id as string },
-          select: { primaryPersona: true },
+          select: { primaryPersona: true, language: true },
         });
-        if (dbUser) token.primaryPersona = dbUser.primaryPersona;
+        if (dbUser) {
+          token.primaryPersona = dbUser.primaryPersona;
+          token.language = dbUser.language;
+        }
       }
       return token;
     },
@@ -99,6 +103,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id as string;
         session.user.role = (token.role as string) ?? "USER";
         session.user.primaryPersona = (token.primaryPersona as string) ?? "STUDENT";
+        session.user.language = (token.language as string) ?? "en";
       }
       return session;
     },

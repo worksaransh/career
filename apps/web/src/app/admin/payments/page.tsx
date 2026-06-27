@@ -77,6 +77,8 @@ const COUPON_FIELDS: FieldDef[] = [
   { key: "code", label: "Coupon Code (Alphanumeric)", placeholder: "e.g. WELCOME50" },
   { key: "discountPercentage", label: "Discount Percentage (1-100)", type: "number", placeholder: "e.g. 50" },
   { key: "maxUses", label: "Maximum Usage Limit (Leave blank for unlimited)", type: "number", placeholder: "e.g. 100" },
+  { key: "expiresAt", label: "Expiration Date (Leave blank for never)", type: "date" },
+  { key: "isActive", label: "Is Coupon Active", type: "boolean" },
 ];
 
 const COUPON_EMPTY_TEMPLATE: CouponRow = {

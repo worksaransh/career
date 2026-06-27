@@ -995,6 +995,7 @@ export interface ExplorerPage {
   relatedItems: ExplorerRelatedItem[];
   stats: ExplorerStats;
   cta: ExplorerCTA;
+  richItems?: any[];
 }
 
 export interface ExplorerRelatedItem {

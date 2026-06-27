@@ -15,7 +15,7 @@ export type Column<T> = {
 export type FieldDef = {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "select" | "list";
+  type?: "text" | "number" | "textarea" | "select" | "list" | "date" | "boolean";
   options?: string[];
   placeholder?: string;
 };
@@ -519,6 +519,39 @@ export function CatalogTable<T extends { id?: string }>({
                         onChange={(e) =>
                           setVal(e.target.value === "" ? null : Number(e.target.value))
                         }
+                      />
+                    </div>
+                  );
+                }
+
+                if (f.type === "date") {
+                  const dateStr = val ? new Date(val as string).toISOString().split("T")[0] : "";
+                  return (
+                    <div key={f.key} className="space-y-1.5">
+                      <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        {f.label}
+                      </label>
+                      <Input
+                        type="date"
+                        className="h-11 rounded-xl text-foreground"
+                        value={dateStr}
+                        onChange={(e) => setVal(e.target.value ? new Date(e.target.value).toISOString() : null)}
+                      />
+                    </div>
+                  );
+                }
+
+                if (f.type === "boolean") {
+                  return (
+                    <div key={f.key} className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/5">
+                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        {f.label}
+                      </span>
+                      <input
+                        type="checkbox"
+                        checked={!!val}
+                        onChange={(e) => setVal(e.target.checked)}
+                        className="h-5 w-5 rounded border-border text-primary focus:ring-primary/20 bg-background"
                       />
                     </div>
                   );

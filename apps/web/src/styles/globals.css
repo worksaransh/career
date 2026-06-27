@@ -59,8 +59,8 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 246 80% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 246 90% 72%;
+    --primary-foreground: 222.2 84% 4.9%;
     --primary-50: 246 80% 8%;
     --primary-100: 246 80% 12%;
     --primary-200: 246 75% 18%;
@@ -75,7 +75,7 @@
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 215 25% 72%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
@@ -88,7 +88,7 @@
     --info-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 246 80% 60%;
+    --ring: 246 90% 72%;
 
     /* Glassmorphism - Dark */
     --glass: 222.2 84% 4.9% 0.6;

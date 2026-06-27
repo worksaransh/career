@@ -1,5 +1,6 @@
 // Career Twin — AI-powered digital twin that mirrors a user's profile and evolves
 
+import { env } from "@/env";
 import type { User } from "@prisma/client";
 
 export interface CareerTwin {
@@ -46,30 +47,122 @@ export interface RiskProfile {
   salarySatisfaction: number;
 }
 
-export function buildCareerTwin(
+export async function buildCareerTwin(
   userId: string,
   profile: Partial<TwinProfileSnapshot>,
   previousTwin?: CareerTwin,
-): CareerTwin {
+): Promise<CareerTwin> {
   const version = previousTwin ? previousTwin.version + 1 : 1;
 
-  const predictedPath = generatePredictedPaths(profile);
-  const skillGaps = identifySkillGaps(profile);
-  const riskProfile = assessRiskProfile(profile);
+  const profileSnapshot: TwinProfileSnapshot = {
+    education: profile.education ?? "Not Provided",
+    currentRole: profile.currentRole ?? "Explorer",
+    yearsOfExperience: profile.yearsOfExperience ?? 0,
+    topSkills: profile.topSkills ?? [],
+    interests: profile.interests ?? [],
+    careerGoals: profile.careerGoals ?? "Exploring Options",
+    location: profile.location ?? "Remote",
+    salaryExpectation: profile.salaryExpectation ?? 600000,
+  };
+
+  let predictedPath: PredictedCareerPath[] = [];
+  let skillGaps: SkillGap[] = [];
+  let riskProfile: RiskProfile | null = null;
+
+  const apiKey = process.env.OPENAI_API_KEY || env.OPENAI_API_KEY;
+
+  if (apiKey) {
+    try {
+      console.log(`[AI Twin] Querying OpenAI LLM for user ${userId}...`);
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          response_format: { type: "json_object" },
+          messages: [
+            {
+              role: "system",
+              content: `You are the core AI intelligence engine of Career GPS AI. Given the user's profile details, generate:
+1. predictedPath (3 items): careers the user is suited for, with probability (0.0 to 1.0), timeframe (e.g. "1-2 years"), and a list of requiredSteps.
+2. skillGaps (3-4 items): missing in-demand skills they should learn, specifying currentLevel (BEGINNER/INTERMEDIATE/ADVANCED), requiredLevel (BEGINNER/INTERMEDIATE/ADVANCED/EXPERT), importance (LOW/MEDIUM/HIGH), and a list of 2-3 specific suggestedResources.
+3. riskProfile: overallRisk (LOW/MEDIUM/HIGH), and numeric percentage scores (0-100) for automationRisk, marketRisk, educationGap, and salarySatisfaction.
+
+You MUST respond strictly in valid JSON format using the exact schema:
+{
+  "predictedPath": [
+    {
+      "career": "string",
+      "probability": number,
+      "timeframe": "string",
+      "requiredSteps": ["string"]
+    }
+  ],
+  "skillGaps": [
+    {
+      "skill": "string",
+      "currentLevel": "BEGINNER" | "INTERMEDIATE" | "ADVANCED",
+      "requiredLevel": "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT",
+      "importance": "LOW" | "MEDIUM" | "HIGH",
+      "suggestedResources": ["string"]
+    }
+  ],
+  "riskProfile": {
+    "overallRisk": "LOW" | "MEDIUM" | "HIGH",
+    "automationRisk": number,
+    "marketRisk": number,
+    "educationGap": number,
+    "salarySatisfaction": number
+  }
+}`
+            },
+            {
+              role: "user",
+              content: JSON.stringify(profileSnapshot)
+            }
+          ]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API responded with status ${response.status}`);
+      }
+
+      const resultData = await response.json();
+      const aiResponse = JSON.parse(resultData.choices[0]?.message?.content ?? "{}");
+
+      if (aiResponse.predictedPath && aiResponse.skillGaps && aiResponse.riskProfile) {
+        predictedPath = aiResponse.predictedPath;
+        skillGaps = aiResponse.skillGaps;
+        riskProfile = aiResponse.riskProfile;
+      } else {
+        throw new Error("Invalid schema structure returned from OpenAI");
+      }
+    } catch (err) {
+      console.error("[AI Twin] Failed to fetch from OpenAI, falling back to local heuristics:", err);
+    }
+  } else {
+    console.warn("[AI Twin] OpenAI API Key is missing. Falling back to rule-based heuristics.");
+  }
+
+  // Fallback to heuristics if AI generation failed or wasn't run
+  if (predictedPath.length === 0) {
+    predictedPath = generatePredictedPaths(profileSnapshot);
+  }
+  if (skillGaps.length === 0) {
+    skillGaps = identifySkillGaps(profileSnapshot);
+  }
+  if (!riskProfile) {
+    riskProfile = assessRiskProfile(profileSnapshot);
+  }
 
   return {
     userId,
     version,
-    profileSnapshot: {
-      education: profile.education ?? "",
-      currentRole: profile.currentRole ?? "",
-      yearsOfExperience: profile.yearsOfExperience ?? 0,
-      topSkills: profile.topSkills ?? [],
-      interests: profile.interests ?? [],
-      careerGoals: profile.careerGoals ?? "",
-      location: profile.location ?? "",
-      salaryExpectation: profile.salaryExpectation ?? 0,
-    },
+    profileSnapshot,
     predictedPath,
     skillGaps,
     riskProfile,
