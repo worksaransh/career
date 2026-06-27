@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -23,6 +23,9 @@ import {
   BookOpen,
   Rocket,
   FolderOpen,
+  DollarSign,
+  TrendingUp,
+  Briefcase,
 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,21 +34,23 @@ import { cn } from "@/lib/utils/cn";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 
-const sidebarLinks = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/assessments", label: "Assessments", icon: Brain },
-  { href: "/careers", label: "Career Matches", icon: LineChart },
-  { href: "/roadmap", label: "Career GPS", icon: Route },
-  { href: "/vault", label: "Career Vault", icon: FolderOpen },
-  { href: "/mentor", label: "AI Mentor", icon: Sparkles },
-  { href: "/colleges", label: "Colleges", icon: Building2 },
-  { href: "/degrees", label: "Degrees", icon: GraduationCap },
-  { href: "/simulator", label: "Future Simulator", icon: Rocket },
-  { href: "/skills", label: "Skills", icon: Award },
-  { href: "/certifications", label: "Certifications", icon: BookOpen },
-  { href: "/reports", label: "Reports", icon: FileText },
-  { href: "/parents", label: "Parent Dashboard", icon: Users },
-  { href: "/saved", label: "Saved Items", icon: BarChart3 },
+type PersonaNav = { href: string; label: string; icon: React.ElementType; personas: string[] }[];
+
+const allLinks: PersonaNav = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/assessments", label: "Assessments", icon: Brain, personas: ["STUDENT", "GRADUATE", "COLLEGE_STUDENT"] },
+  { href: "/careers", label: "Career Matches", icon: LineChart, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/roadmap", label: "Career GPS", icon: Route, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/vault", label: "Career Vault", icon: FolderOpen, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/mentor", label: "AI Mentor", icon: Sparkles, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/skills", label: "Skills", icon: Award, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/colleges", label: "Colleges", icon: Building2, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE"] },
+  { href: "/degrees", label: "Degrees", icon: GraduationCap, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT"] },
+  { href: "/reports", label: "Reports", icon: FileText, personas: ["STUDENT", "PARENT", "GRADUATE", "PROFESSIONAL"] },
+  { href: "/simulator", label: "Future Simulator", icon: Rocket, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/certifications", label: "Certifications", icon: BookOpen, personas: ["COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/saved", label: "Saved Items", icon: BarChart3, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/parents", label: "Parent Dashboard", icon: Users, personas: ["PARENT"] },
 ];
 
 const bottomLinks = [
@@ -58,6 +63,13 @@ export function AppSidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { data: session } = useSession();
+
+  const persona = (session?.user as any)?.primaryPersona ?? "STUDENT";
+
+  const filteredLinks = useMemo(
+    () => allLinks.filter((link) => link.personas.includes(persona)),
+    [persona],
+  );
 
   const initials = session?.user?.name
     ?.split(" ")
@@ -116,7 +128,7 @@ export function AppSidebar() {
         </div>
 
         <nav className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-hide">
-          {sidebarLinks.map((link) => {
+          {filteredLinks.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
             return (

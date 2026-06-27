@@ -59,7 +59,7 @@ export default async function DashboardPage() {
 
   return (
     <DashboardContent
-      user={user}
+      user={{ ...user, primaryPersona: user.primaryPersona }}
       latestResult={latestResult}
       recommendedCareersCount={recommendedCareersCount}
       savedCount={savedCount}

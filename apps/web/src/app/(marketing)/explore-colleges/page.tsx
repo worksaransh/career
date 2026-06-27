@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma/prisma";
 import CollegeListingClient from "./college-listing-client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Colleges in India - Search, Compare & Explore 15,000+ Institutions",
   description: "Browse 15,000+ colleges across India. Search by name, location, ranking, fees, and placement. Compare colleges side by side with detailed data.",
@@ -37,26 +39,37 @@ export default async function CollegesListingPage({ searchParams }: PageProps) {
   const sortField = validSorts.includes(sortBy) ? sortBy : "ranking";
   orderBy[sortField] = sortOrder === "desc" ? "desc" : "asc";
 
-  const [colleges, total, locations] = await Promise.all([
-    prisma.college.findMany({
-      where: where as any,
-      orderBy,
-      skip: (page - 1) * limit,
-      take: limit,
-      select: {
-        id: true, name: true, slug: true, location: true, ranking: true,
-        feesTotal: true, avgPackage: true, placementPercent: true, rating: true,
-        topRecruiters: true, studentCount: true, isActive: true,
-      },
-    }),
-    prisma.college.count({ where: where as any }),
-    prisma.college.findMany({
-      select: { location: true },
-      distinct: ["location"],
-      where: { isActive: true },
-      take: 500,
-    }),
-  ]);
+  let colleges: any[] = [];
+  let total = 0;
+  let locations: any[] = [];
+
+  try {
+    const [dbColleges, dbTotal, dbLocations] = await Promise.all([
+      prisma.college.findMany({
+        where: where as any,
+        orderBy,
+        skip: (page - 1) * limit,
+        take: limit,
+        select: {
+          id: true, name: true, slug: true, location: true, ranking: true,
+          feesTotal: true, avgPackage: true, placementPercent: true, rating: true,
+          topRecruiters: true, studentCount: true, isActive: true,
+        },
+      }),
+      prisma.college.count({ where: where as any }),
+      prisma.college.findMany({
+        select: { location: true },
+        distinct: ["location"],
+        where: { isActive: true },
+        take: 500,
+      }),
+    ]);
+    colleges = dbColleges;
+    total = dbTotal;
+    locations = dbLocations;
+  } catch (err) {
+    console.error("Failed to fetch colleges from database:", err);
+  }
 
   const uniqueLocations = [...new Set(locations.map((l) => l.location).filter(Boolean))].sort();
 

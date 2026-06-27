@@ -35,7 +35,10 @@ export function LoginContent() {
       return;
     }
 
-    router.push("/dashboard");
+    const urlParams = new URLSearchParams(window.location.search);
+    const callbackUrl = urlParams.get("callbackUrl");
+
+    router.push(callbackUrl || "/dashboard");
     router.refresh();
   }
 

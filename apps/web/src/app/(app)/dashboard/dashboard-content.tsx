@@ -38,6 +38,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DashboardEngagement } from "@/components/dashboard/dashboard-engagement";
 import { ConfidenceScoreCard } from "@/components/intelligence/confidence-score";
 import { ShareBrandingModal } from "@/components/shared/share-branding";
+import { DashboardModeSwitcher, type PersonaType } from "@/components/dashboard/persona/dashboard-mode-switcher";
+import { PersonaRecommendationCards } from "@/components/dashboard/persona/persona-recommendation-cards";
+import { ProfessionalDashboardContent } from "@/components/dashboard/persona/professional-dashboard";
+import { CareerSwitcherDashboardContent } from "@/components/dashboard/persona/career-switcher-dashboard";
+import { CollegeStudentDashboardContent } from "@/components/dashboard/persona/college-student-dashboard";
+import { ParentDashboardRedirect } from "@/components/dashboard/persona/parent-dashboard-redirect";
 
 // Server Actions
 import { completeWeeklyChallenge } from "@/lib/actions/challenge-actions";
@@ -68,7 +74,7 @@ export function DashboardContent({
   whatsappLink,
   telegramLink,
 }: DashboardContentProps) {
-  // Local state
+  // All hooks must be before any conditional returns
   const [challenges, setChallenges] = useState(initialWeeklyChallenges);
   const [partners, setPartners] = useState(initialPartners);
   const [timeline, setTimeline] = useState(initialTimelineEvents);
@@ -86,6 +92,43 @@ export function DashboardContent({
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [completingIds, setCompletingIds] = useState<Record<string, boolean>>({});
   const [nudgingIds, setNudgingIds] = useState<Record<string, boolean>>({});
+
+  // Persona-aware state
+  const effectivePersona = (user as any).primaryPersona ?? "STUDENT";
+  const [activePersona, setActivePersona] = useState<PersonaType>(effectivePersona as PersonaType);
+  const [showPersonaPicker, setShowPersonaPicker] = useState(false);
+
+  const handlePersonaSwitch = async (persona: PersonaType) => {
+    setActivePersona(persona);
+    if (persona !== effectivePersona) {
+      setShowPersonaPicker(true);
+    }
+  };
+
+  const handleSavePersona = async () => {
+    try {
+      await fetch("/api/user/persona", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ persona: activePersona }),
+      });
+      setShowPersonaPicker(false);
+    } catch {}
+  };
+
+  // Non-student personas get their own dashboard
+  if (activePersona === "PROFESSIONAL") {
+    return <ProfessionalDashboardContent user={user} latestResult={latestResult} memory={memory} whatsappLink={whatsappLink} telegramLink={telegramLink} />;
+  }
+  if (activePersona === "CAREER_SWITCHER") {
+    return <CareerSwitcherDashboardContent user={user} latestResult={latestResult} memory={memory} />;
+  }
+  if (activePersona === "PARENT") {
+    return <ParentDashboardRedirect />;
+  }
+  if (activePersona === "COLLEGE_STUDENT") {
+    return <CollegeStudentDashboardContent user={user} latestResult={latestResult} recommendedCareersCount={recommendedCareersCount} savedCount={savedCount} memory={memory} initialWeeklyChallenges={initialWeeklyChallenges} initialTimelineEvents={initialTimelineEvents} initialPartners={initialPartners} whatsappLink={whatsappLink} telegramLink={telegramLink} />;
+  }
 
   // Compute Career Score dynamically from latest assessment result
   let careerScore = "--";
@@ -221,37 +264,24 @@ export function DashboardContent({
   };
 
   return (
-    <div className="space-y-8 text-foreground pb-20">
+    <div className="space-y-6 text-foreground pb-20">
       
-      {/* Header */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      {/* Persona Mode Switcher */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="text-2xl font-bold tracking-tight">
             Welcome back{user.name ? `, ${user.name.split(" ")[0]}` : ""}
           </h1>
-          <p className="mt-1 text-muted-foreground">
-            Here&apos;s your career journey overview and dynamic growth stats
+          <p className="text-sm text-muted-foreground">
+            {activePersona === "STUDENT" || activePersona === "GRADUATE" ? "Your career journey overview" :
+             activePersona === "COLLEGE_STUDENT" ? "Build skills, find internships & jobs" :
+             activePersona === "PROFESSIONAL" ? "Track your career growth" :
+             activePersona === "PARENT" ? "Plan your child's future" :
+             activePersona === "CAREER_SWITCHER" ? "Plan your career transition" :
+             "Your career journey overview"}
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Button
-            variant="outline"
-            leftIcon={<Share2 className="h-4 w-4" />}
-            onClick={() => setIsShareOpen(true)}
-          >
-            Share Scorecard
-          </Button>
-          <Link href="/vault">
-            <Button variant="outline" leftIcon={<FolderOpen className="h-4 w-4" />}>
-              Career Vault
-            </Button>
-          </Link>
-          <Link href="/onboarding">
-            <Button variant="gradient" rightIcon={<ArrowRight className="h-4 w-4" />}>
-              Continue Setup
-            </Button>
-          </Link>
-        </div>
+        <DashboardModeSwitcher currentPersona={activePersona} onSwitch={handlePersonaSwitch} compact />
       </div>
 
       {/* CORE ASSESSMENT METRICS */}
@@ -569,6 +599,11 @@ export function DashboardContent({
             </GlassCard>
           </AnimatedContainer>
 
+          {/* Persona Recommendation Cards */}
+          <AnimatedContainer animation="fadeUp" delay={0.3}>
+            <PersonaRecommendationCards persona={activePersona} />
+          </AnimatedContainer>
+
           {/* Premium Habit Loop & Smart Learning Recommendations */}
           <AnimatedContainer animation="fadeUp" delay={0.36}>
             <GlassCard className="border border-amber-500/20 bg-amber-500/[0.01] p-5">
@@ -718,6 +753,38 @@ export function DashboardContent({
         careerName={latestResult ? "Software Engineer" : "Exploring Careers"}
         streakCount={completeness > 50 ? 5 : 1}
       />
+
+      {/* Persona Save Modal */}
+      <AnimatePresence>
+        {showPersonaPicker && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-2xl"
+            >
+              <h3 className="text-lg font-bold mb-2">Save as default mode?</h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Would you like to set <strong>{activePersona.toLowerCase().replace("_", " ")}</strong> as your default dashboard view?
+              </p>
+              <div className="flex gap-3">
+                <Button variant="outline" fullWidth onClick={() => { setActivePersona(effectivePersona as PersonaType); setShowPersonaPicker(false); }}>
+                  Just exploring
+                </Button>
+                <Button variant="gradient" fullWidth onClick={handleSavePersona}>
+                  Save as default
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

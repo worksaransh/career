@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
-import { Search } from "lucide-react";
+import React, { useState } from "react";
+import { Search, ExternalLink } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { AnimatedContainer } from "@/components/ui/animated-container";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -18,8 +19,10 @@ interface ExplorerContentProps {
 
 export function ExplorerContent({ title, description, type }: ExplorerContentProps) {
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const [search, setSearch] = useState("");
 
-  // Map marketing explorer type to app route
+  // Map marketing explorer type to app route (personalized matches)
   const typeToRoute: Record<string, string> = {
     careers: "/careers",
     colleges: "/colleges",
@@ -28,7 +31,25 @@ export function ExplorerContent({ title, description, type }: ExplorerContentPro
     scholarships: "/colleges",
   };
 
+  // Map marketing explorer type to general catalog search routes
+  const typeToExplorerRoute: Record<string, string> = {
+    careers: "/explorer/careers",
+    colleges: "/explorer/colleges",
+    degrees: "/explorer/degrees",
+    skills: "/explorer/skills",
+    scholarships: "/explorer/colleges",
+  };
+
   const appRoute = typeToRoute[type] || "/dashboard";
+  const explorerRoute = typeToExplorerRoute[type] || "/dashboard";
+
+  const handleSearchSubmit = () => {
+    if (session?.user) {
+      router.push(`${explorerRoute}?search=${encodeURIComponent(search)}`);
+    } else {
+      router.push(`/register?search=${encodeURIComponent(search)}&callbackUrl=${encodeURIComponent(explorerRoute)}`);
+    }
+  };
 
   return (
     <div className="pt-24 pb-16">
@@ -41,13 +62,21 @@ export function ExplorerContent({ title, description, type }: ExplorerContentPro
         </AnimatedContainer>
 
         <AnimatedContainer animation="fadeUp" delay={0.1}>
-          <div className="mt-8">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearchSubmit();
+            }}
+            className="mt-8"
+          >
             <Input
               placeholder="Search..."
               leftIcon={<Search className="h-4 w-4" />}
               size="lg"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-          </div>
+          </form>
         </AnimatedContainer>
 
         <AnimatedContainer animation="fadeUp" delay={0.2}>
@@ -62,15 +91,22 @@ export function ExplorerContent({ title, description, type }: ExplorerContentPro
               </>
             ) : session?.user ? (
               <>
-                <h3 className="text-lg font-semibold">Explore Your Personalized Matches</h3>
+                <h3 className="text-lg font-semibold">Explore Your Matches & Database</h3>
                 <p className="mt-1 text-sm text-muted-foreground max-w-sm">
-                  You&apos;re signed in! Access your personalized {type} recommendations in your dashboard.
+                  You&apos;re signed in! You can view your personalized recommendations or search the entire general directory.
                 </p>
-                <Link href={appRoute} className="mt-4">
-                  <Button variant="gradient" size="lg">
-                    View My {title}
-                  </Button>
-                </Link>
+                <div className="mt-6 flex flex-wrap gap-3 justify-center">
+                  <Link href={appRoute}>
+                    <Button variant="gradient" size="lg">
+                      View My AI Matches
+                    </Button>
+                  </Link>
+                  <Link href={explorerRoute}>
+                    <Button variant="outline" size="lg" rightIcon={<ExternalLink className="h-4 w-4" />}>
+                      Browse Directory
+                    </Button>
+                  </Link>
+                </div>
               </>
             ) : (
               <>

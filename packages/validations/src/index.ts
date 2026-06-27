@@ -78,8 +78,12 @@ export const resetPasswordSchema = z
 
 // ─── Onboarding ──────────────────────────────────────────────────
 
+export const personaSchema = z.object({
+  persona: z.enum(["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"]),
+});
+
 export const onboardingStepSchema = z.object({
-  step: z.enum(["WELCOME", "GOAL", "INTERESTS", "EDUCATION", "COMPLETE"]),
+  step: z.enum(["WELCOME", "PERSONA", "GOAL", "INTERESTS", "EDUCATION", "COMPLETE"]),
   data: z.record(z.unknown()).optional(),
 });
 
@@ -236,6 +240,7 @@ export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
+export type PersonaInput = z.infer<typeof personaSchema>;
 export type OnboardingStepInput = z.infer<typeof onboardingStepSchema>;
 export type GoalInput = z.infer<typeof goalSchema>;
 export type InterestsInput = z.infer<typeof interestsSchema>;

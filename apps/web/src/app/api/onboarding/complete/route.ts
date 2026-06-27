@@ -6,6 +6,7 @@ import { prisma } from "@/lib/db/prisma/prisma";
 import { authOptions } from "@/lib/auth/auth";
 
 const completeSchema = z.object({
+  persona: z.string().optional(),
   goal: z.string().optional(),
   interests: z.array(z.string()).optional(),
   education: z.string().optional(),
@@ -38,6 +39,7 @@ export async function POST(request: Request) {
         data: {
           onboardingStep: "COMPLETE",
           profileCompleteness: 25,
+          primaryPersona: (validated.persona as string) ?? undefined,
         },
       }),
       prisma.userProfile.upsert({

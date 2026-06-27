@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowRight, ArrowLeft, Check } from "lucide-react";
 
@@ -15,11 +15,25 @@ interface OnboardingContentProps {
   user: User;
 }
 
+const personaOptions = [
+  { id: "STUDENT", label: "School Student", description: "Exploring careers, degrees & colleges", icon: "🎓" },
+  { id: "PARENT", label: "Parent", description: "Planning my child's education & future", icon: "👨‍👩‍👧‍👦" },
+  { id: "COLLEGE_STUDENT", label: "College Student", description: "Building skills, finding internships & jobs", icon: "🏛️" },
+  { id: "GRADUATE", label: "Recent Graduate", description: "Starting my career journey", icon: "🎉" },
+  { id: "PROFESSIONAL", label: "Working Professional", description: "Growing my career & salary", icon: "💼" },
+  { id: "CAREER_SWITCHER", label: "Career Switcher", description: "Transitioning to a new career path", icon: "🔄" },
+];
+
 const steps = [
   {
     id: "welcome",
     title: "Welcome to Career OS",
     subtitle: "Let's discover your perfect career path together",
+  },
+  {
+    id: "persona",
+    title: "Who are you?",
+    subtitle: "Tell us about yourself so we can personalize your experience",
   },
   {
     id: "goal",
@@ -59,11 +73,15 @@ const interestOptions = [
 
 export function OnboardingContent({ user }: OnboardingContentProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
+  const [persona, setPersona] = useState<string | null>(null);
   const [goal, setGoal] = useState<string | null>(null);
   const [interests, setInterests] = useState<string[]>([]);
   const [education, setEducation] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
 
   const progress = ((step + 1) / steps.length) * 100;
 
@@ -85,10 +103,10 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
     await fetch("/api/onboarding/complete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ goal, interests, education }),
+      body: JSON.stringify({ persona, goal, interests, education }),
     });
     setLoading(false);
-    router.push("/dashboard");
+    router.push(callbackUrl);
     router.refresh();
   };
 
@@ -119,6 +137,37 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
 
               {step === 1 && (
                 <div className="space-y-3">
+                  {personaOptions.map((p) => (
+                    <button
+                      key={p.id}
+                      onClick={() => setPersona(p.id)}
+                      className={`w-full text-left rounded-xl border p-4 transition-all ${
+                        persona === p.id
+                          ? "border-primary bg-primary/5 ring-1 ring-primary"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{p.icon}</span>
+                          <div>
+                            <p className="font-medium">{p.label}</p>
+                            <p className="text-sm text-muted-foreground">{p.description}</p>
+                          </div>
+                        </div>
+                        {persona === p.id && (
+                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                            <Check className="h-4 w-4" />
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="space-y-3">
                   {goals.map((g) => (
                     <button
                       key={g.id}
@@ -145,7 +194,7 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
                 </div>
               )}
 
-              {step === 2 && (
+              {step === 3 && (
                 <div className="flex flex-wrap gap-2">
                   {interestOptions.map((interest) => (
                     <button
@@ -163,7 +212,7 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
                 </div>
               )}
 
-              {step === 3 && (
+              {step === 4 && (
                 <div className="space-y-3">
                   {[
                     { id: "HIGH_SCHOOL", label: "High School", desc: "Class 9-12" },
@@ -188,7 +237,7 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
                 </div>
               )}
 
-              {step === 4 && (
+              {step === 5 && (
                 <div className="text-center py-8">
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
                     <Check className="h-10 w-10 text-primary" />
@@ -199,8 +248,8 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
                 </div>
               )}
 
-              <div className="mt-8 flex gap-3">
-                {step > 0 && step < 4 && (
+              <div className="mt-8 flex gap-3 items-center">
+                {step > 0 && step < 5 && (
                   <Button
                     variant="outline"
                     onClick={() => setStep((s) => s - 1)}
@@ -211,19 +260,45 @@ export function OnboardingContent({ user }: OnboardingContentProps) {
                 )}
                 <Button
                   variant="gradient"
-                  fullWidth={step === 0 || step === 4}
+                  fullWidth={step === 0 || step === 5}
                   size="lg"
                   onClick={handleNext}
                   loading={loading}
                   disabled={
-                    (step === 1 && !goal) ||
-                    (step === 2 && interests.length === 0) ||
-                    (step === 3 && !education)
+                    (step === 1 && !persona) ||
+                    (step === 2 && !goal) ||
+                    (step === 3 && interests.length === 0) ||
+                    (step === 4 && !education)
                   }
-                  rightIcon={step < 4 ? <ArrowRight className="h-4 w-4" /> : undefined}
+                  rightIcon={step < 5 ? <ArrowRight className="h-4 w-4" /> : undefined}
                 >
-                  {step === 4 ? "Go to Dashboard" : "Continue"}
+                  {step === 5 ? "Go to Dashboard" : "Continue"}
                 </Button>
+                {step > 0 && step < 5 && (
+                  <Button
+                    variant="ghost"
+                    onClick={async () => {
+                      setLoading(true);
+                      try {
+                        await fetch("/api/onboarding/complete", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            persona: persona || "COLLEGE_STUDENT",
+                            goal: goal || "EXPLORE_CAREERS",
+                            interests: interests.length > 0 ? interests : ["Technology"],
+                            education: education || "HIGH_SCHOOL",
+                          }),
+                        });
+                      } catch (err) {}
+                      setLoading(false);
+                      router.push(callbackUrl);
+                      router.refresh();
+                    }}
+                  >
+                    Skip
+                  </Button>
+                )}
               </div>
             </GlassCard>
           </motion.div>

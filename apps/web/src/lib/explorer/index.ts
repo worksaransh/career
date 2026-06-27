@@ -85,8 +85,8 @@ export function generateExplorerListingPage(type: ExplorerPage["type"]): Explore
   };
 
   const cta: ExplorerCTA = {
-    primary: { text: "Find Your Perfect Career", url: "/assessment" },
-    secondary: { text: "Compare Options", url: "/compare" },
+    primary: { text: "Find Your Perfect Career", url: "/assessments" },
+    secondary: { text: "Compare Options", url: "/comparisons" },
   };
 
   const pageTitle = type === "CAREER" ? "Explore Careers" : type === "COLLEGE" ? "Explore Colleges" : type === "DEGREE" ? "Explore Degrees" : "Explore Skills";

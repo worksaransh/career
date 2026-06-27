@@ -144,7 +144,9 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
+          <div className="hidden xs:block">
+            <ThemeToggle />
+          </div>
           {session ? (
             <Link href="/dashboard">
               <Button variant="glass" size="sm">
@@ -189,6 +191,10 @@ export function Header() {
             className="border-t border-border bg-background lg:hidden overflow-hidden"
           >
             <div className="space-y-1 px-4 py-4">
+              <div className="flex items-center justify-between px-3 py-2 border-b border-border mb-3 xs:hidden">
+                <span className="text-sm font-medium text-muted-foreground">Appearance</span>
+                <ThemeToggle />
+              </div>
               {navLinks.map((link) =>
                 "children" in link ? (
                   <div key={link.label} className="space-y-1">

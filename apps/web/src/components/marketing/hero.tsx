@@ -47,6 +47,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ title, subtitle, ctaText }: HeroSectionProps) {
+  const [previewQuestion, setPreviewQuestion] = React.useState("");
+  const [previewReply, setPreviewReply] = React.useState("");
   const titleParts = (title || "See Your Future|Before You Decide").split("|");
 
   return (
@@ -103,6 +105,52 @@ export function HeroSection({ title, subtitle, ctaText }: HeroSectionProps) {
               30-second onboarding. No credit card. Free forever.
             </p>
           </AnimatedContainer>
+
+          <AnimatedContainer animation="fadeUp" delay={0.55} className="mt-10">
+            <GlassCard variant="strong" className="max-w-xl mx-auto p-5 text-left border-primary/20 hover:border-primary/40 transition-all duration-300">
+              <div className="flex items-center gap-2 border-b border-border pb-3 mb-3">
+                <Brain className="h-5 w-5 text-primary" />
+                <span className="text-sm font-semibold">Try Live AI Career Matcher</span>
+                <span className="ml-auto text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">DEMO</span>
+              </div>
+              
+              <div className="space-y-3 max-h-48 overflow-y-auto mb-4 text-sm">
+                <div className="bg-muted p-2.5 rounded-lg max-w-[85%] text-muted-foreground">
+                  Hello! Select a question below to see how Career GPS AI maps out career options for you.
+                </div>
+                {previewQuestion && (
+                  <div className="bg-primary/10 text-foreground p-2.5 rounded-lg max-w-[85%] ml-auto text-right font-medium">
+                    {previewQuestion}
+                  </div>
+                )}
+                {previewReply && (
+                  <div className="bg-muted text-foreground p-2.5 rounded-lg max-w-[85%] border border-primary/10">
+                    <Sparkles className="h-3.5 w-3.5 text-primary inline mr-1.5 mb-0.5" />
+                    {previewReply}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { q: "Is AI going to replace developers?", a: "AI will automate coding, but increase demand for AI architects, security engineers, and domain-experts by 34% by 2030." },
+                  { q: "Match High Design + Tech skills", a: "Top matches: Product Designer (UX/UI), Creative Technologist, and AR/VR Interaction Developer. Average entry package: ₹12L - ₹18L." },
+                  { q: "Roadmap to become a Product Manager", a: "Year 1: Learn UX & Agile. Year 2: Build a side project. Year 3: Tech Internship. Year 4: Junior PM role." }
+                ].map((opt) => (
+                  <button
+                    key={opt.q}
+                    onClick={() => {
+                      setPreviewQuestion(opt.q);
+                      setPreviewReply(opt.a);
+                    }}
+                    className="text-xs bg-secondary hover:bg-secondary/80 text-secondary-foreground border border-border px-3 py-2 rounded-full transition-all"
+                  >
+                    {opt.q}
+                  </button>
+                ))}
+              </div>
+            </GlassCard>
+          </AnimatedContainer>
         </div>
 
         <AnimatedContainer animation="slideUp" delay={0.6}>
@@ -134,7 +182,7 @@ export function HeroSection({ title, subtitle, ctaText }: HeroSectionProps) {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-base font-semibold">{feature.title}</h3>
+                  <div className="text-base font-semibold">{feature.title}</div>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {feature.description}
                   </p>

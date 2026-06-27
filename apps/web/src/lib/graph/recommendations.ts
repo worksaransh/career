@@ -18,6 +18,7 @@ export async function getRecommendations(
   userId: string,
   type: "CAREER" | "DEGREE" | "COLLEGE" | "SKILL",
   limit = 10,
+  persona?: string,
 ): Promise<RecommendationScore[]> {
   const profile = await prisma.userProfile.findUnique({ where: { userId } });
   const savedItems = await prisma.savedItem.findMany({ where: { userId } });
@@ -50,8 +51,16 @@ export async function getRecommendations(
 
   let results: RecommendationScore[] = [];
 
+  // Persona-based boost factors
+  const personaBoost: Record<string, Record<string, number>> = {
+    CAREER: { STUDENT: 0, PARENT: 0, COLLEGE_STUDENT: 0.05, GRADUATE: 0.1, PROFESSIONAL: 0.15, CAREER_SWITCHER: 0.2 },
+    DEGREE: { STUDENT: 0.15, PARENT: 0.1, COLLEGE_STUDENT: 0.1, GRADUATE: 0.05, PROFESSIONAL: 0, CAREER_SWITCHER: 0 },
+    COLLEGE: { STUDENT: 0.15, PARENT: 0.2, COLLEGE_STUDENT: 0.05, GRADUATE: 0, PROFESSIONAL: 0, CAREER_SWITCHER: 0 },
+    SKILL: { STUDENT: 0.05, PARENT: 0, COLLEGE_STUDENT: 0.15, GRADUATE: 0.1, PROFESSIONAL: 0.15, CAREER_SWITCHER: 0.2 },
+  };
+
   switch (type) {
-    case "CAREER":
+    case "CAREER": {
       results = await recommendCareers(
         userInterests,
         savedCareers,
@@ -62,7 +71,8 @@ export async function getRecommendations(
         limit
       );
       break;
-    case "DEGREE":
+    }
+    case "DEGREE": {
       results = await recommendDegrees(
         userInterests,
         savedCareers,
@@ -73,7 +83,8 @@ export async function getRecommendations(
         limit
       );
       break;
-    case "COLLEGE":
+    }
+    case "COLLEGE": {
       results = await recommendColleges(
         userInterests,
         savedCareers,
@@ -87,7 +98,8 @@ export async function getRecommendations(
         limit
       );
       break;
-    case "SKILL":
+    }
+    case "SKILL": {
       results = await recommendSkills(
         savedCareers,
         userId,
@@ -96,6 +108,17 @@ export async function getRecommendations(
         limit
       );
       break;
+    }
+  }
+
+  // Apply persona boost to scores
+  if (persona && personaBoost[type] && personaBoost[type][persona]) {
+    const boost = personaBoost[type][persona]!;
+    results = results.map((r) => ({
+      ...r,
+      score: Math.min(1.0, r.score + boost),
+      reasons: boost > 0 ? [...r.reasons, `Recommended for ${persona.toLowerCase().replace("_", " ")} profile`] : r.reasons,
+    })).sort((a, b) => b.score - a.score);
   }
 
   return results;

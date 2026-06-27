@@ -56,13 +56,34 @@ export function RegisterContent() {
             });
             const data = await res.json();
             if (res.ok) {
+              const urlParams = new URLSearchParams(window.location.search);
+              const callbackUrl = urlParams.get("callbackUrl");
+              const searchVal = urlParams.get("search");
+              
+              let targetUrl = "/onboarding";
+              if (callbackUrl) {
+                let target = callbackUrl;
+                if (searchVal) {
+                  target += `${target.includes("?") ? "&" : "?"}search=${encodeURIComponent(searchVal)}`;
+                }
+                targetUrl = `/onboarding?callbackUrl=${encodeURIComponent(target)}`;
+              }
+              
               await signIn("credentials", {
                 email: formData.get("email"),
                 password: formData.get("password"),
-                callbackUrl: "/onboarding",
+                callbackUrl: targetUrl,
               });
             } else {
-              setError(data?.error?.message ?? "Registration failed. Please try again.");
+              if (data?.error?.code === "VALIDATION_ERROR" && data?.error?.details) {
+                const fieldErrors = data.error.details;
+                const errMsgs = Object.keys(fieldErrors)
+                  .map((field) => `${fieldErrors[field].join(", ")}`)
+                  .join(" | ");
+                setError(errMsgs || "Invalid input. Please try again.");
+              } else {
+                setError(data?.error?.message ?? "Registration failed. Please try again.");
+              }
             }
           } catch {
             setError("Network error. Please try again.");
@@ -93,6 +114,9 @@ export function RegisterContent() {
           required
           autoComplete="new-password"
         />
+        <p className="text-[11px] text-muted-foreground -mt-2.5 leading-tight">
+          Must be at least 8 characters, with 1 uppercase, 1 lowercase, 1 number, and 1 special character.
+        </p>
         <Input
           label="Phone (optional)"
           name="phone"

@@ -36,7 +36,10 @@ export function ConsentBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <aside
+      aria-label="Cookie consent"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+    >
       {showManager ? (
         <div className="mx-auto max-w-4xl p-4">
           <ConsentManager />
@@ -62,6 +65,6 @@ export function ConsentBanner() {
           </div>
         </div>
       )}
-    </div>
+    </aside>
   );
 }

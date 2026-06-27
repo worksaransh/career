@@ -11,8 +11,17 @@ export type UserRole =
   | "MODERATOR"
   | "USER";
 
+export type PrimaryPersona =
+  | "STUDENT"
+  | "PARENT"
+  | "COLLEGE_STUDENT"
+  | "GRADUATE"
+  | "PROFESSIONAL"
+  | "CAREER_SWITCHER";
+
 export type OnboardingStep =
   | "WELCOME"
+  | "PERSONA"
   | "GOAL"
   | "INTERESTS"
   | "EDUCATION"
@@ -42,6 +51,7 @@ export interface User {
   name: string | null;
   image: string | null;
   role: UserRole;
+  primaryPersona: PrimaryPersona;
   onboardingStep: OnboardingStep;
   profileCompleteness: ProfileCompleteness;
   language: Language;

@@ -173,11 +173,7 @@ export function PricingSection() {
   const finalPrice = Math.max(0, checkoutItem.price - discountAmount);
 
   return (
-    <section id="pricing" className="relative border-t border-border py-20 sm:py-28 text-foreground bg-background">
-      {/* Decorative Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
-
+    <section id="pricing" className="relative overflow-hidden border-t border-border py-20 sm:py-28 text-foreground bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Title */}

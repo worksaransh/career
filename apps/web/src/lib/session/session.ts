@@ -28,6 +28,7 @@ export async function getCurrentUser(): Promise<User | null> {
     name: user.name,
     image: user.image,
     role: user.role as User["role"],
+    primaryPersona: (user.primaryPersona ?? "STUDENT") as User["primaryPersona"],
     onboardingStep: user.onboardingStep as User["onboardingStep"],
     profileCompleteness: user.profileCompleteness as User["profileCompleteness"],
     language: user.language as User["language"],

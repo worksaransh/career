@@ -7,11 +7,18 @@ import { CtaSection } from "@/components/marketing/cta-section";
 import { FaqSection } from "@/components/marketing/faq-section";
 import { prisma } from "@/lib/db/prisma/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
-  // Query active CMSContent entries for the home section
-  const cmsContent = await prisma.cMSContent.findMany({
-    where: { isActive: true, section: "home" },
-  });
+  let cmsContent: any[] = [];
+  try {
+    // Query active CMSContent entries for the home section
+    cmsContent = await prisma.cMSContent.findMany({
+      where: { isActive: true, section: "home" },
+    });
+  } catch (err) {
+    console.error("Failed to query CMSContent, falling back to defaults:", err);
+  }
 
   const getCMSValue = (key: string, fallback: string) => {
     const item = cmsContent.find((c) => c.key === key);

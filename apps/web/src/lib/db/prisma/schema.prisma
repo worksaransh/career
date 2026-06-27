@@ -59,6 +59,7 @@ model User {
   image              String?
   role               String    @default("USER")
   language           String    @default("en")
+  primaryPersona     String    @default("STUDENT")
   onboardingStep     String    @default("WELCOME")
   profileCompleteness Int      @default(10)
   createdAt          DateTime  @default(now())

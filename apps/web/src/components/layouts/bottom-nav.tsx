@@ -1,21 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, LineChart, Route, Rocket, Users } from "lucide-react";
+import { LayoutDashboard, LineChart, Route, Rocket, Users, Brain, Building2, Award, BookOpen, Briefcase } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils/cn";
 
-const mobileLinks = [
-  { href: "/dashboard", label: "Home", icon: LayoutDashboard },
-  { href: "/careers", label: "Matches", icon: LineChart },
-  { href: "/roadmap", label: "GPS", icon: Route },
-  { href: "/simulator", label: "Simulator", icon: Rocket },
-  { href: "/parents", label: "Parents", icon: Users },
+type BottomNavItem = { href: string; label: string; icon: React.ElementType; personas: string[] };
+
+const allMobileLinks: BottomNavItem[] = [
+  { href: "/dashboard", label: "Home", icon: LayoutDashboard, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/careers", label: "Matches", icon: LineChart, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/assessments", label: "Assess", icon: Brain, personas: ["STUDENT", "GRADUATE"] },
+  { href: "/roadmap", label: "GPS", icon: Route, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/colleges", label: "Colleges", icon: Building2, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT"] },
+  { href: "/skills", label: "Skills", icon: Award, personas: ["STUDENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/certifications", label: "Certs", icon: BookOpen, personas: ["COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/simulator", label: "Simulator", icon: Rocket, personas: ["STUDENT", "PARENT", "COLLEGE_STUDENT", "GRADUATE", "PROFESSIONAL", "CAREER_SWITCHER"] },
+  { href: "/parents", label: "Parents", icon: Users, personas: ["PARENT"] },
 ];
 
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const persona = (session?.user as any)?.primaryPersona ?? "STUDENT";
+
+  const mobileLinks = useMemo(
+    () => allMobileLinks.filter((link) => link.personas.includes(persona)).slice(0, 5),
+    [persona],
+  );
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-border/60 bg-background/80 backdrop-blur-lg px-2 py-1 flex items-center justify-around shadow-2xl lg:hidden">

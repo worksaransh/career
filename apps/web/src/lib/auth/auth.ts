@@ -84,6 +84,13 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         token.role = (user as { role?: string }).role ?? "USER";
+        token.primaryPersona = (user as { primaryPersona?: string }).primaryPersona ?? "STUDENT";
+      } else if (token.id) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id as string },
+          select: { primaryPersona: true },
+        });
+        if (dbUser) token.primaryPersona = dbUser.primaryPersona;
       }
       return token;
     },
@@ -91,6 +98,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.role = (token.role as string) ?? "USER";
+        session.user.primaryPersona = (token.primaryPersona as string) ?? "STUDENT";
       }
       return session;
     },

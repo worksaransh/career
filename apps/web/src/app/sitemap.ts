@@ -31,31 +31,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
-  const colleges = await prisma.college.findMany({
-    where: { isActive: true },
-    select: { slug: true, updatedAt: true },
-    orderBy: { ranking: "asc" },
-    take: 50000,
-  });
+  let collegeEntries: MetadataRoute.Sitemap = [];
+  try {
+    const colleges = await prisma.college.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+      orderBy: { ranking: "asc" },
+      take: 50000,
+    });
 
-  const collegeEntries: MetadataRoute.Sitemap = colleges.map((c) => ({
-    url: `${baseUrl}/colleges/${c.slug}`,
-    lastModified: c.updatedAt,
-    changeFrequency: "weekly",
-    priority: 0.7,
-  }));
+    collegeEntries = colleges.map((c) => ({
+      url: `${baseUrl}/colleges/${c.slug}`,
+      lastModified: c.updatedAt,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch colleges for sitemap:", error);
+  }
 
-  const blogPosts = await prisma.blogPost?.findMany?.({
-    where: { publishedAt: { not: null } },
-    select: { slug: true, updatedAt: true },
-  }) ?? [];
+  let blogEntries: MetadataRoute.Sitemap = [];
+  try {
+    const blogPosts = await prisma.blogPost?.findMany?.({
+      where: { publishedAt: { not: null } },
+      select: { slug: true, updatedAt: true },
+    }) ?? [];
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((p) => ({
-    url: `${baseUrl}/blog/${p.slug}`,
-    lastModified: p.updatedAt,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+    blogEntries = blogPosts.map((p) => ({
+      url: `${baseUrl}/blog/${p.slug}`,
+      lastModified: p.updatedAt,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch blog posts for sitemap:", error);
+  }
 
   return [...staticEntries, ...collegeEntries, ...blogEntries];
 }

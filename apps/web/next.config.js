@@ -2,10 +2,13 @@
 
 const path = require("path");
 
+const standaloneOutput = process.env.NEXT_OUTPUT_STANDALONE === "true";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  ...(standaloneOutput ? { output: "standalone" } : {}),
 
   images: {
     formats: ["image/avif", "image/webp"],
@@ -55,7 +58,7 @@ const nextConfig = {
   ],
 
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, "../../"),
+    // outputFileTracingRoot: path.join(__dirname, "../../"),
     optimizePackageImports: [
       "lucide-react",
       "framer-motion",
