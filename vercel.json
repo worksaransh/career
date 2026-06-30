@@ -1,5 +1,5 @@
 {
-  "buildCommand": "SKIP_ENV_VALIDATION=1 npx turbo build --filter=@career-os/web",
+  "buildCommand": "SKIP_ENV_VALIDATION=1 pnpm --filter @career-os/web build",
   "framework": "nextjs",
   "installCommand": "pnpm install"
 }
