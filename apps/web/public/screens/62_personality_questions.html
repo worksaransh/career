@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Self-Discovery Quiz</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "tertiary": "#4cd7f6",
+                        "on-secondary": "#3c0091",
+                        "on-primary-fixed": "#001a42",
+                        "on-primary": "#002e6a",
+                        "secondary-fixed": "#e9ddff",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-container": "#c4abff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface-variant": "#c2c6d6",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#acedff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-dim": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "outline-variant": "#424754",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "background": "#0b1326",
+                        "on-error": "#690005",
+                        "primary": "#adc6ff",
+                        "on-tertiary": "#003640",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-container": "#009eb9",
+                        "secondary-container": "#571bc1",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#d0bcff",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "inverse-on-surface": "#283044",
+                        "on-primary-fixed-variant": "#004395",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#4d8eff",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#002f38",
+                        "on-surface": "#dae2fd",
+                        "outline": "#8c909f",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-container-low": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "container-max": "1200px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "gutter": "16px",
+                        "sm": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .active-option {
+            background: rgba(173, 198, 255, 0.1);
+            border-color: #adc6ff;
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #4d8eff 0%, #adc6ff 100%);
+        }
+        .step-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md overflow-x-hidden">
+<!-- Header Navigation Shell (TopAppBar) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-container-max mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution studio portrait of a young Indian woman with a confident smile, set against a blurred corporate office background with cool blue tones and soft lighting, reflecting a successful Career GPS AI user profile photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVgOdzHO4OX4WJpdjgIdEHEK_UwQJw03TvNyOrSqmskQt0kkms3tenv-oL7px2XDUpXCHIoovAo-1o6EeWWul7rB2EyDnQVUU-Wk2lovwWBCm30Iv91MmTEDeYxlfkhCb-SHYlL7Yq-3MRPuILwcIWR4s011y0PEbIjtwXA_L8EyB6WMmnj3UHsL3Ofq3TMqxge_ntsSto_iRP5Ev3WPEvmKKmcPHutw6EltXUvKGV1ByV3Z_sBX4qbjFhf7uTRhIAIgVyjnGvkIBk"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Career GPS</h1>
+</div>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-2xl mx-auto">
+<!-- Introduction Section -->
+<div class="text-center mb-8">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-2 block">Step 9 of 15</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-2">The Self-Discovery Quiz</h2>
+<p class="text-on-surface-variant font-body-md">Mapping your cognitive DNA to find your perfect professional fit.</p>
+</div>
+<!-- Main Question Card Shell -->
+<div class="glass-card rounded-xl p-6 md:p-10 relative overflow-hidden shadow-2xl step-transition">
+<!-- Progress Bar -->
+<div class="absolute top-0 left-0 w-full h-1 bg-white/5">
+<div class="h-full intelligence-gradient" style="width: 60%;"></div>
+</div>
+<!-- Question Content -->
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md mb-8 text-on-surface">How do you prefer to solve complex problems?</h3>
+<!-- Options Grid (Asymmetric layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Option 1 -->
+<button class="option-card group relative flex flex-col items-start p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 text-left" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<span class="font-headline-md text-[18px] text-on-surface mb-1">Analytical &amp; Data-driven</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">I look for patterns in numbers and facts to build logical solutions.</p>
+</button>
+<!-- Option 2 -->
+<button class="option-card group relative flex flex-col items-start p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 text-left" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-4 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-headline-md text-[18px] text-on-surface mb-1">Intuitive &amp; Creative</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">I trust my gut and explore non-linear, imaginative possibilities.</p>
+</button>
+<!-- Option 3 -->
+<button class="option-card group relative flex flex-col items-start p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 text-left" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+</div>
+<span class="font-headline-md text-[18px] text-on-surface mb-1">Collaborative &amp; Discussion-based</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">I believe the best answers emerge through diverse perspectives.</p>
+</button>
+<!-- Option 4 -->
+<button class="option-card group relative flex flex-col items-start p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 text-left" onclick="selectOption(this)">
+<div class="w-12 h-12 rounded-lg bg-surface-tint/10 flex items-center justify-center mb-4 text-surface-tint group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+<span class="font-headline-md text-[18px] text-on-surface mb-1">Practical &amp; Hands-on</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">I prefer testing theories in the real world through direct action.</p>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-8 flex justify-between items-center px-2">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-medium">
+<span class="material-symbols-outlined">arrow_back</span>
+                Previous
+            </button>
+<div class="flex gap-4">
+<button class="intelligence-gradient text-on-primary-fixed px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+                    Next Step
+                </button>
+</div>
+</div>
+<!-- AI Insight Tooltip -->
+<div class="mt-12 glass-card rounded-xl p-4 flex items-center gap-4 border-l-4 border-primary">
+<div class="bg-primary/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<p class="text-sm text-on-surface-variant italic">
+                "Your previous answers suggest a strong leaning towards <strong>Strategic Thinking</strong>. This question helps us refine your leadership profile."
+            </p>
+</div>
+</main>
+<!-- Navigation Shell (BottomNavBar) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</div>
+<!-- Active Tab: Skills (Discovery involves skill mapping) -->
+<div class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</nav>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-20 right-6 md:bottom-10 md:right-10 w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center text-on-primary-fixed shadow-xl hover:scale-110 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<script>
+        function selectOption(element) {
+            // Remove active classes from all cards
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('active-option');
+                card.classList.add('border-white/10');
+            });
+            
+            // Add active class to selected card
+            element.classList.add('active-option');
+            element.classList.remove('border-white/10');
+
+            // Feedback Haptic-like interaction
+            element.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Add subtle mouse-tracking glow to the card
+        const card = document.querySelector('.glass-card');
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    </script>
+<style>
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(173, 198, 255, 0.05), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .option-card {
+            z-index: 1;
+        }
+    </style>
+</body></html>

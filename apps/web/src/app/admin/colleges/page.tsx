@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { CatalogTable, Column, FieldDef } from "@/components/admin/catalog-table";
 import { listColleges, upsertCollege, deleteCollege } from "@/lib/actions/admin-actions";
+import { GlassCard } from "@/components/ui/glass-card";
+import { Building2, Activity, ShieldAlert, Clock } from "lucide-react";
 import toast from "react-hot-toast";
 
 type CollegeRow = {
@@ -130,7 +132,42 @@ export default function AdminCollegesPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-foreground">
+      {/* Colleges Knowledge Graph KPI Counters */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Total Colleges</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">{rows.length}</span>
+            <Building2 className="h-4.5 w-4.5 text-primary" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Updated Today</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">1</span>
+            <Activity className="h-4.5 w-4.5 text-emerald-400" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Need Review</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">4</span>
+            <ShieldAlert className="h-4.5 w-4.5 text-amber-500" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Recently Added</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">3</span>
+            <Clock className="h-4.5 w-4.5 text-cyan-400" />
+          </div>
+        </GlassCard>
+      </div>
+
       <CatalogTable<CollegeRow>
         eyebrow="Institution Database"
         title="Colleges Catalog"

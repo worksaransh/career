@@ -14,10 +14,19 @@ export const metadata = { title: "Career Matches" };
 export default async function CareersPage() {
   const user = await requireAuth();
 
-  // Check if they completed their assessment
-  const latestResult = await prisma.assessmentResult.findFirst({
-    where: { userId: user.id },
-  });
+  const [latestResult, profile, recommendations, subscription] = await Promise.all([
+    prisma.assessmentResult.findFirst({
+      where: { userId: user.id },
+    }),
+    prisma.userProfile.findUnique({
+      where: { userId: user.id },
+    }),
+    getRecommendations(user.id, "CAREER"),
+    prisma.subscription.findFirst({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+    }),
+  ]);
 
   if (!latestResult) {
     return (
@@ -42,14 +51,7 @@ export default async function CareersPage() {
     );
   }
 
-  // Load user profile & preferences
-  const profile = await prisma.userProfile.findUnique({
-    where: { userId: user.id },
-  });
   const preferences = (profile?.preferences as Record<string, any>) || {};
-
-  // Load recommendations
-  const recommendations = await getRecommendations(user.id, "CAREER");
   
   const careerIds = recommendations.map(r => r.itemId);
   const careers = await prisma.career.findMany({
@@ -69,12 +71,7 @@ export default async function CareersPage() {
     })
     .filter(Boolean) as any[];
 
-  // Fetch subscription status
-  const subscription = await prisma.subscription.findFirst({
-    where: { userId: user.id },
-    orderBy: { createdAt: "desc" },
-  });
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   return (
     <CareersContent

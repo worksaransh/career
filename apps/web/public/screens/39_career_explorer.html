@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Explorer | Career GPS AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 15px 2px rgba(173, 198, 255, 0.15);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            from { background-position: 200% 0; }
+            to { background-position: -200% 0; }
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary": "#3c0091",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-error": "#690005",
+                        "on-background": "#dae2fd",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary": "#003640",
+                        "primary-container": "#4d8eff",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "on-surface": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#571bc1",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "primary-fixed-dim": "#adc6ff",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#e9ddff",
+                        "surface": "#0b1326",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#4cd7f6",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary-container": "#009eb9",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#d0bcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm h-16">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-detail portrait of a professional mentor in a futuristic tech environment. The subject has a confident expression, illuminated by soft blue edge lighting that highlights their sharp features. The background is a soft-focus office with glass partitions and glowing holograms, maintaining a premium dark-mode aesthetic for Career GPS AI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa7DUQ5uQMTCsLfASNwH7uWfAQW22sHykJGic0A1syTAD2ro-9lzazsB5s4BEud2omAUooAbF9esk-NAmLxvCgOEHBOpG6m07mj5aTATdHa07yUqxxOPUIY2Tt3vJBk1buGDY9unbX2Gp6RDRWVrUIyWWx4S8StyyCtBTOFXTG1NSF8pexwLW8DarTOMbltxyVmve3DK3exSUqbPGRG5vlPEE9EHGZIdAwkkkja4VwT4ZjkOiaTcqgWB3PkSdv0RmB5e7bEeJtvpWH"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95">notifications</button>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Dashboard</a>
+<a class="text-primary font-bold font-label-sm text-label-sm" href="#">Explorer</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Mentorship</a>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-container-max mx-auto space-y-lg">
+<!-- Search Section -->
+<section class="relative">
+<div class="max-w-2xl mx-auto space-y-md">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-center text-on-surface leading-tight">Discover your <span class="text-primary">next frontier.</span></h2>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full bg-surface-container-highest/30 border border-white/10 rounded-full py-4 pl-12 pr-6 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all backdrop-blur-md text-body-md font-body-md" placeholder="Search careers, skills, or industries..." type="text"/>
+<div class="absolute right-3 inset-y-0 flex items-center">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm active:scale-95 transition-transform">Ask AI</button>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-2">
+<span class="text-on-surface-variant text-label-sm font-label-sm">AI Suggestions:</span>
+<button class="text-primary text-label-sm font-label-sm hover:underline">Quantum Computing</button>
+<button class="text-primary text-label-sm font-label-sm hover:underline">Sustainable Urbanist</button>
+<button class="text-primary text-label-sm font-label-sm hover:underline">Ethical AI Lead</button>
+</div>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="flex overflow-x-auto gap-3 pb-2 no-scrollbar">
+<button class="flex-none px-6 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm">All Paths</button>
+<button class="flex-none px-6 py-2 rounded-full glass-card text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">Tech &amp; AI</button>
+<button class="flex-none px-6 py-2 rounded-full glass-card text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">Sustainability</button>
+<button class="flex-none px-6 py-2 rounded-full glass-card text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">Finance 2.0</button>
+<button class="flex-none px-6 py-2 rounded-full glass-card text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">Creative Design</button>
+<button class="flex-none px-6 py-2 rounded-full glass-card text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">Health-Tech</button>
+</section>
+<!-- Recommended for You (Bento Style) -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Recommended for You</h3>
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container/30 rounded-full border border-secondary-container/50">
+<span class="material-symbols-outlined text-[16px] text-secondary">sync</span>
+<span class="text-label-sm font-label-sm text-secondary">Twin Sync 94%</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Large Featured Card -->
+<div class="md:col-span-2 glass-card rounded-xl p-6 relative overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform">
+<div class="absolute top-0 right-0 p-6">
+<span class="material-symbols-outlined text-primary text-4xl opacity-20 group-hover:opacity-40 transition-opacity">auto_awesome</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="space-y-2">
+<span class="text-primary text-label-sm font-label-sm uppercase tracking-widest">Top Prediction</span>
+<h4 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Prompt Engineer</h4>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-md">Your expertise in Linguistics and Python perfectly aligns with the emerging field of Large Language Model optimization.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-background glass-card overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female tech leader in her 30s, wearing modern smart-casual attire. She is set against a clean, minimalist studio background with soft purple and blue ambient lighting. The style is sharp, premium, and corporate-modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuEFtCUslKA_C4K8TBQosL2hHdNl2UsJuYl40Zdd4IC3sB-mvJBgsTfD9LZDPzqtQOoq2Nb-7F1OU2jajdvpSNRfR5U3Lqt1qpLjzFXm3AwSGenF48fuVK786uO1W2DB3_qOW94IR_4foQZOQEKoFhaaPYE3R5-M0pDTUQqNBhXggyg3OZUc8RflDOt6VAwOi1j7RtC8Qwgmut1u-VWKf3H5lXKmeuvJKRG8eTgA3qy_5dkSlh6k4t2Acdc87Dps-XJvPMudGWKO7I"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-background glass-card flex items-center justify-center">
+<span class="text-xs text-on-surface-variant">+12k</span>
+</div>
+</div>
+<div class="h-px flex-1 bg-white/10"></div>
+<button class="material-symbols-outlined text-primary">arrow_forward</button>
+</div>
+</div>
+</div>
+<!-- Small Detail Card -->
+<div class="glass-card rounded-xl p-6 space-y-4 hover:border-primary/30 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">eco</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md-mobile text-on-surface">Sustainability Consultant</h4>
+<p class="text-on-surface-variant text-body-md font-body-md line-clamp-2 mt-1">Leverage your background in Finance to drive ESG transitions.</p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">Demand: High</span>
+<span class="text-primary text-label-sm font-label-sm">+22% Growth</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Trending Careers -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Trending Careers</h3>
+<button class="text-primary text-label-sm font-label-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Trend Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden group hover:translate-y-[-4px] transition-all">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A high-tech digital laboratory setting with vibrant teal and electric blue lighting. Focus on a holographic display showing genetic sequences and complex data points. The aesthetic is extremely polished and futuristic, fitting for a biotech career visual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUPeEoz_5Leac9tfO7Nj1Gbc52K-BdAWnhl9dyTzSf3_eS4KWDlbFDdEkmWE4Zfj5QakFATMxc-bbvzc53mDKxQqJBrL41Fdi8-TyidojZlWkvjYkw5zdHTLrK5miHeP_zIHY02HdmkGrgMv9DvvchJSk6rI_etYyYJ33aOrD3L8LlV3ZaRGpU7vR6KQQ8DISkRsbBt_aRxRTkCPYTzvYgK1anpxx6d43j8zfHumVq4aT46Rx0En5VVVdUT8YF-uzIy0sfXEV_ix3O"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-4 space-y-3">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold">Bio-Data Architect</h5>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary shimmer"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">4.2k active roles</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="w-24 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,35 Q20,30 40,32 T80,10 T100,5" fill="none" stroke="#adc6ff" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-bold text-tertiary">+15% YoY</span>
+</div>
+</div>
+</div>
+<!-- Trend Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden group hover:translate-y-[-4px] transition-all">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A sprawling, futuristic cityscape with lush green rooftops and wind turbines integrated into the architecture. The lighting is golden hour, warm and vibrant, with soft electric blue accents from the city's power grid. The style is cinematic concept art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXu2i6avUThCrnVjgKw_nOQuRJ_JDbTd9pwTgvCgzzG1wwyWtqvTfZdt3RNxVuBonTAtxAIgud13RdHKQG8fEcRPdeUssuSsE7gQyQX7PWst3lBBm-quq72vrjbiu4DRMl4IZCWF57ARnnsP04YtQ35XYSGPztlku-TNVMP-Ge9IhrURenPDNUslpfWgGREVLaaFO9lmmRn2peQCvP4v3fl8xr7IMOzRoHs4sc_iByAfMnIQiLtT9_a0km9bJ8eoS0Mq0svtEULRd8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-4 space-y-3">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold">Smart City Urbanist</h5>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">1.8k active roles</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="w-24 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,38 Q25,35 50,20 T100,2" fill="none" stroke="#adc6ff" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-bold text-tertiary">+34% YoY</span>
+</div>
+</div>
+</div>
+<!-- Trend Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden group hover:translate-y-[-4px] transition-all">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist workspace with a large curved monitor displaying complex code and abstract neural network visualizations. The desk is illuminated by a soft blue glow from below. The overall mood is hyper-focused and technologically sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrMw6v8a1AiKV8Dt2hyhHoNQl6AhbyovWidrNel9NmcNE8y0PCnUq9GC5yNrMy04T2gLa-Cg3ITWQqTnKSmA_tF7R4qgKrAB6XgH_eqEt9HPfVnmf8hsqzBBW7WbNxIhVP6-OH48E-oWAuqgL-uAikbZjL6W2u-ZeaLWBqORmbt9TBImTmX1DGDxRodK4ww-uFmCgGvmzTc632AXSK_sRu5RUJKSc1Ro7wNe1Qb58Flt-dzUn1YMgBBvefRwJpdIbBlmlHahqEcmGp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-4 space-y-3">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold">AI Auditor</h5>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">3.1k active roles</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="w-24 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,30 Q30,10 60,15 T100,5" fill="none" stroke="#adc6ff" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-bold text-tertiary">+12% YoY</span>
+</div>
+</div>
+</div>
+<!-- Trend Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden group hover:translate-y-[-4px] transition-all">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A high-end virtual reality studio with a person wearing a sleek, low-profile VR headset. The background is dark and moody, filled with neon light streaks in blue and purple. Digital interface elements float in the air around the person." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUmFKJs1Noccv6vbBfw6C2ehiwrKceouLRS0XKnuaXuzJU5-7v800ygSGPg64K4KE0-Ty80NdAmgeBomTdOyiV8NIALH7RbBuEvh9ToNyUuRldsW7CcgOp31_IIvsT9GHBLVUHCOwA2WLJS6YydFUxJbPCNr2GDTIuvGvey3jCW9lSwPcWshIz9LOlpalne96vqRrM041RCRPZvISidKN5qkLrdwGsIty6rvoliwNofk8dkwe_T2dypACL0s8EdTjOc7HK38otglh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+<div class="p-4 space-y-3">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold">Metaverse Curator</h5>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">800 active roles</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="w-24 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,35 Q50,40 70,20 T100,10" fill="none" stroke="#adc6ff" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-bold text-tertiary">+45% YoY</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(173,198,255,0.4)] z-50 intelligence-glow active:scale-95 transition-transform">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple search feedback
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

@@ -1273,15 +1273,17 @@ model UserQuestionAnswer {
 }
 
 model SkillProficiency {
-  id            String   @id @default(uuid()) @db.Uuid
-  userId        String   @db.Uuid
-  skillName     String
-  selfRated     Float    @default(0) // 0-100
-  inferred      Float    @default(0) // 0-100 computed from behavior
-  evidence      Json     @default("[]") // Array of evidence objects
-  confidence    Float    @default(0) // 0-100 how certain we are
-  lastUpdatedAt DateTime @default(now())
-  createdAt     DateTime @default(now())
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String   @db.Uuid
+  skillName           String
+  selfRated           Float    @default(0) // 0-100
+  inferred            Float    @default(0) // 0-100 computed from behavior
+  evidence            Json     @default("[]") // Array of evidence objects
+  confidence          Float    @default(0) // 0-100 how certain we are
+  verified            Boolean  @default(false)
+  verificationAnswers Json?
+  lastUpdatedAt       DateTime @default(now())
+  createdAt           DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -1346,6 +1348,8 @@ model VaultDocument {
   type          String   // RESUME, CV, CERTIFICATE, INTERNSHIP_PROOF, PROJECT, PORTFOLIO, GITHUB, LINKEDIN, WEBSITE, FREELANCE_PROFILE
   fileUrl       String?  @db.Text
   linkUrl       String?  @db.Text
+  parsedContent Json?    @default("{}")
+  confidenceScore Float?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 

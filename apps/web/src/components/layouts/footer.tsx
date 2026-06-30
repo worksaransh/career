@@ -32,17 +32,17 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-background" role="contentinfo">
+    <footer className="border-t border-white/5 bg-[#06060c]" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-2 lg:col-span-1">
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-bold"
+              className="flex items-center gap-2 text-lg font-extrabold tracking-tight text-white hover:opacity-95 transition-opacity"
               aria-label="Career OS Home"
             >
-              <Sparkles className="h-5 w-5 text-primary" />
-              <span className="gradient-text">Career OS</span>
+              <span>Career OS</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-pulse" />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-xs">
               AI-powered career guidance platform. See your future before you decide.
@@ -66,7 +66,7 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 border-t border-border pt-6">
+        <div className="mt-12 border-t border-white/5 pt-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-xs text-muted-foreground">
               &copy; {currentYear} Career OS. All rights reserved.

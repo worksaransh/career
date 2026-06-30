@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Schedule - Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-active {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-primary": "#002e6a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#424754",
+                        "on-tertiary": "#003640",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container": "#171f33",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-bright": "#31394d",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#002f38",
+                        "inverse-on-surface": "#283044",
+                        "secondary": "#d0bcff",
+                        "surface-variant": "#2d3449",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "surface": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#4cd7f6",
+                        "primary-container": "#4d8eff",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-low": "#131b2e",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary-container": "#00285d",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "background": "#0b1326",
+                        "tertiary-container": "#009eb9",
+                        "on-secondary": "#3c0091",
+                        "outline": "#8c909f",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "xl": "64px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a mentor in a high-tech studio environment, with soft blue ambient lighting reflecting the Career GPS brand colors. The person is smiling confidently, wearing modern business-casual attire. The background is a blurred digital workspace with subtle data visualization overlays in electric blue and deep indigo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2S1q9P4IgznNa8Cotgu9oBDHBSmNqT-1bwWEftdlJc7fDTorC32dvyiICbdcDotD91SnxW-FW2BUL5ORzVbO8DxlU-e8GVc-J8b3-L3trXztDCf52jbfjBCrczoIYEU6o2ZZ5UPAUVFdeeNIgBerDUol9N32hpDA9x617f-4Mosk107M7VluEwI_85p6PkSP8-baOSMIuXbR_fxSprb5CEvtzRXFYlYq0vxbmVWn3V27qBN6nBZ6uQp5MMzRfkWAi4NHwk1LDmmvm"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+</div>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-container-max mx-auto">
+<!-- Monthly Overview Bento -->
+<section class="mb-lg">
+<div class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-primary">October 2023</h2>
+<div class="flex gap-xs">
+<button class="p-xs rounded-lg hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-xs rounded-lg hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="calendar-grid text-center font-label-sm text-on-surface-variant mb-xs">
+<div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+</div>
+<div class="calendar-grid gap-y-4">
+<!-- Week 1 (Partial) -->
+<div class="p-2 text-on-surface-variant opacity-30">27</div>
+<div class="p-2 text-on-surface-variant opacity-30">28</div>
+<div class="p-2 text-on-surface-variant opacity-30">29</div>
+<div class="p-2 text-on-surface-variant opacity-30">30</div>
+<div class="relative p-2 flex flex-col items-center justify-center">
+<span class="z-10">1</span>
+</div>
+<div class="relative p-2 flex flex-col items-center justify-center">
+<span class="z-10">2</span>
+<div class="w-1 h-1 bg-tertiary rounded-full mt-1"></div>
+</div>
+<div class="relative p-2 flex flex-col items-center justify-center">
+<span class="z-10">3</span>
+</div>
+<!-- Week 2 -->
+<div class="p-2">4</div>
+<div class="p-2">5</div>
+<div class="relative p-2 flex flex-col items-center justify-center bg-primary/20 rounded-lg border border-primary/50 glow-active">
+<span class="font-bold text-primary">6</span>
+<div class="w-1 h-1 bg-primary rounded-full mt-1"></div>
+</div>
+<div class="p-2">7</div>
+<div class="relative p-2 flex flex-col items-center justify-center">
+<span class="z-10">8</span>
+<div class="w-1 h-1 bg-tertiary rounded-full mt-1"></div>
+</div>
+<div class="p-2">9</div>
+<div class="p-2">10</div>
+<!-- Week 3 -->
+<div class="p-2">11</div>
+<div class="p-2">12</div>
+<div class="relative p-2 flex flex-col items-center justify-center">
+<span>13</span>
+<div class="w-1 h-1 bg-tertiary rounded-full mt-1"></div>
+</div>
+<div class="p-2">14</div>
+<div class="p-2">15</div>
+<div class="p-2">16</div>
+<div class="p-2">17</div>
+</div>
+</div>
+</section>
+<!-- Sessions List -->
+<section class="mb-lg">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-md text-on-surface">Today's Sessions</h3>
+<span class="font-label-sm text-primary px-sm py-1 bg-primary/10 rounded-full">3 Scheduled</span>
+</div>
+<div class="space-y-sm">
+<!-- Session Item 1 -->
+<div class="glass-card rounded-xl p-sm flex items-center gap-md border-l-4 border-l-primary group">
+<div class="flex flex-col items-center border-r border-white/10 pr-md">
+<span class="text-primary font-bold">14:00</span>
+<span class="text-on-surface-variant font-label-sm uppercase">PM</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-on-surface">Arjun Sharma</h4>
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">description</span>
+                            Portfolio Review
+                        </p>
+</div>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-bold shadow-[0_0_15px_rgba(173,198,255,0.4)] active:scale-95 transition-all">
+                        Join Call
+                    </button>
+</div>
+<!-- Session Item 2 -->
+<div class="glass-card rounded-xl p-sm flex items-center gap-md border-l-4 border-l-tertiary">
+<div class="flex flex-col items-center border-r border-white/10 pr-md">
+<span class="text-tertiary font-bold">16:30</span>
+<span class="text-on-surface-variant font-label-sm uppercase">PM</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-on-surface">Priya Kapur</h4>
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+                            Mock Interview
+                        </p>
+</div>
+<button class="bg-surface-bright text-on-surface-variant px-md py-xs rounded-lg font-bold border border-white/10 active:scale-95 transition-all opacity-50 cursor-not-allowed">
+                        Waiting...
+                    </button>
+</div>
+<!-- Session Item 3 -->
+<div class="glass-card rounded-xl p-sm flex items-center gap-md border-l-4 border-l-secondary">
+<div class="flex flex-col items-center border-r border-white/10 pr-md">
+<span class="text-secondary font-bold">19:00</span>
+<span class="text-on-surface-variant font-label-sm uppercase">PM</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-on-surface">Rohan Das</h4>
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">map</span>
+                            Career Roadmap
+                        </p>
+</div>
+<button class="bg-surface-bright text-on-surface-variant px-md py-xs rounded-lg font-bold border border-white/10 active:scale-95 transition-all opacity-50 cursor-not-allowed">
+                        Locked
+                    </button>
+</div>
+</div>
+</section>
+<!-- Availability Settings -->
+<section>
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md border-b border-white/10 flex justify-between items-center">
+<h3 class="font-headline-md text-on-surface">Availability Settings</h3>
+<span class="material-symbols-outlined text-primary">settings</span>
+</div>
+<div class="p-md space-y-md">
+<p class="text-on-surface-variant font-body-md">Toggle your active slots for the upcoming week.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<!-- Day Slot -->
+<div class="flex items-center justify-between p-sm bg-surface-container/50 rounded-lg border border-white/5">
+<div class="flex flex-col">
+<span class="font-bold">Monday</span>
+<span class="text-label-sm text-on-surface-variant">09:00 - 12:00</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container/50 rounded-lg border border-white/5">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface-variant">Tuesday</span>
+<span class="text-label-sm text-on-surface-variant">No slots set</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container/50 rounded-lg border border-white/5">
+<div class="flex flex-col">
+<span class="font-bold">Wednesday</span>
+<span class="text-label-sm text-on-surface-variant">14:00 - 20:00</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container/50 rounded-lg border border-white/5">
+<div class="flex flex-col">
+<span class="font-bold">Thursday</span>
+<span class="text-label-sm text-on-surface-variant">10:00 - 15:00</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe max-w-container-max mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-20 overflow-hidden">
+</div>
+<script>
+        // Simple Interaction logic for demo
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('div');
+                if(this.checked) {
+                    parent.classList.remove('opacity-60');
+                    parent.querySelector('.font-bold').classList.remove('text-on-surface-variant');
+                } else {
+                    parent.classList.add('opacity-60');
+                    parent.querySelector('.font-bold').classList.add('text-on-surface-variant');
+                }
+            });
+        });
+
+        // Hover glow effect for session cards
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

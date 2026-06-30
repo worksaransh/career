@@ -21,6 +21,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { PersonaRecommendationCards } from "./persona-recommendation-cards";
+import { AiMicroGoals } from "../ai-micro-goals";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Badge } from "@/components/ui/badge";
@@ -352,6 +353,7 @@ export function CollegeStudentDashboardContent({
             </div>
           </GlassCard>
 
+          <AiMicroGoals persona="COLLEGE_STUDENT" />
         </div>
 
         {/* RIGHT COLUMN: Partners, Habit Loop & Actions (5 spans) */}

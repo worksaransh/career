@@ -17,6 +17,9 @@ interface Props {
   telegramLink: string;
 }
 
+import { DynamicCareerTimeline } from "../dynamic-career-timeline";
+import { AiMicroGoals } from "../ai-micro-goals";
+
 export function ProfessionalDashboardContent({ user, latestResult, memory }: Props) {
   return (
     <div className="space-y-6">
@@ -52,6 +55,10 @@ export function ProfessionalDashboardContent({ user, latestResult, memory }: Pro
       </div>
 
       <PersonaRecommendationCards persona="PROFESSIONAL" />
+
+      {/* Dynamic Growth Timeline & Goals */}
+      <DynamicCareerTimeline persona="PROFESSIONAL" memory={memory} />
+      <AiMicroGoals persona="PROFESSIONAL" />
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-4">
@@ -118,7 +125,7 @@ export function ProfessionalDashboardContent({ user, latestResult, memory }: Pro
             <div className="rounded-xl border border-border bg-card p-4">
               <p className="text-xs text-muted-foreground mb-1">Career Match Score</p>
               <p className="text-2xl font-bold text-primary">
-                {(() => { const vals = Object.values(latestResult.scores ?? {}) as number[]; return vals.length > 0 ? `${Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)}%` : "--"; })()}
+                {(() => { const vals = Object.values(latestResult.scores ?? {}).filter((v) => typeof v === "number") as number[]; return vals.length > 0 ? `${Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)}%` : "--"; })()}
               </p>
             </div>
           )}

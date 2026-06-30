@@ -134,7 +134,7 @@ export function DashboardContent({
   let careerScore = "--";
   let careerDesc = "Complete assessments to unlock";
   if (latestResult && latestResult.scores) {
-    const scoreVals = Object.values(latestResult.scores) as number[];
+    const scoreVals = Object.values(latestResult.scores).filter((v) => typeof v === "number") as number[];
     if (scoreVals.length > 0) {
       const avg = Math.round(scoreVals.reduce((sum, v) => sum + v, 0) / scoreVals.length);
       careerScore = `${avg}`;

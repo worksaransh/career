@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Skills Gap Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary": "#3c0091",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-error": "#690005",
+                        "on-background": "#dae2fd",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary": "#003640",
+                        "primary-container": "#4d8eff",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "on-surface": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#571bc1",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "primary-fixed-dim": "#adc6ff",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#e9ddff",
+                        "surface": "#0b1326",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#4cd7f6",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary-container": "#009eb9",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#d0bcff"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a young tech professional with a warm smile, set against a dark, minimalist office background with soft blue lighting. The style is high-end editorial photography, consistent with a premium AI SaaS aesthetic, emphasizing trust and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-faGNaj2jsj9bUYFAuN0emM78Nvthq1roBQCG84eoDqdTe1Ve85e9AJKBx0YAdnerp6UdvbMrn2s5d9J4PKjaEPErisUkd6XKiB7HmgoLHaIfnDuRq3cWcOknOwbwiDyDU9awIBXloBrlb2LavYZZPDdOnKPo_S5hTQe8hLHUYkpEsz76v31SGyyiDeT0dBRy0r8f7F9dXDp9EVyGIA0W1wrocl-CROw24HH9oBQ8PK8591X1y9U7BlRiEKqnMlaIjR186v0jM3Iy"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight md:text-headline-md">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+<button class="hidden md:flex bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm active:scale-95 transition-transform">Get AI Mentorship</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto">
+<!-- Hero Analysis Header -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-md">
+<div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-widest mb-xs block">Gap Analysis</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Senior Product Designer</h2>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-2xl">We've analyzed 450+ successful career paths for this role. Here’s how your current profile aligns with the industry standard for 2024.</p>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-center gap-md">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"></path>
+</svg></div></div></div></section></main></body></html>

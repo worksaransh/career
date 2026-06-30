@@ -5,12 +5,124 @@ import { requireAuth } from "@/lib/session/session";
 import { revalidatePath } from "next/cache";
 import { getUserMemory, updateMemoryFromAnswer } from "./memory-actions";
 
+// Verification Questions Dictionary for imported skills
+const VERIFICATION_QUESTIONS: Record<string, Array<{
+  text: string;
+  type: string;
+  category: string;
+  options: Array<{ id: string; text: string }>;
+  correctAnswer: string;
+}>> = {
+  python: [
+    {
+      text: "Based on Python in your resume: Which of the following is used to handle exceptions in Python?",
+      type: "MCQ",
+      category: "Technical",
+      options: [
+        { id: "A", text: "try...except" },
+        { id: "B", text: "try...catch" },
+        { id: "C", text: "do...catch" },
+        { id: "D", text: "throw...catch" }
+      ],
+      correctAnswer: "A"
+    }
+  ],
+  excel: [
+    {
+      text: "Based on Excel in your resume: Which formula is best suited to retrieve data from a specific column in another table?",
+      type: "MCQ",
+      category: "Technical",
+      options: [
+        { id: "A", text: "XLOOKUP or VLOOKUP" },
+        { id: "B", text: "INDEX without MATCH" },
+        { id: "C", text: "HLOOKUP only" },
+        { id: "D", text: "FILTER only" }
+      ],
+      correctAnswer: "A"
+    }
+  ],
+  sql: [
+    {
+      text: "Based on SQL in your resume: Which clause is used to filter query results aggregated by a GROUP BY clause?",
+      type: "MCQ",
+      category: "Technical",
+      options: [
+        { id: "A", text: "HAVING" },
+        { id: "B", text: "WHERE" },
+        { id: "C", text: "LIMIT" },
+        { id: "D", text: "SORT BY" }
+      ],
+      correctAnswer: "A"
+    }
+  ],
+  react: [
+    {
+      text: "Based on React/JavaScript in your resume: Which hook would you use to perform side effects in a functional component?",
+      type: "MCQ",
+      category: "Technical",
+      options: [
+        { id: "A", text: "useEffect" },
+        { id: "B", text: "useState" },
+        { id: "C", text: "useContext" },
+        { id: "D", text: "useReducer" }
+      ],
+      correctAnswer: "A"
+    }
+  ],
+  leadership: [
+    {
+      text: "Based on Leadership in your resume: A key developer disagrees with the technical roadmap. How do you resolve this?",
+      type: "MCQ",
+      category: "Leadership",
+      options: [
+        { id: "A", text: "Schedule a 1-to-1 to understand their concerns and seek alignment." },
+        { id: "B", text: "Overrule their opinion and demand compliance." },
+        { id: "C", text: "Reassign the developer to a different project." },
+        { id: "D", text: "Let the team vote without discussing the merits." }
+      ],
+      correctAnswer: "A"
+    }
+  ]
+};
+
 // ─── Get the highest-value next question for the user ────────────
 
 export async function getNextQuestion(context?: string) {
   const user = await requireAuth();
   const memory = await getUserMemory();
   const answeredIds = memory.answeredQuestionIds || [];
+
+  // 1. Dynamic Skill Verification Priority
+  const unverifiedSkills = await prisma.skillProficiency.findMany({
+    where: { userId: user.id, verified: false },
+    take: 5
+  });
+
+  for (const skillProf of unverifiedSkills) {
+    const nameKey = skillProf.skillName.toLowerCase();
+    const qList = VERIFICATION_QUESTIONS[nameKey];
+    if (qList && qList[0]) {
+      const virtualId = `verify:${skillProf.skillName}:0`;
+      const answered = answeredIds.includes(virtualId);
+      if (!answered) {
+        return {
+          id: virtualId,
+          text: qList[0].text,
+          type: qList[0].type,
+          options: qList[0].options as any,
+          category: qList[0].category,
+          subcategory: "Verification",
+          difficulty: "MEDIUM",
+          weight: 0.9,
+          dependencies: [],
+          contextTrigger: "verify",
+          memoryKey: `skills.${skillProf.skillName}`,
+          language: "en",
+          isActive: true
+        };
+      }
+    }
+  }
 
   // Build query filters
   const where: Record<string, unknown> = {
@@ -124,6 +236,84 @@ export async function submitQuestionAnswer(
   timeToAnswer?: number
 ) {
   const user = await requireAuth();
+
+  // Handle Virtual Skill Verification questions
+  if (questionId.startsWith("verify:")) {
+    const parts = questionId.split(":");
+    const skillName = parts[1];
+    if (!skillName) {
+      return { success: false, message: "Invalid skill verification question ID" };
+    }
+    const nameKey = skillName.toLowerCase();
+    const qList = VERIFICATION_QUESTIONS[nameKey];
+    if (!qList || !qList[0]) {
+      return { success: false, message: "No verification questions found for this skill" };
+    }
+    
+    const firstQ = qList[0];
+    const opt = firstQ.options.find(o => o.id === firstQ.correctAnswer);
+    const isCorrect = answer.toUpperCase().trim() === firstQ.correctAnswer || 
+                      answer.toLowerCase().trim() === (opt?.text?.toLowerCase() || "");
+
+    if (isCorrect) {
+      await prisma.skillProficiency.update({
+        where: {
+          userId_skillName: {
+            userId: user.id,
+            skillName,
+          }
+        },
+        data: {
+          verified: true,
+          confidence: 95,
+          inferred: 85,
+        }
+      });
+    }
+
+    // Save answer
+    await prisma.userQuestionAnswer.create({
+      data: {
+        userId: user.id,
+        questionId,
+        answer,
+        answerData: { isCorrect, verifiedSkill: skillName } as any,
+        context: "skill_verification",
+        timeToAnswer: timeToAnswer || null,
+      }
+    });
+
+    // Update answered list in user memory
+    const memory = await getUserMemory();
+    const answeredIds = memory.answeredQuestionIds || [];
+    if (!answeredIds.includes(questionId)) {
+      await prisma.userMemory.update({
+        where: { id: memory.id },
+        data: {
+          answeredQuestionIds: [...answeredIds, questionId],
+          totalQuestionsAnswered: (memory.totalQuestionsAnswered || 0) + 1,
+        }
+      });
+    }
+
+    // Award XP
+    const engagement = await prisma.userEngagement.findUnique({
+      where: { userId: user.id },
+    });
+    if (engagement) {
+      await prisma.userEngagement.update({
+        where: { id: engagement.id },
+        data: {
+          totalXP: engagement.totalXP + 35, // Premium verification XP
+          totalPoints: engagement.totalPoints + 20,
+        },
+      });
+    }
+
+    revalidatePath("/dashboard");
+    revalidatePath("/vault");
+    return { success: true, xpEarned: 35 };
+  }
 
   // Check if already answered
   const existing = await prisma.userQuestionAnswer.findUnique({

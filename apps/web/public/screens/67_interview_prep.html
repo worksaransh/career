@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interview Prep | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#571bc1",
+                    "on-primary": "#002e6a",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "inverse-primary": "#005ac2",
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#c2c6d6",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#002f38",
+                    "on-primary-fixed": "#001a42",
+                    "tertiary-container": "#009eb9",
+                    "background": "#0b1326",
+                    "secondary-fixed": "#e9ddff",
+                    "on-secondary": "#3c0091",
+                    "surface-tint": "#adc6ff",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-fixed": "#001f26",
+                    "surface-variant": "#2d3449",
+                    "on-secondary-container": "#c4abff",
+                    "tertiary": "#4cd7f6",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface": "#0b1326",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary": "#d0bcff",
+                    "outline-variant": "#424754",
+                    "outline": "#8c909f",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003640",
+                    "surface-bright": "#31394d",
+                    "on-background": "#dae2fd",
+                    "primary": "#adc6ff",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-container": "#00285d",
+                    "tertiary-fixed": "#acedff",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#2d3449",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-surface": "#dae2fd",
+                    "on-surface": "#dae2fd",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "surface-container-high": "#222a3d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "64px",
+                    "base": "4px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "container-max": "1200px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(173, 198, 255, 0.2);
+            border-radius: 10px;
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">gps_fixed</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+<div class="w-10 h-10 rounded-full border border-primary/20 p-0.5 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="A professional studio portrait of a young tech professional with warm lighting, set against a dark, minimalist background with subtle blue rim lighting to match a high-end AI SaaS aesthetic. The style is crisp, high-resolution, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu7ckfRSm5apV6TkPwZXlv57wCXt9isdERWd5nOtjkPOdxXubTNNqzVgY9WycHSw1OJAVyFIedDZOEOqaGN1fwBHCryb_k0MCBQ0sGyuQ9bkfSacj5PODa4q46sJlXsm3D7OKAyU4-qSl1gFFAwZl4q9lsKCDQprtwtOVlrPb8doILHc-ms34q-pmZtK8FyjlzeHBVES9dVOBjw4Lldq-IPEj_oS8bDxag3xuY8LmZmWjRira2nP-FQUJltI0tUJ-K5aOThIwZmfeJ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-gutter max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<div class="flex items-center gap-xs text-primary mb-xs">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">AI Analysis Complete</span>
+</div>
+<h2 class="font-headline-md text-headline-md mb-xs">Senior Product Designer</h2>
+<p class="text-on-surface-variant max-w-2xl">Tailored interview simulation for Meta's Design Systems team based on the provided job description and your portfolio.</p>
+</div>
+<button class="intelligence-gradient text-on-primary font-bold px-md py-sm rounded-xl flex items-center gap-sm active:scale-95 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+                    Start Mock Interview
+                </button>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Behavioral Questions Section -->
+<div class="md:col-span-8 flex flex-col gap-md">
+<!-- Section Header -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+<h3 class="font-headline-md text-headline-md">Behavioral Questions</h3>
+<span class="bg-secondary-container/30 text-on-secondary-container px-xs py-1 rounded text-xs font-bold uppercase tracking-tighter">4 Questions</span>
+</div>
+<!-- Questions List -->
+<div class="space-y-md">
+<!-- Question Card 1 -->
+<div class="glass-card p-md rounded-xl group hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant text-sm font-label-sm">#1 SITUATIONAL</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+<p class="font-body-lg text-body-lg font-semibold mb-md">"Tell me about a time you had to defend a design decision against a strong technical constraint."</p>
+<div class="bg-surface-container-low/50 rounded-lg p-sm border border-white/5">
+<div class="flex items-center gap-xs text-tertiary mb-xs">
+<span class="material-symbols-outlined text-sm">tips_and_updates</span>
+<span class="font-label-sm text-label-sm">HOW TO ANSWER</span>
+</div>
+<p class="text-sm text-on-surface-variant">Focus on the <strong>STAR</strong> method. Emphasize cross-functional collaboration and how you prioritized user needs while acknowledging engineering complexity.</p>
+</div>
+</div>
+<!-- Question Card 2 -->
+<div class="glass-card p-md rounded-xl group hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant text-sm font-label-sm">#2 IMPACT</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</div>
+<p class="font-body-lg text-body-lg font-semibold mb-md">"How do you handle feedback from stakeholders who are not design-literate?"</p>
+<div class="bg-surface-container-low/50 rounded-lg p-sm border border-white/5">
+<div class="flex items-center gap-xs text-tertiary mb-xs">
+<span class="material-symbols-outlined text-sm">tips_and_updates</span>
+<span class="font-label-sm text-label-sm">HOW TO ANSWER</span>
+</div>
+<p class="text-sm text-on-surface-variant">Highlight your ability to translate design language into business value. Mention techniques like 'Visual Bridging' or user data evidence.</p>
+</div>
+</div>
+</div>
+<!-- Technical Deep Dive Section -->
+<div class="mt-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary">code_blocks</span>
+<h3 class="font-headline-md text-headline-md">Technical Deep Dive</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="glass-card p-sm rounded-xl border-l-4 border-tertiary">
+<h4 class="font-bold mb-xs">Design Systems at Scale</h4>
+<p class="text-sm text-on-surface-variant mb-md">Expect questions about component tokenization and versioning for multi-platform apps.</p>
+<button class="text-tertiary text-sm font-bold flex items-center gap-xs hover:underline">
+                                Practice Technical Case <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+<div class="glass-card p-sm rounded-xl border-l-4 border-secondary">
+<h4 class="font-bold mb-xs">Accessibility Standards</h4>
+<p class="text-sm text-on-surface-variant mb-md">Be ready to discuss WCAG 2.2 compliance in the context of dark mode and high-contrast themes.</p>
+<button class="text-secondary text-sm font-bold flex items-center gap-xs hover:underline">
+                                Review WCAG Checklist <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content -->
+<aside class="md:col-span-4 flex flex-col gap-md">
+<!-- Company Culture Insight -->
+<div class="glass-card p-md rounded-xl border border-primary/10 overflow-hidden relative">
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">diversity_3</span>
+<h3 class="font-headline-md text-headline-md">Company Culture</h3>
+</div>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Move Fast</h4>
+<p class="text-xs text-on-surface-variant">They value rapid prototyping and the ability to iterate based on real-time user feedback.</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">visibility</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Openness</h4>
+<p class="text-xs text-on-surface-variant">Critique is central. Be prepared to show 'in-progress' work and articulate your rationale clearly.</p>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-white/5">
+<div class="w-full h-32 rounded-lg bg-cover bg-center mb-sm" data-alt="A futuristic, glass-and-steel office interior with lush green plants, minimalist furniture, and soft blue and violet ambient lighting, creating a high-end corporate tech environment for a top-tier software company. Wide-angle shot, cinematic lighting, 8k resolution." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDK0eNomphYbuQg0m4syzZexTEJacBlb5E2iSz5rqvagWwaFu9kdU0rBXjRS1rWtDjAueXNZaocEaDKcUNsgnMTm-5N2Yu70-6zp6EPACb7sdp8Q62UCGIlbnGME6-z4HWsyUd-5ZKeLexQTUi8ShUnjLNM4cd8TDptZ8RCu6RgVH1nAbGiLmrX1iTvIhw7G8osz2HbY8DysEc4MssPLhapvBbLNk2Eh_5yG4h-S7doi1A2N2LWSfmbNp7DkZ4sbRrRLCSmJUJdzaT4')"></div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/60 text-center">Inside Meta Design HQ</p>
+</div>
+</div>
+<!-- AI Interviewer Presence -->
+<div class="glass-card p-md rounded-xl bg-gradient-to-br from-primary/10 to-transparent ai-glow border border-primary/20">
+<div class="flex items-center gap-sm mb-sm">
+<div class="relative">
+<div class="w-10 h-10 rounded-full intelligence-gradient animate-pulse"></div>
+<span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-on-primary">smart_toy</span>
+</div>
+<div>
+<p class="font-bold">Interviewer: Alex</p>
+<p class="text-xs text-primary/80">AI Personality: Direct &amp; Analytical</p>
+</div>
+</div>
+<p class="text-sm italic text-on-surface-variant mb-md">"I'll be evaluating your ability to balance user needs with technical viability. Take a breath, we're ready when you are."</p>
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-bounce"></span>
+<span class="w-2 h-2 rounded-full bg-primary animate-bounce" style="animation-delay: 0.1s"></span>
+<span class="w-2 h-2 rounded-full bg-primary animate-bounce" style="animation-delay: 0.2s"></span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile View Priority) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</nav>
+<!-- Desktop Floating AI FAB -->
+<button class="hidden md:flex fixed bottom-md right-md w-16 h-16 rounded-full intelligence-gradient items-center justify-center shadow-2xl z-50 active:scale-90 transition-transform group">
+<span class="material-symbols-outlined text-on-primary text-3xl group-hover:rotate-12 transition-transform">auto_awesome</span>
+</button>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Simple scroll reveal effect
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 50;
+                if(isVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize cards state
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+        
+        // Trigger initial reveal
+        setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
+    </script>
+</body></html>

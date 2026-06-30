@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Mentor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-primary": "#002e6a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline-variant": "#424754",
+                        "on-tertiary": "#003640",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container": "#171f33",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-bright": "#31394d",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#002f38",
+                        "inverse-on-surface": "#283044",
+                        "secondary": "#d0bcff",
+                        "surface-variant": "#2d3449",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "surface": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#4cd7f6",
+                        "primary-container": "#4d8eff",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-low": "#131b2e",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary-container": "#00285d",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "background": "#0b1326",
+                        "tertiary-container": "#009eb9",
+                        "on-secondary": "#3c0091",
+                        "outline": "#8c909f",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "xl": "64px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution headshot of Arjun Mehta, a South Asian male in his early 30s with a clean-shaven look and modern eyewear, wearing a dark professional turtleneck. The lighting is dramatic and moody with a soft blue rim light, set against a blurred high-tech office background with subtle glass textures and electric blue highlights. The aesthetic is premium, polished, and fits a high-end AI SaaS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiVIZWdsW43uqNxFXSUCwZIbRG9xxMgL84M22CEaKovGkSVtBcEJV8DozEb9aMS1OapK1TR8aiOd5TrG9JBH21oKefImOhOS6BMBfvMiOTid8vvzRR1V2JTQTQWs-16l9LCkEjMK2DZ7YWAjuwUzyz9BVjXTFOT0Ep-Xn_lpVBkGOfrvWXxfvWqThrYvru_nJ2Q8mSbWIcIZOndBDC-9HbmuHGtdqPQGE4lIkedrdNNthQxeqSaJsBGM7IBjA3sb1TaujtCHATFmDC"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] md:text-headline-md text-primary leading-tight">Arjun Mehta</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">Staff Designer @ CRED</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="hidden md:block font-display-lg-mobile text-primary tracking-tight">Career GPS</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto">
+<!-- Hero Metrics Bento Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-lg">
+<div class="glass-card rounded-xl p-md flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<span class="font-label-sm text-on-surface-variant">Active Mentees</span>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-primary">12</span>
+<span class="text-tertiary font-label-sm pb-2">+2 this month</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<span class="font-label-sm text-on-surface-variant">Total Sessions</span>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-secondary">142</span>
+<span class="material-symbols-outlined text-secondary-container mb-2">history</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<span class="font-label-sm text-on-surface-variant">Average Rating</span>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-tertiary">4.9</span>
+<span class="material-symbols-outlined text-tertiary mb-2" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between border-primary/30 bg-primary/5 hover:scale-[1.02] transition-transform duration-300">
+<span class="font-label-sm text-primary">Pending Requests</span>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-primary">3</span>
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">person_add</span>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Upcoming Sessions -->
+<div class="lg:col-span-2 space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-on-surface">Upcoming Sessions</h2>
+<button class="text-primary font-label-sm hover:underline">View Calendar</button>
+</div>
+<div class="space-y-4">
+<!-- Session Card 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row md:items-center justify-between gap-4 group cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-white/5">
+<span class="text-primary font-bold">14:00</span>
+</div>
+<div>
+<h3 class="font-body-lg font-semibold text-on-surface">Priya Sharma</h3>
+<p class="font-label-sm text-on-surface-variant">Product Design Portfolio Review</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm">45 mins</span>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center group-active:scale-95 transition-transform">
+<span class="material-symbols-outlined">video_call</span>
+</button>
+</div>
+</div>
+<!-- Session Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row md:items-center justify-between gap-4 group cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-white/5">
+<span class="text-secondary font-bold">16:30</span>
+</div>
+<div>
+<h3 class="font-body-lg font-semibold text-on-surface">Rohan Das</h3>
+<p class="font-label-sm text-on-surface-variant">Career Transition Strategy</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm">30 mins</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest text-primary border border-primary/20 flex items-center justify-center group-active:scale-95 transition-transform">
+<span class="material-symbols-outlined">link</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insights -->
+<div class="space-y-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-headline-md text-on-surface">AI Insights</h2>
+</div>
+<div class="glass-card rounded-2xl p-md border-tertiary/20 relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-tertiary/10 blur-3xl rounded-full"></div>
+<p class="font-label-sm text-tertiary uppercase tracking-widest mb-4">Urgent Attention Needed</p>
+<div class="space-y-6">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full border border-tertiary/30 p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A young Indian professional female, mid-20s, with a serious and focused expression. She is in a modern home office with warm ambient lighting and soft purple backlighting. The image quality is cinematic and clean, consistent with a high-end designer dashboard. She represents a high-potential mentee." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6aRoZm_fZgAYobSMJmRaiSgdzrnoFa5DkbpDf4f2XGaJtuVlY7h3udrtD6iWcr4aVPvWzWrHesubQLEcj8ixLCVUJ45S4RSZkkdbcXd-JOnC2OPBtNSCvK9K_rSXHaBCoVySXsnUqzpfYbXRj2v3g_s3Hsv21ldxKk1jW5vcvVtrgi1-QfnlxBVraYDlwAob9_60nF_yfdeV_DYc3bkiUFIOfxJydQT2-VQ0NMzO3TxAKSwwwh5w-vLDqI5c_OhDJgpfqcahJBgm"/>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md font-bold text-on-surface">Ananya Iyer</h4>
+<p class="text-[13px] text-on-surface-variant leading-relaxed mt-1">Hasn't logged progress in 5 days. Career trajectory shows a 15% dip in engagement during "Systems Design" phase.</p>
+<button class="mt-3 text-tertiary font-label-sm flex items-center gap-1 hover:gap-2 transition-all">
+                                    Send Nudge <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="h-px bg-white/5"></div>
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/30 p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A young Indian male professional, late 20s, wearing a smart casual blazer. He has an optimistic and friendly smile, photographed in a high-key office environment with soft natural light and electric blue accents. The style is professional and polished for a premium SaaS application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN_GR6jmLTa4jhXLXMNx3DI7quEkbyldVNKbdfDZxYcqf7fYzgLfiCI2BJ0ep6pYIKJ2HGH3lHShpN1KQryZnDT-tNHcyP-I3TBEMAW6HGT7YqYoHHtfVoMG4-5at3xkOsmgKYolnR4W2Z-ZopCUwGUQgry2hB1FEC22crjnXqBdUx-HFGg-JWEDZB4X6rgJAdzxh_dEL0pmCjEoozLBmbuag7zzt-WeV-Kv_YiFERp24Hm-W4xTRUDtUnJ-Rcur6XgjAmEoo36Tbk"/>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md font-bold text-on-surface">Vikram Seth</h4>
+<p class="text-[13px] text-on-surface-variant leading-relaxed mt-1">Skill gap identified: Advanced Prototyping. AI suggests assigning a specific micro-task to accelerate growth.</p>
+<button class="mt-3 text-primary font-label-sm flex items-center gap-1 hover:gap-2 transition-all">
+                                    Review Task <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Career Pulse Visualization -->
+<div class="glass-card rounded-2xl p-md h-40 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="font-label-sm text-on-surface-variant">Fleet Performance Pulse</span>
+<h4 class="font-headline-md text-primary mt-1">Stable</h4>
+</div>
+<div class="flex items-end gap-1 relative z-10 h-12">
+<div class="w-full h-8 bg-primary/20 rounded-t-sm shimmer"></div>
+<div class="w-full h-12 bg-primary/40 rounded-t-sm"></div>
+<div class="w-full h-10 bg-primary/20 rounded-t-sm shimmer"></div>
+<div class="w-full h-14 bg-primary rounded-t-sm"></div>
+<div class="w-full h-6 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-9 bg-primary/30 rounded-t-sm shimmer"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-secondary p-0.5 shadow-lg active:scale-95 transition-transform z-40 intelligence-glow overflow-hidden">
+<div class="w-full h-full bg-surface rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</button>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl fixed bottom-0 w-full z-50 rounded-t-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe max-w-md mx-auto">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff] transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Mentees -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-0.5">Mentees</span>
+</a>
+<!-- Calendar -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-sm text-label-sm mt-0.5">Calendar</span>
+</a>
+<!-- Earnings -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm mt-0.5">Earnings</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-0.5">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions for session cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Floating AI button rotation effect
+        const aiBtn = document.querySelector('.intelligence-glow span');
+        let rotation = 0;
+        setInterval(() => {
+            rotation += 1;
+            aiBtn.style.transform = `rotate(${rotation}deg)`;
+        }, 100);
+    </script>
+</body></html>

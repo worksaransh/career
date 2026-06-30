@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Onboarding - Expert Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #4d8eff 0%, #d0bcff 100%);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.2);
+        }
+        .progress-fill {
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .selection-active {
+            border-color: #adc6ff !important;
+            background: rgba(173, 198, 255, 0.1) !important;
+            box-shadow: 0 0 30px rgba(173, 198, 255, 0.15);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#2d3449",
+                        "primary": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#d0bcff",
+                        "primary-container": "#4d8eff",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#571bc1",
+                        "outline-variant": "#424754",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-primary": "#005ac2",
+                        "surface-container-low": "#131b2e",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#002e6a",
+                        "surface-tint": "#adc6ff",
+                        "on-tertiary-container": "#002f38",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-on-surface": "#283044",
+                        "tertiary-container": "#009eb9",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-secondary": "#3c0091",
+                        "surface-container-high": "#222a3d",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003640",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary-fixed": "#acedff",
+                        "primary-fixed": "#d8e2ff",
+                        "outline": "#8c909f",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-dim": "#0b1326",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-container": "#00285d",
+                        "surface": "#0b1326",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-container": "#171f33",
+                        "tertiary": "#4cd7f6",
+                        "secondary-fixed": "#e9ddff",
+                        "on-background": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-primary/30 flex flex-col">
+<!-- Subtle WebGL-like Background Effect -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/5 blur-[120px]"></div>
+</div>
+<!-- Navigation Header (TopAppBar Context) -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-sm flex items-center justify-between px-sm md:px-xl h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80 flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-bold text-primary">Mentee Progress</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="hidden md:block font-label-sm text-on-surface-variant uppercase tracking-wider">Step 1 of 4</span>
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution headshot of a female mentor with a warm, confident expression. She is wearing a modern professional blazer, set against a blurred high-tech office background with soft bokeh lighting and blue-purple color accents to match a premium SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPz2ZUSJTDq3yly8fcBmS4LA55Fywe4E9E1xeqyjVsSuUtfVXQVqVwG8InFDijkT_GsXB5tiHBFqrnvhaYFbVs4_hDtEnpSf5W5lYJb9g4A9j0uZQiHlJWG1i1O1kPvSE1Cdg4L5G6gHChTf_dGJnMwYLvXxrwqAopIYZUTAyBJvg-JhLqq3Rrns2_JA1T2RsPJd0jNs34tU4VB1toA2V4M5ABdr2vCf5TAtaadue05CiobNDINWtmTeK2hA1MvIS-fQ6RzjNsG_dy"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center pt-24 pb-32 px-sm md:px-md">
+<!-- Progress Indicator -->
+<div class="w-full max-w-[600px] mb-12">
+<div class="flex justify-between items-end mb-3">
+<p class="font-label-sm text-primary uppercase tracking-widest">Expertise Selection</p>
+<p class="font-label-sm text-on-surface-variant">25% Complete</p>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="progress-fill h-full intelligence-gradient w-1/4 rounded-full shadow-[0_0_10px_rgba(173,198,255,0.4)]"></div>
+</div>
+</div>
+<!-- Header Section -->
+<div class="text-center mb-12 max-w-[700px]">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-4 text-white">What is your superpower?</h2>
+<p class="font-body-lg text-on-surface-variant">Select your primary field to help us match you with the right mentees. You can add secondary skills later.</p>
+</div>
+<!-- Bento Grid for Expertise -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm w-full max-w-container-max">
+<!-- Design Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary !text-4xl" style="font-variation-settings: 'FILL' 1;">palette</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Design</h3>
+<p class="font-label-sm text-on-surface-variant">UI/UX, Product Design, Graphic Design &amp; Motion</p>
+</div>
+<!-- Engineering Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary !text-4xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Engineering</h3>
+<p class="font-label-sm text-on-surface-variant">Frontend, Backend, DevOps &amp; AI Infrastructure</p>
+</div>
+<!-- Product Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary !text-4xl" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Product</h3>
+<p class="font-label-sm text-on-surface-variant">Management, Strategy, Roadmap &amp; Discovery</p>
+</div>
+<!-- Marketing Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container !text-4xl" style="font-variation-settings: 'FILL' 1;">campaign</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Marketing</h3>
+<p class="font-label-sm text-on-surface-variant">Growth, Branding, Performance &amp; SEO</p>
+</div>
+<!-- Data Science Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed-dim/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary-fixed-dim !text-4xl" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Data</h3>
+<p class="font-label-sm text-on-surface-variant">Analytics, ML, Data Science &amp; Visualization</p>
+</div>
+<!-- Business Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-on-secondary-container/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container !text-4xl" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Business</h3>
+<p class="font-label-sm text-on-surface-variant">Sales, Operations, Finance &amp; HR</p>
+</div>
+<!-- Content Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-error/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-error !text-4xl" style="font-variation-settings: 'FILL' 1;">auto_videocam</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Content</h3>
+<p class="font-label-sm text-on-surface-variant">Writing, Video Production &amp; Storytelling</p>
+</div>
+<!-- Other Card -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center text-center cursor-pointer glow-hover transition-all duration-300 group hover:-translate-y-1" onclick="selectCard(this)">
+<div class="w-16 h-16 rounded-2xl bg-outline/10 flex items-center justify-center mb-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-outline !text-4xl" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+<h3 class="font-headline-md text-white mb-xs">Other</h3>
+<p class="font-label-sm text-on-surface-variant">Niche expertise, Coaching, or Multiple Fields</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Contextual) -->
+<div class="fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 h-24 flex items-center justify-center px-4">
+<div class="w-full max-w-container-max flex items-center justify-between">
+<button class="font-label-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 px-6 py-3">
+<span class="material-symbols-outlined !text-[18px]">help_outline</span>
+                Need help choosing?
+            </button>
+<button class="intelligence-gradient text-on-primary-fixed font-bold px-12 py-4 rounded-xl shadow-2xl active:scale-95 transition-all duration-200 opacity-50 cursor-not-allowed" disabled="" id="continue-btn">
+                Continue
+            </button>
+</div>
+</div>
+<!-- AI Floating Assistant -->
+<div class="fixed bottom-28 right-6 z-50">
+<button class="w-14 h-14 rounded-full intelligence-gradient shadow-2xl flex items-center justify-center animate-pulse group relative">
+<span class="material-symbols-outlined text-on-primary-fixed !text-3xl">auto_awesome</span>
+<div class="absolute right-16 top-1/2 -translate-y-1/2 glass-card px-4 py-2 rounded-lg text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                Ask AI Assistant
+            </div>
+</button>
+</div>
+<script>
+        function selectCard(element) {
+            // Remove active class from all
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.classList.remove('selection-active');
+            });
+            
+            // Add to selected
+            element.classList.add('selection-active');
+            
+            // Enable button
+            const btn = document.getElementById('continue-btn');
+            btn.removeAttribute('disabled');
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            btn.classList.add('hover:shadow-primary/20', 'hover:scale-[1.02]');
+
+            // Micro-interaction: Update progress slightly
+            const progressBar = document.querySelector('.progress-fill');
+            progressBar.style.width = '35%';
+            progressBar.parentElement.nextElementSibling.querySelector('p:last-child').innerText = '35% Complete';
+        }
+
+        // Add some atmospheric shimmer to cards on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                    card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(173, 198, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 50%)`;
+                } else {
+                    card.style.background = `rgba(255, 255, 255, 0.04)`;
+                }
+            });
+        });
+    </script>
+</body></html>

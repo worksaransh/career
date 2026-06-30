@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - OTP Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "inverse-primary": "#005ac2",
+                    "surface-dim": "#0b1326",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "surface-bright": "#31394d",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-container-high": "#222a3d",
+                    "on-primary-fixed-variant": "#004395",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-container-highest": "#2d3449",
+                    "outline-variant": "#424754",
+                    "on-tertiary-fixed": "#001f26",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-error": "#690005",
+                    "primary-container": "#4d8eff",
+                    "on-primary": "#002e6a",
+                    "surface-container-low": "#131b2e",
+                    "background": "#0b1326",
+                    "on-primary-container": "#00285d",
+                    "secondary": "#d0bcff",
+                    "secondary-fixed": "#e9ddff",
+                    "primary": "#adc6ff",
+                    "surface-container-lowest": "#060e20",
+                    "surface-variant": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "on-surface": "#dae2fd",
+                    "on-secondary": "#3c0091",
+                    "tertiary-container": "#009eb9",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#c4abff",
+                    "error-container": "#93000a",
+                    "secondary-container": "#571bc1",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-container": "#002f38",
+                    "surface-tint": "#adc6ff",
+                    "on-primary-fixed": "#001a42",
+                    "outline": "#8c909f",
+                    "surface": "#0b1326",
+                    "inverse-surface": "#dae2fd",
+                    "tertiary": "#4cd7f6",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed": "#acedff",
+                    "on-tertiary": "#003640"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter": "16px",
+                    "container-max": "1200px",
+                    "sm": "16px",
+                    "xs": "8px",
+                    "xl": "64px",
+                    "md": "24px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .otp-input:focus {
+            border-color: #adc6ff;
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+            outline: none;
+        }
+
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(77, 142, 255, 0.4);
+        }
+
+        .ambient-light {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(173, 198, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(87, 27, 193, 0.08) 0%, transparent 40%);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .active-press {
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .active-press:active {
+            transform: scale(0.96);
+        }
+
+        /* Material Symbol weight mapping */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md-mobile">
+<div class="ambient-light"></div>
+<!-- Main Container -->
+<main class="min-h-screen flex flex-col px-gutter pt-xl pb-md max-w-md mx-auto relative overflow-hidden">
+<!-- Header Section -->
+<div class="mt-lg mb-xl text-center space-y-md">
+<div class="inline-flex items-center justify-center p-md bg-surface-container rounded-full mb-xs">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">
+                    verified_user
+                </span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight">Verify Identity</h1>
+<p class="font-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                We've sent a 6-digit code to your registered email for <span class="text-primary font-medium">Career GPS AI</span> access.
+            </p>
+</div>
+<!-- OTP Input Area -->
+<div class="flex flex-col flex-grow">
+<div class="flex justify-between gap-xs mb-lg" id="otp-container">
+<input autocomplete="one-time-code" class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+<input class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+<input class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+<input class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+<input class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+<input class="otp-input w-12 h-14 glass-card rounded-xl text-center font-headline-md text-primary focus:ring-0 transition-all duration-200" inputmode="numeric" maxlength="1" type="text"/>
+</div>
+<!-- Timer and Resend -->
+<div class="flex flex-col items-center gap-xs">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span id="timer-display">Resend in 00:59</span>
+</div>
+<button class="hidden text-primary font-body-md font-semibold hover:opacity-80 transition-opacity active-press" id="resend-btn">
+                    Resend Code
+                </button>
+</div>
+</div>
+<!-- Sticky Bottom Action (One-hand usability) -->
+<div class="mt-auto pt-lg">
+<button class="intelligence-gradient glow-effect w-full py-md rounded-xl font-headline-md text-on-primary flex items-center justify-center gap-sm active-press group">
+                Verify &amp; Proceed
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="w-full mt-md py-sm font-label-sm text-on-surface-variant opacity-60 hover:opacity-100 transition-opacity flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-sm">shield_lock</span>
+                Secure End-to-End Encryption
+            </button>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+</main>
+<!-- Success Feedback Overlay (Hidden) -->
+<div class="fixed inset-0 z-50 bg-background/90 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500" id="success-overlay">
+<div class="text-center">
+<div class="w-24 h-24 intelligence-gradient rounded-full flex items-center justify-center mb-md mx-auto glow-effect scale-0 transition-transform duration-500" id="success-circle">
+<span class="material-symbols-outlined text-white text-5xl">check_circle</span>
+</div>
+<h2 class="font-display-lg-mobile text-on-surface mb-xs">Identity Verified</h2>
+<p class="text-on-surface-variant">Unlocking your AI career path...</p>
+</div>
+</div>
+<script>
+        // OTP Focus Logic
+        const inputs = document.querySelectorAll('#otp-container input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Timer Logic
+        let timeLeft = 59;
+        const timerDisplay = document.getElementById('timer-display');
+        const resendBtn = document.getElementById('resend-btn');
+
+        const timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerDisplay.parentElement.classList.add('hidden');
+                resendBtn.classList.remove('hidden');
+            } else {
+                timeLeft--;
+                const seconds = timeLeft < 10 ? `0${timeLeft}` : timeLeft;
+                timerDisplay.textContent = `Resend in 00:${seconds}`;
+            }
+        }, 1000);
+
+        // Success Simulation
+        const verifyBtn = document.querySelector('button.intelligence-gradient');
+        const overlay = document.getElementById('success-overlay');
+        const successCircle = document.getElementById('success-circle');
+
+        verifyBtn.addEventListener('click', () => {
+            // Check if all inputs are filled (demo logic)
+            const allFilled = Array.from(inputs).every(input => input.value.length === 1);
+            
+            if (allFilled) {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    successCircle.classList.remove('scale-0');
+                    successCircle.classList.add('scale-100');
+                }, 100);
+            } else {
+                // Shake effect for feedback
+                const container = document.getElementById('otp-container');
+                container.classList.add('animate-bounce');
+                setTimeout(() => container.classList.remove('animate-bounce'), 500);
+            }
+        });
+
+        // Micro-interactions for resend
+        resendBtn.addEventListener('click', () => {
+            alert('A new code has been sent to your device.');
+            // Reset timer demo
+            timeLeft = 59;
+            resendBtn.classList.add('hidden');
+            timerDisplay.parentElement.classList.remove('hidden');
+        });
+    </script>
+</body></html>

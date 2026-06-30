@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Comparison | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-secondary": "#3c0091",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "on-error": "#690005",
+                    "on-background": "#dae2fd",
+                    "primary": "#adc6ff",
+                    "on-primary-fixed-variant": "#004395",
+                    "tertiary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-tertiary-container": "#002f38",
+                    "on-primary-container": "#00285d",
+                    "inverse-surface": "#dae2fd",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary": "#003640",
+                    "primary-container": "#4d8eff",
+                    "on-primary": "#002e6a",
+                    "inverse-primary": "#005ac2",
+                    "on-surface": "#dae2fd",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#c4abff",
+                    "secondary": "#d0bcff",
+                    "surface-bright": "#31394d",
+                    "secondary-container": "#571bc1",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#222a3d",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#283044",
+                    "surface-dim": "#0b1326",
+                    "surface-container-highest": "#2d3449",
+                    "primary-fixed-dim": "#adc6ff",
+                    "background": "#0b1326",
+                    "secondary-fixed": "#e9ddff",
+                    "surface": "#0b1326",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#001a42",
+                    "surface-tint": "#adc6ff",
+                    "tertiary": "#4cd7f6",
+                    "outline": "#8c909f",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "tertiary-container": "#009eb9",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-container": "#171f33",
+                    "secondary-fixed-dim": "#d0bcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "sm": "16px",
+                    "container-max": "1200px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.1);
+        }
+        .split-divider {
+            background: linear-gradient(to bottom, transparent, rgba(173, 198, 255, 0.2), transparent);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A futuristic professional portrait of a tech executive, high-end photography, soft cinematic lighting with electric blue rim light, set against a dark glassmorphic office background. The aesthetic is clean, premium, and professional, consistent with a high-stakes career platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtN3vCQvapfYMEbqIZWumQQPfv3h42Al6dNlig4Lj_B8aifqPFvxfaRn-OsPJRqHjcMa2Q4xmpws6AVuQOtlSsofcMHcCKRddv95yj6DJST17op2BVpvEqnk2YGzcmrXicTh8Pd_ZnesPIjCZL8XDQ2-VMcdb2LmqVec3WWxnHKRovklZaKjkZcT0SzGqb4g5Xas4MItsiC4nVaptCyrRYp-9d3u0Z9FVSVNiontgyZ2dMdryitSH5WRovk03xIWAKwpVUOkPL1dmP"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity p-2">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity p-2 hidden md:block">search</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-lg max-w-container-max mx-auto min-h-screen relative">
+<!-- Atmospheric Background Element -->
+<!-- Header Content -->
+<div class="mb-lg text-center md:text-left">
+<span class="text-primary font-label-sm uppercase tracking-widest mb-xs block">Intelligence Lab</span>
+<h2 class="font-display-lg-mobile md:text-display-lg text-on-surface mb-xs">Role Comparison</h2>
+<p class="text-on-surface-variant max-w-2xl">AI-driven side-by-side analysis of career trajectories, market demand, and skill compatibility.</p>
+</div>
+<!-- Comparison Interface -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10 glass-card relative">
+<!-- Vertical Divider Line (Desktop Only) -->
+<div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px split-divider z-10"></div>
+<!-- Role A: Data Scientist -->
+<section class="p-md md:p-lg flex flex-col relative group">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-4 rounded-2xl bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+</div>
+<span class="text-label-sm font-label-sm bg-primary/20 text-primary px-3 py-1 rounded-full border border-primary/30 uppercase">Track Alpha</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-base">Data Scientist</h3>
+<p class="text-on-surface-variant text-body-md mb-lg">Focuses on finding insights and hidden patterns within complex datasets using statistical models.</p>
+<!-- Metrics Grid A -->
+<div class="space-y-md">
+<!-- Salary Growth -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">Salary Growth</span>
+<span class="text-primary font-headline-md">14% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+<!-- Market Demand -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">Market Demand</span>
+<div class="flex gap-1">
+<span class="w-2 h-4 bg-primary rounded-sm"></span>
+<span class="w-2 h-4 bg-primary rounded-sm"></span>
+<span class="w-2 h-4 bg-primary rounded-sm"></span>
+<span class="w-2 h-4 bg-primary/20 rounded-sm"></span>
+<span class="w-2 h-4 bg-primary/20 rounded-sm"></span>
+</div>
+</div>
+<p class="text-on-surface text-body-md">High (1.2M Openings)</p>
+</div>
+<!-- Work-Life Balance -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">W-L Balance</span>
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">balance</span>
+</div>
+<p class="text-on-surface text-body-md">Moderate (Hybrid Focus)</p>
+</div>
+</div>
+<div class="mt-xl">
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-bold transition-all active:scale-95 hover:shadow-[0_0_20px_rgba(173,198,255,0.4)] intelligence-glow">Pick This Path</button>
+</div>
+</section>
+<!-- Role B: ML Engineer -->
+<section class="p-md md:p-lg flex flex-col bg-surface-container-low/40 relative group">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-4 rounded-2xl bg-secondary/10 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-4xl">psychology</span>
+</div>
+<span class="text-label-sm font-label-sm bg-secondary/20 text-secondary px-3 py-1 rounded-full border border-secondary/30 uppercase">Track Beta</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-base">ML Engineer</h3>
+<p class="text-on-surface-variant text-body-md mb-lg">Designs and builds self-learning software to automate predictive models and production systems.</p>
+<!-- Metrics Grid B -->
+<div class="space-y-md">
+<!-- Salary Growth -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">Salary Growth</span>
+<span class="text-secondary font-headline-md">22% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[92%]"></div>
+</div>
+</div>
+<!-- Market Demand -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">Market Demand</span>
+<div class="flex gap-1">
+<span class="w-2 h-4 bg-secondary rounded-sm"></span>
+<span class="w-2 h-4 bg-secondary rounded-sm"></span>
+<span class="w-2 h-4 bg-secondary rounded-sm"></span>
+<span class="w-2 h-4 bg-secondary rounded-sm"></span>
+<span class="w-2 h-4 bg-secondary rounded-sm"></span>
+</div>
+</div>
+<p class="text-on-surface text-body-md">Exponential (800K Openings)</p>
+</div>
+<!-- Work-Life Balance -->
+<div class="p-sm rounded-xl bg-white/5 border border-white/10">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-on-surface-variant font-label-sm uppercase">W-L Balance</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<p class="text-on-surface text-body-md">High Intensity (Remote Ready)</p>
+</div>
+</div>
+<div class="mt-xl">
+<button class="w-full py-4 rounded-xl border border-secondary text-secondary font-bold transition-all active:scale-95 hover:bg-secondary/10">Pick This Path</button>
+</div>
+</section>
+</div>
+<!-- Skill Overlap Visualization -->
+<div class="mt-lg p-md glass-card rounded-3xl relative overflow-hidden">
+<h4 class="font-headline-md text-on-surface mb-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                Skill Overlap Analysis
+            </h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="flex flex-col items-center justify-center p-lg bg-primary/5 rounded-2xl border border-primary/10">
+<span class="text-display-lg-mobile text-primary mb-xs">68%</span>
+<span class="text-on-surface-variant font-label-sm uppercase">Total Shared Core</span>
+</div>
+<div class="md:col-span-2 space-y-sm">
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">Python</span>
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">SQL</span>
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">Statistics</span>
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">Linear Algebra</span>
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">Data Ethics</span>
+<span class="px-4 py-2 bg-surface-container rounded-full text-on-surface text-body-md border border-white/10">Deep Learning</span>
+</div>
+<div class="mt-md p-sm bg-secondary/5 border border-secondary/10 rounded-xl">
+<p class="text-on-surface-variant text-label-sm">
+<span class="text-secondary font-bold mr-2">Gap Insight:</span>
+                            ML Engineers require more Software Architecture and MLOps (Kubernetes, CI/CD) skills compared to Data Scientists.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Drawer (Shell Implementation - Shown on Desktop Side) -->
+<aside class="hidden xl:fixed xl:left-0 xl:top-0 xl:flex xl:flex-col xl:h-full xl:w-80 xl:bg-surface-dim xl:py-lg xl:shadow-2xl xl:z-40 xl:rounded-r-xl border-r border-white/5">
+<div class="px-8 mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">auto_awesome</span>
+</div>
+<div>
+<h4 class="text-on-surface font-bold">Career Explorer</h4>
+<span class="text-on-surface-variant text-xs">Premium Member</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<div class="text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 px-4 py-3 font-bold flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>AI Insights</span>
+</div>
+<div class="text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined">diversity_3</span>
+<span>Mentorship</span>
+</div>
+<div class="text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined">work</span>
+<span>Job Board</span>
+</div>
+<div class="text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg flex items-center gap-3 cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</div>
+</nav>
+<div class="mt-auto px-8">
+<div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+<span class="text-on-surface-variant text-xs uppercase block mb-1">AI Guide</span>
+<span class="text-primary font-bold">Level 12 Active</span>
+</div>
+</div>
+</aside>
+<!-- Bottom Navigation (Shell Implementation - Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-20 right-4 md:bottom-8 md:right-8 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-xl flex items-center justify-center transition-transform active:scale-95 z-40 border border-white/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = '';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        // Simple scroll reveal effect
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body></html>

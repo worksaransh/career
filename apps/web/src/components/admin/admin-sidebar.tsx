@@ -22,6 +22,7 @@ import {
   Sliders,
   Settings,
   Flame,
+  Smartphone,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -30,6 +31,7 @@ interface AdminSidebarProps {
 
 const ALL_NAV_ITEMS = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, roles: ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "ANALYST", "FINANCE", "SUPPORT_AGENT"] },
+  { href: "/admin/screens", label: "Mockup Simulator", icon: Smartphone, roles: ["SUPER_ADMIN", "ADMIN"] },
   { href: "/admin/users", label: "Users & RBAC", icon: Users, roles: ["SUPER_ADMIN", "ADMIN", "SUPPORT_AGENT"] },
   { href: "/admin/content", label: "CMS & Landing Pages", icon: FileText, roles: ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER"] },
   { href: "/admin/careers", label: "Careers Catalog", icon: Briefcase, roles: ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "ANALYST"] },

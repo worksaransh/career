@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Onboarding - Availability Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#2d3449",
+                    "primary": "#adc6ff",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "on-surface": "#dae2fd",
+                    "secondary": "#d0bcff",
+                    "primary-container": "#4d8eff",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#001a42",
+                    "surface-bright": "#31394d",
+                    "secondary-container": "#571bc1",
+                    "outline-variant": "#424754",
+                    "inverse-surface": "#dae2fd",
+                    "inverse-primary": "#005ac2",
+                    "surface-container-low": "#131b2e",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-primary": "#002e6a",
+                    "surface-tint": "#adc6ff",
+                    "on-tertiary-container": "#002f38",
+                    "on-secondary-container": "#c4abff",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-container": "#009eb9",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-secondary": "#3c0091",
+                    "surface-container-high": "#222a3d",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003640",
+                    "on-secondary-fixed": "#23005c",
+                    "tertiary-fixed": "#acedff",
+                    "primary-fixed": "#d8e2ff",
+                    "outline": "#8c909f",
+                    "error-container": "#93000a",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-tertiary-fixed": "#001f26",
+                    "surface-dim": "#0b1326",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-primary-container": "#00285d",
+                    "surface": "#0b1326",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-container": "#171f33",
+                    "tertiary": "#4cd7f6",
+                    "secondary-fixed": "#e9ddff",
+                    "on-background": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "sm": "16px",
+                    "container-max": "1200px",
+                    "xs": "8px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #d0bcff 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 60px repeat(7, 1fr);
+        }
+        .time-slot {
+            height: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+        .time-slot:hover {
+            background: rgba(173, 198, 255, 0.1);
+        }
+        .time-slot.active {
+            background: rgba(173, 198, 255, 0.3);
+            border: 1px solid #adc6ff;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top AppBar (Simulated from Shared Components but Task-Focused Header) -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-sm flex items-center justify-between px-sm h-16 md:px-xl">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary">Mentee Progress</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A sophisticated professional portrait of a senior mentor in a high-tech office environment. Soft blue ambient lighting creates a cinematic atmosphere. The mentor has a kind, intelligent expression, wearing a stylish dark blazer. The background features blurred digital displays and sleek modern architecture, reflecting a premium AI SaaS brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9KupRI5sOcNTDCxH_626ZUbAY2SLG70qEldCrPZ2_sVuGXyrEakuyiBrGeh0dGfAeAauyxs-fL7RwXeYvBdcYLoqo-dHnlGSlPSH4B-f0dv-voH_FL9dKu_GnCeyBNo9DXo_sy1vC97tgu47-q8FKgoz-Z6GBDsKUaAMepPhDbTCJ-aJgi7ry6UL_H_QUGKt_hDOit3rdDnwpC7QYfrVkZMgmATHGcyQn0_3F5QuODTRxvJw9h8fZTJt98swxytAAv2ltO_SVOtOx"/>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="pt-24 pb-32 px-4 max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-lg text-center md:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-label-sm font-label-sm mb-4">
+<span class="material-symbols-outlined text-[14px]">event_available</span>
+                STEP 5: AVAILABILITY
+            </div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-2">When are you available?</h2>
+<p class="text-on-surface-variant max-w-2xl text-body-lg font-body-lg">Set your recurring schedule to allow instant bookings. You can modify this anytime in settings.</p>
+</div>
+<!-- Action Bar: Sync & Quick Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
+<button class="glass-card flex items-center justify-between p-md rounded-xl hover:bg-white/10 transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">sync</span>
+</div>
+<div class="text-left">
+<p class="font-bold text-on-surface">Sync External Calendar</p>
+<p class="text-sm text-on-surface-variant">Google, Outlook, or iCal</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<div class="glass-card flex items-center justify-between p-md rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">schedule</span>
+</div>
+<div class="text-left">
+<p class="font-bold text-on-surface">Default Duration</p>
+<p class="text-sm text-on-surface-variant">Set session length for bookings</p>
+</div>
+</div>
+<select class="bg-surface-container-highest border-none text-primary rounded-lg focus:ring-1 focus:ring-primary">
+<option>45 Minutes</option>
+<option>60 Minutes</option>
+<option>90 Minutes</option>
+</select>
+</div>
+</div>
+<!-- Weekly Availability Calendar -->
+<div class="glass-card rounded-2xl overflow-hidden border border-white/5 shadow-2xl relative">
+<!-- Calendar Header -->
+<div class="calendar-grid bg-surface-container-low border-b border-white/10 py-4 font-label-sm text-label-sm text-center">
+<div class="text-on-surface-variant">TIME</div>
+<div class="text-on-surface">MON</div>
+<div class="text-on-surface">TUE</div>
+<div class="text-on-surface">WED</div>
+<div class="text-on-surface">THU</div>
+<div class="text-on-surface">FRI</div>
+<div class="text-on-surface text-secondary">SAT</div>
+<div class="text-on-surface text-secondary">SUN</div>
+</div>
+<!-- Calendar Scroll Area -->
+<div class="h-[500px] overflow-y-auto scrollbar-hide relative">
+<!-- AI Background Glow -->
+<div class="absolute inset-0 pointer-events-none opacity-10">
+</div>
+<div class="calendar-grid relative z-10">
+<!-- Time Column -->
+<div class="flex flex-col text-[10px] text-on-surface-variant text-right pr-2">
+<div class="h-12 pt-2">08:00</div>
+<div class="h-12 pt-2">09:00</div>
+<div class="h-12 pt-2">10:00</div>
+<div class="h-12 pt-2">11:00</div>
+<div class="h-12 pt-2">12:00</div>
+<div class="h-12 pt-2">13:00</div>
+<div class="h-12 pt-2">14:00</div>
+<div class="h-12 pt-2">15:00</div>
+<div class="h-12 pt-2">16:00</div>
+<div class="h-12 pt-2">17:00</div>
+<div class="h-12 pt-2">18:00</div>
+<div class="h-12 pt-2">19:00</div>
+</div>
+<!-- Slot Grid (Manual Generation) -->
+<!-- Monday -->
+<div class="flex flex-col">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Tuesday -->
+<div class="flex flex-col">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Wednesday -->
+<div class="flex flex-col">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Thursday -->
+<div class="flex flex-col">
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Friday -->
+<div class="flex flex-col">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot active" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Saturday -->
+<div class="flex flex-col bg-surface-container-low/30">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+<!-- Sunday -->
+<div class="flex flex-col bg-surface-container-low/30">
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+<div class="time-slot" onclick="this.classList.toggle('active')"></div>
+</div>
+</div>
+</div>
+<!-- Calendar Footer -->
+<div class="bg-surface-container-low/80 p-sm border-t border-white/10 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 text-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary/30 border border-primary rounded-sm"></div>
+<span class="text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-transparent border border-white/10 rounded-sm"></div>
+<span class="text-on-surface-variant">Unavailable</span>
+</div>
+</div>
+<div class="text-on-surface-variant text-label-sm italic">Click blocks to toggle availability</div>
+</div>
+</div>
+<!-- Secondary Info Card -->
+<div class="mt-md grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="glass-card p-sm rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-on-surface-variant">Recurring slots repeat every week automatically until paused.</p>
+</div>
+<div class="glass-card p-sm rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">lock_clock</span>
+<p class="text-xs text-on-surface-variant">Minimum booking notice is set to 24 hours by default.</p>
+</div>
+<div class="glass-card p-sm rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">public</span>
+<p class="text-xs text-on-surface-variant">Calendar is automatically adjusted to your local timezone (GMT+5:30).</p>
+</div>
+</div>
+</main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-0 w-full glass-card border-t border-white/10 p-sm md:px-xl z-50">
+<div class="max-w-container-max mx-auto flex items-center justify-between">
+<div class="hidden md:block">
+<p class="text-sm font-bold text-on-surface">12 slots selected</p>
+<p class="text-xs text-on-surface-variant">Approx. 9 hours per week</p>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/10 text-on-surface hover:bg-white/5 active:scale-95 transition-all">
+                    Skip for Now
+                </button>
+<button class="flex-1 md:flex-none px-12 py-3 rounded-xl intelligence-gradient text-on-primary-fixed font-bold shadow-lg active:scale-95 transition-all">
+                    Complete Setup
+                </button>
+</div>
+</div>
+</div>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 md:bottom-28 md:right-xl w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center shadow-[0_0_20px_rgba(173,198,255,0.4)] hover:scale-110 active:scale-90 transition-all z-40 group">
+<span class="material-symbols-outlined text-on-primary-fixed text-3xl group-hover:rotate-12 transition-transform">auto_awesome</span>
+<div class="absolute -top-12 right-0 bg-surface-container-highest px-3 py-1.5 rounded-lg text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity border border-white/10">
+            Need help with your schedule?
+        </div>
+</button>
+<script>
+        // Simple Interaction logic for slot selection
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('mousedown', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Add visual interest to the floating AI assistant
+        const aiBtn = document.querySelector('button .material-symbols-outlined');
+        let angle = 0;
+        setInterval(() => {
+            angle = (angle + 1) % 360;
+            // Subtle rotation pulse if needed
+        }, 50);
+    </script>
+</body></html>

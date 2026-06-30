@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Progress Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #571bc1 100%);
+        }
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-high": "#222a3d",
+                "on-tertiary": "#003640",
+                "surface-variant": "#2d3449",
+                "surface-dim": "#0b1326",
+                "inverse-on-surface": "#283044",
+                "inverse-primary": "#005ac2",
+                "on-secondary": "#3c0091",
+                "on-primary-fixed-variant": "#004395",
+                "tertiary-container": "#009eb9",
+                "tertiary-fixed": "#acedff",
+                "on-tertiary-fixed": "#001f26",
+                "secondary-container": "#571bc1",
+                "tertiary": "#4cd7f6",
+                "primary-container": "#4d8eff",
+                "surface-container-highest": "#2d3449",
+                "surface-container-low": "#131b2e",
+                "primary-fixed": "#d8e2ff",
+                "on-error": "#690005",
+                "primary-fixed-dim": "#adc6ff",
+                "on-tertiary-fixed-variant": "#004e5c",
+                "on-surface": "#dae2fd",
+                "surface-container": "#171f33",
+                "on-tertiary-container": "#002f38",
+                "on-secondary-fixed-variant": "#5516be",
+                "on-secondary-fixed": "#23005c",
+                "on-secondary-container": "#c4abff",
+                "secondary": "#d0bcff",
+                "on-background": "#dae2fd",
+                "surface": "#0b1326",
+                "on-surface-variant": "#c2c6d6"
+            },
+            "spacing": {
+                "md": "24px",
+                "gutter": "16px",
+                "base": "4px",
+                "container-max": "1200px",
+                "sm": "16px",
+                "xl": "64px",
+                "lg": "40px",
+                "xs": "8px"
+            },
+            "fontFamily": {
+                "display-lg": ["Inter"],
+                "display-lg-mobile": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-sm": ["Geist"],
+                "headline-md": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a young Indian software developer, looking confident and smiling slightly. The background is a blurred high-tech workspace with soft blue and purple lighting, following the Career GPS brand's futuristic and professional aesthetic. The image is clean, sharp, and has a premium digital feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEqXTb06BzD4C7_nqKp_Qup7nQFvNq4GWnPnUnolkkVt5GDxjZxm62tbAX5tuHfUz2sA13JTcvOimn06ns8SjFEpngGyMoaDUyCZJbiUVhnmSaKTKyx0ygufr3kJYhFHAjWZ9Xguzc1pT3j6cJbKe6SpZbzJQB2fNYWfRTSsZ9uFVMLdy2HsPkhnhJWld2cDdA3YyBwNOk3bmf1jT_iP5uoTZncCDeIYy02012r01mwSlIFC7Uam-wSMN9IAGA9Xm3vGjzrXOAHzXJ"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-[28px]">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto">
+<!-- Hero Progress Header -->
+<section class="mb-lg">
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row items-center gap-lg overflow-hidden relative">
+<!-- Background Glow -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<!-- Circular Progress -->
+<div class="relative flex-shrink-0 w-48 h-48">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="98.9" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-white">65%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Complete</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h2 class="font-headline-md text-headline-md mb-xs text-on-surface">Data Architect Roadmap</h2>
+<p class="text-on-surface-variant mb-md">You're making incredible pace. At this rate, you'll reach your destination 2 weeks ahead of schedule.</p>
+<div class="flex flex-wrap gap-2 justify-center md:justify-start">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span> High Momentum
+                        </span>
+<span class="px-3 py-1 bg-tertiary/10 border border-tertiary/20 rounded-full text-tertiary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">stars</span> 12 Milestones
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md mb-xl">
+<!-- Weekly Study Time -->
+<div class="md:col-span-7 glass-card rounded-xl p-md min-h-[320px] flex flex-col">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Weekly Commitment</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Avg. 4.5 hrs / day</p>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</button>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-2 px-2">
+<!-- Bar Chart Visual -->
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[80%] glow-shadow"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mon</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[40%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[95%] glow-shadow"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wed</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[65%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Thu</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[85%] glow-shadow"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fri</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[25%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sat</span>
+</div>
+<div class="flex flex-col items-center gap-2 group flex-1">
+<div class="w-full bg-primary/20 rounded-t-lg group-hover:bg-primary/40 transition-all duration-300 relative h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[15%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+<!-- Skill Radar Visual -->
+<div class="md:col-span-5 glass-card rounded-xl p-md flex flex-col justify-between overflow-hidden">
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Skill Distribution</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Domain growth balanced</p>
+</div>
+<div class="relative h-48 w-48 mx-auto flex items-center justify-center">
+<!-- Geometric Radar Background -->
+<div class="absolute inset-0 border border-white/5 rounded-full scale-100"></div>
+<div class="absolute inset-0 border border-white/5 rounded-full scale-75"></div>
+<div class="absolute inset-0 border border-white/5 rounded-full scale-50"></div>
+<!-- Radar Polygon Shape -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<polygon fill="rgba(173, 198, 255, 0.15)" points="50,10 90,75 10,75" stroke="#adc6ff" stroke-width="2"></polygon>
+<circle cx="50" cy="10" fill="#adc6ff" r="3"></circle>
+<circle cx="90" cy="75" fill="#adc6ff" r="3"></circle>
+<circle cx="10" cy="75" fill="#adc6ff" r="3"></circle>
+</svg>
+<!-- Labels -->
+<span class="absolute top-0 font-label-sm text-[10px] text-primary -translate-y-6">TECHNICAL</span>
+<span class="absolute bottom-0 right-0 font-label-sm text-[10px] text-tertiary translate-x-4 translate-y-2">BUSINESS</span>
+<span class="absolute bottom-0 left-0 font-label-sm text-[10px] text-secondary -translate-x-4 translate-y-2">SOFT SKILLS</span>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Advanced Python</span>
+<span class="text-primary text-sm font-bold">Lvl 8</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Strategic Thinking</span>
+<span class="text-tertiary text-sm font-bold">Lvl 4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone Celebrations -->
+<section class="mb-xl">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Milestones</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Milestone Card 1 -->
+<div class="glass-card rounded-xl p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">emoji_events</span>
+</div>
+<div class="mb-md">
+<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">code</span>
+</span>
+<h4 class="font-headline-md text-[18px] text-on-surface">You mastered Python!</h4>
+<p class="text-on-surface-variant text-sm mt-1">Completed advanced concurrency &amp; decorators module.</p>
+</div>
+<button class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-primary text-sm font-medium transition-colors">
+                        Share Achievement
+                    </button>
+</div>
+<!-- Milestone Card 2 -->
+<div class="glass-card rounded-xl p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">military_tech</span>
+</div>
+<div class="mb-md">
+<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">database</span>
+</span>
+<h4 class="font-headline-md text-[18px] text-on-surface">SQL Wizard</h4>
+<p class="text-on-surface-variant text-sm mt-1">Achieved 98% accuracy in complex query challenge.</p>
+</div>
+<button class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-primary text-sm font-medium transition-colors">
+                        Share Achievement
+                    </button>
+</div>
+<!-- Milestone Card 3 -->
+<div class="glass-card rounded-xl p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">workspace_premium</span>
+</div>
+<div class="mb-md">
+<span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-container text-on-primary-container mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</span>
+<h4 class="font-headline-md text-[18px] text-on-surface">15 Day Streak</h4>
+<p class="text-on-surface-variant text-sm mt-1">Consistent learning builds legendary careers.</p>
+</div>
+<button class="w-full py-2 bg-white/5 hover:bg-white/10 rounded-lg text-primary text-sm font-medium transition-colors">
+                        Share Achievement
+                    </button>
+</div>
+</div>
+</section>
+<!-- Up Next Roadmap -->
+<section class="mb-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Up Next in Roadmap</h3>
+<div class="space-y-4">
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-on-surface">Distributed Systems Fundamentals</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ETA: 4 Days</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1 mt-2">
+<div class="bg-primary h-1 rounded-full w-1/4"></div>
+</div>
+</div>
+<button class="p-2 bg-primary text-on-primary rounded-full hover:scale-110 transition-transform active:scale-95">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 opacity-60">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Advanced Cloud Orchestration</h4>
+<p class="text-xs text-on-surface-variant">Unlocks after Distributed Systems</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-24 right-6 z-50">
+<button class="intelligence-gradient w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 glow-shadow">
+<span class="material-symbols-outlined text-white text-[28px] animate-pulse">auto_awesome</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm mt-1">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Navigation Drawer Overlay Effect (Simulated via Sidebar for Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 bg-surface-dim dark:bg-surface-dim border-r border-white/5 flex-col py-lg z-40">
+<div class="px-6 mb-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">Career Explorer</h3>
+<p class="text-xs text-on-surface-variant">Level 12 AI Guide</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 px-4 py-3 font-bold" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md text-body-md">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-body-md text-body-md">Mentorship</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md text-body-md">Job Board</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<div class="glass-card p-4 rounded-xl">
+<p class="font-label-sm text-[10px] text-tertiary mb-2 uppercase tracking-widest">Premium Status</p>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="text-sm font-bold text-on-surface">AI Career Coach Pro</span>
+</div>
+</div>
+</div>
+</aside>
+<script>
+        // Micro-interactions and data visualization reveal
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.absolute.bottom-0.bg-primary');
+            bars.forEach((bar, index) => {
+                const height = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'height 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    bar.style.height = height;
+                }, index * 100);
+            });
+
+            // Parallax mouse move effect for the AI Floating Button
+            const fab = document.querySelector('.intelligence-gradient');
+            document.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const moveX = (clientX - window.innerWidth / 2) / 100;
+                const moveY = (clientY - window.innerHeight / 2) / 100;
+                fab.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
+</body></html>

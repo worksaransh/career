@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS AI | Precision Career Engineering</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {surface: "#0b1326", "on-secondary-container": "#c4abff", "on-secondary": "#3c0091", "on-error-container": "#ffdad6", outline: "#8c909f", "on-tertiary-fixed-variant": "#004e5c", "surface-dim": "#0b1326", "surface-container": "#171f33", "inverse-surface": "#dae2fd", tertiary: "#4cd7f6", "secondary-container": "#571bc1", "on-primary": "#002e6a", "primary-fixed-dim": "#adc6ff", "surface-container-highest": "#2d3449", "on-background": "#dae2fd", "on-primary-fixed": "#001a42", "surface-bright": "#31394d", "inverse-on-surface": "#283044", "outline-variant": "#424754", "on-tertiary": "#003640", "on-error": "#690005", "on-secondary-fixed": "#23005c", "on-surface": "#dae2fd", "on-surface-variant": "#c2c6d6", "inverse-primary": "#005ac2", "primary-container": "#4d8eff", "secondary-fixed-dim": "#d0bcff", "tertiary-fixed": "#acedff", "surface-variant": "#2d3449", error: "#ffb4ab", "surface-container-low": "#131b2e", "on-tertiary-container": "#002f38", "on-primary-container": "#00285d", secondary: "#d0bcff", "surface-container-lowest": "#060e20", "tertiary-container": "#009eb9", "tertiary-fixed-dim": "#4cd7f6", "secondary-fixed": "#e9ddff", "on-primary-fixed-variant": "#004395", "error-container": "#93000a", "on-secondary-fixed-variant": "#5516be", primary: "#adc6ff", "on-tertiary-fixed": "#001f26", "surface-container-high": "#222a3d", background: "#0b1326", "primary-fixed": "#d8e2ff", "surface-tint": "#adc6ff"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {gutter: "16px", xs: "8px", lg: "40px", xl: "64px", "2xl": "64px", margin: "32px", base: "4px", md: "24px", sm: "16px", "container-max": "1200px"}, fontFamily: {"display-lg": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Inter", "sans-serif"], "label-md": ["Inter", "sans-serif"], "label-sm": ["Geist"], "headline-md": ["Inter"], "display-lg-mobile": ["Inter"]}, fontSize: {"display-lg-mobile": ["32px", {lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "headline-lg": ["32px", {lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600"}], "display-lg": ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700"}], "label-md": ["14px", {lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "500"}], "label-sm": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "500"}], "headline-md": ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600"}]}}}};</script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .precision-border {
+            position: relative;
+        }
+        .precision-border::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .glow-primary {
+            box-shadow: 0 0 30px -5px rgba(173, 198, 255, 0.3);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full bg-surface/80 backdrop-blur-xl z-50 border-b border-white/10 shadow-2xl shadow-primary/10">
+<div class="max-w-7xl mx-auto px-margin flex justify-between items-center h-20">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-display-lg text-headline-md font-bold tracking-tighter text-primary">Career GPS AI</span>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-primary font-semibold border-b-2 border-primary py-1" href="#">Platform</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Career Twin</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Mentorship</a>
+<button class="ml-4 px-md py-sm bg-primary text-on-primary rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all">
+                    Get Started
+                </button>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex items-center overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center relative z-10">
+<div class="flex flex-col gap-lg">
+<div class="inline-flex items-center gap-sm px-sm py-1 bg-primary/10 border border-primary/20 rounded-full w-fit">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-label-sm text-primary uppercase tracking-widest">Next-Gen Career Engineering</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                        Engineer Your Career with <span class="text-primary">AI Precision.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Build your Career Twin, identify high-impact skill gaps, and connect with top industry mentors to accelerate your growth.
+                    </p>
+<div class="flex flex-wrap gap-md mt-sm">
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-bold glow-primary hover:brightness-110 active:scale-95 transition-all">
+                            Start Your Journey
+                        </button>
+<button class="px-xl py-md glass-panel text-on-surface rounded-xl font-semibold border border-white/20 hover:bg-white/5 active:scale-95 transition-all">
+                            How it Works
+                        </button>
+</div>
+</div>
+<!-- Abstract Visual -->
+<div class="relative flex justify-center items-center">
+<div class="relative w-full aspect-square max-w-lg">
+<div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full"></div>
+<div class="relative precision-border glass-panel rounded-full p-xl animate-float">
+<img class="w-full h-full object-contain mix-blend-screen opacity-90" data-alt="A high-fidelity, futuristic abstract representation of an AI Career Twin. Centralized glowing core with intricate neural network patterns radiating outwards, connecting nodes representing different skill sets. The lighting is cinematic with electric blue and deep indigo hues, set against a dark, tech-oriented background. Sleek, professional, and visually complex." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0D7LF06mYPcZ26vEpTmji87R6hydmzQtMeh-70G6CGFDAWdWNAko6bq_gD34I1yDu5zPp9FlMr5Wipnri2yk1UuMnoE-NeHBQw30jPuBeppn6v1VW_pgiVRa_hRvw71YsyIJw9ggY55xS5VTxFRiRhbxS5bwIY5qDi_AAJdoA1s2EEoXB9XHXiJ6GTJym5oalVW_mKr6f7lTTstMq-TdkyadkvSbjtYbaTGzahPDi-HPrjTnw3cC3BNT1peIEGbN49ZMp0FmOH-mr"/>
+<!-- Overlay UI elements -->
+<div class="absolute -top-4 -right-4 glass-panel precision-border p-md rounded-xl shadow-2xl flex flex-col gap-xs">
+<span class="text-label-sm text-primary uppercase">Growth Score</span>
+<span class="text-headline-md font-bold">+24%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-xl border-y border-white/5 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-margin">
+<p class="text-center text-label-sm text-outline uppercase tracking-widest mb-lg">Trusted by ambitious professionals at</p>
+<div class="flex flex-wrap justify-center items-center gap-2xl opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="h-8 flex items-center font-bold text-headline-md text-on-surface-variant">GOOGLE</div>
+<div class="h-8 flex items-center font-bold text-headline-md text-on-surface-variant">META</div>
+<div class="h-8 flex items-center font-bold text-headline-md text-on-surface-variant">AMAZON</div>
+<div class="h-8 flex items-center font-bold text-headline-md text-on-surface-variant">ANTHROPIC</div>
+<div class="h-8 flex items-center font-bold text-headline-md text-on-surface-variant">OPENAI</div>
+</div>
+</div>
+</section>
+<!-- Value Propositions - Bento Grid -->
+<section class="py-2xl max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- The Career Twin -->
+<div class="md:col-span-7 precision-border bg-surface-container-low rounded-2xl p-xl flex flex-col gap-lg min-h-[400px] overflow-hidden group">
+<div class="flex flex-col gap-sm">
+<span class="material-symbols-outlined text-primary text-4xl">fingerprint</span>
+<h2 class="font-headline-lg text-on-surface">The Career Twin</h2>
+<p class="font-body-md text-on-surface-variant max-w-md">Our AI maps your professional DNA to simulate thousands of career trajectories, identifying the most efficient path to your dream role.</p>
+</div>
+<div class="mt-auto relative h-48 rounded-xl bg-surface-container-highest/30 border border-white/5 overflow-hidden">
+<div class="absolute inset-0 p-md flex items-end">
+<div class="w-full flex gap-xs items-end h-full">
+<div class="w-full bg-primary/20 h-1/4 rounded-t-sm group-hover:h-1/3 transition-all duration-500"></div>
+<div class="w-full bg-primary/30 h-2/4 rounded-t-sm group-hover:h-3/4 transition-all duration-700"></div>
+<div class="w-full bg-primary/50 h-3/4 rounded-t-sm group-hover:h-2/3 transition-all duration-500"></div>
+<div class="w-full bg-primary h-full rounded-t-sm group-hover:scale-y-110 transition-all duration-300"></div>
+<div class="w-full bg-primary/40 h-2/3 rounded-t-sm group-hover:h-1/2 transition-all duration-700"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Precision Mentorship -->
+<div class="md:col-span-5 precision-border bg-surface-container-low rounded-2xl p-xl flex flex-col gap-lg group">
+<div class="flex flex-col gap-sm">
+<span class="material-symbols-outlined text-primary text-4xl">diversity_3</span>
+<h2 class="font-headline-lg text-on-surface">Precision Mentorship</h2>
+<p class="font-body-md text-on-surface-variant">Direct access to industry leaders who have walked your path. Match by skill gaps, not just job titles.</p>
+</div>
+<div class="flex flex-col gap-md mt-auto">
+<div class="flex items-center gap-md p-md glass-panel rounded-xl precision-border hover:translate-x-2 transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<div class="text-label-md font-bold">Principal at Google</div>
+<div class="text-label-sm text-on-surface-variant">Expertise: Distributed Systems</div>
+</div>
+</div>
+<div class="flex items-center gap-md p-md glass-panel rounded-xl precision-border hover:translate-x-2 transition-transform delay-75">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center text-secondary font-bold">SM</div>
+<div>
+<div class="text-label-md font-bold">Lead at Anthropic</div>
+<div class="text-label-sm text-on-surface-variant">Expertise: LLM Fine-tuning</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Data-Driven ROI -->
+<div class="md:col-span-12 precision-border bg-gradient-to-br from-surface-container-high to-surface-container-low rounded-2xl p-xl flex flex-col md:flex-row items-center gap-2xl">
+<div class="flex flex-col gap-md md:w-1/2">
+<span class="material-symbols-outlined text-primary text-4xl">trending_up</span>
+<h2 class="font-headline-lg text-on-surface">Data-Driven ROI</h2>
+<p class="font-body-md text-on-surface-variant">Stop guessing. We use labor market data to quantify the exact financial impact of every new skill you acquire.</p>
+<ul class="flex flex-col gap-sm mt-sm">
+<li class="flex items-center gap-sm text-label-md"><span class="material-symbols-outlined text-primary scale-75">check_circle</span> 42% Average Salary Increase</li>
+<li class="flex items-center gap-sm text-label-md"><span class="material-symbols-outlined text-primary scale-75">check_circle</span> 3.5x Faster Promotion Cycle</li>
+</ul>
+</div>
+<div class="md:w-1/2 w-full h-64 precision-border glass-panel rounded-xl p-lg relative flex items-center justify-center overflow-hidden">
+<!-- Simulated Metric Graph -->
+<div class="absolute inset-0 p-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline uppercase">Projected Annual Income</span>
+<span class="text-headline-lg font-bold text-primary">$185,000</span>
+</div>
+<span class="bg-green-500/20 text-green-400 px-sm py-xs rounded text-label-sm">+18.4%</span>
+</div>
+<div class="h-24 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary/10 h-[20%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/10 h-[25%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[35%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-2xl relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="max-w-4xl mx-auto px-margin text-center relative z-10 py-xl precision-border glass-panel rounded-3xl">
+<h2 class="font-display-lg text-headline-lg md:text-headline-lg-mobile text-on-surface mb-md">Ready to take control?</h2>
+<p class="font-body-lg text-on-surface-variant mb-xl px-md">Join over 15,000+ engineers and designers using AI to engineer their ideal careers.</p>
+<div class="flex flex-col md:flex-row gap-md justify-center items-center">
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-bold glow-primary hover:brightness-110 active:scale-95 transition-all w-full md:w-auto">
+                        Get Early Access
+                    </button>
+<span class="text-label-sm text-outline">Risk-free. 14-day full trial.</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest border-t border-white/5">
+<div class="max-w-7xl mx-auto px-margin grid grid-cols-2 md:grid-cols-4 gap-lg">
+<div class="col-span-2 flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Career GPS AI</span>
+</div>
+<p class="font-body-md text-on-surface-variant max-w-xs">Precision Career Engineering for the modern professional age. Built with proprietary AI models trained on global labor market datasets.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="text-on-surface font-bold mb-xs">Product</h4>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#">Platform</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#">Career Twin</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#">Mentorship</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="text-on-surface font-bold mb-xs">Legal</h4>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#">Terms</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin mt-xl pt-lg border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-body-md text-outline">© 2024 Career GPS AI. Precision Career Engineering.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+</div></div></footer></body></html>

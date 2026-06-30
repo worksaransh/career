@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Achievements &amp; Streaks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes flame-flicker {
+            0%, 100% { transform: scale(1); opacity: 0.8; filter: drop-shadow(0 0 10px #adc6ff); }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 20px #4d8eff); }
+        }
+        .animate-flame { animation: flame-flicker 2s infinite ease-in-out; }
+        .glass { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-thick { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.15); }
+        .intelligence-gradient { background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%); }
+        .text-glow { text-shadow: 0 0 12px rgba(173, 198, 255, 0.4); }
+        body { background-color: #0b1326; color: #dae2fd; font-family: 'Inter', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary": "#002e6a",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "primary": "#adc6ff",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#31394d",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary": "#3c0091",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "background": "#0b1326",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary-container": "#009eb9",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary": "#003640",
+                        "error-container": "#93000a",
+                        "outline": "#8c909f",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "surface-container": "#171f33",
+                        "primary-container": "#4d8eff",
+                        "tertiary": "#4cd7f6",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#e9ddff",
+                        "outline-variant": "#424754",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "base": "4px",
+                        "container-max": "1200px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional profile portrait of a modern software engineer in their late 20s, with soft rim lighting highlighting their confident expression. The background is a blurred high-tech workspace with subtle electric blue ambient light leaks. The image style is polished and high-resolution, following a premium tech SaaS aesthetic with deep blacks and vibrant primary blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi0Tp0JCzy6ypc-CpOyfE5mWwgz4dCEQ2lL9mxtLTJkRNA545oCJ2qnmgfxG1pHmg4JA_9Q946I5hWkHOx2pY3OBRj-cazeNIsWtXMqKuYNi2FdcA9RooMJE9sl6Cwp4PmdUlXhiPYoJVDEkc7hAny-wGADb2qKglmeV1CpmCXg7TNDomVUn5WTpFdVON8iwLaP3TGssdClY2DX-sEmv_z56ODtyzaZjnSnC9TikEtBUXNFZiUvLNLi7TXUc61fBbiI1BIzR4I5rOo"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto min-h-screen">
+<section class="mb-lg relative overflow-hidden rounded-xl p-md glass">
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<div class="relative">
+<div class="w-24 h-24 rounded-full intelligence-gradient flex items-center justify-center animate-flame">
+<span class="material-symbols-outlined text-4xl text-on-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-sm font-label-sm shadow-lg">
+                            HOT!
+                        </div>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary">14 Day Career Streak</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">You're in the top 5% of consistent learners this month.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm w-full md:w-auto">
+<div class="glass-thick p-sm rounded-lg flex flex-col items-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">2,450</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">XP POINTS</span>
+</div>
+<div class="glass-thick p-sm rounded-lg flex flex-col items-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-secondary">85</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AI CREDITS</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-lg">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Badge Gallery</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-md">
+<div class="glass group hover:border-primary/50 transition-all p-md rounded-xl flex flex-col items-center text-center cursor-pointer active:scale-95">
+<div class="w-20 h-20 mb-sm relative">
+<img class="w-full h-full object-contain" data-alt="A 3D rendered digital trophy badge for 'Resume Master', featuring a metallic silver document icon with a gold seal, floating within a transparent glass sphere. Subtle electric blue glows and high-precision lighting reflect off the surfaces. The style is premium and futuristic, consistent with high-end fintech and SaaS gamification UI, set against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfufQjSGihwRM40PEhIhZVWnaVAZW_Ib2ncCc1IZuvqLB_Qc1R68VcGY9g59gA2B_coiLyxyD6wiym82O39c-fzG00CJPZFJsCoVNpn_4VO05KI-d8_yXWlayoCF7dOkynIfR1IN1PvO4R8dG0m93agyobLjAQRor-51Yi27TOzM1ZQp2v0mQ0y6dE5m2JGEvC8VoPB-sorCLBYYafWiBCmT4ZEHWYIkxZq_8vWWUvfbBQVTWDhj808SLum85yKqXqCykv6Lhlzg0X"/>
+<div class="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Resume Master</span>
+<span class="text-[10px] text-on-surface-variant mt-xs">Top 2% Globally</span>
+</div>
+<div class="glass group hover:border-primary/50 transition-all p-md rounded-xl flex flex-col items-center text-center cursor-pointer active:scale-95">
+<div class="w-20 h-20 mb-sm relative">
+<img class="w-full h-full object-contain" data-alt="A sleek 3D badge for 'Skill Specialist' featuring a stylized glowing brain icon integrated with digital circuitry, rendered in brushed chrome and iridescent neon cyan. It is positioned inside a floating crystalline prism. The lighting is cinematic, highlighting the intricate details of the high-tech design. Professional, modern, and high-contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWEmTk6ZtUpPXHSqDysOhLoTKazImCFrbHmGuEP8fFExF8csXF19A-uheOYQVBA07z7mEJANn-RP0fxmBXsPfcThXwCKKgRltdzs-nNnQmoEWbX3keACJQGhLJOS5QqsT5mvKnILqwGRCzURtPEqqTyP5X2otLgfVMiyFQ46O8ym1MJks-7ao4MD2tau9i19ILcALfxoJY_PkfyRHfoQgQkpbXdzCLsqZpJUnENJJh8K6qV6rHGb39oO7mrphjoUVowuAx-ZoMFR76"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Skill Specialist</span>
+<span class="text-[10px] text-on-surface-variant mt-xs">Python Mastery</span>
+</div>
+<div class="glass group hover:border-primary/50 transition-all p-md rounded-xl flex flex-col items-center text-center cursor-pointer active:scale-95">
+<div class="w-20 h-20 mb-sm relative">
+<img class="w-full h-full object-contain" data-alt="A 3D premium badge representing 'Networking Pro' with two interlocking geometric rings of gold and electric blue light. The rings are suspended in a dark, atmospheric void with floating bokeh light particles. The style is ultra-modern and minimalist, signifying professional achievement and connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGuuzhsZkwtJZgECGqD_VYYrnVo-Lf6M7bO2okKeOBNQz6JjghfTCeLDHMXor7SopnN8LfGF7ojG_KU7M2uDjc4ra8Q0153sW64eSKKu5Y9Im5qT_i2N1yxFKrbCpdm6jrL4lHpuUOs1r8njjZd1eoCMX8-PezLSuAcaOkQdFi11rwM_KUQJlFqEkSfr9QSiUIcUZ7UZqBwztxWoYOQXLIAet_8sODZZ-fQNx8mOZFumF8qYcaZ9TgGhtyAjbmZVX6Ob6Dw8v38cSc"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Networking Pro</span>
+<span class="text-[10px] text-on-surface-variant mt-xs">50 Connections</span>
+</div>
+<div class="glass group opacity-50 p-md rounded-xl flex flex-col items-center text-center">
+<div class="w-20 h-20 mb-sm relative grayscale">
+<img class="w-full h-full object-contain" data-alt="A silhouette of a futuristic 3D badge with a locked padlock icon in the center, surrounded by dim, unlit geometric patterns. The aesthetic is shadowy and mysterious, indicating a hidden or unearned achievement. Consistent with a high-end dark-themed career dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXsgec0yrkR6RLz8HW1vJNte1SyCj8AxbkJX8cZ3h40D9SryubdH38R4onzK9wrEei0doCo07O9nb-v6_g2FK-bsb2OXAwqUUngHKCzbCHk78404M3jmxA-h1oh7iXMyLOgVIseH5aPusM31aYu6J_uUpIS6soiWoZU5SibFpfx3WPJjyBuirk9iLIeqdiAKqneQm9m2hx2tzWdhD-ue0QeOKzdtjROR9eouSfeWZWsBdhcLwwNiOnSLbThY6hTGIz-vJVwlx1NnLx"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Interview Ace</span>
+<span class="text-[10px] text-on-surface-variant mt-xs">Unlock at 5 Interviews</span>
+</div>
+<div class="hidden lg:flex glass group opacity-50 p-md rounded-xl flex-col items-center text-center">
+<div class="w-20 h-20 mb-sm relative grayscale">
+<img class="w-full h-full object-contain" data-alt="A locked achievement badge placeholder with a 3D question mark symbol inside a dark translucent hexagonal frame. Minimalist lighting and a monochromatic palette to suggest it is yet to be discovered. High-quality render style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk8xBRx0qUNnZmQD7L2j7C3iK3osL68Te24UjJwMgnyhLQo5Wl_NPAYL2uYcUCCc1HLoeOhxfdQg5M2ccDL5xP8er703IfAf8Ibl0xwyRgRr8JJi6Yx6ZLVUjwfq4DrbqDXp9FDhZWqLYBDUR_Xaf-Y_uJ69V72aRPjfWnVR4LGZQ8wC1-Ctzr8MQY668FrYhe4xo5Z375kzEu_K7t93GvcuGggUPlL_2NwGLfM2vSqsN4Er89N-icD4Rl8zhDUsDBfFaG2J0ZUPQ1"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Global Leader</span>
+<span class="text-[10px] text-on-surface-variant mt-xs">Unlock at Top 1%</span>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Global Leaderboard</h3>
+<div class="flex gap-xs">
+<button class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm border border-primary/30">Industry</button>
+<button class="text-on-surface-variant px-3 py-1 rounded-full text-label-sm font-label-sm hover:bg-white/5 transition-colors">Global</button>
+</div>
+</div>
+<div class="glass rounded-xl overflow-hidden">
+<div class="p-sm flex items-center justify-between border-b border-white/5 bg-white/5">
+<div class="flex-1 font-label-sm text-label-sm text-on-surface-variant">Rank</div>
+<div class="flex-[4] font-label-sm text-label-sm text-on-surface-variant">User</div>
+<div class="flex-[2] font-label-sm text-label-sm text-on-surface-variant text-right">Points</div>
+</div>
+<div class="divide-y divide-white/5">
+<div class="p-sm flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex-1 font-bold text-tertiary">#1</div>
+<div class="flex-[4] flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-tertiary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A profile avatar of a young professional with a stylish digital aura around them. High-resolution, clean, and vibrant aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkpZ8UL4fapQAoA-8wthubmfwlyMMxzOr02W9n8wnaXUG8ychmQ6SVttBUJ0DGS3sk2vloPiLjf4WUdfF_eay4IHud6Od9-MY6eEuC4FDdb6yjUbeLAvUOY0S_hudWgOu3GfndUmCtj5KxTTgsWznAFzcicXD3Wjewjjh6rO-wyUzcA3ebc-ye5XskFVkKHvK_rrtq3GLOU58F57hN6t00Uo0HPOEvqJ40PxFDTs4w2sOLFdY33yeBp5DVJ3s5XsxM8SMYFhiWSZF"/>
+</div>
+<span class="text-body-md font-medium">Aarav S.</span>
+</div>
+<div class="flex-[2] text-right font-headline-md text-[18px] text-tertiary">14,200</div>
+</div>
+<div class="p-sm flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex-1 font-bold text-secondary">#2</div>
+<div class="flex-[4] flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-secondary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up professional avatar of a focused tech professional. Cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAttvfgthET_o5qLpHBTDd6OraYOAnAixQyUVR83s4fMOOuP8N3oSjdpaQAHw3PfuA06uds8miRA2N8GOQFQwkRfW9FQY_UVd9HHZLETGGs0CVDxpZ6EeiHpdlkvvtMX48C-0lzoANwAIbiu4EldtjIEwhsnG-iQMTMxn5cXJZniyVrWzpwqFAjRgNwyzTW1HlPbfGTdN6htu-WukIGiyu9MF5yn9w0hWKmuSVvkXGlYB1fpen0KEa6AUT2xheJoyJVlh_Z1PTfX9nG"/>
+</div>
+<span class="text-body-md font-medium">Priya K.</span>
+</div>
+<div class="flex-[2] text-right font-headline-md text-[18px] text-secondary">12,850</div>
+</div>
+<div class="p-sm flex items-center justify-between bg-primary/10 border-y border-primary/20">
+<div class="flex-1 font-bold text-primary">#42</div>
+<div class="flex-[4] flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary border border-white/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A user's personal avatar, stylish and professional, set against a glowing electric blue background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHITWgSezhIBJs-9ceTs0XzAuUg-vybeuCtj4D-IHsW-c68vt1ooZUOgexH_BPSEFRitHrBXCFomJ6xNbz4KmzaxmiM0OH4sPzxeAk15D3K_FwOr8pApIbhHgp_zyoLNM0PWRl3BLBjjej7hzZ_UdIlRT3GvyZZ3reJkNC7_OPf90Tvcv9vOugxy2ZhridfdLzCaHKUe4MvaRs3-eZ458d3X8cJWkaLbAktlJJd3I77FgpLXT9VTyoC6Md1tYr0CRH9rN3j8ws31Li"/>
+</div>
+<span class="text-body-md font-bold text-on-surface">You (Arjun)</span>
+</div>
+<div class="flex-[2] text-right font-headline-md text-[18px] text-primary">2,450</div>
+</div>
+<div class="p-sm flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex-1 font-bold text-on-surface-variant">#43</div>
+<div class="flex-[4] flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional looking user avatar for a leaderboard list." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAM5Y1cbpXzX2aXdndzOpIP5Gnt6Q72rvQaPxb5cd9U6PI3I8qWB-V3H779uHhZZn2l0qf7S0mupv8vEG2DGsR5rKwd-bP9KatbuVPeNHRAaNsDvGPoP3gKHUomAuud-OFlVUCWIT5gQovGmToP_sL-y3O2pO2h8FUPMb-lKub--Dm0jEvoB6hD1P5-ctLPHf2foZI_fnq7csqgCbrMCsOkMAUJiaj6pOWF5ANbGoAHftdLkYleCnjPxH1yp9v4xE7rwTq7s9S49u_"/>
+</div>
+<span class="text-body-md font-medium text-on-surface-variant">Meera L.</span>
+</div>
+<div class="flex-[2] text-right font-headline-md text-[18px] text-on-surface-variant">2,410</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface mb-md">Reward Summary</h3>
+<div class="flex flex-col gap-sm">
+<div class="glass p-md rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full group-hover:bg-primary/10 transition-colors"></div>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Available for Redemption</h4>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">85</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AI Credits</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+</div>
+<button class="mt-md w-full intelligence-gradient text-on-primary py-xs rounded-lg font-label-sm text-label-sm hover:opacity-90 active:scale-95 transition-all">Redeem for AI Mentorship</button>
+</div>
+<div class="glass p-md rounded-xl relative overflow-hidden group">
+<h4 class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Next Reward Unlock</h4>
+<div class="flex justify-between items-center mb-xs">
+<span class="text-body-md font-medium">Premium Job Board Access</span>
+<span class="text-label-sm text-primary">550 XP to go</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[78%] transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<button class="fixed bottom-20 right-6 w-14 h-14 rounded-full intelligence-gradient text-on-primary shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</button>
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explorer</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff] active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-label-sm mt-1">Skills</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Offer Comparison</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #4d8eff 0%, #571bc1 100%);
+        }
+        .glow-border:focus-within {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+            border-color: #adc6ff;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .animate-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#571bc1",
+                        "on-primary": "#002e6a",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "inverse-primary": "#005ac2",
+                        "surface-container": "#171f33",
+                        "on-surface-variant": "#c2c6d6",
+                        "inverse-on-surface": "#283044",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-container": "#009eb9",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary": "#3c0091",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-low": "#131b2e",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary": "#4cd7f6",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface": "#0b1326",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary": "#d0bcff",
+                        "outline-variant": "#424754",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003640",
+                        "surface-bright": "#31394d",
+                        "on-background": "#dae2fd",
+                        "primary": "#adc6ff",
+                        "surface-dim": "#0b1326",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-container": "#00285d",
+                        "tertiary-fixed": "#acedff",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2d3449",
+                        "primary-container": "#4d8eff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-surface": "#dae2fd",
+                        "on-surface": "#dae2fd",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-container-high": "#222a3d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "64px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "container-max": "1200px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl">arrow_back</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Offer Comparison</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-md items-center mr-md">
+<span class="text-primary font-bold transition-opacity hover:opacity-80 cursor-pointer">Explorer</span>
+<span class="text-on-surface-variant transition-opacity hover:opacity-80 cursor-pointer">Skills</span>
+<span class="text-on-surface-variant transition-opacity hover:opacity-80 cursor-pointer">Community</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A sophisticated professional headshot of a young Indian executive in a modern tech office environment. The lighting is soft and cinematic, with a color palette of deep blues and cool grays that matches the app's premium dark mode aesthetic. The background is a slightly blurred workspace with soft bokeh effects and hints of glass and steel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxY6P3B3ZfrAfarfHY8d3LNPwYR6VjruuSGWRUTv7JRViwOzLJ_20etq9LhhsDNi1_zpcZ2zmTsFE0LUKEdGhXrPlnpIpJofZdqIH7v-cx0-bXaT2Ghjq_m7k4fgmE_Tp0bJYj2HiDuIOqr0wjj-jj5afnGYxy82Pll1Netw__4B-7dG52SvzL_ZpRczqn0LEMIzH3ZIAJ-hod1OC7LnJQzkhP52r8uKvpHsitfgPIEG85_-Gdqjv6y1MVk8I9OjYbqTMqcnDXK9kh"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-gutter max-w-container-max mx-auto">
+<!-- Comparison Header -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-md mb-xl">
+<div class="max-w-2xl">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-xs">The Final Decision</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We've benchmarked these offers against your 5-year 'Career Twin' projection and current market fluctuations in the Indian tech ecosystem.</p>
+</div>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none px-md py-sm border border-outline-variant rounded-xl font-label-sm text-label-sm uppercase tracking-widest hover:bg-surface-bright transition-colors active:scale-95">Save Draft</button>
+<button class="flex-1 md:flex-none intelligence-gradient px-md py-sm rounded-xl font-label-sm text-label-sm text-on-primary uppercase tracking-widest shadow-lg shadow-primary/20 active:scale-95 transition-transform">Download Report</button>
+</div>
+</div>
+<!-- Comparison Table / Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-start">
+<!-- Metrics Sidebar (Hidden on Mobile, Labels on Web) -->
+<div class="hidden lg:flex lg:col-span-2 flex-col gap-12 pt-24">
+<div class="h-24 flex items-center"><span class="font-label-sm text-label-sm text-outline uppercase tracking-tighter">Company</span></div>
+<div class="h-20 flex items-center border-t border-white/5"><span class="font-label-sm text-label-sm text-outline uppercase tracking-tighter">Base Salary</span></div>
+<div class="h-20 flex items-center border-t border-white/5"><span class="font-label-sm text-label-sm text-outline uppercase tracking-tighter">Equity (ESOPs)</span></div>
+<div class="h-20 flex items-center border-t border-white/5"><span class="font-label-sm text-label-sm text-outline uppercase tracking-tighter">Growth Potential</span></div>
+<div class="h-20 flex items-center border-t border-white/5"><span class="font-label-sm text-label-sm text-outline uppercase tracking-tighter">Key Perks</span></div>
+</div>
+<!-- Offer 1 -->
+<div class="lg:col-span-5 glass-card rounded-2xl p-md relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<!-- Company Info -->
+<div class="flex items-center gap-md mb-12">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high flex items-center justify-center p-base border border-white/10">
+<img class="w-10 h-10 object-contain" data-alt="A minimalist tech company logo for 'Solaris Tech', featuring abstract geometric shapes in electric blue and white on a dark background. The design is sleek, modern, and high-contrast, fitting perfectly into a futuristic SaaS dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9RgvQW_4oaIHdGx_x7vXdQtlWPy7G21FAnv8Oj8Yx01Er9o_CgG-f-WMR0D2q5Kvr1vn9HK_sMNzQlfFBtepQ3fmy5UwrjqzHzuluX5Uqau4JiN6kbPY_jslpk9dNQQbQxTZnWVTPbWnz_Py1SuRcgP84wWxYc_bbweLLXR_ig9H2FGvFM1Gd5ifUd80bK6Qrtrjr6JZSvtGqkZbMRmRIhNNxH5vgxToslqkuAUdY2hbTi3SEXSEHDBZ3d8XnYz6fUsn7yyXS51Aj"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Solaris Tech</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Senior Product Designer • Bengaluru</p>
+</div>
+</div>
+<!-- Salary -->
+<div class="mb-md">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Base Salary</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">₹48.5L</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ yr</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full mt-sm overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<!-- Equity -->
+<div class="mb-md pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Equity</div>
+<div class="font-headline-md text-headline-md text-on-surface">₹12.0L <span class="text-body-md font-normal text-on-surface-variant">(4 yrs)</span></div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs italic">Tier-1 ESOP Pool</p>
+</div>
+<!-- Growth -->
+<div class="mb-md pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Growth Potential</div>
+<div class="flex items-center gap-sm">
+<div class="font-display-lg-mobile text-display-lg-mobile text-tertiary">A+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[200px]">High trajectory for Design Leadership within 18 months.</p>
+</div>
+</div>
+<!-- Perks -->
+<div class="pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Key Perks</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Remote First</span>
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Unlimited L&amp;D</span>
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Health Gold</span>
+</div>
+</div>
+</div>
+<!-- Offer 2 -->
+<div class="lg:col-span-5 glass-card rounded-2xl p-md relative overflow-hidden border-primary/30 ring-1 ring-primary/20 bg-surface-container-low">
+<div class="absolute top-4 right-4 px-sm py-1 intelligence-gradient rounded-full">
+<span class="text-[10px] font-bold text-on-primary uppercase tracking-widest">Recommended</span>
+</div>
+<!-- Company Info -->
+<div class="flex items-center gap-md mb-12">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high flex items-center justify-center p-base border border-white/10">
+<img class="w-10 h-10 object-contain" data-alt="A minimalist tech company logo for 'Neura Systems', featuring a stylized brain or circuit pattern in deep violet and cyan on a dark background. The aesthetic is futuristic, AI-driven, and premium, designed to stand out in a high-end UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNfo4mBzhcDcLenoq56nQnk8u5rrgVWLCHv1yCanSc5nbhPLgtoG40aEU2ZQad0OCJLjIV5faFq83zO7iBNHQ9-4CYMs5j6rUTt1qDXeONdLuj9BDStkbpPuaXAOByur6psZrVoNQqRiHbbvmpPZ4D9gMncwCEZrPBOoqLnfDvsF6bUvW2SG3c6-dEed6GSdz2dG46nta33RBvc7k-6BAtRhOU7liQVc5MEGcPe9kjW6Q0PDipqonGpBl_Dna_N9gI4yiNGoDpW-dz"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-secondary">Neura Systems</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Principal Designer • Remote</p>
+</div>
+</div>
+<!-- Salary -->
+<div class="mb-md">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Base Salary</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">₹52.0L</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ yr</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full mt-sm overflow-hidden">
+<div class="bg-secondary h-full w-[95%]"></div>
+</div>
+</div>
+<!-- Equity -->
+<div class="mb-md pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Equity</div>
+<div class="font-headline-md text-headline-md text-on-surface">₹18.5L <span class="text-body-md font-normal text-on-surface-variant">(4 yrs)</span></div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs italic">Series C Preference</p>
+</div>
+<!-- Growth -->
+<div class="mb-md pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Growth Potential</div>
+<div class="flex items-center gap-sm">
+<div class="font-display-lg-mobile text-display-lg-mobile text-secondary">S</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[200px]">Strategic 'Career Twin' match. Aligns 94% with your target path.</p>
+</div>
+</div>
+<!-- Perks -->
+<div class="pt-sm border-t border-white/5 lg:border-none">
+<div class="lg:hidden font-label-sm text-label-sm text-outline mb-xs uppercase">Key Perks</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Equity Buyback</span>
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Global Retreats</span>
+<span class="px-xs py-1 bg-surface-container-highest rounded text-xs text-on-surface-variant border border-white/5">Parental Leave+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Verdict Section -->
+<section class="mt-xl relative">
+<div class="absolute -inset-4 bg-gradient-to-r from-primary/5 via-secondary/5 to-tertiary/5 blur-3xl opacity-50 -z-10"></div>
+<div class="glass-card rounded-3xl p-lg md:p-xl border-primary/20">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-primary">AI Verdict: Neura Systems</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-2">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-md">
+                            Based on your <span class="text-primary font-bold">Career Twin</span> simulation—which analyzes 10,000+ paths of designers with your profile—<span class="font-bold">Neura Systems</span> offers a significantly higher probability of reaching a C-suite role by year 7. 
+                        </p>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">The equity structure is optimized for the current Series C secondary market cycle.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">The role provides direct exposure to AI-native product cycles, a key skill gap in your profile.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Remote-first flexibility saves you 420 commute hours annually, increasing L&amp;D capacity.</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-highest/30 rounded-2xl p-md border border-white/5 flex flex-col items-center justify-center text-center">
+<div class="relative w-32 h-32 mb-sm">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="url(#intelligence-grad)" stroke-dasharray="282" stroke-dashoffset="17" stroke-width="8"></circle>
+<defs>
+<lineargradient id="intelligence-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#adc6ff"></stop>
+<stop offset="100%" style="stop-color:#d0bcff"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">94%</span>
+<span class="text-[10px] uppercase text-outline tracking-widest">Match Score</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">High Confidence Recommendation</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff] active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary active:scale-90 duration-200">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary active:scale-90 duration-200">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</nav>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-20 md:bottom-10 right-gutter z-50">
+<button class="w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center text-on-primary shadow-2xl shadow-primary/40 active:scale-90 transition-transform group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">auto_awesome</span>
+</button>
+</div>
+<!-- Atmospheric Shader Overlay (Subtle) -->
+<div class="fixed inset-0 pointer-events-none -z-20 opacity-30">
+<div class="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/10 blur-[150px] rounded-full"></div>
+<div class="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/10 blur-[150px] rounded-full"></div>
+</div>
+<script>
+        // Micro-interaction for comparison cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

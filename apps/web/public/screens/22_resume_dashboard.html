@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Resume Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#571bc1",
+                    "on-primary": "#002e6a",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "inverse-primary": "#005ac2",
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#c2c6d6",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#002f38",
+                    "on-primary-fixed": "#001a42",
+                    "tertiary-container": "#009eb9",
+                    "background": "#0b1326",
+                    "secondary-fixed": "#e9ddff",
+                    "on-secondary": "#3c0091",
+                    "surface-tint": "#adc6ff",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-fixed": "#001f26",
+                    "surface-variant": "#2d3449",
+                    "on-secondary-container": "#c4abff",
+                    "tertiary": "#4cd7f6",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface": "#0b1326",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary": "#d0bcff",
+                    "outline-variant": "#424754",
+                    "outline": "#8c909f",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003640",
+                    "surface-bright": "#31394d",
+                    "on-background": "#dae2fd",
+                    "primary": "#adc6ff",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-container": "#00285d",
+                    "tertiary-fixed": "#acedff",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#2d3449",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-surface": "#dae2fd",
+                    "on-surface": "#dae2fd",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "surface-container-high": "#222a3d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "64px",
+                    "base": "4px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "container-max": "1200px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.8s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24 md:pb-0 md:pt-20">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a young South Asian professional with a friendly smile, set against a blurred high-tech office background with soft blue and teal lighting. The aesthetic is clean and modern, reflecting a premium career-focused platform. The lighting is crisp and cinematic, emphasizing high-precision digital guidance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDuxPIzjdjcFpCHEYx0YSxQJ62aUbDFn2aYs7az-nV3JCxG55xtbEVAD3cp3Vn8SIX5tqMt4RKVfi8uvxH6HUH5F-g2IduG6jW9wNBAUu7fuCANK7gvFKoEB9GxMXqijYjVcPJWPI_HbadZpzApa5kn2fvT9CZiXVOf310YwEkn8CjQd310a89Q1X4dgEVH1pcLZFbjD2aXrMKm0Vi720xIsZ_ERUEHEVsoOCaUMGumli4NK3m0Ez_E1BM4zOczVkV14J1FiEwl8Hq"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-md">
+<a class="text-primary font-bold transition-opacity hover:opacity-80" href="#">Home</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Explorer</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Skills</a>
+</nav>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity">notifications</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-gutter py-md">
+<!-- Dashboard Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Left Column: Primary Stats & Actions -->
+<div class="md:col-span-8 flex flex-col gap-md">
+<!-- Resume Strength Card -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row items-center gap-lg relative overflow-hidden"><div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div><div class="absolute -left-20 -bottom-20 w-64 h-64 bg-secondary/5 rounded-full blur-[100px]"></div><div class="relative flex items-center justify-center w-48 h-48"><div class="absolute inset-0 rounded-full border border-white/5 shadow-[inset_0_0_20px_rgba(173,198,255,0.05)]"></div><svg class="w-full h-full drop-shadow-[0_0_12px_rgba(173,198,255,0.3)]"><circle class="text-white/5" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="8"></circle><circle class="text-primary progress-ring__circle" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.65" stroke-dashoffset="90.47" stroke-linecap="round" stroke-width="8"></circle></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="font-display-lg text-display-lg text-primary drop-shadow-sm">82</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-[0.2em] opacity-70">Score</span></div></div><div class="flex-1 text-center md:text-left relative z-10"><div class="flex items-center justify-center md:justify-start gap-xs mb-xs"><span class="material-symbols-outlined text-primary text-body-md">verified</span><h2 class="font-headline-md text-headline-md text-on-surface">Resume Strength</h2></div><p class="font-body-md text-body-md text-on-surface-variant mb-md leading-relaxed">Your profile is performing better than <span class="text-primary font-bold">88%</span> of applicants for <strong class="text-on-surface">AI Strategist</strong> roles. Some key skills are missing in your experience section.</p><div class="flex flex-wrap gap-sm justify-center md:justify-start"><button class="intelligence-gradient text-on-primary font-bold px-md py-xs rounded-lg flex items-center gap-xs glow-hover active:scale-95 transition-all shadow-lg shadow-primary/20"><span class="material-symbols-outlined">upload_file</span>Upload New Version</button><button class="bg-white/5 border border-white/10 text-on-surface font-medium px-md py-xs rounded-lg flex items-center gap-xs hover:bg-white/10 active:scale-95 transition-all"><span class="material-symbols-outlined">auto_awesome</span>AI Rewrite</button></div></div></div>
+<!-- Keywords Section -->
+<section class="glass-card rounded-xl p-md"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-md text-headline-md text-on-surface">Extracted Keywords</h3><span class="text-tertiary font-label-sm text-label-sm bg-tertiary/10 px-sm py-1 rounded-full border border-tertiary/20 backdrop-blur-md">Target: AI Strategist</span></div><div class="space-y-md"><div class="space-y-xs"><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-60">Foundational</p><div class="flex flex-wrap gap-xs"><div class="bg-primary/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-primary/20 hover:bg-primary/10 transition-colors"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span><span class="font-body-md text-body-md">Python Ecosystem</span></div><div class="bg-primary/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-primary/20 hover:bg-primary/10 transition-colors"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span><span class="font-body-md text-body-md">Data Analytics</span></div></div></div><div class="space-y-xs"><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-60">Advanced</p><div class="flex flex-wrap gap-xs"><div class="bg-primary/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-primary/20 hover:bg-primary/10 transition-colors"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span><span class="font-body-md text-body-md">Machine Learning</span></div><div class="bg-primary/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-primary/20 hover:bg-primary/10 transition-colors"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span><span class="font-body-md text-body-md">Strategic Roadmap</span></div></div></div><div class="space-y-xs"><p class="font-label-sm text-label-sm text-error uppercase tracking-widest opacity-80">Missing</p><div class="flex flex-wrap gap-xs"><div class="bg-error/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-error/20 opacity-80 hover:bg-error/10 transition-colors"><span class="material-symbols-outlined text-error text-[18px]">error</span><span class="font-body-md text-body-md">Scalable Architectures</span></div><div class="bg-error/5 px-sm py-xs rounded-lg flex items-center gap-xs border border-error/20 opacity-80 hover:bg-error/10 transition-colors"><span class="material-symbols-outlined text-error text-[18px]">error</span><span class="font-body-md text-body-md">LLM Fine-tuning</span></div></div></div></div></section>
+</div>
+<!-- Right Column: Recent Downloads & Stats -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<!-- Recent Downloads -->
+<section class="glass-card rounded-xl p-md h-full"><h3 class="font-headline-md text-headline-md text-on-surface mb-md">Recent Downloads</h3><div class="flex flex-col gap-xs"><div class="flex items-center gap-sm p-sm rounded-xl bg-white/5 hover:bg-white/10 transition-all group cursor-pointer border border-transparent hover:border-white/10"><div class="w-10 h-10 bg-primary/10 flex items-center justify-center rounded-lg border border-primary/20 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-primary">picture_as_pdf</span></div><div class="flex-1 overflow-hidden"><p class="font-body-md text-body-md text-on-surface truncate group-hover:text-primary transition-colors">Resume_AI_Strategist_v2</p><p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs"><span class="">1.2 MB</span><span class="opacity-30">•</span><span class="">2h ago</span></p></div><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">download</span></div><div class="flex items-center gap-sm p-sm rounded-xl bg-white/5 hover:bg-white/10 transition-all group cursor-pointer border border-transparent hover:border-white/10"><div class="w-10 h-10 bg-secondary/10 flex items-center justify-center rounded-lg border border-secondary/20 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-secondary">picture_as_pdf</span></div><div class="flex-1 overflow-hidden"><p class="font-body-md text-body-md text-on-surface truncate group-hover:text-secondary transition-colors">Resume_Master_Dec2023</p><p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs"><span class="">1.1 MB</span><span class="opacity-30">•</span><span class="">3d ago</span></p></div><span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">download</span></div><div class="flex items-center gap-sm p-sm rounded-xl bg-white/5 hover:bg-white/10 transition-all group cursor-pointer border border-transparent hover:border-white/10"><div class="w-10 h-10 bg-tertiary/10 flex items-center justify-center rounded-lg border border-tertiary/20 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-tertiary">picture_as_pdf</span></div><div class="flex-1 overflow-hidden"><p class="font-body-md text-body-md text-on-surface truncate group-hover:text-tertiary transition-colors">Generic_Tech_Lead</p><p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs"><span class="">1.5 MB</span><span class="opacity-30">•</span><span class="">1w ago</span></p></div><span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors">download</span></div></div><div class="mt-lg pt-md border-t border-white/5"><div class="flex justify-between text-on-surface-variant font-label-sm text-label-sm mb-xs"><span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">cloud</span>Storage used</span><span class="">45% of 1GB</span></div><div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden"><div class="bg-primary h-full rounded-full shadow-[0_0_8px_#adc6ff]" style="width: 45%"></div></div></div></section>
+</div>
+</div>
+<!-- Bento-style AI Insight -->
+<div class="mt-md glass-card rounded-2xl p-lg grid grid-cols-1 md:grid-cols-3 gap-md items-center relative overflow-hidden border-primary/10"><div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div><div class="flex items-center gap-md col-span-2 relative z-10"><div class="w-20 h-20 rounded-2xl bg-secondary-container/30 backdrop-blur-xl flex items-center justify-center border border-white/10 shadow-2xl"><span class="material-symbols-outlined text-on-secondary-container text-4xl animate-pulse">psychology</span></div><div><div class="flex items-center gap-xs mb-xs"><span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest font-bold">AI Insight</span><span class="w-1 h-1 rounded-full bg-secondary/40"></span><span class="text-on-surface-variant font-label-sm text-label-sm">Career Path</span></div><h4 class="font-headline-md text-headline-md text-on-surface mb-xs">Senior Product Manager (AI Platforms)</h4><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Based on your latest resume update, you are a strong candidate for roles at Tier-1 tech firms. Your background in <span class="text-primary">Machine Learning</span> is a key differentiator.</p></div></div><div class="flex justify-end relative z-10"><button class="bg-primary text-on-primary font-bold px-lg py-sm rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20 flex items-center gap-xs">View Market Analysis<span class="material-symbols-outlined">arrow_forward</span></button></div></div>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-20 right-6 md:bottom-8 md:right-8 w-14 h-14 intelligence-gradient rounded-full shadow-2xl flex items-center justify-center z-50 glow-hover active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.06), transparent 40%)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.04)';
+            });
+        });
+
+        // Simple animation for the progress ring on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.progress-ring__circle');
+            if (circle) {
+                const radius = circle.r.baseVal.value;
+                const circumference = radius * 2 * Math.PI;
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                
+                // Animate to 82%
+                const offset = circumference - (82 / 100) * circumference;
+                setTimeout(() => {
+                    circle.style.strokeDashoffset = offset;
+                }, 300);
+            }
+        });
+    </script>
+</body></html>

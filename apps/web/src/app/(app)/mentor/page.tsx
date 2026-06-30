@@ -13,7 +13,7 @@ export default async function MentorPage() {
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   // Fetch recommended careers for context in chat
   const assessment = await prisma.assessmentResult.findFirst({

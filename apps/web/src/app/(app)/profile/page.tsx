@@ -15,7 +15,15 @@ export default async function ProfilePage() {
   });
 
   const serializedUser = { id: user.id, name: user.name, email: user.email, createdAt: new Date(user.createdAt) };
-  const serializedProfile = profile ? { interests: profile.interests, preferences: profile.preferences as Record<string, unknown> } : null;
+  const serializedProfile = profile ? {
+    bio: profile.bio,
+    location: profile.location,
+    educationLevel: profile.educationLevel,
+    currentGrade: profile.currentGrade,
+    dateOfBirth: profile.dateOfBirth ? profile.dateOfBirth.toISOString() : null,
+    interests: profile.interests,
+    preferences: profile.preferences as Record<string, unknown>
+  } : null;
   const serializedAssessments = assessments.map((a) => ({
     id: a.id,
     scores: a.scores as Record<string, unknown>,

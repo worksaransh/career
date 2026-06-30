@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Define Your North Star</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(173, 198, 255, 0.3);
+            transform: translateY(-4px);
+        }
+        .active-card {
+            background: rgba(173, 198, 255, 0.1);
+            border-color: #adc6ff;
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        .bg-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(173, 198, 255, 0.15) 0%, rgba(11, 19, 38, 0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            animation: pulse-slow 8s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#171f33",
+                      "surface-tint": "#adc6ff",
+                      "surface-container-high": "#222a3d",
+                      "tertiary": "#4cd7f6",
+                      "on-secondary": "#3c0091",
+                      "on-primary-fixed": "#001a42",
+                      "on-primary": "#002e6a",
+                      "secondary-fixed": "#e9ddff",
+                      "on-tertiary-fixed": "#001f26",
+                      "surface-container-lowest": "#060e20",
+                      "on-secondary-container": "#c4abff",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-container-highest": "#2d3449",
+                      "on-surface-variant": "#c2c6d6",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#acedff",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "surface-dim": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "outline-variant": "#424754",
+                      "on-tertiary-fixed-variant": "#004e5c",
+                      "background": "#0b1326",
+                      "on-error": "#690005",
+                      "primary": "#adc6ff",
+                      "on-tertiary": "#003640",
+                      "on-error-container": "#ffdad6",
+                      "inverse-primary": "#005ac2",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "inverse-surface": "#dae2fd",
+                      "tertiary-container": "#009eb9",
+                      "secondary-container": "#571bc1",
+                      "on-secondary-fixed": "#23005c",
+                      "on-primary-container": "#00285d",
+                      "secondary": "#d0bcff",
+                      "surface-variant": "#2d3449",
+                      "surface": "#0b1326",
+                      "surface-bright": "#31394d",
+                      "inverse-on-surface": "#283044",
+                      "on-primary-fixed-variant": "#004395",
+                      "primary-fixed-dim": "#adc6ff",
+                      "primary-container": "#4d8eff",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#002f38",
+                      "on-surface": "#dae2fd",
+                      "outline": "#8c909f",
+                      "tertiary-fixed-dim": "#4cd7f6",
+                      "surface-container-low": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "container-max": "1200px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "gutter": "16px",
+                      "sm": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen selection:bg-primary/30 selection:text-primary overflow-x-hidden">
+<!-- Subtle Atmospheric Background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="bg-glow -top-20 -left-20"></div>
+<div class="bg-glow bottom-0 right-0" style="animation-delay: -4s;"></div>
+</div>
+<!-- Top Navigation Bar (Shared Component Guidance) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 rounded-lg intelligence-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed text-[20px]" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a young professional smiling confidently against a soft-focus office background. The lighting is warm and cinematic, emphasizing a modern tech-industry aesthetic with deep blues and crisp whites in the color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_6Q5-DvDeLhI_rqGJjjsiO0vMWvjFYtl9ZKY8UKMmtkJxAYob_LlFzc9IuPkX7S5qDQRls5mLfmPXkgH_chYhIeeUT4DzG5K6bObv8Q6z-3EQuxj2LnsGJ9mrFXHaqsS9GiGvCKulp3KVglNx1Zsj4zNauDjyN_sC7JJ6KMEwpDGWWgf9V5Z8NdVfhlOMal8jRXY1c1WotdUislyVIuuJiYDY4aYJS4ZzJQuK0F5B5JT_B-ZAu38JTbCwBxDO4zOFEO5XSLHIBXKd"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-32 px-gutter max-w-[1200px] mx-auto relative z-10">
+<!-- Progress Header -->
+<div class="mb-lg flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-xs mb-sm bg-surface-container/50 px-4 py-2 rounded-full border border-white/5">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">Step 10 of 15</span>
+<div class="w-32 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full intelligence-gradient w-[66.6%] rounded-full shadow-[0_0_8px_rgba(173,198,255,0.4)]"></div>
+</div>
+</div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg mb-xs text-on-background">
+                Define your north star
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                Choose the primary career milestone you want our AI to guide you towards. Your path will be personalized based on this focus.
+            </p>
+</div>
+<!-- Goal Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-md mt-lg">
+<!-- Card 1 -->
+<button class="group glass-card p-md rounded-[24px] flex flex-col items-start text-left relative overflow-hidden" onclick="toggleActive(this)">
+<div class="absolute top-0 right-0 p-gutter opacity-0 group-[.active-card]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-background mb-xs">Get my first job</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Perfect for students or recent graduates starting their career journey from scratch.</p>
+<div class="mt-md flex items-center text-primary font-label-sm text-label-sm gap-xs group-hover:gap-sm transition-all">
+<span>Explore Path</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</button>
+<!-- Card 2 -->
+<button class="group glass-card p-md rounded-[24px] flex flex-col items-start text-left relative overflow-hidden" onclick="toggleActive(this)">
+<div class="absolute top-0 right-0 p-gutter opacity-0 group-[.active-card]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-tertiary" style="font-variation-settings: 'FILL' 1;">swap_horiz</span>
+</div>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-background mb-xs">Switch careers</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Transition your existing skills into a completely new industry or specialized role.</p>
+<div class="mt-md flex items-center text-tertiary font-label-sm text-label-sm gap-xs group-hover:gap-sm transition-all">
+<span>Compare Roles</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</button>
+<!-- Card 3 -->
+<button class="group glass-card p-md rounded-[24px] flex flex-col items-start text-left relative overflow-hidden" onclick="toggleActive(this)">
+<div class="absolute top-0 right-0 p-gutter opacity-0 group-[.active-card]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-secondary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-background mb-xs">Upskill for promotion</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Level up in your current field by mastering advanced tools and leadership strategies.</p>
+<div class="mt-md flex items-center text-secondary font-label-sm text-label-sm gap-xs group-hover:gap-sm transition-all">
+<span>Skill Gap Analysis</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</button>
+<!-- Card 4 -->
+<button class="group glass-card p-md rounded-[24px] flex flex-col items-start text-left relative overflow-hidden" onclick="toggleActive(this)">
+<div class="absolute top-0 right-0 p-gutter opacity-0 group-[.active-card]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-primary-container/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-primary-container" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-background mb-xs">Plan my higher education</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Find the perfect Master's, MBA, or specialized certification program worldwide.</p>
+<div class="mt-md flex items-center text-primary-container font-label-sm text-label-sm gap-xs group-hover:gap-sm transition-all">
+<span>University Finder</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</button>
+</div>
+<!-- Actions -->
+<div class="mt-xl flex flex-col items-center">
+<button class="intelligence-gradient text-on-primary-fixed font-bold py-4 px-12 rounded-full text-body-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95 transition-all opacity-50 cursor-not-allowed" disabled="" id="finishBtn">
+                Finish Setup
+            </button>
+<button class="mt-md text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors">
+                I'll decide this later
+            </button>
+</div>
+</main>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-24 right-gutter md:bottom-8 md:right-8 z-40">
+<button class="group w-14 h-14 intelligence-gradient rounded-full flex items-center justify-center shadow-xl shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-primary-fixed group-hover:rotate-12 transition-transform">auto_awesome</span>
+<div class="absolute -top-12 right-0 bg-surface-container-high px-4 py-2 rounded-xl text-label-sm text-on-surface border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                Need help deciding?
+            </div>
+</button>
+</div>
+<!-- Bottom Navigation (Shared Component Guidance - Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</nav>
+<script>
+        function toggleActive(element) {
+            // Support single selection for this specific flow
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(c => {
+                c.classList.remove('active-card');
+            });
+            
+            element.classList.add('active-card');
+            
+            // Enable button
+            const btn = document.getElementById('finishBtn');
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            btn.classList.add('opacity-100', 'cursor-pointer');
+
+            // Trigger light tactile feedback if supported
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(10);
+            }
+        }
+
+        // Simple entrance animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(</script></body></html>

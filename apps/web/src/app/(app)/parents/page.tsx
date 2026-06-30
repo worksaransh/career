@@ -91,7 +91,7 @@ export default async function ParentsPage() {
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">

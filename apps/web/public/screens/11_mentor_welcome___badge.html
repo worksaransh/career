@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Welcome - Growth Advisor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 50%, #d0bcff 100%);
+        }
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "surface-container": "#171f33",
+                        "on-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "tertiary": "#4cd7f6",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "secondary-container": "#571bc1",
+                        "surface-tint": "#adc6ff",
+                        "tertiary-container": "#009eb9",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-lowest": "#060e20",
+                        "surface-bright": "#31394d",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00285d",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary": "#adc6ff",
+                        "background": "#0b1326",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "outline": "#8c909f",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary-container": "#c4abff",
+                        "primary-fixed": "#d8e2ff",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "surface-container-low": "#131b2e",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary": "#003640",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#002e6a",
+                        "surface-container-highest": "#2d3449",
+                        "secondary": "#d0bcff",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary": "#3c0091",
+                        "on-primary-fixed-variant": "#004395",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary-fixed": "#23005c",
+                        "outline-variant": "#424754"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "xl": "64px",
+                        "container-max": "1200px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary/30 min-h-screen">
+<!-- Top Navigation Anchor (Shared Component Mapping) -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-sm flex items-center justify-between px-sm h-16">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Mentee Progress</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior mentor in a high-tech studio environment. The lighting is soft and blue-toned, reflecting a premium AI SaaS aesthetic. The mentor looks confident and approachable, wearing minimalist modern professional attire against a blurred digital interface background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDz1tQABj_gZPEG517pocIXcgTPNoTDs0YXz2thLA4B-YnMAon-TZdbN1OG1ptIwpyxqS8j3okWL0uGU0ZBxN_0DigVDwfuTeW1x71u9eBEOfm34Yy5ivR8oDZDfuzCMbi8ik_EF5Czrktt2MPAmHCJIdS7cWpOCoNgeVJowVvSkhD00d-Zxyjv20GK1UY3kKtsFwS5kjJAv-XPPSa1ERTQi6mYnJ81JPMLK3yO0PCNz3rVsUGXnWQyqePqvDIKymSFGJdgc8vlMcb"/>
+</div>
+</div>
+</header>
+<!-- Celebration Canvas -->
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto overflow-hidden relative">
+<!-- AI Glowing Background -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] pointer-events-none opacity-40">
+</div>
+<!-- High Energy Headline Section -->
+<section class="relative z-10 text-center mb-xl">
+<div class="inline-flex items-center gap-xs px-4 py-1.5 rounded-full glass-card border-primary/20 text-primary mb-md animate-pulse">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Access Granted</span>
+</div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-xs">
+                Welcome to the <span class="text-primary italic">Vanguard</span>, Siddharth
+            </h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                The next generation of high-impact mentorship starts with your expertise. We've optimized your profile for maximum influence.
+            </p>
+</section>
+<!-- Hero: Mentor ID Card -->
+<section class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-lg items-center mb-xl">
+<div class="lg:col-span-5 flex justify-center lg:justify-start">
+<div class="w-full max-w-sm glass-card rounded-[2rem] p-xs relative overflow-hidden animate-float">
+<div class="absolute inset-0 intelligence-gradient opacity-10"></div>
+<div class="relative bg-surface-container-low rounded-[1.8rem] p-8 border border-white/5">
+<div class="flex justify-between items-start mb-md">
+<div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-primary/40 p-1">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Close up portrait of a male mentor with a friendly and knowledgeable expression. He is set against a dark, futuristic background with subtle blue glowing lines. The style is highly polished, cinematic, and professional, perfectly suited for a high-end leadership platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx7ZdWsiAzXvpkwIZOWFlfzXe_-ja3V6KDHBhU98HkI1WnucF0gQUfnQ1S1rFjUw-VxGAKeuYAcYN8e_7mk2hQyD_HZr5VNj3e7wkEUCxAIpmHG-gSJqv8mdhbgMxRZvZY2iLltN9gK8-FGfDyZoWlx5NJnWyS9vDYvXhjjWvlqVrfg5_l3f0fh7AQYEokNyVMtDQzpia73V5qRA_pzlBgK67YPROl-zJx0AraA63vtQo8y59bGe55NwEv8rZ_OFXF9JFXIBGq18ce"/>
+</div>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+</div>
+<div class="space-y-base mb-lg">
+<h3 class="font-headline-md text-headline-md text-white">Siddharth V.</h3>
+<p class="text-primary font-label-sm tracking-widest uppercase">Lead Product Mentor</p>
+</div>
+<div class="grid grid-cols-2 gap-sm border-t border-white/10 pt-md">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">Status</p>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Verified</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">Member Since</p>
+<p class="text-white font-label-sm text-label-sm">Oct 2023</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insights Section: Bento Style -->
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="glass-card p-md rounded-xl hover:border-primary/40 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs text-on-surface">15+ Matches</h4>
+<p class="font-body-md text-on-surface-variant">AI-predicted mentees currently in your direct network waiting for guidance.</p>
+</div>
+<div class="glass-card p-md rounded-xl hover:border-tertiary/40 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs text-on-surface">40+ Skill Gaps</h4>
+<p class="font-body-md text-on-surface-variant">Potential to unblock critical bottlenecks in product strategy and growth.</p>
+</div>
+<div class="glass-card p-md rounded-xl md:col-span-2 border-l-4 border-l-secondary">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">insights</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Expertise Reach</span>
+</div>
+<span class="text-on-surface-variant font-label-sm">Top 1% Mentor</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="intelligence-gradient h-full w-[85%] rounded-full shadow-[0_0_10px_rgba(173,198,255,0.5)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Next Steps Action Section -->
+<section class="relative z-10 mt-xl">
+<h3 class="font-headline-md text-headline-md mb-md">Activate Your Journey</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
+<button class="flex items-center justify-between px-md py-6 rounded-xl intelligence-gradient text-on-primary font-bold active:scale-95 transition-all shadow-xl hover:brightness-110">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined">dashboard</span>
+                        View Dashboard
+                    </span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="flex items-center justify-between px-md py-6 rounded-xl glass-card text-on-surface font-semibold active:scale-95 transition-all hover:bg-white/5 border-white/10">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined">explore</span>
+                        Explore Mentees
+                    </span>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="flex items-center justify-between px-md py-6 rounded-xl glass-card text-on-surface font-semibold active:scale-95 transition-all hover:bg-white/5 border-white/10">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined">share</span>
+                        Share Profile
+                    </span>
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Shared Component Mapping) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] flex justify-around items-center h-20 px-4 pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">alt_route</span>
+<span class="font-label-sm text-label-sm">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-24 right-sm md:bottom-8 md:right-8 z-40">
+<button class="w-14 h-14 rounded-full intelligence-gradient shadow-2xl flex items-center justify-center group active:scale-95 transition-transform">
+<div class="absolute inset-0 rounded-full border-2 border-white/20 scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></div>
+<span class="material-symbols-outlined text-on-primary text-[28px] animate-pulse">auto_awesome</span>
+</button>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    // Logic for subtle atmospheric SFX can go here
+                });
+            });
+
+            // Smooth parallax effect for the shader background
+            document.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+                const shader = document.querySelector('webgl-shader');
+                if(shader) {
+                    shader.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>

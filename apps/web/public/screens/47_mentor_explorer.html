@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Discovery | Career Growth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --intelligence-glow: radial-gradient(circle at 50% 50%, rgba(76, 215, 246, 0.15) 0%, transparent 70%);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .active-scale:active {
+            transform: scale(0.95);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-on-surface": "#283044",
+                        "on-surface-variant": "#c2c6d6",
+                        "inverse-surface": "#dae2fd",
+                        "outline": "#8c909f",
+                        "tertiary-fixed": "#acedff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary-fixed": "#23005c",
+                        "background": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "tertiary-container": "#009eb9",
+                        "primary-fixed": "#d8e2ff",
+                        "inverse-primary": "#005ac2",
+                        "on-background": "#dae2fd",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-container": "#00285d",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-container": "#571bc1",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#3c0091",
+                        "surface-variant": "#2d3449",
+                        "surface-container-lowest": "#060e20",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#31394d",
+                        "tertiary": "#4cd7f6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary": "#adc6ff",
+                        "surface-tint": "#adc6ff",
+                        "surface-dim": "#0b1326",
+                        "primary-container": "#4d8eff",
+                        "outline-variant": "#424754",
+                        "on-tertiary-fixed": "#001f26",
+                        "secondary": "#d0bcff",
+                        "surface-container-low": "#131b2e",
+                        "on-primary-fixed": "#001a42",
+                        "on-primary": "#002e6a",
+                        "on-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "on-tertiary": "#003640",
+                        "on-secondary-container": "#c4abff",
+                        "surface-container": "#171f33"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xs": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "gutter": "16px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
+<div class="flex items-center justify-between px-gutter h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-white/10 active-scale">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-definition portrait of a professional woman with a warm, confident expression. She is in a blurred modern office setting with cool blue and soft cyan ambient lighting, reflecting a premium AI SaaS brand aesthetic. The photography is sharp with a shallow depth of field, emphasizing her intelligence and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGmyAkKZ_Paxp3ChwYdYgST64fZprwCzyazwOswdo98bmybkyN9Aw_LoPvSbnaWWMKMKTp0SeSAdI2hJWnMZRo7_-8wt-Kmc_YoKv7AVLr9Q6jA4ORnpz0eOw63BKkPiEhv147Vp1rqM-A8EJabgGH81VWqXfxhEMWPJqA7s9G83kudKGw5tlRXWNRpXSLQxDORIbwRoddy15nsBcHOJ93MIJgl3yZPT8fNb683uy0yCX5EO0tOHXOIEJiNburhghAv8kCDjBgT9fy"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">Career Growth</h1>
+</div>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active-scale">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto">
+<!-- Search & Filter Section -->
+<section class="mb-lg">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant/50 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-14 bg-surface-container-lowest border border-white/10 rounded-xl pl-12 pr-4 focus:ring-1 focus:ring-primary focus:outline-none text-on-surface placeholder:text-on-surface-variant/40 transition-all duration-300" placeholder="Search by name, expertise, or goal..." type="text"/>
+</div>
+<div class="flex gap-sm mt-md overflow-x-auto scrollbar-hide py-2">
+<button class="px-md py-xs rounded-full bg-surface-container border border-white/10 text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-scale hover:bg-surface-container-high">Industry</button>
+<button class="px-md py-xs rounded-full bg-surface-container border border-white/10 text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-scale hover:bg-surface-container-high">Price Range</button>
+<button class="px-md py-xs rounded-full bg-surface-container border border-white/10 text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-scale hover:bg-surface-container-high">Availability</button>
+<button class="px-md py-xs rounded-full bg-surface-container border border-white/10 text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-scale hover:bg-surface-container-high flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                    Filters
+                </button>
+</div>
+</section>
+<!-- Featured / AI Recommendation Hero -->
+<section class="mb-lg">
+<div class="flex items-end justify-between mb-sm">
+<div>
+<span class="text-primary text-label-sm font-label-sm tracking-widest uppercase mb-xs block">Intelligence Driven</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">AI-Recommended Mentors</h2>
+</div>
+<button class="text-tertiary text-label-sm font-label-sm hover:underline">See all</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Mentor Card 1 (Highlight) -->
+<div class="glass-card rounded-xl p-md flex flex-col relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-32 h-32 intelligence-gradient opacity-10 blur-3xl group-hover:opacity-20 transition-opacity"></div>
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm items-center">
+<div class="w-16 h-16 rounded-xl overflow-hidden border border-white/10 relative">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a senior tech leader with silver-accented hair, wearing a sleek black turtleneck. The background is a dimly lit futuristic studio with subtle electric blue highlights. High-contrast lighting captures a professional, visionary mood consistent with a top-tier executive at a global tech firm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmEC42G7uRTlAgLKdX1JNQ5qvFTRMc1zzoRyWotgVQK8bAvGXo6oRN-6Vp3PYpUQEUVNSpFG7mD4erFdUqvGdSqPakHiHYUxUUnPugTcr_KHGJNQ5F823oyNKfztYvhQzw7CXXwS0n97pCJryD8z--m6EQF2xl_z1VJOcEVwEqmXS01V7QbUasbMTv_Oxfs4rK_WPgPdZJIEysivIqW02z76lfPI2kgcVu9eY7D0Pyg_Gu4Y8D_uKmXOKofkKg5DeS1ve85xO-_Tym"/>
+<div class="absolute bottom-1 right-1 w-3 h-3 bg-green-500 border-2 border-background rounded-full"></div>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Sarah Chen</h3>
+<p class="text-on-surface-variant/70 text-label-sm">Director, AI Strategy @ Linear</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="bg-tertiary-container/20 px-xs py-1 rounded text-tertiary font-label-sm text-[10px] tracking-tighter flex items-center gap-1 border border-tertiary/20">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                98% MATCH
+                            </div>
+</div>
+</div>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Generative AI</span>
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Product Strategy</span>
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Scaling Teams</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div>
+<p class="text-on-surface font-label-sm text-body-md">$120<span class="text-on-surface-variant/50 text-[12px]">/session</span></p>
+</div>
+<button class="intelligence-gradient text-on-primary-container font-label-sm px-md py-xs rounded-lg active-scale shadow-lg shadow-primary/20">Quick Connect</button>
+</div>
+</div>
+<!-- Mentor Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm items-center">
+<div class="w-16 h-16 rounded-xl overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A charismatic male mentor in his early 30s with short dark hair, smiling warmly. He is wearing a minimalist grey hoodie. The setting is a bright, airy workspace with soft natural light and blurred plants in the background. The aesthetic is clean, modern, and professional, embodying a friendly but expert advisor vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWAp7TbrChiZ8j9KJ4tFFgnzw8rTwIlWFI9QnFyIAaXGtQlUSa3pSZLl6bYzSHrzjL07qcHJJZ8vZLWYTGu1bOuy7QWE7K6A7ZViSZacFwJi0NBegPeV4e_gsKwXLowJjIFmbKKFI5K6L4y2g0Y4cnFhDtbPKHRPbnZ1ZU2H_MkUQZc2ydTwHSV9vXkHeqkC12wGAKMofHfI-XXFdp0gOx3x2phylQVnDNW7xVhkss7LUH6YbzlRHC9dOpanh32Qnhnc0zZKu8H-h"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Arjun Mehta</h3>
+<p class="text-on-surface-variant/70 text-label-sm">Staff Designer @ CRED</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="bg-primary-container/20 px-xs py-1 rounded text-primary font-label-sm text-[10px] tracking-tighter flex items-center gap-1 border border-primary/20">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                94% MATCH
+                            </div>
+</div>
+</div>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Fintech UI</span>
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Motion Design</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div>
+<p class="text-on-surface font-label-sm text-body-md">$85<span class="text-on-surface-variant/50 text-[12px]">/session</span></p>
+</div>
+<button class="bg-surface-container-high text-on-surface font-label-sm px-md py-xs rounded-lg active-scale border border-white/10">Quick Connect</button>
+</div>
+</div>
+<!-- Mentor Card 3 -->
+<div class="glass-card rounded-xl p-md flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm items-center">
+<div class="w-16 h-16 rounded-xl overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="Portrait of an experienced female tech strategist with a sharp, focused look. She is wearing elegant glasses and a structured navy blazer. The lighting is sophisticated 'Rembrandt' style with soft shadows, set against a dark architectural background with thin neon cyan lines, symbolizing a fusion of business and technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRnhg11aXvJnvHDyCX0dFA990Tidq_AS5cSU4vlLpGD10bnvbWne41LxBPyILCz_7myfGWLUelt2YnjTrNGwi4RhNQ78u-wdenU59xZ-t1nb-YiTMjsmDr7tJFuv_1PNyJCmtVE-mMfKoEUSd2vNyqU3L_FzJc10vCeGDmbKyoLAxb1CMt7H4bzNzQ3O4Z1jG6TvaAidEveTQd2K20FUeoNzNIOIi_SGhfLWZEQNzEH1tB2f7nKUlyGlrTUjq64mJYyNkQmDp7eHV7"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Elena Rodriguez</h3>
+<p class="text-on-surface-variant/70 text-label-sm">VP Eng @ Anthropic</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="bg-tertiary-container/20 px-xs py-1 rounded text-tertiary font-label-sm text-[10px] tracking-tighter flex items-center gap-1 border border-tertiary/20">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                91% MATCH
+                            </div>
+</div>
+</div>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">LLM Training</span>
+<span class="px-xs py-1 rounded bg-white/5 border border-white/10 text-on-surface-variant text-[11px]">Ethics in AI</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div>
+<p class="text-on-surface font-label-sm text-body-md">$200<span class="text-on-surface-variant/50 text-[12px]">/session</span></p>
+</div>
+<button class="bg-surface-container-high text-on-surface font-label-sm px-md py-xs rounded-lg active-scale border border-white/10">Quick Connect</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Domain Expertise Chips -->
+<section class="mb-lg">
+<h2 class="font-headline-md text-body-lg text-on-surface mb-md">Explore by Expertise</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-sm">
+<div class="p-md rounded-xl bg-surface-container border border-white/5 flex flex-col items-center gap-xs hover:border-primary/30 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:scale-110 transition-transform">database</span>
+<span class="font-label-sm text-on-surface text-center">Data Science</span>
+</div>
+<div class="p-md rounded-xl bg-surface-container border border-white/5 flex flex-col items-center gap-xs hover:border-primary/30 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:scale-110 transition-transform">architecture</span>
+<span class="font-label-sm text-on-surface text-center">Cloud Arch</span>
+</div>
+<div class="p-md rounded-xl bg-surface-container border border-white/5 flex flex-col items-center gap-xs hover:border-primary/30 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:scale-110 transition-transform">payments</span>
+<span class="font-label-sm text-on-surface text-center">Fintech</span>
+</div>
+<div class="p-md rounded-xl bg-surface-container border border-white/5 flex flex-col items-center gap-xs hover:border-primary/30 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:scale-110 transition-transform">rocket_launch</span>
+<span class="font-label-sm text-on-surface text-center">Startups</span>
+</div>
+</div>
+</section>
+<!-- Personalized Career Path Insights (Atmospheric Card) -->
+<section class="mb-xl relative">
+<div class="absolute inset-0 intelligence-gradient opacity-5 blur-[120px] rounded-full"></div>
+<div class="glass-card rounded-2xl p-lg relative border border-primary/20 overflow-hidden">
+<div class="flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex-1">
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-tertiary font-label-sm tracking-widest uppercase">AI INSIGHT</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Accelerate your transition to Senior PM.</h3>
+<p class="text-on-surface-variant text-body-md mb-md">Based on your recent search for "Product Strategy", Sarah Chen has helped 4 users in your network land roles at Google and Netflix in the last 3 months.</p>
+<button class="text-primary font-label-sm flex items-center gap-xs group">
+                            Unlock full analysis
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="w-full md:w-1/3 h-32 bg-surface-container-highest/50 rounded-xl relative overflow-hidden border border-white/5">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="flex gap-1 items-end">
+<div class="w-2 bg-primary/20 rounded-t-full h-8 animate-[bounce_2s_infinite]"></div>
+<div class="w-2 bg-primary/40 rounded-t-full h-16 animate-[bounce_2.5s_infinite]"></div>
+<div class="w-2 bg-primary/60 rounded-t-full h-24 animate-[bounce_1.8s_infinite]"></div>
+<div class="w-2 bg-primary rounded-t-full h-20 animate-[bounce_2.2s_infinite]"></div>
+<div class="w-2 bg-primary/80 rounded-t-full h-12 animate-[bounce_1.5s_infinite]"></div>
+<div class="w-2 bg-primary/40 rounded-t-full h-10 animate-[bounce_2.7s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center shadow-2xl shadow-primary/40 z-[60] active-scale">
+<span class="material-symbols-outlined text-on-primary-container text-[28px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-2xl border-t border-white/5 rounded-t-xl">
+<div class="flex justify-around items-center h-20 pb-safe px-4 max-w-container-max mx-auto">
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_8px_rgba(76,215,246,0.4)] transition-all duration-150 active-scale" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-on-surface transition-colors active-scale" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-on-surface transition-colors active-scale" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-label-sm text-label-sm mt-1">Sessions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-on-surface transition-colors active-scale" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions and subtle glow effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

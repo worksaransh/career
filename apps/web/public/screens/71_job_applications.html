@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Job Applications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#571bc1",
+                    "on-primary": "#002e6a",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "inverse-primary": "#005ac2",
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#c2c6d6",
+                    "inverse-on-surface": "#283044",
+                    "on-tertiary-container": "#002f38",
+                    "on-primary-fixed": "#001a42",
+                    "tertiary-container": "#009eb9",
+                    "background": "#0b1326",
+                    "secondary-fixed": "#e9ddff",
+                    "on-secondary": "#3c0091",
+                    "surface-tint": "#adc6ff",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-fixed": "#001f26",
+                    "surface-variant": "#2d3449",
+                    "on-secondary-container": "#c4abff",
+                    "tertiary": "#4cd7f6",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface": "#0b1326",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary": "#d0bcff",
+                    "outline-variant": "#424754",
+                    "outline": "#8c909f",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003640",
+                    "surface-bright": "#31394d",
+                    "on-background": "#dae2fd",
+                    "primary": "#adc6ff",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-container": "#00285d",
+                    "tertiary-fixed": "#acedff",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#2d3449",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-surface": "#dae2fd",
+                    "on-surface": "#dae2fd",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "surface-container-high": "#222a3d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "64px",
+                    "base": "4px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "container-max": "1200px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .kanban-column {
+            min-height: calc(100vh - 280px);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young tech professional with a clean, focused expression, set against a blurred high-tech office background with soft blue and teal ambient lighting. The style is ultra-polished, reflecting a premium career management platform's aesthetic with high-precision detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqn5TEl_FWnUpZnHazRLhh7GRR05u7eZyASms37RLEaOtOpX6GDdO8o_Eb-7vRwkxzvvAYxpPA2a8zU1yE72TOs4rImG3ti9YagEivVx1S2z_lg723t11RLP_cdVbMEedvpQzqmzcN2GMf9KsjqF0ich7vQijXTZ7iOLvNZpiFr8vXahIz7sjKZyKXqjVhX0vBi7OPinuisEiuZvt0RJd9iF_B-Dqm5Y1nGP4rYBLSq_Qlt45CPjt4Z5KMp5XR5bs_oqnXKnV--arb"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto min-h-screen">
+<!-- Page Header & Stats -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mb-xs">Job Applications</h2>
+<p class="text-on-surface-variant max-w-md">Track your journey across top-tier opportunities. Your AI Guide suggests the next best move for every stage.</p>
+</div>
+<div class="flex gap-sm">
+<div class="glass-card px-md py-sm rounded-xl flex flex-col items-center min-w-[100px]">
+<span class="text-primary font-bold text-headline-md">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active</span>
+</div>
+<div class="glass-card px-md py-sm rounded-xl flex flex-col items-center min-w-[100px]">
+<span class="text-tertiary font-bold text-headline-md">4</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Interviews</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Kanban Board -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md items-start">
+<!-- Column: Applied -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between px-xs mb-xs">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Applied</h3>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">5</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant text-sm">add</button>
+</div>
+<div class="kanban-column flex flex-col gap-sm">
+<!-- Card 1 -->
+<div class="glass-card p-md rounded-xl hover:border-primary/40 transition-all cursor-pointer group active:scale-[0.98]">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 glass-card rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A minimalist tech logo for a company named 'Aether Systems', featuring an abstract geometric shape in electric blue and white against a dark backdrop. The aesthetic is clean, modern, and high-end, fitting a premium SaaS dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6UgXyV4PTj-G9U9gr2PlhWz9Eji2OFEirfJRn7wbK5EgafV-GrFQfnxUIWFAPFHdGUQmxbMmEwYdv--dOgiLqCAoa7263_zGZ2_9WT4s1n_NbPN42umwgPuz2jYKjKlMqL9KLMzXz8_eNiZgUqPEGXOtNhDtQ9DW2pxizuyBek7PpkrMjoj7DBDelalgJ_WKemxIACLje0ZOO_9CiMRGKLfMXv-KVK6PgRuEVGbCT0KfqdnZ0qwHdYivN_g_c3DsvHc8MGJ1HRv4i"/>
+</div>
+<span class="text-[10px] font-label-sm text-on-surface-variant bg-white/5 px-2 py-1 rounded">2d ago</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors">Senior Product Designer</h4>
+<p class="text-on-surface-variant text-sm mb-md">Aether Systems • Hybrid</p>
+<div class="pt-md border-t border-white/5">
+<div class="flex items-center gap-xs text-xs text-primary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-medium uppercase tracking-tight">Next Step: Review Case Study</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-md rounded-xl hover:border-primary/40 transition-all cursor-pointer group active:scale-[0.98]">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 glass-card rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A minimalist logo for 'Luminal AI', featuring a stylized spark or pulse icon in vibrant teal. Professional, sleek corporate branding style with soft gradients, optimized for a dark mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAojEzKmDAHrtNpU2QBn4ZPLUljXAWTxh0WEMi2DOP-w4XDEvJm-Z6cIRhgstLlkA1Z9gSs71FayZKdPDHLLMKCl_f9970lEqWDAk-zQk3dNtm-SJrdvCNmsCSBhfT2DSd5LWDyP4AcRxe3C61txMKtbL3sy-gcu-vZPjU6UJ80A-S0o6ARXhYqDjMGVeQ0HhE5BsKQ3uP-z1ph251gOfzjYn3_GY0qirX4S95X-CHYrFNvqbN0aaXRcmkOy6jBHmEzgrrDBRDwwYiQ"/>
+</div>
+<span class="text-[10px] font-label-sm text-on-surface-variant bg-white/5 px-2 py-1 rounded">4d ago</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors">UX Research Lead</h4>
+<p class="text-on-surface-variant text-sm mb-md">Luminal AI • Remote</p>
+<div class="pt-md border-t border-white/5">
+<div class="flex items-center gap-xs text-xs text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-medium uppercase tracking-tight">AI: Optimize Resume for ATS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Interviewing -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between px-xs mb-xs">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Interviewing</h3>
+<span class="bg-tertiary/20 text-tertiary px-2 py-0.5 rounded-full text-[10px] font-bold">4</span>
+</div>
+</div>
+<div class="kanban-column flex flex-col gap-sm">
+<!-- Card 3 -->
+<div class="glass-card p-md rounded-xl border-tertiary/20 bg-tertiary/5 hover:border-tertiary/40 transition-all cursor-pointer group active:scale-[0.98]">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 glass-card rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A sleek corporate logo for 'FinFlow', using interlocking fluid lines in shades of deep indigo and electric purple. High-contrast, premium tech branding, designed for a sophisticated professional application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwg7UfymntLY6-o1eTt7d19Jz1SYoaBGInt9NmXkjJSRSkR0VaPDKrxmAlbCl-ORQVTjSeUkl7KE3M_HV6cE7q4pmjlIJ1qNj4SB2D50AgU0t0KMWiuYXWPDZaQrCrjcH970IcBmYGymJM3qVueo8x6H2QjRG_bIzlqAtdqcbDvrVEmidWfA6AfWuwQ79C8Da7JPeV7yYZeeoEB9OzoPVMwXC0Iyb28SWAZGSdZvHCQwVKxKxlK14rw7sraUWvNkQLJhDFqUj6-dR0"/>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-label-sm text-tertiary bg-tertiary/10 px-2 py-1 rounded">Tomorrow</span>
+</div>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface group-hover:text-tertiary transition-colors">Product Lead</h4>
+<p class="text-on-surface-variant text-sm mb-md">FinFlow • Bengaluru</p>
+<div class="pt-md border-t border-white/5">
+<div class="flex items-center gap-xs text-xs text-tertiary">
+<span class="material-symbols-outlined text-sm">video_call</span>
+<span class="font-medium uppercase tracking-tight">Prep for Technical Round</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-md rounded-xl hover:border-primary/40 transition-all cursor-pointer group active:scale-[0.98]">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 glass-card rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A futuristic tech logo for 'Vertex', featuring a bold letter V constructed from faceted 3D planes in cobalt and silver. The design is sharp, architectural, and conveys precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU0mIhvV0XoggQTGydGPZqGEZMyPGA6jKamDpS8hXh9R51AchAzDyKGleu9QVumudTKDzP8d0mFgFfVsVgyByDxCmXaznoztfZd7xkcZ1jMfzVOW1oRW_AopdcooZK-vWoV6vWe1molVMXUgruTmbLqUMV_HQYL4xiRfid-BepiN-wXXj-WL6NHMjyxYmNb-G0C40H3fMYKX7vw1hdrQGuYWhFw9LhHA7tvLl7IZKhGHtzmaPzDNXT3yQrsGafN_RdMeHG5TL0YJJK"/>
+</div>
+<span class="text-[10px] font-label-sm text-on-surface-variant bg-white/5 px-2 py-1 rounded">Sep 28</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors">Design Systems Architect</h4>
+<p class="text-on-surface-variant text-sm mb-md">Vertex • Hybrid</p>
+<div class="pt-md border-t border-white/5">
+<div class="flex items-center gap-xs text-xs text-primary">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="font-medium uppercase tracking-tight">Awaiting Feedback</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Offer -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between px-xs mb-xs">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]"></div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Offer</h3>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded-full text-[10px] font-bold">1</span>
+</div>
+</div>
+<div class="kanban-column flex flex-col gap-sm">
+<!-- Card 5 -->
+<div class="glass-card p-md rounded-xl border-primary/40 bg-primary/10 relative overflow-hidden group active:scale-[0.98] cursor-pointer">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/20 blur-3xl"></div>
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 glass-card bg-white/10 rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A luxury tech logo for 'Nova Lux', featuring a stylized golden star and modern sans-serif typography in white. The lighting is soft and elegant, emphasizing success and premium status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhPzYZuIQK9zecebVu26zhboB-McRakwwmMgP1rtfPwBOjc6huq3MmyRGeK-KEKMiPuSDOa29o6bqTDa1THFOZ8rUmA0h6HlqIJIZ_HvYAYMFUar0-kpVpUV5iw09bQc9tjMtTIs4mDtn6uxcsNhCu3ZE3e1GC-mvZ0ONgPsR491HbLIka507uPNvpc-zCVI_zJm4qdMnftXmL5LCPS2vhuMYWXVUBFOI224tWk2BLauR25fYerIo3lnK_12Eqqy-bU89pLVPX4iS"/>
+</div>
+<span class="text-[10px] font-bold font-label-sm text-primary uppercase tracking-widest">Selected</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface">Creative Director</h4>
+<p class="text-on-surface-variant text-sm mb-md">Nova Lux • Mumbai</p>
+<div class="pt-md border-t border-white/10">
+<div class="flex items-center gap-xs text-xs text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">contract</span>
+<span class="font-medium uppercase tracking-tight">Review Offer Package</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- AI Interview Coach FAB -->
+<div class="fixed bottom-24 right-gutter z-50">
+<button class="intelligence-gradient w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(173,198,255,0.3)] hover:scale-110 active:scale-95 transition-transform group relative">
+<span class="material-symbols-outlined text-on-primary text-3xl group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<!-- Label Tooltip -->
+<div class="absolute right-16 bg-surface-container-high text-on-surface text-xs font-medium px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-2xl border border-white/10 pointer-events-none">
+                AI Interview Coach
+            </div>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Navigation Drawer (Hidden on Mobile) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 bg-surface-dim border-r border-white/10 z-40 flex-col py-lg shadow-2xl">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded-xl">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
+<img class="w-full h-full object-cover" data-alt="Close up avatar of a professional designer, soft cinematic lighting, neutral gray studio background, high resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKt5TCQC0XXU7P_45J6F1G0_Ew5-sp2hIVXgdvfFcm4JBxN4zTo5btmOuJW49YqQU0Y5rrK5Wvtq8AD4lOndA59BTbe7qC011f4L4bp0I-cv_DZtvDHmhuoa4jFFGcYs6jMXz62AVYyqlT-jAFYyeC47mOLeG4DUs9axwQ0ebOkDSk15OaDyPw_5pX-u_yNkKIGiLDxj4hEQAHWTItZ9DD9FFHdnAIcJn2gbff6W-kSmgoArSckFN2NAgVgo3Gc9eIW9EU4mdmXi1Y"/>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Career Explorer</span>
+<span class="text-xs text-primary font-medium">Premium Member</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="text-on-surface-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-bright transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 px-4 py-3 flex items-center gap-md font-bold" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md text-body-md">Job Board</span>
+</a>
+<a class="text-on-surface-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-bright transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">auto_awesome</span>
+<span class="font-body-md text-body-md">AI Insights</span>
+</a>
+<a class="text-on-surface-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-bright transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">diversity_3</span>
+<span class="font-body-md text-body-md">Mentorship</span>
+</a>
+<a class="text-on-surface-variant mx-2 px-4 py-3 flex items-center gap-md hover:bg-surface-bright transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto">
+<div class="p-md glass-card rounded-xl">
+<p class="text-xs text-on-surface-variant mb-sm">Current Progress</p>
+<div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-xs">
+<div class="w-3/4 h-full intelligence-gradient"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">
+<span>Level 12</span>
+<span>750 / 1000 XP</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Adjustment for Desktop Content -->
+<style>
+        @media (min-width: 768px) {
+            main {
+                padding-left: calc(80px + 320px); /* Adjusting for side nav */
+            }
+            header {
+                padding-left: calc(80px + 320px);
+            }
+        }
+    </style>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simulating Kanban Drag Interaction (Visual Only)
+        let isDragging = false;
+        document.querySelectorAll('.kanban-column .glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.opacity = '0.5';
+                card.style.transform = 'scale(1.02) rotate(1deg)';
+            });
+            document.addEventListener('mouseup', () => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body></html>

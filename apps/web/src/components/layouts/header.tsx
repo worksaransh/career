@@ -70,11 +70,11 @@ export function Header() {
       >
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-bold"
+          className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white hover:opacity-95 transition-opacity"
           aria-label="Career OS Home"
         >
-          <Sparkles className="h-6 w-6 text-primary" aria-hidden="true" />
-          <span className="gradient-text">Career OS</span>
+          <span>Career OS</span>
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981] animate-pulse" />
         </Link>
 
         <div className="hidden lg:flex lg:items-center lg:gap-1">

@@ -45,16 +45,19 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative border-t border-border py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="relative border-t border-white/5 py-24 sm:py-32 bg-[#06060c]">
+      
+      {/* Background gradients */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-cyan-500/5 blur-[120px] pointer-events-none" />
+
+      <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 z-10">
         <AnimatedContainer animation="fadeUp">
           <div className="text-center">
-            <Badge variant="glass" size="lg" className="mb-4">
+            <Badge variant="glass" size="lg" className="mb-4 bg-emerald-500/10 border-emerald-500/25 text-emerald-400">
               Got Questions?
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Frequently Asked{" "}
-              <span className="gradient-text">Questions</span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+              Frequently Asked <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Questions</span>
             </h2>
           </div>
         </AnimatedContainer>
@@ -62,13 +65,13 @@ export function FaqSection() {
         <div className="mt-12 space-y-3">
           {faqs.map((faq, index) => (
             <AnimatedContainer key={index} animation="fadeUp" delay={index * 0.05}>
-              <div className="rounded-xl border border-border overflow-hidden">
+              <div className="rounded-2xl border border-white/5 bg-card/45 overflow-hidden">
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-accent/50"
+                  className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5 text-white"
                   aria-expanded={openIndex === index}
                 >
-                  <span className="text-sm font-medium">{faq.question}</span>
+                  <span className="text-sm font-semibold">{faq.question}</span>
                   <ChevronDown
                     className={cn(
                       "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",

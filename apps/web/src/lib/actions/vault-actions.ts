@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db/prisma/prisma";
 import { requireAuth } from "@/lib/session/session";
 import { buildCareerTwin } from "@/lib/career-twin";
+import { getUserMemory } from "./memory-actions";
 
 // Recalculate Portfolio, Job Readiness, and Career Upgrade Scores
 export async function recalculateScores(userId: string) {
@@ -158,6 +159,8 @@ export async function saveVaultDocument(data: {
   type: string;
   fileUrl?: string;
   linkUrl?: string;
+  parsedContent?: any;
+  confidenceScore?: number;
 }) {
   const user = await requireAuth();
 
@@ -167,6 +170,8 @@ export async function saveVaultDocument(data: {
     type: data.type,
     fileUrl: data.fileUrl || null,
     linkUrl: data.linkUrl || null,
+    parsedContent: data.parsedContent ? (data.parsedContent as any) : undefined,
+    confidenceScore: data.confidenceScore ?? null,
   };
 
   let saved;
@@ -222,4 +227,119 @@ export async function deleteVaultDocument(id: string) {
   revalidatePath("/dashboard");
   revalidatePath("/vault");
   return { success: true };
+}
+
+// Confirm parsed resume and auto fill user profiles
+export async function confirmParsedResume(parsedData: any, filename: string, fileUrl: string) {
+  const user = await requireAuth();
+
+  // 1. Save document to Vault
+  const savedDoc = await prisma.vaultDocument.create({
+    data: {
+      userId: user.id,
+      title: filename,
+      type: "RESUME",
+      fileUrl: fileUrl,
+      parsedContent: parsedData as any,
+      confidenceScore: parsedData.confidenceScore || 80,
+    }
+  });
+
+  // 2. Update User Profile
+  const highestEdu = parsedData.education?.[0];
+  await prisma.userProfile.upsert({
+    where: { userId: user.id },
+    create: {
+      userId: user.id,
+      educationLevel: highestEdu?.degree || "Undergraduate",
+      location: parsedData.personalDetails?.location || "India",
+    },
+    update: {
+      educationLevel: highestEdu?.degree || undefined,
+      location: parsedData.personalDetails?.location || undefined,
+    }
+  });
+
+  // 3. Update User Memory
+  const memory = await getUserMemory();
+  const demographics = (memory.demographics as Record<string, any>) || {};
+  if (parsedData.personalDetails?.location) demographics.location = parsedData.personalDetails.location;
+  if (parsedData.personalDetails?.name) demographics.name = parsedData.personalDetails.name;
+
+  const education = (memory.education as Record<string, any>) || {};
+  if (highestEdu?.degree) education.level = highestEdu.degree;
+  if (highestEdu?.college) education.institution = highestEdu.college;
+  if (highestEdu?.passingYear) education.passingYear = highestEdu.passingYear;
+
+  const marks = (memory.marks as Record<string, any>) || {};
+  if (highestEdu?.cgpa) marks.cgpa = highestEdu.cgpa;
+  if (highestEdu?.marks) marks.percentage = highestEdu.marks;
+
+  const goals = (memory.goals as Record<string, any>) || {};
+  if (parsedData.careerObjective) goals.shortTerm = parsedData.careerObjective;
+  if (parsedData.experience?.[0]?.designation) goals.longTerm = parsedData.experience[0].designation;
+
+  // Aggregate all imported skills
+  const skillsMap = (memory.skills as Record<string, any>) || {};
+  const allSkills: string[] = [];
+  
+  if (parsedData.skills) {
+    const categories = Object.keys(parsedData.skills);
+    for (const cat of categories) {
+      const list = parsedData.skills[cat];
+      if (Array.isArray(list)) {
+        list.forEach((s: string) => {
+          skillsMap[s] = "INTERMEDIATE";
+          allSkills.push(s);
+        });
+      }
+    }
+  }
+
+  await prisma.userMemory.update({
+    where: { id: memory.id },
+    data: {
+      demographics,
+      education,
+      marks,
+      goals,
+      skills: skillsMap,
+    }
+  });
+
+  // 4. Save to SkillProficiency table
+  for (const skill of allSkills.slice(0, 15)) {
+    await prisma.skillProficiency.upsert({
+      where: {
+        userId_skillName: {
+          userId: user.id,
+          skillName: skill,
+        }
+      },
+      create: {
+        userId: user.id,
+        skillName: skill,
+        selfRated: 70,
+        confidence: 50,
+        verified: false,
+        evidence: [
+          { source: "RESUME", name: filename, timestamp: new Date().toISOString() }
+        ] as any
+      },
+      update: {
+        evidence: [
+          { source: "RESUME", name: filename, timestamp: new Date().toISOString() }
+        ] as any
+      }
+    });
+  }
+
+  // 5. Recalculate scores and sync Career Twin snapshot
+  await recalculateScores(user.id);
+
+  revalidatePath("/dashboard");
+  revalidatePath("/vault");
+  revalidatePath("/profile");
+
+  return { success: true, documentId: savedDoc.id };
 }

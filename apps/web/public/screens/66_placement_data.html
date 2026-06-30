@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Placement &amp; Alumni</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+            animation: shimmer 2s infinite;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #adc6ff, #d0bcff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary-container": "#009eb9",
+                        "tertiary-fixed": "#acedff",
+                        "error-container": "#93000a",
+                        "surface-tint": "#adc6ff",
+                        "surface-bright": "#31394d",
+                        "on-surface": "#dae2fd",
+                        "outline-variant": "#424754",
+                        "surface": "#0b1326",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "tertiary": "#4cd7f6",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary-fixed": "#e9ddff",
+                        "outline": "#8c909f",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary": "#d0bcff",
+                        "inverse-on-surface": "#283044",
+                        "surface-variant": "#2d3449",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#3c0091",
+                        "surface-container": "#171f33",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-fixed": "#23005c",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-background": "#dae2fd",
+                        "on-primary-container": "#00285d",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#002e6a",
+                        "on-primary-fixed": "#001a42",
+                        "primary": "#adc6ff",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-primary": "#005ac2",
+                        "secondary-container": "#571bc1",
+                        "surface-dim": "#0b1326",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-container": "#002f38",
+                        "primary-container": "#4d8eff",
+                        "on-secondary-container": "#c4abff",
+                        "on-tertiary": "#003640",
+                        "background": "#0b1326"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-32 overflow-y-auto">
+<!-- Top App Bar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution headshot of a young female tech professional with a warm smile, set against a blurred modern office background with soft blue and purple accent lighting. The image quality is crisp and cinematic, embodying a premium Career GPS user profile aesthetic in dark mode environments." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN4Iz3RRiBeyV3qM-7DnkEgH1JY51QFdUWtvRpsFGfopGzDev7GjKSjnupl-eVZA4iSgAaPJ52U-xOVZvHFqB-mGIyZpfSkAGck51TYiuBTescmF8p87Oh_dx5oyaQof4u3hIyeKxjxKLq7mw1hH7mggA-GVZUd9a-F4NZdeSaV7C6SqRd4DEA8aksmhwFf8RleSz_IjDSRpmobEzd2JKgmsS41rITGljlAq0XlQsa_7nmH02z44tZK7K-waLMssVkTDBZFcJoXvSM"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95">notifications</button>
+</div>
+</header>
+<main class="mt-20 px-4 space-y-8">
+<!-- Hero Section -->
+<section class="py-6">
+<h2 class="font-headline-md text-headline-md-mobile text-white mb-2">The Proof is in the Data</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Quantifying the impact of AI-driven career orchestration through real-world outcomes.</p>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="glass-card p-4 rounded-xl col-span-2 relative overflow-hidden group">
+<div class="relative z-10">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">Highest Package</span>
+<div class="text-4xl font-bold mt-1 text-white tracking-tighter">₹84.2 <span class="text-lg font-normal text-on-surface-variant">LPA</span></div>
+<p class="text-xs text-tertiary mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> 14% YoY Growth
+                    </p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Average Package</span>
+<div class="text-2xl font-bold mt-1 text-white tracking-tight">₹18.5 <span class="text-sm font-normal text-on-surface-variant">LPA</span></div>
+</div>
+<div class="glass-card p-4 rounded-xl flex flex-col justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Placement Rate</span>
+<div class="text-2xl font-bold mt-1 text-primary">98.4%</div>
+</div>
+</section>
+<!-- Recruiters Logo Cloud -->
+<section>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest mb-4">Top Recruiters</h3>
+<div class="glass-card rounded-xl p-6 overflow-hidden">
+<div class="flex flex-wrap justify-center items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+<!-- Simulate Logos with Text and Icons for clarity -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white">google</span>
+<span class="font-bold text-white tracking-tighter">Google</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white">diamond</span>
+<span class="font-bold text-white tracking-tighter">Goldman Sachs</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white">groups</span>
+<span class="font-bold text-white tracking-tighter">Meta</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white">token</span>
+<span class="font-bold text-white tracking-tighter">NVIDIA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white">cloud</span>
+<span class="font-bold text-white tracking-tighter">Salesforce</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Growth Visualization -->
+<section class="glass-card rounded-2xl p-6 border-primary/10 bg-gradient-to-br from-surface-container to-surface">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md-mobile text-white">Skill Matching</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Real-time recruiter sentiment analysis</p>
+</div>
+<div class="w-10 h-10 rounded-full intelligence-gradient flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary-container text-xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-on-surface-variant px-1">
+<span>Generative AI Engineering</span>
+<span class="text-primary">94% Match</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full intelligence-gradient w-[94%] rounded-full shadow-[0_0_8px_rgba(173,198,255,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-on-surface-variant px-1">
+<span>Product Design (L3+)</span>
+<span class="text-secondary">82% Match</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[82%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-on-surface-variant px-1">
+<span>Data Architecture</span>
+<span class="text-tertiary">76% Match</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[76%] rounded-full"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 rounded-lg border border-white/10 text-label-sm font-label-sm hover:bg-white/5 transition-colors active:scale-[0.98]">
+                VIEW DEMAND HEATMAP
+            </button>
+</section>
+<!-- Alumni Stories -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-headline-md text-headline-md-mobile text-white">Recent Success Stories</h3>
+<span class="text-primary text-sm font-medium">See All</span>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 snap-x no-scrollbar">
+<!-- Story Card 1 -->
+<div class="min-w-[280px] glass-card rounded-xl overflow-hidden snap-center">
+<div class="h-40 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A cinematic portrait of a confident male software engineer in a high-tech minimalist office, glowing softly with azure and indigo light. He is dressed in a smart casual dark blazer. The image emphasizes a premium, polished look with deep shadows and vibrant light accents, reflecting a successful career transition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIjiSVGN9akVSjeQV9YxL4aYVqN3pahVf-dbWFi9amUDKLbbu8ydDxd08s5PTcKHa_JMr4huHIPcVOdRZWWnTVfMppdhRygF0fYeHXYOkhfDM3M5evdJlzlowg1Jc2OSxB6qB--7-I6Igi-DJPKqYBf6zrMFUqRs9Iq-tTRTsnGcqh0kGAKlcG4SIMT2RwjCeuPYth6ndAM3G2mVjBoTaAqV89i2NerFMOkRMiRRWWsp6qS_o7R4m5rpdJvbjX6FzE3C4cQBwJc51o"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+<h4 class="text-white font-bold">Arjun Sharma</h4>
+<p class="text-xs text-on-surface-variant">SDE-II at Meta</p>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<p class="text-sm text-on-surface-variant leading-relaxed">"The AI career pathing identified a gap in my distributed systems knowledge that changed everything."</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] rounded-full font-bold uppercase">Class of '23</span>
+<span class="px-2 py-1 bg-white/5 text-on-surface-variant text-[10px] rounded-full font-bold uppercase">Systems Eng.</span>
+</div>
+</div>
+</div>
+<!-- Story Card 2 -->
+<div class="min-w-[280px] glass-card rounded-xl overflow-hidden snap-center border-secondary/20">
+<div class="h-40 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A stunning professional photograph of a female designer with stylish glasses, sitting in a bright, modern studio space with subtle architectural lighting. The color palette features soft purples and deep blacks, consistent with a high-end dark mode UI. Her expression is focused yet successful, illustrating a top-tier creative professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIGi42DCgHaPEBAZUxdoLg-JQnOo9wVmzAoO0vTckwC6xHqwpADGgysM_lHeVrkVZubcdPAuFGKGSRLT_X4vSwdgwz2JQJbiUXfmthvD8NWPkXgSBH1cGl1lee2R7OIXPrXoQs41NoZBCC116VAHM7SP__vP92sSK5WlElxGkO86S7HMM2ATy6yeCeVaK8i-5b2Y91yv2FXeYgJhkuFfQYbtOSPY2fJbVaCRAX35en8WswZAl3vFZFibyrwYsvbA7Fu_eHzuJJb6gA"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+<h4 class="text-white font-bold">Priya Verma</h4>
+<p class="text-xs text-on-surface-variant">Senior Designer at Google</p>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<p class="text-sm text-on-surface-variant leading-relaxed">"GPS didn't just find me a job; it mapped my growth from Junior to Lead in 18 months."</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] rounded-full font-bold uppercase">Class of '22</span>
+<span class="px-2 py-1 bg-white/5 text-on-surface-variant text-[10px] rounded-full font-bold uppercase">UI/UX</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="pb-10">
+<div class="glass-card rounded-2xl p-8 text-center border-primary/20 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 intelligence-gradient"></div>
+<h3 class="text-2xl font-bold text-white mb-2">Ready to be our next story?</h3>
+<p class="text-on-surface-variant mb-6">Join 12,000+ professionals who secured placements this year.</p>
+<button class="w-full py-4 intelligence-gradient text-on-primary-container font-bold rounded-xl shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+                    START YOUR GPS JOURNEY
+                </button>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed right-6 bottom-24 w-14 h-14 rounded-full intelligence-gradient shadow-[0_0_20px_rgba(173,198,255,0.4)] flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-primary-container text-2xl animate-pulse" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-0.5">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm mt-0.5">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-sm text-label-sm mt-0.5">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-0.5">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interaction for cards on scroll
+        const cards = document.querySelectorAll('.glass-card');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'translate-y-4', 'opacity-0');
+            observer.observe(card);
+        });
+
+        // Simple parallax effect for shader container
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroShader = document.querySelector('webgl-shader');
+            if(heroShader) {
+                heroShader.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body></html>

@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const validated = searchSchema.parse(body);
-    const results = universalSearch(validated);
+    const results = await universalSearch(validated);
     return NextResponse.json({ success: true, data: results });
   } catch (error) {
     if (error instanceof z.ZodError) {

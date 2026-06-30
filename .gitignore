@@ -67,3 +67,5 @@ apps/web/public/workbox-*.js
 
 career-os-deployment.zip
 
+.vercel
+.env*

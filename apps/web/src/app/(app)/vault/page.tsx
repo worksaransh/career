@@ -13,7 +13,7 @@ export default async function VaultPage() {
     orderBy: { createdAt: "desc" },
   });
   
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   return <VaultClient userId={user.id} isPremium={isPremium} />;
 }

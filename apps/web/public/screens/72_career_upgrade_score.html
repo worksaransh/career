@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Upgrade Score | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #d0bcff 100%);
+        }
+        .score-glow {
+            filter: drop-shadow(0 0 15px rgba(173, 198, 255, 0.4));
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-slow {
+            animation: rotate-slow 12s linear infinite;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-primary": "#002e6a",
+                    "on-background": "#dae2fd",
+                    "tertiary-fixed": "#acedff",
+                    "surface-container-high": "#222a3d",
+                    "surface": "#0b1326",
+                    "on-error": "#690005",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#001a42",
+                    "primary": "#adc6ff",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-bright": "#31394d",
+                    "surface-dim": "#0b1326",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-primary": "#005ac2",
+                    "on-secondary": "#3c0091",
+                    "on-primary-container": "#00285d",
+                    "inverse-surface": "#dae2fd",
+                    "on-secondary-container": "#c4abff",
+                    "secondary": "#d0bcff",
+                    "background": "#0b1326",
+                    "on-secondary-fixed": "#23005c",
+                    "tertiary-container": "#009eb9",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-container-highest": "#2d3449",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary": "#003640",
+                    "error-container": "#93000a",
+                    "outline": "#8c909f",
+                    "inverse-on-surface": "#283044",
+                    "error": "#ffb4ab",
+                    "surface-container": "#171f33",
+                    "primary-container": "#4d8eff",
+                    "tertiary": "#4cd7f6",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-tertiary-container": "#002f38",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#e9ddff",
+                    "outline-variant": "#424754",
+                    "on-surface": "#dae2fd",
+                    "on-surface-variant": "#c2c6d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "base": "4px",
+                    "container-max": "1200px",
+                    "sm": "16px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "xl": "64px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a young South Asian professional with a confident smile, wearing a modern charcoal blazer. The background is a soft-focus office interior with cool blue and purple lighting accents, reflecting a futuristic AI SaaS brand aesthetic. The lighting is crisp and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBffmKCcOJeB7Q08vw1zCtypasdOjERqyC7dHYhG1znzhUyXOmWmo7I5BJZsoUFsdwcbSIHhSOMk2ob6tiZr9Syr1bn4rJF-vrDhCZh-kUNk81lgY38HoqfEbksKT12KLq9fdeGMypAkYVHYOuJPRkJwOoemMuQcXsw2-S9ts8VO8lgC6jHYpcQtXFtP27gHZ1r43NTS3VXp1x-zJ8k1PSAvGCaVgtHrB0Xf1FDMImtHQoE1cWyhkEEEREQ4AAnhtZIxK1ZefkKe6D"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+</div>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto min-h-screen">
+<!-- Score Visualization Section -->
+<section class="relative flex flex-col items-center py-lg overflow-hidden">
+<div class="relative z-10 flex flex-col items-center">
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+<!-- SVG Gauge -->
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-primary score-glow" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="70" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Upgrade Score</p>
+<h2 class="font-display-lg text-display-lg text-primary leading-none">720</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">out of 900</p>
+</div>
+</div>
+<div class="mt-md glass-panel px-sm py-xs rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">trending_up</span>
+<span class="font-label-sm text-label-sm text-tertiary">+45 pts this month</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Factors & Benchmarks -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-md mt-lg">
+<!-- Breakdown of Factors -->
+<div class="md:col-span-8 flex flex-col gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Score Breakdown</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-sm">
+<!-- Factor Card 1 -->
+<div class="glass-panel p-md rounded-xl group hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-xs">Technical Prowess</h4>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden mt-md">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Expert</span>
+<span class="font-label-sm text-label-sm text-primary">85%</span>
+</div>
+</div>
+<!-- Factor Card 2 -->
+<div class="glass-panel p-md rounded-xl group hover:border-secondary/40 transition-colors">
+<span class="material-symbols-outlined text-secondary mb-xs" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-xs">Leadership Potential</h4>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden mt-md">
+<div class="h-full bg-secondary w-[62%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Emerging</span>
+<span class="font-label-sm text-label-sm text-secondary">62%</span>
+</div>
+</div>
+<!-- Factor Card 3 -->
+<div class="glass-panel p-md rounded-xl group hover:border-tertiary/40 transition-colors">
+<span class="material-symbols-outlined text-tertiary mb-xs" style="font-variation-settings: 'FILL' 1;">show_chart</span>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-xs">Market Relevance</h4>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden mt-md">
+<div class="h-full bg-tertiary w-[78%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">High</span>
+<span class="font-label-sm text-label-sm text-tertiary">78%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Industry Benchmarks -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Benchmarks</h3>
+<div class="glass-panel p-md rounded-xl h-full flex flex-col justify-between">
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">You</span>
+</div>
+<span class="font-body-md text-body-md font-bold text-on-surface">Top 15%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Global Avg</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">540</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Top Tier</span>
+</div>
+<span class="font-body-md text-body-md text-tertiary">820+</span>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-white/5">
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                            You are outperforming 85% of Full-stack Developers in the Indian Tech ecosystem.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tips to Boost Score -->
+<section class="mt-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Tips to Boost Score</h3>
+<button class="text-primary font-label-sm text-label-sm flex items-center gap-base hover:underline">
+                    View Personalized Roadmap <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="space-y-sm">
+<!-- Actionable Recommendation 1 -->
+<div class="glass-panel p-sm rounded-xl flex items-start gap-md group hover:bg-white/5 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<div class="flex-1">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold mb-base">Master Distributed Systems</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">Complete the "Advanced Microservices" module to gain +40 points in Market Relevance.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">add_circle</span>
+</div>
+<!-- Actionable Recommendation 2 -->
+<div class="glass-panel p-sm rounded-xl flex items-start gap-md group hover:bg-white/5 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">forum</span>
+</div>
+<div class="flex-1">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold mb-base">Mentorship Credits</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">Mentor 2 junior developers this week to boost your Leadership Potential by +25 points.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">add_circle</span>
+</div>
+<!-- Actionable Recommendation 3 -->
+<div class="glass-panel p-sm rounded-xl flex items-start gap-md group hover:bg-white/5 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">workspace_premium</span>
+</div>
+<div class="flex-1">
+<h5 class="font-body-lg text-body-lg text-on-surface font-semibold mb-base">AWS Solution Architect</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">Update your certification to Cloud Professional to unlock high-tier industry benchmarks.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors">add_circle</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-24 right-gutter z-50">
+<button class="w-14 h-14 rounded-full intelligence-gradient score-glow flex items-center justify-center text-on-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined animate-slow">auto_awesome</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interaction for score numbers counting up
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const scoreElement = document.querySelector('h2.font-display-lg');
+        if (scoreElement) {
+            // Delay slightly for dramatic effect
+            setTimeout(() => {
+                animateValue(scoreElement, 0, 720, 1500);
+            }, 500);
+        }
+
+        // Ripple/Active state simulation
+        document.querySelectorAll('button, .glass-panel').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

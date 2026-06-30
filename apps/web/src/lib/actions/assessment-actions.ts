@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db/prisma/prisma";
 import { requireAuth } from "@/lib/session/session";
 
 export async function getAssessmentQuestions() {
-  await requireAuth();
+  const user = await requireAuth();
 
   let assess = await prisma.assessment.findFirst({
     where: { type: "INTEREST", isActive: true },
@@ -23,6 +23,75 @@ export async function getAssessmentQuestions() {
           orderBy: { order: "asc" },
         },
       },
+    });
+  }
+
+  if (assess && assess.questions) {
+    const persona = user.primaryPersona || "STUDENT";
+    const profile = await prisma.userProfile.findUnique({
+      where: { userId: user.id },
+    });
+    const educationLevel = profile?.educationLevel || "HIGH_SCHOOL";
+
+    assess.questions = assess.questions.filter((q) => {
+      const qText = q.text.toLowerCase();
+
+      // Rule 1: Once education is completed, college budget/admission questions should never appear.
+      if (
+        persona === "PROFESSIONAL" ||
+        persona === "CAREER_SWITCHER" ||
+        educationLevel === "GRADUATE" ||
+        educationLevel === "POSTGRADUATE"
+      ) {
+        if (
+          qText.includes("admission") ||
+          qText.includes("college budget") ||
+          qText.includes("school budget") ||
+          qText.includes("choose science") ||
+          qText.includes("class 10") ||
+          qText.includes("olympiad")
+        ) {
+          return false;
+        }
+      }
+
+      // Rule 2: Professional users should not be asked school-level questions.
+      if (persona === "PROFESSIONAL" || persona === "CAREER_SWITCHER") {
+        if (
+          qText.includes("school") ||
+          qText.includes("homework") ||
+          qText.includes("parent") ||
+          qText.includes("teacher")
+        ) {
+          return false;
+        }
+      }
+
+      // Rule 3: Students should not be asked salary questions.
+      if (persona === "STUDENT") {
+        if (
+          qText.includes("salary") ||
+          qText.includes("notice period") ||
+          qText.includes("current job") ||
+          qText.includes("earn")
+        ) {
+          return false;
+        }
+      }
+
+      // Rule 4: Parents should never see coding/interview specific technical questions.
+      if (persona === "PARENT") {
+        if (
+          qText.includes("coding") ||
+          qText.includes("system design") ||
+          qText.includes("git") ||
+          qText.includes("full-stack")
+        ) {
+          return false;
+        }
+      }
+
+      return true;
     });
   }
 
@@ -96,6 +165,40 @@ export async function submitAssessment(
       data: answersData,
     });
 
+    // 3. Update User Profile interests with top categories from assessment (score >= 50)
+    const topCategories = Object.entries(scores)
+      .filter(([_, val]) => typeof val === "number" && val >= 50)
+      .map(([cat]) => cat);
+
+    const profile = await tx.userProfile.findUnique({
+      where: { userId: user.id },
+    });
+    if (profile) {
+      const uniqueInterests = Array.from(new Set([...profile.interests, ...topCategories]));
+      await tx.userProfile.update({
+        where: { userId: user.id },
+        data: { interests: uniqueInterests },
+      });
+    }
+
+    // 4. Update UserMemory progress values
+    const memory = await tx.userMemory.findUnique({
+      where: { userId: user.id },
+    });
+    if (memory) {
+      await tx.userMemory.update({
+        where: { userId: user.id },
+        data: {
+          careerUpgradeScore: Math.min(100, memory.careerUpgradeScore + 8),
+          jobReadinessScore: Math.min(100, memory.jobReadinessScore + 10),
+          portfolioScore: Math.min(100, memory.portfolioScore + 5),
+          totalQuestionsAnswered: memory.totalQuestionsAnswered + answers.length,
+          profileCompleteness: Math.min(100, memory.profileCompleteness + 15),
+        },
+      });
+    }
+
+    // 5. Update user onboarding status
     await tx.user.update({
       where: { id: user.id },
       data: {

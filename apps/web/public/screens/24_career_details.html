@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Role Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #4d8eff 0%, #571bc1 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #d0bcff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+    </style>
+<!-- Injection of Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary": "#3c0091",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-error": "#690005",
+                        "on-background": "#dae2fd",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary": "#003640",
+                        "primary-container": "#4d8eff",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "on-surface": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#571bc1",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "primary-fixed-dim": "#adc6ff",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#e9ddff",
+                        "surface": "#0b1326",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#4cd7f6",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary-container": "#009eb9",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#d0bcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<button class="hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight md:text-display-lg md:font-display-lg">Career GPS</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-fashion portrait of a tech professional in a dark, futuristic office setting. The lighting is dominated by a soft electric blue glow from holographic displays, casting sharp highlights on the subject's face. The aesthetic is clean, minimalist, and premium, resembling a high-end corporate lifestyle shot with a cinematic depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMyLE_Z5tghBqc0P_GF-Jivv8nYDv2ZkAmrHdNxp-4aEXwaSZAijhCXvvpE1TXhzJSc0c4Nukd1G0j3oaTeksumasbNTQJ61iJF7ZAWGW5shwAivDLODmnnYncQ5JqGNtL37kxAFmVNn2TI9Km-Lf2A95-RJMCfZSb4kEA6M0hPdBTWVOZc__U15Exo5fvJU0PuhFvt7cVQZSG8jQUrkLd26w1JKuv6hKRsw3gxygfMsdPTfFNOaO5zl8UaL7T25LYd0tD8Lcvire2"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto space-y-lg">
+<!-- Hero Section: Role Title & Match Score -->
+<section class="relative overflow-hidden rounded-xl glass-card p-lg flex flex-col md:flex-row md:items-end justify-between gap-lg">
+<div class="space-y-xs z-10">
+<div class="inline-flex items-center gap-xs px-sm py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    AI Recommended
+                </div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:text-display-lg md:font-display-lg text-white leading-tight">Senior Product AI Lead</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">Shape the future of generative experiences by leading cross-functional teams in the development of agentic AI frameworks and intuitive user interfaces.</p>
+</div>
+<!-- Match Score Circle -->
+<div class="relative flex flex-col items-center gap-xs z-10">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-white/10" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle cx="64" cy="64" fill="transparent" r="58" stroke="url(#score-gradient)" stroke-dasharray="364.4" stroke-dashoffset="43.7" stroke-linecap="round" stroke-width="8"></circle>
+<defs>
+<lineargradient id="score-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#adc6ff"></stop>
+<stop offset="100%" style="stop-color:#d0bcff"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-gradient font-display-lg-mobile text-display-lg-mobile">88%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Match</span>
+</div>
+</div>
+</div>
+<!-- Atmospheric BG Animation Placeholder -->
+<div class="absolute inset-0 -z-0 opacity-20 pointer-events-none">
+</div>
+</section>
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Day in the Life (Asymmetric Focus) -->
+<section class="md:col-span-8 glass-card rounded-xl p-md space-y-md">
+<div class="flex items-center gap-sm border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<h3 class="font-headline-md text-headline-md">Day in the Life</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<div class="text-primary font-bold">09:00 AM — Strategy Scan</div>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">Review nightly AI model performance metrics and align with engineering on high-priority optimization paths.</p>
+</div>
+<div class="space-y-xs">
+<div class="text-primary font-bold">11:30 AM — Design Sprints</div>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">Work with UI designers to refine 'Agentic' behaviors, ensuring AI interactions feel intuitive and trustworthy.</p>
+</div>
+<div class="space-y-xs">
+<div class="text-primary font-bold">02:00 PM — Leadership Sync</div>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">Present quarterly AI roadmaps to stakeholders, focusing on ROI and user retention through personalization.</p>
+</div>
+<div class="space-y-xs">
+<div class="text-primary font-bold">04:30 PM — Research Lab</div>
+<p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">Deep dive into emerging LLM papers or conduct user testing for experimental features.</p>
+</div>
+</div>
+</section>
+<!-- Market Pulse (Stats Dashboard) -->
+<section class="md:col-span-4 glass-card rounded-xl p-md space-y-md">
+<div class="flex items-center gap-sm border-b border-white/5 pb-sm">
+<span class="material-symbols-outlined text-tertiary">query_stats</span>
+<h3 class="font-headline-md text-headline-md">Market Pulse</h3>
+</div>
+<div class="space-y-lg">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Demand Index</span>
+<div class="text-gradient font-display-lg-mobile text-display-lg-mobile">Extreme</div>
+</div>
+<div class="flex gap-1 items-end pb-2">
+<div class="w-1.5 h-4 bg-primary-container/20 rounded-full"></div>
+<div class="w-1.5 h-6 bg-primary-container/40 rounded-full"></div>
+<div class="w-1.5 h-8 bg-primary-container rounded-full"></div>
+<div class="w-1.5 h-12 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="p-sm bg-white/5 rounded-lg border border-white/5 flex items-center justify-between">
+<span class="text-on-surface-variant">Avg. Salary</span>
+<span class="text-white font-bold font-body-lg text-body-lg">₹45L - ₹85L</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-bright flex items-center justify-center font-label-sm text-[10px]">MS</div>
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-bright flex items-center justify-center font-label-sm text-[10px]">GO</div>
+<div class="w-8 h-8 rounded-full border border-surface bg-surface-bright flex items-center justify-center font-label-sm text-[10px]">AM</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hiring now at top firms</span>
+</div>
+</div>
+</section>
+<!-- Key Responsibilities (Chip Layout) -->
+<section class="md:col-span-12 glass-card rounded-xl p-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">verified</span>
+<h3 class="font-headline-md text-headline-md">Core Competencies</h3>
+</div>
+<div class="flex flex-wrap gap-sm">
+<div class="px-md py-xs rounded-full bg-secondary-container/20 border border-secondary-container/30 text-secondary-fixed-dim hover:bg-secondary-container/40 transition-all cursor-default">Agentic Frameworks</div>
+<div class="px-md py-xs rounded-full bg-primary-container/20 border border-primary-container/30 text-primary hover:bg-primary-container/40 transition-all cursor-default">LLM Fine-tuning</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Cross-functional Leadership</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Ethical AI Design</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Predictive Analytics</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Systems Thinking</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Python &amp; PyTorch</div>
+<div class="px-md py-xs rounded-full bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 transition-all cursor-default">Human-Computer Interaction</div>
+</div>
+</section>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-col sm:flex-row gap-md items-center justify-between glass-card p-md rounded-xl">
+<div class="flex items-center gap-md">
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-bold text-white">AI Career Roadmap</h4>
+<p class="text-on-surface-variant font-label-sm text-label-sm">We've generated a 6-month upskilling path for this role.</p>
+</div>
+</div>
+<button class="w-full sm:w-auto intelligence-gradient text-on-primary px-lg py-md rounded-full font-bold shadow-lg shadow-primary-container/20 active:scale-95 transition-transform">
+                View Upskilling Path
+            </button>
+</div>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center shadow-2xl z-50 hover:scale-110 active:scale-90 transition-all group">
+<span class="material-symbols-outlined text-white group-hover:rotate-12 transition-transform">auto_awesome</span>
+<div class="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff] active:scale-90 duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        // Micro-interaction for scroll depth reflection in header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface/95', 'py-xs');
+                header.classList.remove('py-base');
+            } else {
+                header.classList.remove('bg-surface/95', 'py-xs');
+            }
+        });
+
+        // Simple animation for the progress ring on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('circle[stroke-dasharray]');
+            if(circle) {
+                circle.style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)';
+                setTimeout(() => {
+                    // 88% of 364.4 circumference = 43.7 offset
+                    circle.style.strokeDashoffset = '43.7';
+                }, 100);
+            }
+        });
+    </script>
+</body></html>

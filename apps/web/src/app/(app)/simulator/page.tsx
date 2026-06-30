@@ -12,7 +12,7 @@ export default async function SimulatorPage() {
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   return <SimulatorClient userId={user.id} isPremium={isPremium} />;
 }

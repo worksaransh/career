@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Risk Analysis | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-secondary": "#3c0091",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "on-error": "#690005",
+                    "on-background": "#dae2fd",
+                    "primary": "#adc6ff",
+                    "on-primary-fixed-variant": "#004395",
+                    "tertiary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-tertiary-container": "#002f38",
+                    "on-primary-container": "#00285d",
+                    "inverse-surface": "#dae2fd",
+                    "surface-container-low": "#131b2e",
+                    "on-tertiary": "#003640",
+                    "primary-container": "#4d8eff",
+                    "on-primary": "#002e6a",
+                    "inverse-primary": "#005ac2",
+                    "on-surface": "#dae2fd",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#c4abff",
+                    "secondary": "#d0bcff",
+                    "surface-bright": "#31394d",
+                    "secondary-container": "#571bc1",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#222a3d",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#283044",
+                    "surface-dim": "#0b1326",
+                    "surface-container-highest": "#2d3449",
+                    "primary-fixed-dim": "#adc6ff",
+                    "background": "#0b1326",
+                    "secondary-fixed": "#e9ddff",
+                    "surface": "#0b1326",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#001a42",
+                    "surface-tint": "#adc6ff",
+                    "tertiary": "#4cd7f6",
+                    "outline": "#8c909f",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "tertiary-container": "#009eb9",
+                    "surface-container-lowest": "#060e20",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-container": "#171f33",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "risk-caution": "#FFD700",
+                    "risk-alert": "#FF4B4B"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "sm": "16px",
+                    "container-max": "1200px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.15);
+        }
+        .gauge-path {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 2s ease-out;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">explore</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young tech-savvy professional with a confident expression, set against a dark, minimalist office background with soft blue ambient lighting that matches a premium AI SaaS aesthetic. The image features high-end skin textures and soft-focus depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx38SayJnNhHiqPAVKZ2byjDTHqHfCIFk7nDJOvo8zbcT9KDTLDtYquiCBMnn3S_sUpQAznB4c2b4fDxLZ5a9y0xMiqQd0oFfDmyyIIqzAsC-uUJzPUaE-344Zy_ecJS4AHmpuqmuw2aJuoRVOEvNtPZRiJqjaw-m4jBFSsC0a_d_JKy4X1t0p-g8zJc6WiGfSjbOxG_NU0vx3qVMc-sbiMv3ec2JcYXM8RaZVimURzrVggVOX9J0scRqxLd6wCUeYrZ31dpKHWeNj"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto space-y-lg">
+<!-- Hero Section: AI Risk Level -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-lg items-center">
+<div class="md:col-span-7 space-y-md">
+<div class="inline-flex items-center gap-xs px-3 py-1 rounded-full bg-error-container/30 border border-error/20 text-error">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-label-sm text-label-sm">HIGH AUTOMATION EXPOSURE</span>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                    Risk Analysis: <br/><span class="text-primary">Data Analyst</span>
+</h2>
+<p class="text-on-surface-variant font-body-lg max-w-xl">
+                    AI capabilities in pattern recognition and predictive modeling have reached 84% proficiency in this domain. Human intervention is pivoting toward strategic oversight.
+                </p>
+</div>
+<!-- Radial Gauge Component -->
+<div class="md:col-span-5 flex justify-center">
+<div class="relative w-64 h-64 glass-card rounded-full flex items-center justify-center p-md border-primary/20 intelligence-glow">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="50%" cy="50%" fill="transparent" r="90" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-risk-alert transition-all duration-[2000ms] ease-out" cx="50%" cy="50%" fill="transparent" id="riskGauge" r="90" stroke="currentColor" stroke-dasharray="565.48" stroke-dashoffset="565.48" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-risk-alert">72%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-widest uppercase">Risk Score</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Analysis Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Replaceable Tasks Card -->
+<div class="md:col-span-1 glass-card rounded-xl p-md space-y-md border-risk-alert/20">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-risk-alert">Automation Nodes</h3>
+<span class="material-symbols-outlined text-risk-alert">auto_fix_high</span>
+</div>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm group">
+<span class="w-1 h-8 bg-risk-alert rounded-full shrink-0"></span>
+<div>
+<p class="text-on-surface font-body-md">Data Cleaning &amp; Synthesis</p>
+<p class="text-label-sm text-on-surface-variant">92% Automatable via LLMs</p>
+</div>
+</li>
+<li class="flex items-start gap-sm group">
+<span class="w-1 h-8 bg-risk-alert rounded-full shrink-0 opacity-60"></span>
+<div>
+<p class="text-on-surface font-body-md">Standard Report Generation</p>
+<p class="text-label-sm text-on-surface-variant">88% Automatable via Agentic AI</p>
+</div>
+</li>
+<li class="flex items-start gap-sm group">
+<span class="w-1 h-8 bg-risk-alert rounded-full shrink-0 opacity-30"></span>
+<div>
+<p class="text-on-surface font-body-md">Basic Predictive Queries</p>
+<p class="text-label-sm text-on-surface-variant">74% Automatable via AutoML</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Human-Centric Moats -->
+<div class="md:col-span-2 glass-card rounded-xl p-md space-y-md border-tertiary/20 overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-tertiary">Human-Centric Moats</h3>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="space-y-xs">
+<span class="material-symbols-outlined text-tertiary text-display-lg-mobile">psychology</span>
+<h4 class="font-body-md font-bold text-on-surface">Creative Strategy</h4>
+<p class="text-label-sm text-on-surface-variant">Translating cold data into business-altering narratives.</p>
+</div>
+<div class="space-y-xs">
+<span class="material-symbols-outlined text-tertiary text-display-lg-mobile">groups</span>
+<h4 class="font-body-md font-bold text-on-surface">Stakeholder Empathy</h4>
+<p class="text-label-sm text-on-surface-variant">Navigating complex political and emotional landscapes.</p>
+</div>
+<div class="space-y-xs">
+<span class="material-symbols-outlined text-tertiary text-display-lg-mobile">balance</span>
+<h4 class="font-body-md font-bold text-on-surface">Ethical Governance</h4>
+<p class="text-label-sm text-on-surface-variant">Accountability for high-stakes AI-driven decisions.</p>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[12rem]">security</span>
+</div>
+</div>
+</section>
+<!-- AI-Proof Action Plan -->
+<section class="space-y-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">AI-Proof Your Career</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="glass-card p-md rounded-xl space-y-md flex flex-col">
+<div class="w-full h-48 rounded-lg overflow-hidden mb-xs relative">
+<img class="w-full h-full object-cover" data-alt="A futuristic digital interface showing a series of glowing blue skill badges and networking nodes. The aesthetic is clean, high-precision SaaS with glassmorphism elements, vibrant neon electric blue accents, and a dark obsidian background that evokes professional growth and technical mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw1TKcViHs21DlfmHyfjgAIJBjhwF6TbSjMeySN3f5oPIE6-rcKWntMLfPT85SVSQj-7wurubND4pmiSn_w8LqVwlkxUMO1KAsXKHgPYE3ntnQxwyUYIPn4X-AQGl2k6Yz-11asDTZU7pZjw7zgjGELTkQINN4j-NA2gUDbqU3u-pgsyOQ3nJquPIHqCzoW3IviYk0v6GJd02ccw6Ia0nFAl_31qGxGrWIsShxL_Vde-e6QF4qsmCyX2e4f10zNXEsvRWAu_QbhDso"/>
+<div class="absolute top-2 right-2 bg-primary text-on-primary px-2 py-1 rounded font-label-sm text-label-sm">TOP RECOMMENDATION</div>
+</div>
+<h4 class="font-body-lg font-bold text-on-surface">Transition to AI Orchestrator</h4>
+<p class="text-on-surface-variant font-body-md flex-grow">Stop being the processor and start being the architect. Focus on prompt engineering for data science and leading cross-functional AI integration teams.</p>
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all">Explore Mentorships</button>
+</div>
+<div class="glass-card p-md rounded-xl space-y-md flex flex-col border-secondary/20">
+<div class="flex-grow space-y-sm">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/30 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary">school</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Skill Gap: AI Ethics</h4>
+<p class="text-label-sm text-on-surface-variant">Critical for senior leadership roles in 2025.</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/30 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary">forum</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Skill Gap: Storytelling</h4>
+<p class="text-label-sm text-on-surface-variant">Bridging the gap between raw AI output and human action.</p>
+</div>
+</div>
+<div class="p-sm bg-surface-container-high rounded-lg mt-sm italic text-on-surface-variant border border-white/5">
+                            "The next decade belongs to those who use AI to amplify their humanity, not those who compete with its efficiency."
+                        </div>
+</div>
+<button class="w-full py-3 border border-secondary text-secondary font-bold rounded-lg hover:bg-secondary/5 active:scale-95 transition-all">View Learning Path</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<div class="fixed bottom-24 right-gutter z-50">
+<button class="w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-lg flex items-center justify-center intelligence-glow hover:scale-105 active:scale-90 transition-transform">
+<span class="material-symbols-outlined animate-spin-slow">auto_awesome</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</nav>
+<script>
+        // Risk Gauge Animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const gauge = document.getElementById('riskGauge');
+            const targetScore = 72;
+            const circumference = 2 * Math.PI * 90;
+            const offset = circumference - (targetScore / 100) * circumference;
+            
+            setTimeout(() => {
+                gauge.style.strokeDashoffset = offset;
+            }, 500);
+        });
+
+        // Micro-interactions for Cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

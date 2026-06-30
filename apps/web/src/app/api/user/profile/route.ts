@@ -13,7 +13,18 @@ export async function PATCH(request: Request) {
     }
 
     const body = await request.json();
-    const { name, language, emailNotifications, pushNotifications } = body;
+    const {
+      name,
+      language,
+      emailNotifications,
+      pushNotifications,
+      bio,
+      location,
+      educationLevel,
+      currentGrade,
+      dateOfBirth,
+      interests,
+    } = body;
 
     // Update user name and language
     const updateData: any = {};
@@ -27,28 +38,43 @@ export async function PATCH(request: Request) {
       });
     }
 
-    // Update preferences in UserProfile
+    // Update preferences and other fields in UserProfile
+    const profileUpdateData: any = {};
+    if (bio !== undefined) profileUpdateData.bio = bio;
+    if (location !== undefined) profileUpdateData.location = location;
+    if (educationLevel !== undefined) profileUpdateData.educationLevel = educationLevel;
+    if (currentGrade !== undefined) profileUpdateData.currentGrade = currentGrade;
+    if (dateOfBirth !== undefined) {
+      profileUpdateData.dateOfBirth = dateOfBirth ? new Date(dateOfBirth) : null;
+    }
+    if (interests !== undefined) profileUpdateData.interests = interests;
+
     if (emailNotifications !== undefined || pushNotifications !== undefined) {
       const profile = await prisma.userProfile.findUnique({
         where: { userId: session.user.id },
       });
-
       const currentPreferences = (profile?.preferences as Record<string, any>) || {};
-      const newPreferences = {
+      profileUpdateData.preferences = {
         ...currentPreferences,
         ...(emailNotifications !== undefined ? { emailNotifications } : {}),
         ...(pushNotifications !== undefined ? { pushNotifications } : {}),
       };
+    }
 
+    if (Object.keys(profileUpdateData).length > 0) {
       await prisma.userProfile.upsert({
         where: { userId: session.user.id },
         create: {
           userId: session.user.id,
-          preferences: newPreferences,
+          bio: bio || null,
+          location: location || null,
+          educationLevel: educationLevel || null,
+          currentGrade: currentGrade || null,
+          dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
+          interests: interests || [],
+          preferences: profileUpdateData.preferences || {},
         },
-        update: {
-          preferences: newPreferences,
-        },
+        update: profileUpdateData,
       });
     }
 

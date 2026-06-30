@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Roadmap | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary": "#3c0091",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-error": "#690005",
+                        "on-background": "#dae2fd",
+                        "primary": "#adc6ff",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary": "#003640",
+                        "primary-container": "#4d8eff",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "on-surface": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "surface-bright": "#31394d",
+                        "secondary-container": "#571bc1",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "primary-fixed-dim": "#adc6ff",
+                        "background": "#0b1326",
+                        "secondary": "#d0bcff",
+                        "surface": "#0b1326",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#4cd7f6",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary-container": "#009eb9",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#d0bcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #adc6ff 0%, #571bc1 50%, #009eb9 100%);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 20px 2px rgba(173, 198, 255, 0.15);
+        }
+        .active-glow {
+            box-shadow: 0 0 15px 2px rgba(173, 198, 255, 0.4);
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .animate-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A premium close-up studio portrait of a confident young professional with diverse heritage. The lighting is dramatic and cinematic, featuring subtle electric blue and deep indigo rim light against a dark, tech-oriented background. The image has a clean, high-end SaaS aesthetic with ultra-sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6iZb9e3zsY-5B1QwUpOiEAtybiNd8zL-yRX9jofwwmfBfK7f2XnZaDD-pZrAzA3djUf0voWhdrSWjHjNbXcGfQk2ybm-ft98gSB1oqe1DbIsaDciFL4jYQ1QrI-Gh3LYVeWd5OO3almTeHfQ-r4lPRb9ZRE-rVGDkCiDbNRQD_hO8gaoooY7w3Rjyyvpk72gvkTJIHSl76zxjyMVOOKVe_rOYxWgKQobhpuifOA2YpYYEvx_fSEKONAU-HRUCQwWs6zSoSxY4w6hs"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-32 px-gutter max-w-container-max mx-auto">
+<!-- Hero Header -->
+<section class="mb-xl text-center md:text-left">
+<div class="inline-flex items-center gap-xs px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20 text-primary mb-sm">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm">AI-GENERATED PATHWAY</span>
+</div>
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md mb-xs">Product Manager Roadmap</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">From Junior Developer to Senior Product Lead. A personalized journey based on your skill gap analysis.</p>
+</section>
+<!-- Interactive Roadmap Canvas -->
+<div class="relative grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Timeline Center Line (Desktop Only) -->
+<div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] timeline-line -translate-x-1/2 opacity-30"></div>
+<!-- Phase 1: Foundation -->
+<div class="md:col-span-12 flex flex-col items-center mb-lg relative">
+<div class="z-10 px-6 py-2 rounded-full glass-card border-primary/30 mb-md">
+<span class="font-label-sm text-label-sm text-primary">PHASE 1: FOUNDATION</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg w-full">
+<!-- Step 1 -->
+<div class="relative md:pr-12 md:text-right flex flex-col md:items-end group">
+<div class="glass-card p-md rounded-xl w-full max-w-md transition-all duration-300 hover:scale-[1.02] active-glow border-primary/20">
+<div class="flex justify-between md:flex-row-reverse items-start mb-sm gap-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Agile Foundations</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Master the core principles of Scrum and Kanban to facilitate cross-functional team workflows.</p>
+<div class="flex flex-wrap md:justify-end gap-xs mb-md">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm text-on-surface-variant">CSM®</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm text-on-surface-variant">Jira Pro</span>
+</div>
+<div class="pt-sm border-t border-white/5 flex justify-between md:flex-row-reverse items-center">
+<span class="text-label-sm font-label-sm text-primary">EST. 3 MONTHS</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">COMPLETED</span>
+</div>
+</div>
+<!-- Timeline Node -->
+<div class="hidden md:block absolute -right-3 top-12 w-6 h-6 rounded-full bg-primary active-glow z-20"></div>
+</div>
+<!-- Step 2 -->
+<div class="relative md:pl-12 md:mt-24 flex flex-col items-start group">
+<div class="glass-card p-md rounded-xl w-full max-w-md transition-all duration-300 hover:scale-[1.02] border-white/10">
+<div class="flex justify-between items-start mb-sm gap-md">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Data Literacy</h3>
+<span class="material-symbols-outlined text-secondary">pending</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Learn to interpret product analytics, SQL basics, and A/B testing methodologies.</p>
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm text-on-surface-variant">Amplitude</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-label-sm font-label-sm text-on-surface-variant">SQL for PMs</span>
+</div>
+<div class="pt-sm border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-label-sm font-label-sm text-tertiary">EST. 4 MONTHS</span>
+<button class="text-label-sm font-label-sm text-primary hover:underline">VIEW COURSE</button>
+</div>
+</div>
+<!-- Timeline Node -->
+<div class="hidden md:block absolute -left-3 top-12 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-primary z-20"></div>
+</div>
+</div>
+</div>
+<!-- Phase 2: Specialization -->
+<div class="md:col-span-12 flex flex-col items-center mb-lg relative">
+<div class="z-10 px-6 py-2 rounded-full glass-card border-secondary/30 mb-md">
+<span class="font-label-sm text-label-sm text-secondary">PHASE 2: SPECIALIZATION</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg w-full">
+<!-- Step 3 -->
+<div class="relative md:pr-12 md:mt-24 md:text-right flex flex-col md:items-end group">
+<div class="glass-card p-md rounded-xl w-full max-w-md transition-all duration-300 hover:scale-[1.02] border-white/10 opacity-60">
+<div class="flex justify-between md:flex-row-reverse items-start mb-sm gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Product Strategy</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Developing vision, roadmap planning, and competitive market analysis framework.</p>
+<div class="pt-sm border-t border-white/5 flex justify-between md:flex-row-reverse items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant">EST. 6 MONTHS</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">LOCKED</span>
+</div>
+</div>
+<!-- Timeline Node -->
+<div class="hidden md:block absolute -right-3 top-12 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant z-20"></div>
+</div>
+<!-- Visual Accent Card -->
+<div class="hidden md:flex relative pl-12 items-center justify-center">
+<div class="w-full aspect-square max-w-xs relative rounded-full border border-secondary/20 flex items-center justify-center animate-shimmer overflow-hidden">
+<div class="z-10 text-center p-md">
+<span class="material-symbols-outlined text-secondary text-5xl mb-xs">psychology</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Growth Zone</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Phase 3: Leadership -->
+<div class="md:col-span-12 flex flex-col items-center relative">
+<div class="z-10 px-6 py-2 rounded-full glass-card border-tertiary/30 mb-md">
+<span class="font-label-sm text-label-sm text-tertiary">PHASE 3: LEADERSHIP</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg w-full">
+<!-- Placeholder for symmetry -->
+<div class="hidden md:block"></div>
+<!-- Step 4 -->
+<div class="relative md:pl-12 flex flex-col items-start group">
+<div class="glass-card p-md rounded-xl w-full max-w-md transition-all duration-300 hover:scale-[1.02] border-white/10 opacity-40">
+<div class="flex justify-between items-start mb-sm gap-md">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Director Prep</h3>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Executive communication, scaling teams, and P&amp;L management for business units.</p>
+<div class="pt-sm border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-label-sm font-label-sm text-on-surface-variant">EST. 12 MONTHS</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">LOCKED</span>
+</div>
+</div>
+<!-- Timeline Node -->
+<div class="hidden md:block absolute -left-3 top-12 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant z-20"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Career Statistics -->
+<section class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="glass-card p-lg rounded-2xl border-white/5">
+<span class="material-symbols-outlined text-primary mb-xs">timer</span>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-base">Total Journey</p>
+<h4 class="text-display-lg-mobile font-display-lg-mobile text-primary">2.1 Years</h4>
+</div>
+<div class="glass-card p-lg rounded-2xl border-white/5">
+<span class="material-symbols-outlined text-secondary mb-xs">payments</span>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-base">Projected Salary Bump</p>
+<h4 class="text-display-lg-mobile font-display-lg-mobile text-secondary">+45%</h4>
+</div>
+<div class="glass-card p-lg rounded-2xl border-white/5">
+<span class="material-symbols-outlined text-tertiary mb-xs">verified</span>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-base">Certs Required</p>
+<h4 class="text-display-lg-mobile font-display-lg-mobile text-tertiary">06</h4>
+</div>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 md:right-12 w-14 h-14 rounded-full intelligence-glow flex items-center justify-center z-50 bg-primary overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-on-primary relative z-10 animate-pulse">auto_awesome</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Navigation Overlay -->
+<div class="hidden md:flex fixed top-0 left-0 h-full w-20 bg-surface-dim/40 backdrop-blur-md flex-col items-center py-lg gap-lg border-r border-white/5 z-40">
+<div class="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary">explore</span>
+</div>
+<button class="p-3 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="p-3 text-primary bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+</button>
+<button class="p-3 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">work</span>
+</button>
+<div class="mt-auto flex flex-col gap-lg">
+<button class="p-3 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+<script>
+        // Simple Micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

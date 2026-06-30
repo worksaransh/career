@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Detail | Career GPS AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#222a3d",
+                    "on-tertiary": "#003640",
+                    "surface-variant": "#2d3449",
+                    "surface-dim": "#0b1326",
+                    "inverse-on-surface": "#283044",
+                    "inverse-primary": "#005ac2",
+                    "on-secondary": "#3c0091",
+                    "on-primary-fixed-variant": "#004395",
+                    "tertiary-container": "#009eb9",
+                    "tertiary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#001f26",
+                    "secondary-container": "#571bc1",
+                    "tertiary": "#4cd7f6",
+                    "primary-container": "#4d8eff",
+                    "surface-container-highest": "#2d3449",
+                    "surface-container-low": "#131b2e",
+                    "primary-fixed": "#d8e2ff",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-surface": "#dae2fd",
+                    "surface-container-lowest": "#060e20",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#424754",
+                    "on-primary-fixed": "#001a42",
+                    "secondary-fixed": "#e9ddff",
+                    "primary": "#adc6ff",
+                    "error-container": "#93000a",
+                    "surface-bright": "#31394d",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-primary": "#002e6a",
+                    "background": "#0b1326",
+                    "outline": "#8c909f",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#00285d",
+                    "inverse-surface": "#dae2fd",
+                    "surface-tint": "#adc6ff",
+                    "surface-container": "#171f33",
+                    "on-tertiary-container": "#002f38",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-secondary-fixed": "#23005c",
+                    "on-secondary-container": "#c4abff",
+                    "secondary": "#d0bcff",
+                    "on-background": "#dae2fd",
+                    "surface": "#0b1326",
+                    "on-surface-variant": "#c2c6d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "container-max": "1200px",
+                    "sm": "16px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        .active-scale:active {
+            transform: scale(0.98);
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform" onclick="history.back()">arrow_back</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary">Skill Detail</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer">share</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A sophisticated professional headshot of a young technology expert, illuminated with soft blue cinematic rim lighting. The background is a dark, blurred tech environment with faint bokeh effects. The overall aesthetic is clean, high-end, and reflects a modern AI-driven career platform identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuFFEUAYyoNTm8j3TTKoseoQ4knQFR_ZREFocH3E-Q0P8P0MZCIB6uxJ-s2IJdrfGWgnY-NmMcbQGxuwaThDckhrSSonPYsYVW-Fj3eVYnhYtIC3-FOY5Tk_xxzFCIKGSznbri4TJw9rVouvcSDDpIQ60_jWLPUnSNNt7g8ruWx_ZBl3Fr5YnVIegFjY3V19bNy0QYDhb9D5w-zlweDfp8Rfqv1TNzR3mTAwmpfF26nuhZLVqUR2Wz4o_cMq7Wp_ZK_dNx7dO8Nc1v"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-20 px-gutter max-w-2xl mx-auto space-y-8">
+<!-- Skill Hero -->
+<section class="mt-4">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-2 block">Advanced Specialization</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:text-display-lg text-primary leading-tight font-bold">Large Language Models</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-md">Architecting, fine-tuning, and deploying generative AI systems for enterprise-scale performance.</p>
+</div>
+<div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+</section>
+<!-- Proficiency Meter -->
+<section class="glass-card p-6 rounded-2xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary neon-glow"></div>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                Proficiency Benchmarking
+            </h3>
+<div class="space-y-8">
+<!-- User Progress -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface-variant">Your Current Level</span>
+<span class="font-headline-md text-headline-md text-primary">64%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full intelligence-gradient rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<!-- Industry Benchmark -->
+<div class="space-y-2 opacity-80">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface-variant">Industry Top 10%</span>
+<span class="font-headline-md text-headline-md text-tertiary">92%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden relative">
+<div class="h-full bg-tertiary/40 rounded-full" style="width: 92%"></div>
+<!-- Marker -->
+<div class="absolute top-0 left-[92%] -ml-1 h-full w-2 bg-tertiary shadow-[0_0_10px_#4cd7f6]"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Gap to Elite Tier: <span class="text-error">28% improvement needed</span></p>
+<span class="material-symbols-outlined text-primary cursor-help">info</span>
+</div>
+</section>
+<!-- Market Pulse -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                    Market Pulse
+                </h3>
+<div class="px-3 py-1 bg-secondary-container/30 border border-secondary/20 rounded-full">
+<span class="font-label-sm text-label-sm text-secondary">High Demand</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-card p-5 rounded-xl border-l-4 border-secondary">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Growth Forecast</p>
+<div class="flex items-center gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">+142%</span>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Annual increase in job postings requiring LLM expertise.</p>
+</div>
+<div class="glass-card p-5 rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-3">Top Hiring Ecosystems</p>
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container border border-white/10 flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="A minimalist tech company logo for a global AI powerhouse, featuring clean geometric shapes in a monochrome style. Professional and high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmV7t0v-rzcZ2-OQHGLPe31U_DTix9PFjV6aG-oyVM32ItC3Iq6NKRWiAb49nN4ykYRof5QNgQF2q4gOnKXxle_sacxRKZFPH7KyjMD3T_bXHLsj6Oubw3D_OeQL5vXKOjNLWs3A-Viq7VycUI3DvTPMBAcFvkfFBLvfVnfFR7KBM8uA4LWbf3ClxirwsSs0TlOyq4aexWgR7sK5aSlSbbRH2N3rtjEPLle4-148TYz4vlSSz_VzWJhwt3BqzkldJEixlGARVC_qXy"/>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container border border-white/10 flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="Corporate logo for a leading software development firm, rendered in a sleek minimalist style with sharp lines and futuristic blue accents. Cohesive with SaaS branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1woRjAn7Wr1NUHFk_fesCIskYxR0P2oZeq-0TsgMw6rbuLfzrDsciqiwpXcpuHx-DRFFOzYQekJAKIgwKprWw8ZCc24-2_19q7XU8XJhZaTsj2x_-UROVFVsvyeMEpMDFut_YHFByjtZIBe9p5r242QI8Wex9y8hMRHMhPWJ8TwiMZ6t0zyHGASjfKsdwDFhPo3olR0FcjhcHSyFZB5vZ62yNP0MYltyC1Y8WGqSftHyJkmKjgVdURMCiK7xm5BarrH_k8TOz3KlT"/>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container border border-white/10 flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="Logo for a major cloud computing provider, styled with modern professional aesthetic, subtle gradients, and high-precision design markers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtpY7_cao3sbMosQv1FqricvRRaJyFq7PF08jdqPWzqwTawYM-sRMIWzAykFqksvKfkaI2zQIdB45jdWy-cmARz67J750BmfmW14lp-FzVuHY2cJBsjAeWSyhdKPY53x6s3tmNEvrjBByB_s9vLxVF-XB7hS8GHErD4YDB6y_w7gOWAE7BY_G4j3vrOnnzfGsYrfE55hJCWELZ7XuHbnWUNefnT7wfIGmXxMbYW6vMyTah-mfpF8RJXIGX2ts596U7pmoi_x1BPuxb"/>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container border border-white/10 flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="A modern fintech company logo, displaying futuristic design elements and sharp typography, set against a dark glassmorphic background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDffmHivIjD6WQ3kfwdGFrl1cR8eKzCP4kX-ZeiGMq2888e3Ld0ksaDPc3RAVilB3-5x3h1h_eScrsEvGDXBvoXVCU4tGBZi1CkmY7ivmsqOP-vJNQnoa_b2PziXlpFOQYaGp5NY3xiym0eZHfmR8C42gl7eMC53-cJT6VvQkU_b_6xIjUoreZS4tUwXkQlO7Dk2d_ihAZhcl4HQSPTkGHWMhptQ1d-ySgUicl5S3GGuMKVs8KdJwSPUGsms731XUAebIwKxLZN9PnR"/>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-bright border border-white/10 flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<p class="font-label-sm text-label-sm text-primary mt-3 cursor-pointer hover:underline">View 84 open roles →</p>
+</div>
+</div>
+</section>
+<!-- Learning Outcomes -->
+<section class="glass-card p-6 rounded-2xl">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface mb-6">Mastery Path</h3>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full intelligence-gradient flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="w-0.5 h-full bg-surface-container-highest"></div>
+</div>
+<div class="pb-6">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Foundation Models &amp; Transformers</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Deep dive into self-attention mechanisms and encoder-decoder architectures.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="font-label-sm text-label-sm">2</span>
+</div>
+<div class="w-0.5 h-full bg-surface-container-highest"></div>
+</div>
+<div class="pb-6">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Fine-tuning Strategies (PEFT &amp; LoRA)</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Efficient parameter management for domain-specific model adaptation.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="font-label-sm text-label-sm">3</span>
+</div>
+<div class="w-0.5 h-full bg-surface-container-highest"></div>
+</div>
+<div class="pb-6">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Prompt Engineering &amp; RAG</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Building Retrieval Augmented Generation systems with vector databases.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="font-label-sm text-label-sm">4</span>
+</div>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">AI Safety &amp; RLHF</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Reinforcement Learning from Human Feedback and ethical guardrails.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-xl">
+<div class="max-w-2xl mx-auto px-gutter py-4 flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estimated Duration</span>
+<span class="font-body-md text-body-md text-primary font-bold">12 Weeks • 4-6h/wk</span>
+</div>
+<button class="flex-1 intelligence-gradient text-on-primary-container font-bold py-4 px-6 rounded-xl active-scale transition-all flex items-center justify-center gap-2 shadow-lg">
+                Start Learning
+                <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</nav>
+<!-- Floating AI Assistant Placeholder -->
+<div class="fixed bottom-24 right-6 z-40">
+<button class="w-14 h-14 rounded-full intelligence-gradient neon-glow flex items-center justify-center shadow-2xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple animation for progress bars on load
+            const progressBars = document.querySelectorAll('.h-full.intelligence-gradient, .h-full.bg-tertiary\\/40');
+            progressBars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    bar.style.width = targetWidth;
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

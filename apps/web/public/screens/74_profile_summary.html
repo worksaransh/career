@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Summary | Career GPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #d0bcff 100%);
+        }
+        .skill-glow:hover {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary": "#002e6a",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "primary": "#adc6ff",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#31394d",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary": "#3c0091",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "background": "#0b1326",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary-container": "#009eb9",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary": "#003640",
+                        "error-container": "#93000a",
+                        "outline": "#8c909f",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "surface-container": "#171f33",
+                        "primary-container": "#4d8eff",
+                        "tertiary": "#4cd7f6",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#e9ddff",
+                        "outline-variant": "#424754",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "base": "4px",
+                        "container-max": "1200px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm h-16">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-fashion portrait of a young professional man in a sleek dark turtleneck. The lighting is dramatic and soft-focus, with electric blue rim lights and a dark, charcoal-grey minimalist office background. The style is modern, professional, and sophisticated, matching a high-end tech SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnQlRkm0qLbH_3Xoc7AFysPwLobJw42MkQWH0r55diwTA47yPeGJduTWA9_vyf8wBjAY7duL0wUmI5krv1ghWHcnG9tP3qzQXBvzaiBb19fxmw15mljIbpuSIP60QjL-II5oeVXzKS1arbb3m4_KMEbwcMl-e4KQBfZlfe1o5LsanUKTQMyutx96pfr7q1XmeX_InyhAcjxRLpUjhUTXayyp5-ERRgxgB2cOVgg1OS7iOJD4BxzQob3AejV_XhWqAZlhG7TpSzTaLX"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary">Career GPS</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">search</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto space-y-lg">
+<!-- Profile Header Section -->
+<section class="flex flex-col md:flex-row items-center md:items-start gap-md animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="relative group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden glass-card border-primary/30 p-1">
+<div class="w-full h-full rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up of a diverse male executive with a confident, friendly expression. The visual style uses cold studio lighting with subtle blue and violet color leaks. The background is a blurred, high-tech command center interface, evoking futuristic intelligence and career progression. High contrast and premium finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjLIeU1DE8D5Ib8tx1ivi59ZbBBEa-u52a71Vq13XEEkwI9q5HaK2T_fJg4JCgDsvEBoga-yVJ1bfWs8JnZol3o3Wl0n2LQV9waCXZITrrTN94wZiiE2CdCUF4PVGg984k13SiCjnDdkq56o-QVp7K1pHmupya8f84NJ6w83MzhJ7nX5BEb75EJNl0-tSrb8F2UrrQmem3nph8yjKuqW1O6BQNW7cwjI5wctPfd4AQdxgOWsLsT41djdTR4_68yALDX1v-LHAg5rvC"/>
+</div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary px-3 py-1 rounded-full text-xs font-bold shadow-lg">Level 12</div>
+</div>
+<div class="text-center md:text-left space-y-xs">
+<div class="flex flex-col md:flex-row md:items-center gap-2">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface tracking-tight">Arjun Mehta</h2>
+<span class="bg-secondary-container/30 text-secondary px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold self-center md:self-auto border border-secondary/20">AI Strategy Lead</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg leading-relaxed">
+                    Bridging the gap between human intuition and algorithmic efficiency. Currently optimizing career pathways for 10k+ professionals.
+                </p>
+</div>
+</section>
+<!-- Bento Layout: Digital Resume & Skills -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+<!-- Digital Resume Preview -->
+<div class="lg:col-span-8 glass-card rounded-xl p-md space-y-md relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full intelligence-gradient opacity-50"></div>
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                        Digital Resume
+                    </h3>
+<button class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors">
+                        View Full PDF <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="space-y-sm">
+<div class="p-sm rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-all cursor-default">
+<div class="flex justify-between mb-1">
+<span class="font-bold text-on-surface">Director of Product AI</span>
+<span class="text-xs text-on-surface-variant">2021 — Present</span>
+</div>
+<div class="text-sm text-on-surface-variant mb-2">Nexus Systems, Bangalore</div>
+<p class="text-sm leading-snug text-on-surface-variant/80 italic">"Led the implementation of LLM-based decision engines across internal recruitment workflows."</p>
+</div>
+<div class="p-sm rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-all cursor-default">
+<div class="flex justify-between mb-1">
+<span class="font-bold text-on-surface">Senior Technical Strategist</span>
+<span class="text-xs text-on-surface-variant">2018 — 2021</span>
+</div>
+<div class="text-sm text-on-surface-variant mb-2">CloudScale Solutions</div>
+<p class="text-sm leading-snug text-on-surface-variant/80 italic">"Architected multi-cloud infrastructure for scaling fintech applications globally."</p>
+</div>
+</div>
+<div class="pt-base border-t border-white/10 flex gap-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span class="text-xs text-on-surface-variant font-label-sm">Identity Verified</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs text-on-surface-variant font-label-sm">AI-Enhanced Profile</span>
+</div>
+</div>
+</div>
+<!-- Skills Cloud -->
+<div class="lg:col-span-4 glass-card rounded-xl p-md flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-2">
+<span class="material-symbols-outlined">psychology</span>
+                    Expertise
+                </h3>
+<div class="flex flex-wrap gap-2 content-start flex-grow">
+<span class="px-4 py-2 rounded-full glass-card border-primary/40 text-primary font-bold text-lg skill-glow transition-all cursor-pointer">Machine Learning</span>
+<span class="px-3 py-1.5 rounded-full glass-card border-white/20 text-on-surface font-semibold text-md skill-glow transition-all cursor-pointer">Strategic Growth</span>
+<span class="px-3 py-1 rounded-full glass-card border-white/10 text-on-surface-variant text-sm skill-glow transition-all cursor-pointer">Product Led SEO</span>
+<span class="px-4 py-2 rounded-full glass-card border-secondary/40 text-secondary font-bold text-lg skill-glow transition-all cursor-pointer">Neural Networks</span>
+<span class="px-3 py-1.5 rounded-full glass-card border-white/20 text-on-surface font-semibold text-md skill-glow transition-all cursor-pointer">Fintech SaaS</span>
+<span class="px-2 py-1 rounded-full glass-card border-white/5 text-on-surface-variant text-xs skill-glow transition-all cursor-pointer">GitOps</span>
+<span class="px-3 py-1 rounded-full glass-card border-white/10 text-on-surface-variant text-sm skill-glow transition-all cursor-pointer">PyTorch</span>
+<span class="px-4 py-2 rounded-full glass-card border-tertiary/40 text-tertiary font-bold text-lg skill-glow transition-all cursor-pointer">Career Mapping</span>
+</div>
+<div class="mt-md pt-sm border-t border-white/10">
+<div class="flex justify-between items-center text-xs text-on-surface-variant uppercase tracking-tighter">
+<span>Top 5% of Global Mentors</span>
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy & Shortcuts Section -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<button class="flex items-center justify-center gap-3 glass-card rounded-lg py-sm px-md hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">shield_person</span>
+<span class="font-label-sm text-label-sm text-on-surface">Privacy Settings</span>
+</button>
+<button class="flex items-center justify-center gap-3 glass-card rounded-lg py-sm px-md hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">file_download</span>
+<span class="font-label-sm text-label-sm text-on-surface">Export Data</span>
+</button>
+<button class="flex items-center justify-center gap-3 glass-card rounded-lg py-sm px-md hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">share</span>
+<span class="font-label-sm text-label-sm text-on-surface">Share Profile</span>
+</button>
+<button class="flex items-center justify-center gap-3 glass-card rounded-lg py-sm px-md hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">history</span>
+<span class="font-label-sm text-label-sm text-on-surface">Revision Log</span>
+</button>
+</section>
+</main>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center shadow-[0_0_20px_rgba(173,198,255,0.4)] z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explorer</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm mt-1">Skills</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        // Micro-interactions and subtle effects
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Subtle movement for glass cards for a parallax feel
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = (e.clientX - rect.left) / rect.width;
+                const cardY = (e.clientY - rect.top) / rect.height;
+                
+                if (cardX > 0 && cardX < 1 && cardY > 0 && cardY < 1) {
+                    card.style.transform = `perspective(1000px) rotateX(${(cardY - 0.5) * 2}deg) rotateY(${(cardX - 0.5) * -2}deg)`;
+                } else {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                }
+            });
+        });
+
+        // Skill cloud interactions
+        const skills = document.querySelectorAll('.skill-glow');
+        skills.forEach(skill => {
+            skill.addEventListener('click', () => {
+                skill.classList.add('scale-95');
+                setTimeout(() => skill.classList.remove('scale-95'), 150);
+            });
+        });
+    </script>
+</body></html>

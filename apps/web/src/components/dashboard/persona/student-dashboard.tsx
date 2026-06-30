@@ -22,10 +22,13 @@ interface Props {
   telegramLink: string;
 }
 
+import { DynamicCareerTimeline } from "../dynamic-career-timeline";
+import { AiMicroGoals } from "../ai-micro-goals";
+
 export function StudentDashboardContent({ user, latestResult, recommendedCareersCount, savedCount, memory, initialWeeklyChallenges, initialTimelineEvents, initialPartners, whatsappLink, telegramLink }: Props) {
   let careerScore = "--";
   if (latestResult?.scores) {
-    const vals = Object.values(latestResult.scores) as number[];
+    const vals = Object.values(latestResult.scores).filter((v) => typeof v === "number") as number[];
     if (vals.length > 0) careerScore = `${Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)}`;
   }
 
@@ -69,6 +72,10 @@ export function StudentDashboardContent({ user, latestResult, recommendedCareers
           </GlassCard>
         </Link>
       </div>
+
+      {/* Dynamic Growth Timeline & Goals */}
+      <DynamicCareerTimeline persona="STUDENT" memory={memory} />
+      <AiMicroGoals persona="STUDENT" />
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">

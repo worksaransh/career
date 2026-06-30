@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Mentor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#0b1326",
+                    "inverse-surface": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-primary": "#002e6a",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "outline-variant": "#424754",
+                    "on-tertiary": "#003640",
+                    "surface-container-highest": "#2d3449",
+                    "surface-container": "#171f33",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-bright": "#31394d",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-surface": "#dae2fd",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-container": "#002f38",
+                    "inverse-on-surface": "#283044",
+                    "secondary": "#d0bcff",
+                    "surface-variant": "#2d3449",
+                    "primary": "#adc6ff",
+                    "on-primary-fixed": "#001a42",
+                    "surface": "#0b1326",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#4cd7f6",
+                    "primary-container": "#4d8eff",
+                    "error-container": "#93000a",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-container-low": "#131b2e",
+                    "error": "#ffb4ab",
+                    "on-background": "#dae2fd",
+                    "tertiary-fixed": "#acedff",
+                    "surface-container-lowest": "#060e20",
+                    "on-primary-container": "#00285d",
+                    "on-error": "#690005",
+                    "inverse-primary": "#005ac2",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-tint": "#adc6ff",
+                    "surface-container-high": "#222a3d",
+                    "background": "#0b1326",
+                    "tertiary-container": "#009eb9",
+                    "on-secondary": "#3c0091",
+                    "outline": "#8c909f",
+                    "on-secondary-container": "#c4abff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "xl": "64px",
+                    "sm": "16px",
+                    "lg": "40px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "md": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            box-shadow: 0 0 8px #adc6ff;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24 md:pb-0 md:pl-80 overflow-x-hidden">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 bg-surface-dim border-r border-white/5 flex-col py-lg z-40">
+<div class="px-md mb-lg">
+<h1 class="font-display-lg text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="px-md mb-md">
+<div class="flex items-center gap-sm p-sm rounded-xl bg-surface-container-low border border-white/5">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a tech mentor in their 40s, looking confident and approachable. The lighting is soft and cinematic, with a dark, blurred office background featuring subtle blue ambient light to match the premium dark-mode UI. The overall mood is sophisticated, professional, and tech-forward." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4krWSyEUFUxswhy5SxfTPP9dnJLb9TDgkHASmJuO8VZDDoN0RTdgZt8u6wQsAGETqKUGJTiU5Has04c3o0Qn_HkSfeZlgpJkzfdE9fcdHIDkZjD9M2yk9Mgi6Jgvj8GDVdcdP71C6pjxqjEbu3r6OGT5siMhK-yCKdlF0kxEdig-w04RHFVTIRiChm1dYdBzw6HOodWhXrlQwAlUYnrSCOUczaXu2omUUZA0tfP8CaO2RuQ5ANZzLJ_co6RzZJ-8PzmF3bVY7g2TN"/>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-bold">Career Explorer</p>
+<p class="text-label-sm text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm mx-2 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm bg-secondary-container text-on-secondary-container rounded-lg mx-2 px-4 py-3 font-bold" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-body-md">Mentorship</span>
+</a>
+<a class="flex items-center gap-sm mx-2 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md">AI Insights</span>
+</a>
+<a class="flex items-center gap-sm mx-2 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md">Job Board</span>
+</a>
+<a class="flex items-center gap-sm mx-2 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar (Mobile focus) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 md:hidden">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<h2 class="font-display-lg-mobile text-primary tracking-tight">Mentees</h2>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<div class="w-8 h-8 rounded-full border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small thumbnail profile photo of a professional tech mentor for mobile navigation. Professional, soft-lit, high-quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp003b_9SPwx35WxrLdnx83GyfVZBwkgBGvJtVXbcLuXy_A1OgncF3gX7d6Cs5JpA58-KJ0Cs-91rfGAEaXpo7rMXM7EJCf7d-AyAEZkCBDa-iLRoI-UMyCCij5BEJKfvg7fFj-UTL8EtIBmjrn6zdsdagMMmPPWn7tn7NUjYVjl2yYY70_oCpLB7fZ-phPvABI1tGw_pEMb3UwUyEqP0A_S_RTXS7kxhOMmd1mAnS-TQpLwA-jMDw45-5iaQLyLIhJSBFqmWLBfte"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-20 md:pt-12 px-gutter md:px-xl max-w-container-max mx-auto">
+<!-- Search Section -->
+<div class="mb-lg">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container border border-white/10 rounded-xl py-4 pl-12 pr-4 text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300" placeholder="Search mentees by name, role, or status..." type="text"/>
+</div>
+</div>
+<!-- Mentee List Header (Desktop Only) -->
+<div class="hidden md:grid grid-cols-12 gap-md px-md py-sm text-label-sm text-on-surface-variant uppercase tracking-widest border-b border-white/5 mb-md">
+<div class="col-span-4">Mentee Information</div>
+<div class="col-span-3 text-center">Career Twin Progress</div>
+<div class="col-span-2 text-center">Status</div>
+<div class="col-span-3 text-right">Actions</div>
+</div>
+<!-- Mentee Cards Container -->
+<div class="space-y-md">
+<!-- Mentee Card 1 -->
+<div class="glass-card rounded-xl p-md md:grid md:grid-cols-12 md:items-center md:gap-md group hover:bg-white/[0.06] transition-all duration-300">
+<!-- Info Section -->
+<div class="col-span-4 flex items-center gap-md mb-md md:mb-0">
+<div class="relative w-14 h-14 shrink-0">
+<img class="w-full h-full rounded-full object-cover border border-white/10" data-alt="A profile portrait of a young male junior UI/UX designer, looking enthusiastic. Modern creative aesthetic, studio lighting, deep blue background accents to match the dark theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE61sM14uO5cKQXZ03LJUgDXXyMPHzTOpBJiApi0Zdwe28vL6e_IbGfh4TucsK3Xwcz7AZ1CtqvkK-ZXVnhQUW3q9OMK2UzcRZVPTz05F3EzoXF8SjE-S4m_49-jq0xTfCx1CwVibFlIV77LT3bCLjnUo_vOJ-fgc31OvxvrtRXr6JTW8PHb7BYfL20QNhgDzrTBqcvN1wiV9wDtAiEDqbtocLxy_yFPxoVYBmAp7DA4f5fzO-i7X1jkcO996DeZ6ee0MBbf-Hc9G6"/>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-surface active-dot"></div>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-lg">Arjun Mehta</h3>
+<p class="text-body-md text-on-surface-variant">Junior Designer <span class="text-primary/60 px-1">→</span> Senior Product Designer</p>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="col-span-3 mb-md md:mb-0">
+<div class="flex justify-between items-center mb-xs px-1">
+<span class="text-label-sm text-on-surface-variant">Career Twin Progress</span>
+<span class="text-label-sm font-bold text-primary">68%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full intelligence-gradient rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- Status Section -->
+<div class="col-span-2 text-center mb-md md:mb-0">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-medium bg-primary/10 text-primary border border-primary/20">
+                        On Track
+                    </span>
+</div>
+<!-- Actions Section -->
+<div class="col-span-3 flex md:justify-end gap-sm">
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-surface border border-white/10 rounded-lg hover:bg-surface-bright transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                        Message
+                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-primary intelligence-gradient rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                        Roadmap
+                    </button>
+</div>
+</div>
+<!-- Mentee Card 2 -->
+<div class="glass-card rounded-xl p-md md:grid md:grid-cols-12 md:items-center md:gap-md group hover:bg-white/[0.06] transition-all duration-300">
+<div class="col-span-4 flex items-center gap-md mb-md md:mb-0">
+<div class="relative w-14 h-14 shrink-0">
+<img class="w-full h-full rounded-full object-cover border border-white/10" data-alt="A professional headshot of a female software engineer with a focused expression. Professional lighting, minimalist dark studio background with subtle cool-toned gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPPJxzF3nZPzON5ltrlqN8esWGE_n5_Ikadia1TsYVGL7WH0nR2Y1zWgajF16X1Gis4NZCZPcd21SMR9soJQIgqVkv017RrJwpoqtzBTAS_DB2c7pBIQ-xchrknehEgha9IcEhJGqrztri3kA8yNoH2ZtiT8ennfR8bnMrVBhPXIxSRnHeysHHHYmWu9ebHfqij8oBBPjEpqWRH8GY5YLZYXx5loTSTJyDBstvnZHpxu4ExEMHOdsWLLzzE91TNsS7UVORAfzvyVs"/>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-lg">Priya Sharma</h3>
+<p class="text-body-md text-on-surface-variant">SDE I <span class="text-primary/60 px-1">→</span> Engineering Lead</p>
+</div>
+</div>
+<div class="col-span-3 mb-md md:mb-0">
+<div class="flex justify-between items-center mb-xs px-1">
+<span class="text-label-sm text-on-surface-variant">Career Twin Progress</span>
+<span class="text-label-sm font-bold text-tertiary">84%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<div class="col-span-2 text-center mb-md md:mb-0">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-medium bg-tertiary/10 text-tertiary border border-tertiary/20">
+                        Ahead of Schedule
+                    </span>
+</div>
+<div class="col-span-3 flex md:justify-end gap-sm">
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-surface border border-white/10 rounded-lg hover:bg-surface-bright transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                        Message
+                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-primary intelligence-gradient rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                        Roadmap
+                    </button>
+</div>
+</div>
+<!-- Mentee Card 3 -->
+<div class="glass-card rounded-xl p-md md:grid md:grid-cols-12 md:items-center md:gap-md group hover:bg-white/[0.06] transition-all duration-300">
+<div class="col-span-4 flex items-center gap-md mb-md md:mb-0">
+<div class="relative w-14 h-14 shrink-0">
+<img class="w-full h-full rounded-full object-cover border border-white/10" data-alt="A portrait of a male product analyst in his late 20s. He has a thoughtful look, wearing modern tech-casual attire. Dark, high-contrast lighting with a premium professional feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQRt_wuxMzDEQ2mfbVgVpR54Vt53ZLleX7_6Gwbfpy52j7O6vePPg4Ic2LfeSb-aV-wjVve_L3Wc_dQ4FS7RNiWI9fWrtSeAFG0xepGAUrG_c2b8wXM4kuF4e4ocDw7ATMjAkOJunsqt8AdXZCB0ks06q_4KW8EoB1HQ83h9TINyu5aTzp1mVnjBDx3x7FVH7OzsD8leSobcMzP1izuRMAW7NL-sWf2KEf2C2IiQfGQHqzk4HJOiF59h46Qc3Cc0tGeGLe27Pb_pWi"/>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-yellow-500 rounded-full border-2 border-surface"></div>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-lg">Rohan Das</h3>
+<p class="text-body-md text-on-surface-variant">Product Analyst <span class="text-primary/60 px-1">→</span> Product Manager</p>
+</div>
+</div>
+<div class="col-span-3 mb-md md:mb-0">
+<div class="flex justify-between items-center mb-xs px-1">
+<span class="text-label-sm text-on-surface-variant">Career Twin Progress</span>
+<span class="text-label-sm font-bold text-error">32%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div class="col-span-2 text-center mb-md md:mb-0">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-medium bg-error/10 text-error border border-error/20">
+                        Needs Review
+                    </span>
+</div>
+<div class="col-span-3 flex md:justify-end gap-sm">
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-surface border border-white/10 rounded-lg hover:bg-surface-bright transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                        Message
+                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-primary intelligence-gradient rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                        Roadmap
+                    </button>
+</div>
+</div>
+<!-- Mentee Card 4 -->
+<div class="glass-card rounded-xl p-md md:grid md:grid-cols-12 md:items-center md:gap-md group hover:bg-white/[0.06] transition-all duration-300">
+<div class="col-span-4 flex items-center gap-md mb-md md:mb-0">
+<div class="relative w-14 h-14 shrink-0">
+<img class="w-full h-full rounded-full object-cover border border-white/10" data-alt="A portrait of a female marketing professional with a creative flair. Soft, high-key lighting mixed with dark background depth, emphasizing a premium digital SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZbeKmbLvs9Gkh9LIwOc87WKw8pjyRNXvjZpARkgzuKiPEXbb5AwpNVTKYDSNKxCk5lnLQ3h3EDgDB84LN_IP9_-1E27XAHbSlEyVHQ44sLJcKbGAosPDlUteqPrgZX5GVnZGeKxgkyGJb5LKG9r5l3GsT9ZSsKnOrTWYqmnPx--4uS7kkThD5WbXlTOv24GF24YiQOYsqeMcyX314tMEFzId8b07koBdeL0n26BdAfEF0e6JuZNPgJIZ9anW-lPlto3pxjWskSzFh"/>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-lg">Sanya Kapoor</h3>
+<p class="text-body-md text-on-surface-variant">Marketing Assoc. <span class="text-primary/60 px-1">→</span> Brand Strategist</p>
+</div>
+</div>
+<div class="col-span-3 mb-md md:mb-0">
+<div class="flex justify-between items-center mb-xs px-1">
+<span class="text-label-sm text-on-surface-variant">Career Twin Progress</span>
+<span class="text-label-sm font-bold text-primary">52%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full intelligence-gradient rounded-full" style="width: 52%"></div>
+</div>
+</div>
+<div class="col-span-2 text-center mb-md md:mb-0">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-medium bg-primary/10 text-primary border border-primary/20">
+                        On Track
+                    </span>
+</div>
+<div class="col-span-3 flex md:justify-end gap-sm">
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-surface border border-white/10 rounded-lg hover:bg-surface-bright transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                        Message
+                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 text-label-sm font-bold text-on-primary intelligence-gradient rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                        Roadmap
+                    </button>
+</div>
+</div>
+</div>
+<!-- Footer / Load More -->
+<div class="py-xl flex justify-center">
+<button class="text-label-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs">
+                Show archived mentees
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full active-dot" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-20 md:bottom-10 right-6 w-14 h-14 intelligence-gradient rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(173,198,255,0.3)] z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<script>
+        // Simple search filter interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        const cards = document.querySelectorAll('.glass-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const role = card.querySelector('p').textContent.toLowerCase();
+                const status = card.querySelector('span.inline-flex').textContent.toLowerCase();
+                
+                if (name.includes(term) || role.includes(term) || status.includes(term)) {
+                    card.style.display = 'grid';
+                    card.classList.add('animate-in', 'fade-in', 'duration-300');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Button hover effect logic
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.classList.add('transition-all', 'duration-200');
+            });
+        });
+    </script>
+</body></html>

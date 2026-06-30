@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Language Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .language-card-active {
+            border-color: #adc6ff;
+            background: rgba(173, 198, 255, 0.08);
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.15);
+        }
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar for the language grid */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#171f33",
+                      "surface-tint": "#adc6ff",
+                      "surface-container-high": "#222a3d",
+                      "tertiary": "#4cd7f6",
+                      "on-secondary": "#3c0091",
+                      "on-primary-fixed": "#001a42",
+                      "on-primary": "#002e6a",
+                      "secondary-fixed": "#e9ddff",
+                      "on-tertiary-fixed": "#001f26",
+                      "surface-container-lowest": "#060e20",
+                      "on-secondary-container": "#c4abff",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-container-highest": "#2d3449",
+                      "on-surface-variant": "#c2c6d6",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#acedff",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "surface-dim": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "outline-variant": "#424754",
+                      "on-tertiary-fixed-variant": "#004e5c",
+                      "background": "#0b1326",
+                      "on-error": "#690005",
+                      "primary": "#adc6ff",
+                      "on-tertiary": "#003640",
+                      "on-error-container": "#ffdad6",
+                      "inverse-primary": "#005ac2",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "inverse-surface": "#dae2fd",
+                      "tertiary-container": "#009eb9",
+                      "secondary-container": "#571bc1",
+                      "on-secondary-fixed": "#23005c",
+                      "on-primary-container": "#00285d",
+                      "secondary": "#d0bcff",
+                      "surface-variant": "#2d3449",
+                      "surface": "#0b1326",
+                      "surface-bright": "#31394d",
+                      "inverse-on-surface": "#283044",
+                      "on-primary-fixed-variant": "#004395",
+                      "primary-fixed-dim": "#adc6ff",
+                      "primary-container": "#4d8eff",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#002f38",
+                      "on-surface": "#dae2fd",
+                      "outline": "#8c909f",
+                      "tertiary-fixed-dim": "#4cd7f6",
+                      "surface-container-low": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "container-max": "1200px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "gutter": "16px",
+                      "sm": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Header Navigation Shell (Suppressed for Transactional/Onboarding Flow) -->
+<!-- Content starts here -->
+<main class="relative w-full max-w-container-max mx-auto px-gutter py-md flex flex-col items-center min-h-screen">
+<!-- Subtle Ambient Background -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[120px]"></div>
+</div>
+<!-- Progress Indicator -->
+<div class="w-full max-w-md mt-sm mb-lg animate-fadeIn">
+<div class="flex justify-between items-center mb-xs px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Onboarding Progress</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Step 1 of 15</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[6.6%] rounded-full shadow-[0_0_8px_#adc6ff]"></div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<div class="w-full max-w-2xl flex-grow flex flex-col items-center">
+<!-- Headline Section -->
+<div class="text-center mb-xl space-y-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface tracking-tight">
+                    Select Your Language
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                    Choose your preferred language for a personalized AI experience.
+                </p>
+</div>
+<!-- Language Grid (Bento style interactive cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm w-full custom-scrollbar pb-xl">
+<!-- English -->
+<button class="group language-card glass-card language-card-active rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-resolution, minimalist close-up of the Union Jack flag with a soft, cinematic blur in the background. The lighting is crisp and modern, fitting a premium SaaS aesthetic. Vibrant blues and reds with deep shadows create a tactile, luxury feel for a digital interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ0lP7n8oj7AQOx17dVjwXcMBmSOdu7qjDxwEoCbLJdxIfQBHdPJ5Vw0tij0lTwZn3CV0gpSHsZOGeECii6PL6olY5esRt4LEFwwF1p4rpANWMgnSueD474JPZUMSLWJC279iGrxXvSs7Om6LauwKqsqnT0ohF2q822xh4ArAqoBMTPXnX1qSlD24BJluVegRveD396Onogi-Oog-fhbahBL6kgFkCChtHiS4iy6TtC77UzhMoAmzIvkWgc7UiAScn18VnEERXPAYH"/>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">English</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Default Language</p>
+</div>
+</div>
+<div class="check-icon text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<!-- Hindi -->
+<button class="group language-card glass-card rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up of the Indian National Flag, the Tricolour, with soft-focus cinematic lighting. The Saffron, White, and Green colors are rendered with high saturation and a slight fabric texture. The mood is patriotic yet sophisticated, designed for a high-end mobile application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuButPw8bjR93vRjfvpCN8wbHDYvwmFCda4lX29oiExdsQ_-9wQpwBcrRJ0k-KKtkiTyRui40-n8aPdXn2bNgTVy6sI2AZEuQIBF4bbUCNm13VNrWylRvSVNckg9NqTaGVcYws1wDlf7VMK6g7iJHWs0jjkpHpyzMQJT74xmE6An2hLFm7XZ0civznW7YLAYoz_Re2lb1Wad3sN6WKw_LGeNAJ8np4TiDGmbyUdtSkE6aUhlVli5-3b6mmDJN9wsIpwKBbGw696i4Wnh"/>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">हिन्दी</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hindi</p>
+</div>
+</div>
+<div class="check-icon text-on-surface-variant/20">
+<span class="material-symbols-outlined">circle</span>
+</div>
+</button>
+<!-- Marathi -->
+<button class="group language-card glass-card rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="An abstract representation of the Marathi language identity through a vibrant saffron swallowtail flag, symbolic of Maharashtrian heritage. The lighting is golden and warm, creating a sense of history and pride. Polished digital art style with deep contrast and glassmorphic depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbCCAveqSaqLPLvk8S5f7ou56WtTTucH-rCMzl26o3tGhfQWzMpVHztergd7T2tGUWl_fLCJWz5_PBCm7-TFLxSM_0Ui9iKS6MDFP1lcrAF7NJE1XU9FLPS0J-IA4wN7Cmie34ad3lvq7Mwbqcw0SeR7sUIf7wrHU3GvTU1j7wntoLudtIiyMV10c1g7jXLwST5T-Q-nsO-2ApH8wA2gllkR38bi6A-ICzTldXgjFzR_WQgHDg3VwWESX8-qaU_MaqgdVETdnobCr5"/>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">मराठी</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Marathi</p>
+</div>
+</div>
+<div class="check-icon text-on-surface-variant/20">
+<span class="material-symbols-outlined">circle</span>
+</div>
+</button>
+<!-- Tamil -->
+<button class="group language-card glass-card rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<div class="w-full h-full intelligence-gradient flex items-center justify-center text-on-primary font-bold">த</div>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">தமிழ்</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tamil</p>
+</div>
+</div>
+<div class="check-icon text-on-surface-variant/20">
+<span class="material-symbols-outlined">circle</span>
+</div>
+</button>
+<!-- Bengali -->
+<button class="group language-card glass-card rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<div class="w-full h-full bg-secondary-container flex items-center justify-center text-on-secondary font-bold">ব</div>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">বাংলা</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Bengali</p>
+</div>
+</div>
+<div class="check-icon text-on-surface-variant/20">
+<span class="material-symbols-outlined">circle</span>
+</div>
+</button>
+<!-- Spanish -->
+<button class="group language-card glass-card rounded-xl p-md flex items-center justify-between transition-all duration-300 hover:bg-surface-bright active:scale-[0.98]" onclick="selectLanguage(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cinematic shot of the Spanish flag, featuring vibrant red and yellow bands with a soft glow effect. The lighting is sophisticated, emphasizing the rich color palette against a dark, minimalist digital background. The style is modern, sleek, and high-precision for a global SaaS application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyrWW-Nb_CMm_VvzPcXnX26_NA4zVQYJHFOge81-7e-j9YZ2n5sW7Y2GfMGPUM8NGFBMN5jHusw3W1AwHbF-dRcdFpRfHfmNy4SXw6f_GmBKDi_-mvg94CZfbLWnLLIcGSbOIVvFVfzO0wbRk3FIqxCY6cBH-LVpEseA1gKmOzSfH4yzJ7Ule9pnflUkQHSDSWkEpfyLz4y3L5jLn_juw7zHTC5WDzOQJJGAQVc5NOxp8tp9iPd6ejEDNG-3hpgAteNSOZKaFd-CFM"/>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-headline-md text-on-surface">Español</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Spanish</p>
+</div>
+</div>
+<div class="check-icon text-on-surface-variant/20">
+<span class="material-symbols-outlined">circle</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Sticky Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full p-gutter bg-surface/80 backdrop-blur-xl border-t border-white/5 z-40 flex justify-center">
+<div class="w-full max-w-md flex flex-col gap-sm">
+<button class="intelligence-gradient w-full py-4 rounded-xl font-headline-md text-headline-md text-on-primary-fixed shadow-[0_8px_32px_rgba(173,198,255,0.2)] hover:shadow-[0_8px_40px_rgba(173,198,255,0.3)] transition-all duration-300 active:scale-95 flex items-center justify-center gap-xs" id="continue-btn">
+                    Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant/60">
+                    You can change your language later in settings.
+                </p>
+</div>
+</div>
+</main>
+<!-- Floating AI Assistant Placeholder (Suppressed on selection screen for focus) -->
+<script>
+        function selectLanguage(element) {
+            // Remove active classes from all cards
+            const cards = document.querySelectorAll('.language-card');
+            cards.forEach(card => {
+                card.classList.remove('language-card-active');
+                const icon = card.querySelector('.check-icon span');
+                icon.textContent = 'circle';
+                icon.style.fontVariationSettings = "'FILL' 0";
+                card.querySelector('.check-icon').classList.remove('text-primary');
+                card.querySelector('.check-icon').classList.add('text-on-surface-variant/20');
+            });
+
+            // Add active class to clicked card
+            element.classList.add('language-card-active');
+            const activeIcon = element.querySelector('.check-icon span');
+            activeIcon.textContent = 'check_circle';
+            activeIcon.style.fontVariationSettings = "'FILL' 1";
+            element.querySelector('.check-icon').classList.add('text-primary');
+            element.querySelector('.check-icon').classList.remove('text-on-surface-variant/20');
+
+            // Trigger micro-interaction
+            element.classList.add('scale-[0.98]');
+            setTimeout(() => {
+                element.classList.remove('scale-[0.98]');
+            }, 100);
+        }
+
+        // Handle CTA click
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+            setTimeout(() => {
+                // Mock transition to next step
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                location.reload(); // Just refresh for the demo
+            }, 800);
+        });
+    </script>
+</body></html>

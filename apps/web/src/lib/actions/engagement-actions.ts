@@ -4,13 +4,30 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db/prisma/prisma";
 import { requireAuth } from "@/lib/session/session";
 
-// Base questions to seed if DailyQuestion is empty
+// Base questions to seed if DailyQuestion is empty or generic
 const SEED_DAILY_QUESTIONS = [
-  { text: "Do you enjoy solving complex logic puzzles?", options: ["Yes, very much", "Sometimes", "Not really"], category: "Analytical" },
-  { text: "Do you like mentoring or helping others solve their problems?", options: ["Yes", "Maybe", "No"], category: "Social" },
-  { text: "Do you enjoy creating digital art, drawings, or layouts?", options: ["Strongly Agree", "Agree", "Disagree"], category: "Creative" },
-  { text: "Are you interested in coding, scripting, or hardware configurations?", options: ["Yes, definitely", "Curious about it", "Not at all"], category: "Technical" },
-  { text: "Do you enjoy managing team activities or organizing events?", options: ["Yes", "Neutral", "No"], category: "Leadership" }
+  // School Student
+  { text: "Are you planning to choose Science (PCM/PCB), Commerce, or Arts in Class 11/12?", options: JSON.stringify(["Science PCM", "Science PCB", "Commerce", "Arts/Humanities"]), category: "Analytical" },
+  { text: "Do you enjoy participating in Olympiads, spelling bees, or science exhibitions?", options: JSON.stringify(["Yes, frequently", "Sometimes", "Never"]), category: "Analytical" },
+  { text: "Which subject do you score the highest in?", options: JSON.stringify(["Mathematics/Science", "Languages/Arts", "Social Studies", "Computer Science"]), category: "Analytical" },
+
+  // College Student
+  { text: "Have you started building a portfolio or GitHub profile for your projects?", options: JSON.stringify(["Yes, it is active", "Started but not complete", "Not yet"]), category: "Technical" },
+  { text: "What is your current CGPA level?", options: JSON.stringify(["9.0+ Excellent", "8.0 - 9.0 Good", "7.0 - 8.0 Average", "Below 7.0"]), category: "Technical" },
+  { text: "Are you aiming for on-campus placements or off-campus jobs?", options: JSON.stringify(["On-Campus Placements", "Off-Campus Jobs", "Higher Studies", "Entrepreneurship"]), category: "Leadership" },
+
+  // Working Professional
+  { text: "How confident are you with System Design, Backend, or Frontend architectures?", options: JSON.stringify(["Very confident", "Moderately confident", "Beginner level", "N/A"]), category: "Professional" },
+  { text: "Have you managed client budgets or led teams of 5+ developers/associates?", options: JSON.stringify(["Yes, extensively", "A few times", "Never"]), category: "Leadership" },
+  { text: "What is your primary reason for wanting to switch companies?", options: JSON.stringify(["Higher Salary", "Better Work Culture", "Role/Tech Upgrade", "Remote Flexibility"]), category: "Professional" },
+
+  // Career Switcher
+  { text: "How much time per week are you currently dedicating to learn your target role skills?", options: JSON.stringify(["10+ Hours", "5-10 Hours", "Less than 5 Hours", "Not started yet"]), category: "Professional" },
+  { text: "What is your risk appetite for transitioning into a new domain?", options: JSON.stringify(["High (quit & learn)", "Medium (switch gradually)", "Low (need offer first)"]), category: "Professional" },
+
+  // Parent
+  { text: "What is your target total college budget limit for your child's higher education?", options: JSON.stringify(["Under ₹5L", "₹5L - ₹15L", "₹15L - ₹30L", "₹30L+ / International"]), category: "Parental" },
+  { text: "Would you support your child pursuing unconventional career paths (e.g. design, esports)?", options: JSON.stringify(["Yes, fully", "With some guidance", "Prefer traditional paths"]), category: "Parental" }
 ];
 
 // Helper: Get or initialize user engagement profile
@@ -49,29 +66,24 @@ export async function recordActivityAndGetStreak() {
   const lastActiveStr = lastActive.toISOString().slice(0, 10);
   
   if (todayStr === lastActiveStr) {
-    // Already active today, return existing status
     return engagement;
   }
   
-  // Calculate difference in days
   const diffTime = Math.abs(now.getTime() - lastActive.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   
   let currentStreak = engagement.currentStreak;
-  let xpReward = 15; // default login XP
+  let xpReward = 15;
   let pointsReward = 10;
   
   if (diffDays <= 1 || (diffDays === 2 && now.getDate() - lastActive.getDate() === 1)) {
-    // Active yesterday, increment streak
     currentStreak += 1;
   } else {
-    // Missed a day or more, reset streak
     currentStreak = 1;
   }
   
   const longestStreak = Math.max(currentStreak, engagement.longestStreak);
   
-  // Check streak milestone achievements
   const milestonesClaimed = [...engagement.milestonesClaimed];
   const milestones = [
     { key: "7_DAYS", limit: 7, bonusXP: 100, bonusPoints: 100 },
@@ -100,7 +112,6 @@ export async function recordActivityAndGetStreak() {
     }
   });
 
-  // Re-verify unlockable badges based on state
   await checkAndUnlockBadges(user.id, updated);
   
   revalidatePath("/dashboard");
@@ -111,9 +122,10 @@ export async function recordActivityAndGetStreak() {
 export async function getDailySmartQuestion() {
   const user = await requireAuth();
 
-  // Self-seed questions if empty
+  // Clear generic questions if any and re-seed to make sure options are JSON-stringified arrays
   const count = await prisma.dailyQuestion.count();
-  if (count === 0) {
+  if (count <= 5) {
+    await prisma.dailyQuestion.deleteMany({});
     await prisma.dailyQuestion.createMany({
       data: SEED_DAILY_QUESTIONS
     });
@@ -126,12 +138,42 @@ export async function getDailySmartQuestion() {
   });
   const answeredIds = answered.map(a => a.questionId);
 
-  // Find first unanswered question
-  const question = await prisma.dailyQuestion.findFirst({
+  const persona = user.primaryPersona ?? "STUDENT";
+  
+  // Map persona to preferred daily question categories
+  const personaCategories: Record<string, string[]> = {
+    PARENT: ["Parental", "Leadership"],
+    PROFESSIONAL: ["Professional", "Leadership"],
+    CAREER_SWITCHER: ["Professional", "Technical", "Analytical"],
+    STUDENT: ["Analytical", "Creative"],
+    COLLEGE_STUDENT: ["Technical", "Analytical", "Leadership"],
+  };
+  
+  const preferredCategories = personaCategories[persona] ?? ["Analytical", "Technical"];
+
+  // Find first unanswered question that matches preferred categories
+  let question = await prisma.dailyQuestion.findFirst({
     where: {
-      id: { notIn: answeredIds }
+      id: { notIn: answeredIds },
+      category: { in: preferredCategories }
     }
   });
+
+  if (!question) {
+    // Fallback to any unanswered question
+    question = await prisma.dailyQuestion.findFirst({
+      where: {
+        id: { notIn: answeredIds }
+      }
+    });
+  }
+
+  // Ensure options are parsed if stored as JSON string
+  if (question && typeof question.options === "string") {
+    try {
+      question.options = JSON.parse(question.options);
+    } catch (e) {}
+  }
 
   return question;
 }
@@ -191,8 +233,31 @@ export async function submitDailyAnswer(questionId: string, answerText: string) 
       await tx.userEngagement.update({
         where: { id: engagement.id },
         data: {
-          totalXP: engagement.totalXP + 30, // +30 XP
+          totalXP: engagement.totalXP + 30,
           totalPoints: engagement.totalPoints + 20
+        }
+      });
+    }
+
+    // 4. Update UserMemory progressive profiling counters and score dynamics
+    const memory = await tx.userMemory.findUnique({
+      where: { userId: user.id }
+    });
+    if (memory) {
+      const nextUpgrade = Math.min(100, memory.careerUpgradeScore + 1);
+      const nextReadiness = Math.min(100, memory.jobReadinessScore + 2);
+      const nextPortfolio = Math.min(100, memory.portfolioScore + 1);
+      const nextQuestionsCount = memory.totalQuestionsAnswered + 1;
+      const nextCompleteness = Math.min(100, memory.profileCompleteness + 1);
+
+      await tx.userMemory.update({
+        where: { userId: user.id },
+        data: {
+          careerUpgradeScore: nextUpgrade,
+          jobReadinessScore: nextReadiness,
+          portfolioScore: nextPortfolio,
+          totalQuestionsAnswered: nextQuestionsCount,
+          profileCompleteness: nextCompleteness
         }
       });
     }

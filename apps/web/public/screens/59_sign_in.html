@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In | Career GPS AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-bg: rgba(23, 31, 51, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+        .intelligence-glow {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.2);
+        }
+        .input-focus-glow:focus-within {
+            box-shadow: 0 0 12px rgba(173, 198, 255, 0.15);
+            border-color: #adc6ff;
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "inverse-primary": "#005ac2",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "primary": "#adc6ff",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "outline": "#8c909f",
+                        "background": "#0b1326",
+                        "secondary-container": "#571bc1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col justify-center items-center p-gutter relative overflow-hidden">
+<!-- Background Atmospheric Shader -->
+<div class="absolute inset-0 z-0">
+</div>
+<!-- Decorative Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-80 h-80 bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-secondary-container/10 rounded-full blur-[150px]"></div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[420px] z-10">
+<!-- Identity Header -->
+<header class="text-center mb-lg space-y-xs">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-surface-container border border-white/10 mb-md glass-card intelligence-glow">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight">
+                Career GPS
+            </h1>
+<p class="font-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                Your AI-guided journey to the next professional milestone starts here.
+            </p>
+</header>
+<!-- Sign In Card -->
+<section class="glass-card p-md md:p-lg rounded-xl space-y-md">
+<form class="space-y-md" onsubmit="return false">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest ml-1">Email Address</label>
+<div class="relative group input-focus-glow transition-all duration-300 rounded-lg border border-white/10 bg-surface-dim/50 overflow-hidden">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm">alternate_email</span>
+</div>
+<input class="w-full bg-transparent border-none py-3 pl-10 pr-4 text-on-surface placeholder:text-outline focus:ring-0 font-body-md outline-none" placeholder="arjun.kapoor@example.in" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-end">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest ml-1">Password</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">Forgot?</a>
+</div>
+<div class="relative group input-focus-glow transition-all duration-300 rounded-lg border border-white/10 bg-surface-dim/50 overflow-hidden">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm">lock</span>
+</div>
+<input class="w-full bg-transparent border-none py-3 pl-10 pr-12 text-on-surface placeholder:text-outline focus:ring-0 font-body-md outline-none" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full py-4 bg-primary text-on-primary font-headline-md text-headline-md rounded-lg shadow-lg active:scale-95 transition-all duration-200 intelligence-glow mt-4">
+                    Sign In
+                </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center py-2">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="px-3 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-2 py-3 rounded-lg border border-white/10 hover:bg-white/5 transition-all active:scale-95">
+<img class="w-5 h-5" data-alt="A clean, minimalist 3D render of the Google 'G' logo on a white circular base, high key lighting, Apple-style product photography, soft shadows, futuristic SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWT8Y0ofV1sIqAQROjn-jjoKGuTrccq8fWHC_a4iiBomRhIhFubpdA6DzmsQMzmLeo0lXe5F4_GBPZ9s7dmON4mq3T5W1xxOeKSuE9lPlbMRvWDOryYSaa32nGdrC0kxWTL6z_fP6-mavVcG8HRf462MJAc6-3iPig_CfVbYtSlZB-DI2Z_WIdtROiX35y-l8jKrG9j9wbec0kDlXlzYKWYprCFMWRP0G8KiH72gg-ARbFX2XKqykAKhRKLia_kA3l2eOzMeu1R-1O"/>
+<span class="font-body-md text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 rounded-lg border border-white/10 hover:bg-white/5 transition-all active:scale-95">
+<img class="w-5 h-5" data-alt="A premium 3D render of the LinkedIn 'in' logo in a glossy deep blue finish, sharp edges, metallic reflections, minimalist background, high-end professional networking aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6K681A875p-wWKTRHGCsfzWrXVCohSpafWasR10b1U9XAL455r2QSIVwSJWTdiVHaeZHeZJs3O2vyCJKVhXDt-Dty_edoHC5qygxVorgVJdNFG-ivKnoyscjC27Ye-uC4QFYpv0mTICqG-1l3IyRn5QrDBQHmTCgDeAlvJYBkClZz--WS9cou50a4sjmsk-cnLjuqI72TSWlNh7_e9Zr9teUexaILSVcS-7YnpacuBx_3Eg-hjMpl5wz6ep7L3vl5JqVJNO8KO-Qw"/>
+<span class="font-body-md text-on-surface">LinkedIn</span>
+</button>
+</div>
+</section>
+<!-- Footer Footer -->
+<footer class="mt-lg text-center space-y-md">
+<p class="font-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-primary font-semibold hover:underline" href="#">Join the Waitlist</a>
+</p>
+<div class="flex justify-center gap-md pt-md opacity-60">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+<!-- Floating AI Assistant Placeholder -->
+<div class="fixed bottom-gutter right-gutter z-50">
+<button class="w-14 h-14 rounded-full bg-surface-container-high border border-primary/20 flex items-center justify-center glass-card intelligence-glow group hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-2xl animate-float" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div class="absolute -top-12 right-0 bg-surface-bright text-on-surface px-4 py-2 rounded-xl text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 shadow-xl pointer-events-none">
+                Need help signing in?
+            </div>
+</button>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Simple input interaction visual feedback
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('border-primary/50');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('border-primary/50');
+            });
+        });
+    </script>
+<style>
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body></html>

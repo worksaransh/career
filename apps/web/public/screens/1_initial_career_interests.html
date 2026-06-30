@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Initial Career Interests</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container": "#171f33",
+                "surface-tint": "#adc6ff",
+                "surface-container-high": "#222a3d",
+                "tertiary": "#4cd7f6",
+                "on-secondary": "#3c0091",
+                "on-primary-fixed": "#001a42",
+                "on-primary": "#002e6a",
+                "secondary-fixed": "#e9ddff",
+                "on-tertiary-fixed": "#001f26",
+                "surface-container-lowest": "#060e20",
+                "on-secondary-container": "#c4abff",
+                "primary-fixed": "#d8e2ff",
+                "surface-container-highest": "#2d3449",
+                "on-surface-variant": "#c2c6d6",
+                "error-container": "#93000a",
+                "tertiary-fixed": "#acedff",
+                "secondary-fixed-dim": "#d0bcff",
+                "surface-dim": "#0b1326",
+                "on-background": "#dae2fd",
+                "outline-variant": "#424754",
+                "on-tertiary-fixed-variant": "#004e5c",
+                "background": "#0b1326",
+                "on-error": "#690005",
+                "primary": "#adc6ff",
+                "on-tertiary": "#003640",
+                "on-error-container": "#ffdad6",
+                "inverse-primary": "#005ac2",
+                "on-secondary-fixed-variant": "#5516be",
+                "inverse-surface": "#dae2fd",
+                "tertiary-container": "#009eb9",
+                "secondary-container": "#571bc1",
+                "on-secondary-fixed": "#23005c",
+                "on-primary-container": "#00285d",
+                "secondary": "#d0bcff",
+                "surface-variant": "#2d3449",
+                "surface": "#0b1326",
+                "surface-bright": "#31394d",
+                "inverse-on-surface": "#283044",
+                "on-primary-fixed-variant": "#004395",
+                "primary-fixed-dim": "#adc6ff",
+                "primary-container": "#4d8eff",
+                "error": "#ffb4ab",
+                "on-tertiary-container": "#002f38",
+                "on-surface": "#dae2fd",
+                "outline": "#8c909f",
+                "tertiary-fixed-dim": "#4cd7f6",
+                "surface-container-low": "#131b2e"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "lg": "40px",
+                "container-max": "1200px",
+                "xs": "8px",
+                "md": "24px",
+                "xl": "64px",
+                "gutter": "16px",
+                "sm": "16px",
+                "base": "4px"
+            },
+            "fontFamily": {
+                "display-lg-mobile": ["Inter"],
+                "label-sm": ["Geist"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chip-active {
+            background: #adc6ff;
+            color: #002e6a;
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-ai {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Background Shader Layer -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+</div>
+<!-- Header Section -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight md:text-display-lg-mobile">Career GPS</h1>
+</div>
+<div class="w-10 h-10 rounded-full border border-white/20 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium high-fidelity profile portrait of a young professional Indian man, dressed in a sleek charcoal suit with soft cinematic studio lighting. The background is a deep navy blue with subtle bokeh effects. The overall image has a clean, polished SaaS aesthetic with sharp focus and professional color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE7ynOwugJcnHItxd1ZtsSDh4BG_ka2uctJ6rLrE8bw3_jhaAq5gmKiqORmZ6b0VZruyq5vBVkY9B7xVjRCGHU6lEzI4rSPs65wuae1d-bxzTg7-QbujbdIkAWQz6M07GB5NzNr9ECZp0E7V6s81vVc_IxtColfufQVKGk34rr9nbIp_VzPaQgy_wxDQ4CP5PLQ9xCa8iWmvQkk2vGEyUqXcrTS4Pl3ipG5TPJ93327o4R6PXfq7__JpMjHcyLdUUQdddR9w1_Kr0z"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32 relative z-10 px-gutter w-full max-w-container-max mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-lg">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Step 08 of 15</span>
+<span class="font-label-sm text-label-sm text-primary">54% Complete</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[54%] shadow-[0_0_8px_rgba(173,198,255,0.8)] transition-all duration-700"></div>
+</div>
+</div>
+<!-- Title Section -->
+<div class="mb-lg">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-2">What excites you?</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Tell us what you're passionate about. We'll use these to map your ideal career path.</p>
+</div>
+<!-- Search Bar -->
+<div class="mb-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full glass-card border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Search interests (e.g. AI, Music, Finance...)" type="text"/>
+</div>
+</div>
+<!-- Interest Tags Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" id="interest-grid">
+<!-- Programmatic rendering of chips -->
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="code">code</span>
+<span class="font-body-md font-medium">Coding</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="palette">palette</span>
+<span class="font-body-md font-medium">Design</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="insights">insights</span>
+<span class="font-body-md font-medium">Data Science</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="payments">payments</span>
+<span class="font-body-md font-medium">Finance</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="campaign">campaign</span>
+<span class="font-body-md font-medium">Marketing</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="psychology">psychology</span>
+<span class="font-body-md font-medium">AI &amp; ML</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="biotech">biotech</span>
+<span class="font-body-md font-medium">Healthcare</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="styler">styler</span>
+<span class="font-body-md font-medium">Fashion Design</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="gavel">gavel</span>
+<span class="font-body-md font-medium">Law</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="movie">movie</span>
+<span class="font-body-md font-medium">Cinematography</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="school">school</span>
+<span class="font-body-md font-medium">Education</span>
+</button>
+<button class="glass-card px-4 py-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/50 group active:scale-95" onclick="toggleSelection(this)">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="travel_explore">travel_explore</span>
+<span class="font-body-md font-medium">Tourism</span>
+</button>
+</div>
+<!-- Sticky Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-gutter z-50 pointer-events-none">
+<div class="max-w-container-max mx-auto w-full flex flex-col items-end gap-4">
+<!-- AI Assistant Bubble -->
+<button class="pointer-events-auto floating-ai w-14 h-14 rounded-full bg-primary-container text-white flex items-center justify-center shadow-xl border border-primary/20 backdrop-blur-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<!-- Navigation Bar -->
+<div class="pointer-events-auto w-full glass-card border-white/10 rounded-2xl p-4 flex items-center justify-between shadow-2xl">
+<button class="px-6 py-3 font-body-md text-on-surface-variant hover:text-on-surface transition-colors">
+                        Back
+                    </button>
+<button class="bg-primary hover:opacity-90 text-on-primary font-bold px-10 py-3 rounded-xl transition-all active:scale-95 shadow-[0_0_20px_rgba(173,198,255,0.3)]">
+                        Next
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Content Area (Desktop Only) -->
+<aside class="hidden lg:flex fixed right-0 top-24 bottom-32 w-80 p-gutter z-10 flex-col gap-6">
+<div class="glass-card rounded-2xl p-6 h-fit">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                AI Preview
+            </h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6 leading-relaxed">
+                Based on your current selections, your profile is leaning towards <span class="text-primary font-bold">Tech-Creative Architecture</span>.
+            </p>
+<div class="space-y-4">
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+</div>
+<span class="text-xs">Systems Engineer</span>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="brush">brush</span>
+</div>
+<span class="text-xs">Product Designer</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden relative group">
+<div class="w-full h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A futuristic, high-resolution digital abstract background showcasing ethereal glowing filaments of electric blue and violet light weaving through a dark void. The scene suggests a neural network or a digital cosmos, embodying the themes of intelligence and career guidance. The lighting is soft and atmospheric, with a clean professional finish suitable for a premium career SaaS platform." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXJDH8ul6cEsVLYE3LxTGAqGoG-YgP53P0kIbz6TglCp8mHPTUq8MiB7cr-fTojXxG6qk1aAc657NcFCer4j9js-Z6lKKLpZjdu6mCcX5GrGPA5D-3qFyJw6WQzhy5mdjvT3pB39DJ83tv2ClutiEVRkgPx_VP_yTNcUJa12Sv1408zB4bqyHhJmwFSXjlRPh5Mo7-zU6hq3hdiXvcbwT_ovFpExqUE9QQXljGISeZ4nrF_26lyTQHnfZe9zv_OGs4OT6OFUbdVmCN')"></div>
+<div class="p-4 absolute bottom-0 left-0 w-full bg-surface/60 backdrop-blur-md">
+<p class="font-label-sm text-xs text-primary-container font-bold">INSIGHT</p>
+<p class="text-xs text-white opacity-90">Design skills are in high demand in the AI era.</p>
+</div>
+</div>
+</aside>
+<script>
+        function toggleSelection(element) {
+            element.classList.toggle('chip-active');
+            const icon = element.querySelector('.material-symbols-outlined');
+            if (element.classList.contains('chip-active')) {
+                icon.style.fontVariationSettings = "'FILL' 1";
+                element.style.borderColor = 'transparent';
+            } else {
+                icon.style.fontVariationSettings = "'FILL' 0";
+                element.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }
+        }
+
+        // Add subtle interactivity to the search input
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

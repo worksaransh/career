@@ -1,0 +1,668 @@
+[
+  {
+    "index": 1,
+    "id": "projects/12646317910371447753/screens/65420c52f04b4f318565e08845765fd9",
+    "title": "Initial Career Interests",
+    "filename": "1_initial_career_interests.html",
+    "width": "780",
+    "height": "2456",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 2,
+    "id": "projects/12646317910371447753/screens/410e43b7149642a1b32b4bda1f8f3604",
+    "title": "Career Timeline",
+    "filename": "2_career_timeline.html",
+    "width": "780",
+    "height": "3370",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 3,
+    "id": "projects/12646317910371447753/screens/b4c05ae7f2584aa2a11ef2eecda05ea0",
+    "title": "Mentor Chat",
+    "filename": "3_mentor_chat.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 4,
+    "id": "projects/12646317910371447753/screens/3bbe13b7429744449505af3cab0c0edc",
+    "title": "ATS Analysis",
+    "filename": "4_ats_analysis.html",
+    "width": "780",
+    "height": "7184",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 5,
+    "id": "projects/12646317910371447753/screens/add568ccf635482b8d4f627d4c76aed8",
+    "title": "Earnings & Analytics",
+    "filename": "5_earnings___analytics.html",
+    "width": "780",
+    "height": "3572",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 6,
+    "id": "projects/12646317910371447753/screens/378aca779fe04351af252b927df8dcb7",
+    "title": "Career Twin",
+    "filename": "6_career_twin.html",
+    "width": "780",
+    "height": "3228",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 7,
+    "id": "projects/12646317910371447753/screens/a99f5d8f680a4762a5a7873a3e135e71",
+    "title": "Future Demand",
+    "filename": "7_future_demand.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 8,
+    "id": "projects/12646317910371447753/screens/d9dae244596547789b86085fa1baf663",
+    "title": "College Explorer",
+    "filename": "8_college_explorer.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 9,
+    "id": "projects/12646317910371447753/screens/517886f08b704c358ab76b7da8469dff",
+    "title": "Professional Verification",
+    "filename": "9_professional_verification.html",
+    "width": "780",
+    "height": "3564",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 10,
+    "id": "projects/12646317910371447753/screens/ff00734efeab43f3ab431e8af6db74aa",
+    "title": "AI Risk",
+    "filename": "10_ai_risk.html",
+    "width": "780",
+    "height": "5200",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 11,
+    "id": "projects/12646317910371447753/screens/7c406ac1a77c42a19018520c265930b5",
+    "title": "Mentor Welcome & Badge",
+    "filename": "11_mentor_welcome___badge.html",
+    "width": "780",
+    "height": "3620",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 12,
+    "id": "projects/12646317910371447753/screens/13f4ee18e4644a1abd1ba1eb5533ab05",
+    "title": "Booking Confirmed",
+    "filename": "12_booking_confirmed.html",
+    "width": "780",
+    "height": "2236",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 13,
+    "id": "projects/12646317910371447753/screens/cc71f9ba095c457e94091734bb75c8d3",
+    "title": "Compare Colleges",
+    "filename": "13_compare_colleges.html",
+    "width": "780",
+    "height": "2398",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 14,
+    "id": "projects/12646317910371447753/screens/6c9ace7d89444ca4b3719e0a5eb96554",
+    "title": "Language Selection",
+    "filename": "14_language_selection.html",
+    "width": "780",
+    "height": "2096",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 15,
+    "id": "projects/12646317910371447753/screens/103d1a6edd42454ab53c6b147b4b39bc",
+    "title": "OTP Verification",
+    "filename": "15_otp_verification.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 16,
+    "id": "projects/12646317910371447753/screens/b37e5fff4fa84a7cafc7c82071e4d0ee",
+    "title": "Mentor Calendar & Slots",
+    "filename": "16_mentor_calendar___slots.html",
+    "width": "780",
+    "height": "3142",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 17,
+    "id": "projects/12646317910371447753/screens/06ad3e954462451d90a6965a67aabd28",
+    "title": "ROI Calculator",
+    "filename": "17_roi_calculator.html",
+    "width": "780",
+    "height": "2380",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 18,
+    "id": "projects/12646317910371447753/screens/179e2e2e63ff4e1a92b997fdd273af8b",
+    "title": "Choose User Type",
+    "filename": "18_choose_user_type.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 19,
+    "id": "projects/12646317910371447753/screens/bb51b8a71092404eafbb849578879b66",
+    "title": "Fees & Financing",
+    "filename": "19_fees___financing.html",
+    "width": "780",
+    "height": "2288",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 20,
+    "id": "projects/12646317910371447753/screens/a763fb5a13814293b54140298d8952da",
+    "title": "Bio & Philosophy",
+    "filename": "20_bio___philosophy.html",
+    "width": "780",
+    "height": "3050",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 21,
+    "id": "projects/12646317910371447753/screens/f19bf60dd43e4dde97266f274cea6e21",
+    "title": "Career Roadmap",
+    "filename": "21_career_roadmap.html",
+    "width": "780",
+    "height": "4896",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 22,
+    "id": "projects/12646317910371447753/screens/73dd20a26a43405f8aeb41a6e47954c8",
+    "title": "Resume Dashboard",
+    "filename": "22_resume_dashboard.html",
+    "width": "780",
+    "height": "4466",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 23,
+    "id": "projects/12646317910371447753/screens/d3f9efcd98a740528a15bd190c327621",
+    "title": "Achievements & Streak",
+    "filename": "23_achievements___streak.html",
+    "width": "780",
+    "height": "3508",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 24,
+    "id": "projects/12646317910371447753/screens/ed397788d3754ca38bf7bcd6db71f57f",
+    "title": "Career Details",
+    "filename": "24_career_details.html",
+    "width": "780",
+    "height": "5348",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 25,
+    "id": "projects/12646317910371447753/screens/5758ec9fe4ea4815820560d3bc523108",
+    "title": "Skill Detail",
+    "filename": "25_skill_detail.html",
+    "width": "780",
+    "height": "3326",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 26,
+    "id": "projects/12646317910371447753/screens/f3d36eb5adfc4b9ba619c2bbdae462a7",
+    "title": "Career Confidence",
+    "filename": "26_career_confidence.html",
+    "width": "858",
+    "height": "2088",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 27,
+    "id": "projects/12646317910371447753/screens/7a4a6e609eb54b18b9ec1c2935010461",
+    "title": "Mentor Dashboard Home",
+    "filename": "27_mentor_dashboard_home.html",
+    "width": "780",
+    "height": "3164",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 28,
+    "id": "projects/12646317910371447753/screens/5f5e13f9e4ad4cc4b3e4207e9a2c38a2",
+    "title": "Tell us about yourself",
+    "filename": "28_tell_us_about_yourself.html",
+    "width": "940",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 29,
+    "id": "projects/12646317910371447753/screens/743b8ff81c064e7abf85cf793c2f1952",
+    "title": "Sign Up",
+    "filename": "29_sign_up.html",
+    "width": "780",
+    "height": "1804",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 30,
+    "id": "projects/12646317910371447753/screens/63eaafc5e273453c8044b3d22bc97c18",
+    "title": "Marketing Landing Page",
+    "filename": "30_marketing_landing_page.html",
+    "width": "780",
+    "height": "9960",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 31,
+    "id": "projects/12646317910371447753/screens/f6a6e9dcd41b4695843c520abfc6ed87",
+    "title": "Availability Setup",
+    "filename": "31_availability_setup.html",
+    "width": "780",
+    "height": "3296",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 32,
+    "id": "projects/12646317910371447753/screens/a34d837235d44c66982d91be49d9fb8e",
+    "title": "Services & Pricing",
+    "filename": "32_services___pricing.html",
+    "width": "780",
+    "height": "4048",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 33,
+    "id": "projects/12646317910371447753/screens/d0d5ff10219045c8bd70e987fa9a70e0",
+    "title": "Skill Roadmap",
+    "filename": "33_skill_roadmap.html",
+    "width": "780",
+    "height": "2870",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 34,
+    "id": "projects/12646317910371447753/screens/7e70c220793843519a1a27ffa35e6028",
+    "title": "Career Comparison",
+    "filename": "34_career_comparison.html",
+    "width": "780",
+    "height": "4874",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 35,
+    "id": "projects/12646317910371447753/screens/0c6439026a194e1eba113f606c0667d3",
+    "title": "Mentee Roadmap Detail",
+    "filename": "35_mentee_roadmap_detail.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 36,
+    "id": "projects/12646317910371447753/screens/fb34ae4c778e4661a3d32b3219f56edd",
+    "title": "Home Dashboard",
+    "filename": "36_home_dashboard.html",
+    "width": "780",
+    "height": "3286",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 37,
+    "id": "projects/12646317910371447753/screens/b30c15ed7b98499391f4170a3c379dc2",
+    "title": "College Detail",
+    "filename": "37_college_detail.html",
+    "width": "780",
+    "height": "3856",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 38,
+    "id": "projects/12646317910371447753/screens/880e8d4e2cad4d6d98b8257e52e2049c",
+    "title": "Confirm Extracted Data",
+    "filename": "38_confirm_extracted_data.html",
+    "width": "780",
+    "height": "2904",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 39,
+    "id": "projects/12646317910371447753/screens/6f51e028c2934d86a971b322ebef34f8",
+    "title": "Career Explorer",
+    "filename": "39_career_explorer.html",
+    "width": "780",
+    "height": "4734",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 40,
+    "id": "projects/12646317910371447753/screens/dfeeca5cffd345b68f8f77a623c334fc",
+    "title": "Scholarships",
+    "filename": "40_scholarships.html",
+    "width": "780",
+    "height": "2844",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 41,
+    "id": "projects/12646317910371447753/screens/950b952bf40a40bf8235cc7bff5325dc",
+    "title": "Create Password",
+    "filename": "41_create_password.html",
+    "width": "780",
+    "height": "1822",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 42,
+    "id": "projects/12646317910371447753/screens/929d44a1b3eb4182a8e026399e4a258d",
+    "title": "Product Requirements Document",
+    "filename": "42_product_requirements_document.html",
+    "width": "0",
+    "height": "0",
+    "deviceType": "DESKTOP"
+  },
+  {
+    "index": 43,
+    "id": "projects/12646317910371447753/screens/f7925693f6034a12833e2831bb73e4da",
+    "title": "Notifications & Insights",
+    "filename": "43_notifications___insights.html",
+    "width": "780",
+    "height": "3200",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 44,
+    "id": "projects/12646317910371447753/screens/9add94db99e641f48aeb32d23e2220ec",
+    "title": "Refined Career Twin",
+    "filename": "44_refined_career_twin.html",
+    "width": "780",
+    "height": "3562",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 45,
+    "id": "projects/12646317910371447753/screens/0207fd5fc4cd429185db7681f33f0446",
+    "title": "Salary Prediction",
+    "filename": "45_salary_prediction.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 46,
+    "id": "projects/12646317910371447753/screens/b2028b0f1c1145d48bbf76495ba5a210",
+    "title": "Resume Upload",
+    "filename": "46_resume_upload.html",
+    "width": "780",
+    "height": "2060",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 47,
+    "id": "projects/12646317910371447753/screens/23b59c3fa5884474ae4776b4190c2f38",
+    "title": "Mentor Explorer",
+    "filename": "47_mentor_explorer.html",
+    "width": "780",
+    "height": "4316",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 48,
+    "id": "projects/12646317910371447753/screens/af1e479bce67439199382bd0f337350e",
+    "title": "Skill Explorer",
+    "filename": "48_skill_explorer.html",
+    "width": "780",
+    "height": "3860",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 49,
+    "id": "projects/12646317910371447753/screens/ddbfe4288594465bbcc49923114f1764",
+    "title": "Certifications",
+    "filename": "49_certifications.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 50,
+    "id": "projects/12646317910371447753/screens/b6746b93c7c2435dad1dc5fb3aed3de7",
+    "title": "Mentor Profile",
+    "filename": "50_mentor_profile.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 51,
+    "id": "projects/12646317910371447753/screens/0e54ad3057a34f43a14f54eb2a5e7839",
+    "title": "Portfolio Tracker",
+    "filename": "51_portfolio_tracker.html",
+    "width": "780",
+    "height": "5172",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 52,
+    "id": "projects/12646317910371447753/screens/cfeebfc67fe94ee8a249632657e7e2ed",
+    "title": "Progress",
+    "filename": "52_progress.html",
+    "width": "780",
+    "height": "5428",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 53,
+    "id": "projects/12646317910371447753/screens/b7a8397c3cd44d9fa3e567d49cb6c930",
+    "title": "Weekly Goals",
+    "filename": "53_weekly_goals.html",
+    "width": "780",
+    "height": "3754",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 54,
+    "id": "projects/12646317910371447753/screens/ff3c7773126440df8f49e523061a2040",
+    "title": "Offer Comparison",
+    "filename": "54_offer_comparison.html",
+    "width": "976",
+    "height": "5562",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 55,
+    "id": "projects/12646317910371447753/screens/0660537b101a4f58b1ee6d4826f0a82d",
+    "title": "Schedule Session",
+    "filename": "55_schedule_session.html",
+    "width": "780",
+    "height": "4076",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 56,
+    "id": "projects/12646317910371447753/screens/f77ecc61667b4829a6a18926b1f155eb",
+    "title": "Forgot Password",
+    "filename": "56_forgot_password.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 57,
+    "id": "projects/12646317910371447753/screens/12006086ea4143e790d6384f20305918",
+    "title": "AI Processing",
+    "filename": "57_ai_processing.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 58,
+    "id": "projects/12646317910371447753/screens/1811b05c8374480eb57bf796c07a15cc",
+    "title": "Career Twin Building",
+    "filename": "58_career_twin_building.html",
+    "width": "780",
+    "height": "2776",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 59,
+    "id": "projects/12646317910371447753/screens/12e4af2634304c56bf2d43e0b37c1efd",
+    "title": "Sign In",
+    "filename": "59_sign_in.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 60,
+    "id": "projects/12646317910371447753/screens/a605fe6f36294f9fbc5bf8d8c0fcf19b",
+    "title": "Expertise Selection",
+    "filename": "60_expertise_selection.html",
+    "width": "780",
+    "height": "4500",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 61,
+    "id": "projects/12646317910371447753/screens/6c7b0738ee6b426aaaaa785e9309f665",
+    "title": "Goals",
+    "filename": "61_goals.html",
+    "width": "780",
+    "height": "3596",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 62,
+    "id": "projects/12646317910371447753/screens/5b1435a5428541d2b504ec1125fc18ce",
+    "title": "Personality Questions",
+    "filename": "62_personality_questions.html",
+    "width": "780",
+    "height": "3314",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 63,
+    "id": "projects/12646317910371447753/screens/09bca16bb43b4d0eb4d5552431d159aa",
+    "title": "Job Readiness",
+    "filename": "63_job_readiness.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 64,
+    "id": "projects/12646317910371447753/screens/43cd65cb2672447bb8d7987877621e26",
+    "title": "Skills Required",
+    "filename": "64_skills_required.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 65,
+    "id": "projects/12646317910371447753/screens/ea1d70e609af4ba8a034267764c7bc52",
+    "title": "YouTube Learning",
+    "filename": "65_youtube_learning.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 66,
+    "id": "projects/12646317910371447753/screens/25d2df4c8c1142dc9a05673d8633f795",
+    "title": "Placement Data",
+    "filename": "66_placement_data.html",
+    "width": "780",
+    "height": "3866",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 67,
+    "id": "projects/12646317910371447753/screens/cf00ccd93194426a9ebc5784c7fdb507",
+    "title": "Interview Prep",
+    "filename": "67_interview_prep.html",
+    "width": "780",
+    "height": "4954",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 68,
+    "id": "projects/12646317910371447753/screens/7f80437e4a5d4081b7fb2ce6598c4929",
+    "title": "AI Coach",
+    "filename": "68_ai_coach.html",
+    "width": "780",
+    "height": "1842",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 69,
+    "id": "projects/12646317910371447753/screens/5c26b6669f3040db93ce7d7eabf71b96",
+    "title": "Mentee Management",
+    "filename": "69_mentee_management.html",
+    "width": "780",
+    "height": "3276",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 70,
+    "id": "projects/12646317910371447753/screens/a2cebfd58b3d4f51bff534fda5ae3fae",
+    "title": "Splash Screen",
+    "filename": "70_splash_screen.html",
+    "width": "780",
+    "height": "1768",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 71,
+    "id": "projects/12646317910371447753/screens/7317b46274324c8c8da451ba8dda4d9e",
+    "title": "Job Applications",
+    "filename": "71_job_applications.html",
+    "width": "780",
+    "height": "4980",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 72,
+    "id": "projects/12646317910371447753/screens/b98ffddc67c84368b5d4c921e598575b",
+    "title": "Career Upgrade Score",
+    "filename": "72_career_upgrade_score.html",
+    "width": "780",
+    "height": "4578",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 73,
+    "id": "projects/12646317910371447753/screens/2e1db532cb3a4d03aa3af04e7d7d5759",
+    "title": "Welcome Screen",
+    "filename": "73_welcome_screen.html",
+    "width": "858",
+    "height": "1974",
+    "deviceType": "MOBILE"
+  },
+  {
+    "index": 74,
+    "id": "projects/12646317910371447753/screens/c5d7524f72f4409e9cdb98d4c7ed005f",
+    "title": "Profile Summary",
+    "filename": "74_profile_summary.html",
+    "width": "780",
+    "height": "3310",
+    "deviceType": "MOBILE"
+  }
+]

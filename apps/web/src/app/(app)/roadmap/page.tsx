@@ -165,7 +165,7 @@ export default async function RoadmapPage({ searchParams }: RoadmapPageProps) {
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
-  const isPremium = subscription?.tier === "PREMIUM" && subscription?.status === "ACTIVE";
+  const isPremium = (subscription?.tier === "PREMIUM" || subscription?.tier === "UNIVERSITY") && subscription?.status === "ACTIVE";
 
   // Parse milestones from JSON
   const milestonesList: any[] = Array.isArray(roadmap.milestones)

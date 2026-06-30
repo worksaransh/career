@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/marketing/hero";
 import { FeaturesSection } from "@/components/marketing/features-section";
+import { PlaygroundSection } from "@/components/marketing/playground-section";
 import { StatsSection } from "@/components/marketing/stats-section";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { PricingSection } from "@/components/marketing/pricing-section";
@@ -25,14 +26,15 @@ export default async function HomePage() {
     return item ? item.value : fallback;
   };
 
-  const title = getCMSValue("hero-title", "See Your Future|Before You Decide");
-  const subtitle = getCMSValue("hero-subtitle", "Stop guessing. Our AI analyzes your interests, skills, and goals to create a personalized career roadmap — from college to your dream job.");
-  const ctaText = getCMSValue("hero-cta", "Discover Your Future");
+  const title = getCMSValue("hero-title", "Your Personal AI|Career Operating System");
+  const subtitle = getCMSValue("hero-subtitle", "Increase your lifetime earnings with our AI-powered growth ecosystem. Get personalized skill roadmaps, ROI-backed college options, and direct path mapping to high-paying careers.");
+  const ctaText = getCMSValue("hero-cta", "Launch Your Career OS");
 
   return (
     <>
       <HeroSection title={title} subtitle={subtitle} ctaText={ctaText} />
       <FeaturesSection />
+      <PlaygroundSection />
       <StatsSection />
       <TestimonialsSection />
       <PricingSection />

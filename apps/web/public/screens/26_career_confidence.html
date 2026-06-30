@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "tertiary": "#4cd7f6",
+                        "on-secondary": "#3c0091",
+                        "on-primary-fixed": "#001a42",
+                        "on-primary": "#002e6a",
+                        "secondary-fixed": "#e9ddff",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-container": "#c4abff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-highest": "#2d3449",
+                        "on-surface-variant": "#c2c6d6",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#acedff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-dim": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "outline-variant": "#424754",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "background": "#0b1326",
+                        "on-error": "#690005",
+                        "primary": "#adc6ff",
+                        "on-tertiary": "#003640",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-container": "#009eb9",
+                        "secondary-container": "#571bc1",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#d0bcff",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "inverse-on-surface": "#283044",
+                        "on-primary-fixed-variant": "#004395",
+                        "primary-fixed-dim": "#adc6ff",
+                        "primary-container": "#4d8eff",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#002f38",
+                        "on-surface": "#dae2fd",
+                        "outline": "#8c909f",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-container-low": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "container-max": "1200px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "gutter": "16px",
+                        "sm": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .intelligence-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 50%, #4cd7f6 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .pulsing-glow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        canvas#canvas-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen overflow-x-hidden selection:bg-primary/30">
+<!-- Background Elements -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-[120px] pulsing-glow"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-tertiary/10 rounded-full blur-[120px] pulsing-glow" style="animation-delay: 2s;"></div>
+<canvas id="canvas-particles"></canvas>
+</div>
+<!-- Top App Bar (Suppressing Navigation for Transactional/Success State) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Career GPS</h1>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a young Indian professional smiling confidently. The lighting is soft and cinematic, with a clean dark blue background that matches the SaaS interface's premium aesthetic. High detail, sharp focus, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEaIpso5ckZeRZ1gUJLG6zOBhEFX_auvni_iLL-iNnNj0QS9_1EnHI-TULHYv_gH8ena7BNX_WpgsqV9tSa1NP8at_FC5YJMCb3cRMz6EuPlCxeKhFwZgjzf-txWm2l-aWzytmpe7BlvaltFhGuavzKDs4NTSCyWRjj1Eo9opA0ag5XrywqadgFObxjnU5dHFGlU3TCcrwXJNjs-d6V-v7-csCW8jhPveIOUMckSrWc4tsOH87NWbjCQMTZvFhkE6iv3DOYveU7N48"/>
+</div>
+</div>
+</header>
+<!-- Success Content Canvas -->
+<main class="relative z-10 pt-32 pb-xl px-gutter flex flex-col items-center justify-center min-h-screen max-w-container-max mx-auto text-center">
+<!-- Hero Visual Section -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 mb-md flex items-center justify-center">
+<!-- Glassmorphic Ring -->
+<div class="absolute inset-0 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl float-animation"></div>
+<!-- Holographic GPS Pin Placeholder -->
+<div class="relative z-10 flex flex-col items-center justify-center float-animation" style="animation-delay: -1s;">
+<span class="material-symbols-outlined text-primary text-[120px] md:text-[160px] drop-shadow-[0_0_20px_rgba(173,198,255,0.4)]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<!-- Orbiting Elements -->
+<div class="absolute w-full h-full animate-[spin_20s_linear_infinite]">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-lg glass-card flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+</div>
+<!-- Glow Foundation -->
+<div class="absolute inset-0 intelligence-gradient opacity-20 rounded-full blur-3xl scale-75"></div>
+</div>
+<!-- Success Message -->
+<div class="max-w-2xl mx-auto mb-lg">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-xs tracking-tight">Onboarding Complete!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                Your personalized career roadmap is ready. Our AI has analyzed your profile against 12,000+ career pathways.
+            </p>
+</div>
+<!-- Score Preview Card (Bento Style) -->
+<div class="glass-card rounded-xl p-md mb-xl flex items-center gap-md max-w-sm w-full transition-transform hover:scale-[1.02] active:scale-95 cursor-default">
+<div class="relative w-20 h-20">
+<!-- Circular Progress -->
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="98.9" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-headline-md text-headline-md text-primary">65</span>
+</div>
+</div>
+<div class="text-left">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-base">Analysis Result</span>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none mb-base">Career Confidence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Top 15% in your field</p>
+</div>
+</div>
+<!-- High-Conversion CTA -->
+<div class="flex flex-col gap-sm w-full max-w-xs">
+<button class="intelligence-gradient text-on-primary-fixed font-bold py-md px-xl rounded-full text-body-lg shadow-[0_10px_40px_rgba(77,142,255,0.3)] transition-all hover:shadow-[0_15px_50px_rgba(77,142,255,0.5)] hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-xs">
+                Go to Dashboard
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-white/10 text-on-surface-variant py-md px-xl rounded-full text-body-md transition-all hover:bg-white/5 active:scale-95">
+                View Onboarding Summary
+            </button>
+</div>
+</main>
+<!-- Floating AI Assistant (Subtle version for success screen) -->
+<div class="fixed bottom-gutter right-gutter z-50">
+<button class="w-14 h-14 rounded-full intelligence-gradient flex items-center justify-center text-on-primary shadow-2xl transition-all hover:scale-110 active:scale-90">
+<span class="material-symbols-outlined animate-pulse" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+</div>
+<script>
+        // Micro-interaction: Particle Canvas
+        const canvas = document.getElementById('canvas-particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.init();
+            }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(173, 198, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        initParticles();
+        animate();
+
+        // Confetti effect on load
+        window.addEventListener('load', () => {
+            // Simple visual trigger for "Success"
+            console.log("Career GPS Roadmap Ready.");
+        });
+    </script>
+</body></html>

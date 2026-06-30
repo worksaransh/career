@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career GPS - Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary": "#002e6a",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#acedff",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "primary": "#adc6ff",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#31394d",
+                        "surface-dim": "#0b1326",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary": "#3c0091",
+                        "on-primary-container": "#00285d",
+                        "inverse-surface": "#dae2fd",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "background": "#0b1326",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary-container": "#009eb9",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary": "#003640",
+                        "error-container": "#93000a",
+                        "outline": "#8c909f",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "surface-container": "#171f33",
+                        "primary-container": "#4d8eff",
+                        "tertiary": "#4cd7f6",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary-container": "#002f38",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#e9ddff",
+                        "outline-variant": "#424754",
+                        "on-surface": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "base": "4px",
+                        "container-max": "1200px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.1);
+            border: 1px solid rgba(173, 198, 255, 0.3);
+        }
+        .timeline-connector {
+            background: linear-gradient(to bottom, #4d8eff 0%, #adc6ff 50%, rgba(173, 198, 255, 0.2) 100%);
+        }
+        .step-pulse {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(173, 198, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(173, 198, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(173, 198, 255, 0); }
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-xs w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium professional headshot of a young Indian tech professional, clean studio lighting, soft bokeh background, wearing a modern charcoal blazer, high-end digital photography style, color palette dominated by deep blues and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW7N7hvo234t7_Pc_7bXdPUk274lLQLcceW78co0DHRVBoMP0rqxXuWiaz0VQhSigIQEx_HyTg6D6CoQjKCtNpPOUPIAzt9J8-alNFoRqi6HwSbLzqxk57wHvknGkVqxsJoGvAIFNDMkTJo_oWVJcqOgchLz4sdDXC46Sco5FFLpyF-KkliGdn5E0-KDXZNLTv6tsXEofrBTvHvkkjADGpG0p7YWcKFI80Y3N8W-S3HvS2mqDwctpQRelx-sXWRDO0H8OPCYHYPcvo"/>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary tracking-tight">Career GPS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity">notifications</button>
+<div class="hidden md:flex gap-md">
+<a class="text-primary font-bold transition-opacity hover:opacity-80" href="#">Timeline</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Insights</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Network</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-xl pb-32 px-gutter max-w-container-max mx-auto min-h-screen relative">
+<!-- Background Animation Layer -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-20">
+</div>
+<!-- Header Section -->
+<section class="relative z-10 pt-12 pb-8">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-xs">Growth Trajectory</h2>
+<p class="text-on-surface-variant max-w-2xl font-body-lg text-body-lg">Visualize your professional evolution from foundational learning to AI-predicted leadership roles.</p>
+</section>
+<!-- Timeline Container -->
+<section class="relative z-10">
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 timeline-connector -translate-x-1/2"></div>
+<!-- Milestone: Past (Education) -->
+<div class="relative flex flex-col md:flex-row items-start md:items-center mb-xl w-full">
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+<span class="font-label-sm text-label-sm text-outline-variant uppercase tracking-widest">2018 — 2022</span>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mt-base">B.Tech in Computer Science</h3>
+<p class="text-on-surface-variant">Indian Institute of Technology, Delhi</p>
+</div>
+<div class="hidden md:block md:w-1/2 md:pl-12">
+<div class="glass-card p-sm rounded-xl max-w-xs transition-transform hover:scale-[1.02]">
+<div class="flex items-center gap-xs mb-xs text-primary">
+<span class="material-symbols-outlined text-sm">school</span>
+<span class="font-label-sm text-label-sm">CORE FOCUS</span>
+</div>
+<p class="text-sm text-on-surface-variant">Data Structures, Algorithms, Distributed Systems.</p>
+</div>
+</div>
+</div>
+<!-- Milestone: Past (Job) -->
+<div class="relative flex flex-col md:flex-row items-start md:items-center mb-xl w-full">
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right order-1 md:order-2">
+<div class="glass-card p-sm rounded-xl max-w-xs md:ml-auto transition-transform hover:scale-[1.02]">
+<div class="flex items-center gap-xs mb-xs text-secondary">
+<span class="material-symbols-outlined text-sm">work</span>
+<span class="font-label-sm text-label-sm">IMPACT</span>
+</div>
+<p class="text-sm text-on-surface-variant">Optimized checkout latency by 40% using Redis caching.</p>
+</div>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+<span class="font-label-sm text-label-sm text-outline-variant uppercase tracking-widest">2022 — 2024</span>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mt-base">Software Engineer II</h3>
+<p class="text-on-surface-variant">Flipkart, Bengaluru</p>
+</div>
+</div>
+<!-- Milestone: PRESENT -->
+<div class="relative flex flex-col md:flex-row items-start md:items-center mb-xl w-full">
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary flex items-center justify-center z-20 step-pulse shadow-[0_0_20px_rgba(173,198,255,0.5)]">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">navigation</span>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-widest">ACTIVE NOW</span>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-white mt-base">Senior Frontend Engineer</h3>
+<p class="text-on-surface-variant">Zomato, Remote</p>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-md md:mt-0">
+<div class="glass-card ai-glow p-md rounded-xl max-w-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-sm text-label-sm text-primary">LEARNING PATH</span>
+<span class="text-xs font-medium bg-primary/10 text-primary px-2 py-0.5 rounded-full">65% Done</span>
+</div>
+<h4 class="font-medium text-white mb-xs">Advanced Product Management</h4>
+<div class="w-full bg-white/5 h-1.5 rounded-full mb-md overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%"></div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<p class="text-[10px] text-outline uppercase">Active Skills</p>
+<p class="text-sm font-medium text-on-surface">Next.js, UI/UX</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase">Current TC</p>
+<p class="text-sm font-medium text-on-surface">₹32.5L /yr</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone: FUTURE (AI Predicted) -->
+<div class="relative flex flex-col md:flex-row items-start md:items-center mb-xl w-full">
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-high border-2 border-tertiary flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-tertiary text-sm">auto_awesome</span>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right order-1 md:order-2">
+<div class="glass-card p-md rounded-xl max-w-sm md:ml-auto border-tertiary/20">
+<div class="flex items-center gap-xs mb-sm text-tertiary">
+<span class="material-symbols-outlined text-sm">psychology</span>
+<span class="font-label-sm text-label-sm">AI ROADMAP INSIGHT</span>
+</div>
+<div class="space-y-sm">
+<div>
+<p class="text-[10px] text-outline uppercase">Required Skills</p>
+<div class="flex flex-wrap gap-xs mt-base">
+<span class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary text-[10px]">Product Vision</span>
+<span class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary text-[10px]">Market Strategy</span>
+<span class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary text-[10px]">Stakeholder Mgmt</span>
+</div>
+</div>
+<div class="pt-sm border-t border-white/5 flex justify-between items-end">
+<div>
+<p class="text-[10px] text-outline uppercase">Potential Salary</p>
+<p class="text-lg font-bold text-on-surface">₹45L - ₹60L</p>
+</div>
+<button class="text-[12px] font-bold text-tertiary hover:underline">Get Mentor</button>
+</div>
+</div>
+</div>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+<span class="font-label-sm text-label-sm text-tertiary/60 uppercase tracking-widest italic">PREDICTED 2026</span>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface-variant/80 mt-base">Senior Product Manager</h3>
+<p class="text-on-surface-variant/50">Tech Lead Transition</p>
+</div>
+</div>
+<!-- Milestone: FUTURE (Aspiration) -->
+<div class="relative flex flex-col md:flex-row items-start md:items-center mb-xl w-full opacity-40">
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-high border border-dashed border-outline flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-outline text-sm">rocket_launch</span>
+</div>
+<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">LONG TERM</span>
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mt-base">Director of Engineering / Founder</h3>
+<p class="text-on-surface-variant">Global Leadership</p>
+</div>
+</div>
+</section>
+<!-- Floating AI Assistant -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 rounded-full bg-primary-container text-on-primary-container shadow-2xl flex items-center justify-center z-50 hover:scale-110 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-tertiary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined relative z-10 animate-spin-slow">auto_awesome</span>
+</button>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explorer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:height-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#adc6ff]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm mt-1">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions for scrolling visibility
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.relative.flex-col').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+
+        // Add slow spin style
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes spin-slow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .animate-spin-slow {
+                animation: spin-slow 8s linear infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

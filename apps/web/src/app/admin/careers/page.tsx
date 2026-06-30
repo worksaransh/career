@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { CatalogTable, Column, FieldDef } from "@/components/admin/catalog-table";
 import { listCareers, upsertCareer, deleteCareer } from "@/lib/actions/admin-actions";
+import { GlassCard } from "@/components/ui/glass-card";
+import { Briefcase, Activity, ShieldAlert, Award, Clock } from "lucide-react";
 import toast from "react-hot-toast";
 
 type CareerRow = {
@@ -163,8 +165,69 @@ export default function AdminCareersPage() {
     }
   }
 
+  const highDemandCount = rows.filter(r => r.demandLevel === "HIGH").length;
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-foreground">
+      {/* Careers Knowledge Graph KPI Counters */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Total Careers</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">{rows.length}</span>
+            <Briefcase className="h-4.5 w-4.5 text-primary" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">New Careers</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">2</span>
+            <Activity className="h-4.5 w-4.5 text-emerald-400" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Trending</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">12</span>
+            <Award className="h-4.5 w-4.5 text-purple-400" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">High Demand</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">{highDemandCount}</span>
+            <Briefcase className="h-4.5 w-4.5 text-blue-400" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Need Update</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">1</span>
+            <ShieldAlert className="h-4.5 w-4.5 text-amber-500" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Low Confidence</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-black text-white">0</span>
+            <ShieldAlert className="h-4.5 w-4.5 text-rose-500" />
+          </div>
+        </GlassCard>
+
+        <GlassCard className="p-4 border border-border/80" variant="strong">
+          <span className="text-[9px] uppercase font-bold text-muted-foreground block mb-1">Last Updated</span>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-black text-white mt-1">Today</span>
+            <Clock className="h-4.5 w-4.5 text-cyan-400" />
+          </div>
+        </GlassCard>
+      </div>
+
       <CatalogTable<CareerRow>
         eyebrow="Industry Database"
         title="Careers Catalog"
