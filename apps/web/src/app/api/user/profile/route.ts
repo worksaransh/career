@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma/prisma";
 import { getSession } from "@/lib/session/session";
+import { recalculateScores } from "@/lib/actions/vault-actions";
 
 export async function PATCH(request: Request) {
   try {
@@ -15,6 +16,7 @@ export async function PATCH(request: Request) {
     const body = await request.json();
     const {
       name,
+      phone,
       language,
       emailNotifications,
       pushNotifications,
@@ -24,21 +26,40 @@ export async function PATCH(request: Request) {
       currentGrade,
       dateOfBirth,
       interests,
+      primaryPersona,
+
+      // UserMemory additions
+      experience,       // Array of experience history [{company, designation, startDate, endDate, description}]
+      projects,         // Array of projects [{projectName, description, role, technologies, businessImpact}]
+      certifications,   // Array of certs strings or objects
+      linkedin,
+      github,
+      website,
+      languages,        // Array of languages strings
+      currentSalary,
+      expectedSalary,
+      preferredCities,  // Array of cities strings
+      preferredCountries, // Array of countries strings
+      shortTerm,
+      longTerm,
+      educationHistory, // Array of educational degrees
     } = body;
 
-    // Update user name and language
-    const updateData: any = {};
-    if (name !== undefined) updateData.name = name;
-    if (language !== undefined) updateData.language = language;
+    // 1. Update User Details
+    const userUpdateData: any = {};
+    if (name !== undefined) userUpdateData.name = name;
+    if (phone !== undefined) userUpdateData.phone = phone;
+    if (language !== undefined) userUpdateData.language = language;
+    if (primaryPersona !== undefined) userUpdateData.primaryPersona = primaryPersona;
 
-    if (Object.keys(updateData).length > 0) {
+    if (Object.keys(userUpdateData).length > 0) {
       await prisma.user.update({
         where: { id: session.user.id },
-        data: updateData,
+        data: userUpdateData,
       });
     }
 
-    // Update preferences and other fields in UserProfile
+    // 2. Update UserProfile
     const profileUpdateData: any = {};
     if (bio !== undefined) profileUpdateData.bio = bio;
     if (location !== undefined) profileUpdateData.location = location;
@@ -77,6 +98,49 @@ export async function PATCH(request: Request) {
         update: profileUpdateData,
       });
     }
+
+    // 3. Update UserMemory JSON structures
+    const memory = await prisma.userMemory.findUnique({
+      where: { userId: session.user.id },
+    });
+
+    if (memory) {
+      const demographics = (memory.demographics as Record<string, any>) || {};
+      if (location !== undefined) demographics.location = location;
+      if (name !== undefined) demographics.name = name;
+      if (phone !== undefined) demographics.phone = phone;
+      if (experience !== undefined) demographics.experience = experience;
+      if (projects !== undefined) demographics.projects = projects;
+      if (certifications !== undefined) demographics.certifications = certifications;
+      if (linkedin !== undefined) demographics.linkedin = linkedin;
+      if (github !== undefined) demographics.github = github;
+      if (website !== undefined) demographics.website = website;
+      if (languages !== undefined) demographics.languages = languages;
+
+      const education = (memory.education as Record<string, any>) || {};
+      if (educationLevel !== undefined) education.level = educationLevel;
+      if (educationHistory !== undefined) education.history = educationHistory;
+
+      const goals = (memory.goals as Record<string, any>) || {};
+      if (shortTerm !== undefined) goals.shortTerm = shortTerm;
+      if (longTerm !== undefined) goals.longTerm = longTerm;
+      if (currentSalary !== undefined) goals.currentSalary = currentSalary;
+      if (expectedSalary !== undefined) goals.expectedSalary = expectedSalary;
+      if (preferredCities !== undefined) goals.preferredCities = preferredCities;
+      if (preferredCountries !== undefined) goals.preferredCountries = preferredCountries;
+
+      await prisma.userMemory.update({
+        where: { id: memory.id },
+        data: {
+          demographics,
+          education,
+          goals,
+        },
+      });
+    }
+
+    // 4. Recalculate scores & sync twin
+    await recalculateScores(session.user.id);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

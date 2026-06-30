@@ -77,6 +77,7 @@ export function VaultClient({ userId, isPremium = false }: { userId: string; isP
   const [parsedData, setParsedData] = useState<any>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [uploadingFileName, setUploadingFileName] = useState("");
+  const [uploadType, setUploadType] = useState("RESUME");
 
   // Load documents and user memory
   async function loadData() {
@@ -196,7 +197,7 @@ export function VaultClient({ userId, isPremium = false }: { userId: string; isP
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("documentType", "RESUME");
+      formData.append("documentType", uploadType);
 
       // UI Stepper progress
       const t1 = setTimeout(() => setParseStep(2), 600);
@@ -323,6 +324,20 @@ export function VaultClient({ userId, isPremium = false }: { userId: string; isP
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <select
+            value={uploadType}
+            onChange={(e) => setUploadType(e.target.value)}
+            className="h-10 rounded-xl border border-border bg-background px-3 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 font-semibold"
+          >
+            <option value="RESUME">Resume / CV</option>
+            <option value="CERTIFICATE">Certificate</option>
+            <option value="OFFER_LETTER">Offer Letter</option>
+            <option value="EXPERIENCE_LETTER">Experience Letter</option>
+            <option value="PROJECT">Project File</option>
+            <option value="PORTFOLIO">Portfolio</option>
+            <option value="AWARD">Award</option>
+            <option value="TRANSCRIPT">Transcript</option>
+          </select>
           <Button
             variant="outline"
             leftIcon={<Upload className="h-4 w-4" />}
@@ -518,11 +533,15 @@ export function VaultClient({ userId, isPremium = false }: { userId: string; isP
                 className="h-10 rounded-xl border border-border bg-background px-3 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground font-semibold"
               >
                 <option value="ALL">All Document Types</option>
-                <option value="RESUME">Resumes</option>
-                <option value="CV">CVs</option>
+                <option value="RESUME">Resumes / CVs</option>
                 <option value="CERTIFICATE">Certifications</option>
+                <option value="OFFER_LETTER">Offer Letters</option>
+                <option value="EXPERIENCE_LETTER">Experience Letters</option>
                 <option value="PROJECT">Projects</option>
-                <option value="LINKEDIN">LinkedIn Links</option>
+                <option value="PORTFOLIO">Portfolios</option>
+                <option value="AWARD">Awards</option>
+                <option value="TRANSCRIPT">Transcripts</option>
+                <option value="LINKEDIN">LinkedIn Profiles</option>
                 <option value="GITHUB">GitHub Profiles</option>
               </select>
             </div>
@@ -782,6 +801,11 @@ export function VaultClient({ userId, isPremium = false }: { userId: string; isP
                   <option value="WEBSITE">Personal Website Link</option>
                   <option value="FREELANCE_PROFILE">Freelance Profile Link (Upwork/Fiverr)</option>
                   <option value="PROJECT">Project URL</option>
+                  <option value="CERTIFICATE">Certificate URL</option>
+                  <option value="OFFER_LETTER">Offer Letter URL</option>
+                  <option value="EXPERIENCE_LETTER">Experience Letter URL</option>
+                  <option value="AWARD">Award URL</option>
+                  <option value="TRANSCRIPT">Transcript URL</option>
                 </select>
               </div>
 

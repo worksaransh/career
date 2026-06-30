@@ -265,11 +265,23 @@ export async function confirmParsedResume(parsedData: any, filename: string, fil
   const demographics = (memory.demographics as Record<string, any>) || {};
   if (parsedData.personalDetails?.location) demographics.location = parsedData.personalDetails.location;
   if (parsedData.personalDetails?.name) demographics.name = parsedData.personalDetails.name;
+  if (parsedData.personalDetails?.phone) demographics.phone = parsedData.personalDetails.phone;
+  if (parsedData.personalDetails?.linkedin) demographics.linkedin = parsedData.personalDetails.linkedin;
+  if (parsedData.personalDetails?.github) demographics.github = parsedData.personalDetails.github;
+  if (parsedData.personalDetails?.website) demographics.website = parsedData.personalDetails.website;
+  if (parsedData.personalDetails?.portfolio) demographics.website = parsedData.personalDetails.portfolio;
+  if (parsedData.personalDetails?.languages) demographics.languages = parsedData.personalDetails.languages;
+  
+  // Save experiences and projects directly into demographics JSON
+  if (parsedData.experience) demographics.experience = parsedData.experience;
+  if (parsedData.projects) demographics.projects = parsedData.projects;
+  if (parsedData.certifications) demographics.certifications = parsedData.certifications;
 
   const education = (memory.education as Record<string, any>) || {};
   if (highestEdu?.degree) education.level = highestEdu.degree;
   if (highestEdu?.college) education.institution = highestEdu.college;
   if (highestEdu?.passingYear) education.passingYear = highestEdu.passingYear;
+  if (parsedData.education) education.history = parsedData.education;
 
   const marks = (memory.marks as Record<string, any>) || {};
   if (highestEdu?.cgpa) marks.cgpa = highestEdu.cgpa;

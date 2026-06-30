@@ -21,6 +21,7 @@ export default async function DashboardPage() {
     partners,
     whatsappSetting,
     telegramSetting,
+    resume,
   ] = await Promise.all([
     prisma.assessmentResult.findFirst({
       where: { userId: user.id },
@@ -39,6 +40,9 @@ export default async function DashboardPage() {
     }),
     prisma.systemSetting.findUnique({
       where: { key: "telegram_invite_link" },
+    }),
+    prisma.vaultDocument.findFirst({
+      where: { userId: user.id, type: "RESUME" },
     }),
   ]);
 
@@ -62,6 +66,7 @@ export default async function DashboardPage() {
 
   const whatsappLink = whatsappSetting?.value ?? "https://chat.whatsapp.com/mock-invite-gps";
   const telegramLink = telegramSetting?.value ?? "https://t.me/mock-invite-gps";
+  const hasResume = !!resume;
 
   return (
     <DashboardContent
@@ -75,6 +80,7 @@ export default async function DashboardPage() {
       initialPartners={partners}
       whatsappLink={whatsappLink}
       telegramLink={telegramLink}
+      hasResume={hasResume}
     />
   );
 }
